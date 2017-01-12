@@ -6,8 +6,10 @@ def get_string(self, **kwargs):
     """Return string representation of table in current state.
        ...
     """
-
-def generate_table(file_path, file_result_path, beta, run, nsus):
+'''
+Generates the resutl table as a txt file
+'''
+def run_job(file_path, file_result_path, beta, run, nsus):
     f=open(file_result_path, 'w')
     for b in beta:
         t = PrettyTable(nsus_header)

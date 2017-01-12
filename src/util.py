@@ -1,3 +1,9 @@
+'''
+Created on Jan 12, 2017
+
+@author: javi
+'''
+import numpy as np 
 import os
 import time
 def load_zmip(zmip_result_path):
@@ -12,7 +18,9 @@ def load_zmip(zmip_result_path):
     return column
 def order(zmip_natural):    
     zmip_natural.sort(key=lambda x:x[2], reverse=True)
-    
+'''
+Syncronize matrix_ref with matrix_evol.
+'''    
 def sincronice_mi(matrix_ref, matrix_evol):
     column = []
     column2 = [] 
@@ -28,7 +36,7 @@ def sincronice_mi(matrix_ref, matrix_evol):
                 column2.append(e)
                 break    
     return  column, column2
-def sincronize_natural_evol_alignments(input_folder,output_folder,pattern_array,reg_init,reg_end_back):
+def sincronize_natural_evol_msas(input_folder,output_folder,pattern_array,reg_init,reg_end_back):
     start_time = time.time()
     print "sincronize_natural_evol_alignments"
     for filename in os.listdir(input_folder):
@@ -46,19 +54,26 @@ def sincronize_natural_evol_alignments(input_folder,output_folder,pattern_array,
     print("--- %s seconds ---" % (time.time() - start_time))
 
 def load_contact_map(contact_map_path):
-    import numpy as np    
     with open(contact_map_path) as file:
         l = [map(str,line.split(' ')) for line in file ]
         file.close()
         #test=[[1,2,3,4,5,6,7,8],[1,2,3,4,5,6,7,8],[1,2,3,4,5,6,7,8],[1,2,3,4,5,6,7,8],[1,2,3,4,5,6,7,8],[1,2,3,4,5,6,7,8],[1,2,3,4,5,6,7,8],[1,2,3,4,5,6,7,8]]
         a=np.array(l, order='F')
-        return a
-        
+        a[a == 'false\n']=0
+        a[a == 'true\n']=1
+        a[a == 'false']=0
+        a[a == 'true']=1
+        cmap=np.array(a, dtype='i4')
+        return cmap
+'''
+Sincronize contact map adjusting with the information of reg_init and reg_end_back
+contact_map_path: input contact map
+contact_map_output: out contact map sincronized
+'''        
 def sincronize_contact_map(contact_map_path, contact_map_output, reg_init, reg_end_back):
-    import numpy as np    
     start_time = time.time()
     print "sincronize_contact_map"
-   #with open(contact_map_output,'w') as new_file:
+    #with open(contact_map_output,'w') as new_file:
     with open(contact_map_path) as old_file:
         l = [map(str,line.split(' ')) for line in old_file ]
         old_file.close()

@@ -22,7 +22,6 @@ fasta_file=ARGS[1]
 contact_map_file = ARGS[2]
 println(fasta_file)
 println(contact_map_file)
-
 msa = read(fasta_file, FASTA)
 contact_map = readdlm(contact_map_file)
 zmip, mip = buslje09(msa,maxgap=1.0)
