@@ -18,7 +18,7 @@ def contacts_with_mi(x_nat_t,y_evol_t,x_nat_f,y_evol_f,output_path,filename):
     #y_evol_f = [1.1,0.32,1.0]
     #plt.scatter(x_nat_t, y_evol_t,color="b")
     #plt.scatter(x_nat_f, y_evol_f,color="r")
-    #plt.axis([0, 20, 0, 100])
+    plt.axis([0, 1, 0, 1])
     no = plt.scatter(y_evol_f, x_nat_f,color="r")
     co = plt.scatter(y_evol_t, x_nat_t,color="b")
     plt.legend((no, co),
@@ -34,9 +34,9 @@ def contacts_with_mi(x_nat_t,y_evol_t,x_nat_f,y_evol_f,output_path,filename):
     
     #x=[[1.0,2.4]]
     #plt.scatter(x,color="r")
+    plt.savefig(output_path)
     plt.show()
-    #plt.savefig(output_path)
-
+    plt.gcf().clear()
 '''
 Generate the plot for the diferents auc taking into account the beta, nsus and runs
 Open the result_auc_path parse all the results and plot them into 4 subplots
@@ -87,12 +87,12 @@ def plot_auc(result_auc_path,output_path,beta,runs,nsus):
     plt.legend(loc=1,prop={'size':10},title="Betas")
     plt.show()   
     #plt.savefig(output_path+'/auc.png')
-
+    plt.gcf().clear()
 
 '''
-Test function not in use
+
 '''
-def contact_map_with_top_rank_mi(contact_map, outputpath,x_nat, y_nat, x_evol,y_evol):
+def contact_map_with_top_rank_mi(contact_map, x_nat, y_nat, x_evol,y_evol,output_path,filename):
     #np.set_printoptions(threshold=np.nan)
     #print contact_map
     #contact_map[contact_map == 'false']=0
@@ -110,8 +110,10 @@ def contact_map_with_top_rank_mi(contact_map, outputpath,x_nat, y_nat, x_evol,y_
     plt.scatter(y_evol, x_evol, color="r",s=40,  marker=(5, 2))
     g = np.floor(cmap)
     plt.imshow(g, cmap='Greys')
-    plt.savefig(outputpath + "/contact_map_mi.png")
+    plt.title(filename)
+    plt.savefig(output_path)
     plt.show()
+    plt.gcf().clear()
 '''
 Test function not in use
 '''
@@ -139,4 +141,4 @@ def contact_map_(contact_map, outputpath):
     plt.imshow(g, cmap='Greys')   
     #plt.show()
     plt.savefig(outputpath + "/contact_map_mi.png")
-
+    plt.gcf().clear()

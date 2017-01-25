@@ -6,14 +6,18 @@ Created on Jan 12, 2017
 import numpy as np 
 import os
 import time
-def load_zmip(zmip_result_path):
-    import re
+import re
+def load_zmip(zmip_result_path,window_mi_neightboards=0):
     column = []
     file = open(zmip_result_path)
     for line in file:
         line = line.replace('NaN','0')
         line = line.replace('\n','')
-        column.append(map(float,re.split(r'\t+', line)))
+        #column.append(map(float,re.split(r'\t+', line)))
+        line_float = map(float,re.split(r'\t+', line))
+        if (line_float[0] + window_mi_neightboards >= line_float[1]):
+            line_float[2]=0
+        column.append(line_float)
     file.close()
     return column
 def order(zmip_natural):    

@@ -1,23 +1,21 @@
-#from utils import generate_table as table
-#from utils import clustering as clust
+'''
+Principal script for run the evolution of a protein bla ...
 
 
-#from plot import auc as plot
-#from auc_calc import run as auc
-#from scpe import scpe 
+'''
 
 import generate_table
-import scpe2 as scpe
+import scpe
 import urllib
 import dataanalisys 
 import msa 
-import plot2 as plot
+import plot 
 import util 
 
 '''
 Calculate the MI for the natural MSA putting the protein as the reference
 '''
-execute_natural_mi_msa=False
+execute_natural_mi_msa=True
 '''
 PDBs to evolve. 
 Take each of this structures and run the all process.
@@ -27,16 +25,16 @@ structures=["2trx"]
 Execute the evolution of the protein with SCPE.
 Generate several families; taking account de parameters beta, nsus and runs 
 '''
-execute_scpe = False
+execute_scpe = True
 beta = ["1.00"]
-run = ["5000"]
-nsus = ["1.0"]
+run = ["20000"]
+nsus = ["3.0"]
 '''
 Execute the clustering for the families generated with SCPE to avoid redundant sequences with high identity
 '''
-execute_clustering = False
+execute_clustering = True
 '''
-Execute the AUC for all the sequences genrated and clustered
+Execute the AUC for all the sequences generated and clustered
 '''
 execute_auc_process = False
 '''
@@ -50,14 +48,12 @@ execute_auc_plot = False
 '''
 Calculates the natural AUC with the protein as reference, with the contact map generates by scpe
 '''
-execute_natural_auc=False
-
-
-
-
-
-
-execute_spearman = True
+execute_natural_auc=True
+'''
+Run calculations of MI with contact maps. Top Ranks. Spearman and more.
+All the plots where in the data_path .. /plots
+'''
+data_analisys = False
 
 execute_sincronize_natural_evol_msas=False
 
@@ -109,7 +105,7 @@ for s in structures:
     contact_map=contact_map_path+"contact_map_" + pdb_name + ".dat"
     result_auc_file_name=result_auc_path+"result_auc_"+pdb_name+".dat"
     #'results/auc.dat'
-    scpe_sequences_file=scpe_sequences+"sequences_"+pdb_name
+    scpe_sequences_file=scpe_sequences+"sequences_w4_"+pdb_name
     if(execute_scpe):
         scpe.run(pdb_complete_path,beta,run,nsus,chain_name,scpe_sequences_file,contact_map)
     if(execute_clustering):
@@ -127,7 +123,7 @@ for s in structures:
         util.sincronize_contact_map(contact_map,contact_map+"sync",2,106)#todo automatizar la sincronizacion
         dataanalisys.auc(data_path+"natural/PF00085_THIO_ECOLI_reference.fasta", contact_map+"sync")
     
-    if(execute_spearman):
+    if(data_analisys):
         if(execute_sincronize_natural_evol_msas):
             util.sincronize_natural_evol_msas(clustered_sequences_path, curated_sequences_path,pattern,2,-3)
             dataanalisys.buslje09_(curated_sequences_path,mi_results_path, pattern)

@@ -255,12 +255,12 @@ if((contactmap=fopen(Options.print_sequences_contact_map_outputfile,"w"))==NULL)
     //if(atom[i].chain[0]== Options.chain){
        for(j=0;j<natoms;j++){
             if( atom[j].chain[0]==Options.chain){        
-             if(atom[j].sequential < thisresidue-1 ||   atom[j].sequential > thisresidue+1) {
+             if(atom[j].sequential < thisresidue-3 ||   atom[j].sequential > thisresidue+3) {
              //los vecinos tambien son tenidos en cuenta, se cambia el if de arriba
              //if(atom[j].sequential != thisresidue) {
             	//if(1==1) {
                    if(atom[j].sidechain==1){
-            		//if(1==1) {
+            	   //if(1==1) {
             			dist=(atom[j].coord[0]-atom[i].coord[0])*(atom[j].coord[0]-atom[i].coord[0])+(atom[j].coord[1]-atom[i].coord[1])*(atom[j].coord[1]-atom[i].coord[1])+(atom[j].coord[2]-atom[i].coord[2])*(atom[j].coord[2]-atom[i].coord[2]);
                        //if((sqrt(dist) - atom[i].vw - atom[j].vw) < 2.00){
                        //if(sqrt(dist) < 6.05){

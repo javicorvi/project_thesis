@@ -8,7 +8,7 @@ from subprocess import call
 import time
 import Bio.Cluster
 import util
-import plot2 as plot
+import plot
 from sklearn import preprocessing
 import numpy as np 
  
@@ -64,14 +64,14 @@ def buslje09_(input_folder, zmip_result_path,pattern_array):
 
 def run_analisys(zmip_natural_result_path, mi_results_path, pattern_array,contact_map_path,outputpath):
     #levanto el zmip natural
-    zmip_natural = util.load_zmip(zmip_natural_result_path)
+    zmip_natural = util.load_zmip(zmip_natural_result_path,4)
     util.order(zmip_natural)
     contact_map=util.load_contact_map(contact_map_path)
     for filename in os.listdir(mi_results_path):
         if filename.endswith(".dat") & any(r in filename for r in pattern_array):
             print " Calculation of : " + filename + " with contact map " + contact_map_path
             #levanto el zmip evolucionado 
-            zmip_evol = util.load_zmip(mi_results_path + filename)
+            zmip_evol = util.load_zmip(mi_results_path + filename,4)
             #sincronizo las senales de coevolucion para calcular spearman rank correlation
             m,m2=util.sincronice_mi(zmip_natural, zmip_evol)
             m_=[row [2] for row in m]
@@ -106,17 +106,18 @@ def run_analisys(zmip_natural_result_path, mi_results_path, pattern_array,contac
                     x_nat_f.append(x[3])
                     y_evol_f.append(y[3])
                 
-            plot.contacts_with_mi(x_nat_t,y_evol_t,x_nat_f,y_evol_f,outputpath+filename+'.png',filename)
+            plot.contacts_with_mi(x_nat_t,y_evol_t,x_nat_f,y_evol_f,outputpath+filename+'contacts_with_mi.png',filename)
             
             #ordeno zmip evolucionado sincronizado 
             util.order(m2)
             
             print "TOTAL PAR POSITIONS " + str(len(zmip_natural))
             
-            top_rank(zmip_natural,m2,1,contact_map,outputpath)
-            #top_rank(zmip_natural,m2,5,contact_map,outputpath)
-            #top_rank(zmip_natural,m2,10,contact_map,outputpath)
-            #top_rank(zmip_natural,m2,12,contact_map,outputpath)
+            top_rank(zmip_natural,m2,1,contact_map,outputpath+filename+'top_1percent_withcon.png',filename)
+            top_rank(zmip_natural,m2,2,contact_map,outputpath+filename+'top_2percent_withcon.png',filename)
+            top_rank(zmip_natural,m2,3,contact_map,outputpath+filename+'top_3percent_withcon.png',filename)
+            top_rank(zmip_natural,m2,4,contact_map,outputpath+filename+'top_4percent_withcon.png',filename)
+            top_rank(zmip_natural,m2,5,contact_map,outputpath+filename+'top_5percent_withcon.png',filename)
             print '************************************************************************'
 '''
 Normalize information m,m2
@@ -152,7 +153,7 @@ Plots information about the top_rank.
 For example give information about the top_rank matches
 Plot a matrix with the contact and the high values (top_rank) of the evolution and the natural msa
 '''
-def top_rank(x,y,top,contact_map,outputpath):
+def top_rank(x,y,top,contact_map,outputpath,filename):
     num = len(x)*top/100
     a=x[0:num]
     b=y[0:num]
@@ -171,7 +172,7 @@ def top_rank(x,y,top,contact_map,outputpath):
         y_nat.append(int(x[1]-1))
         x_evol.append(int(y[0]-1))
         y_evol.append(int(y[1]-1))
-    plot.contact_map_with_top_rank_mi(contact_map, outputpath, x_nat, y_nat, x_evol,y_evol)
+    plot.contact_map_with_top_rank_mi(contact_map,  x_nat, y_nat, x_evol,y_evol,outputpath,filename)
     print 
     print "TOP "  + str(top) + "% PAR POSITIONS " + str(num)
     print "HITS " + str(len(data))
