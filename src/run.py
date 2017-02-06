@@ -11,6 +11,13 @@ import dataanalisys
 import msa 
 import plot 
 import util 
+import os
+#Ver que es ejecucion
+#2   if(atom[j].sequential < thisresidue-1 || atom[j].sequential > thisresidue+1) w=4
+#3  if(atom[j].sequential < thisresidue-3 || atom[j].sequential > thisresidue+3) w=4
+#4  if(atom[j].sequential < thisresidue-3 || atom[j].sequential > thisresidue+3) w=0
+#5 if(atom[j].sequential < thisresidue-1 || atom[j].sequential > thisresidue+1) w=0
+execution_name="execution5"
 
 '''
 Calculate the MI for the natural MSA putting the protein as the reference
@@ -36,7 +43,7 @@ execute_clustering = True
 '''
 Execute the AUC for all the sequences generated and clustered
 '''
-execute_auc_process = False
+execute_auc_process = True
 '''
 Generate the table with the results as a txt for documentation
 '''
@@ -53,14 +60,15 @@ execute_natural_auc=True
 Run calculations of MI with contact maps. Top Ranks. Spearman and more.
 All the plots where in the data_path .. /plots
 '''
-data_analisys = False
+data_analisys = True
 
-execute_sincronize_natural_evol_msas=False
+execute_sincronize_natural_evol_msas=True
 
 
 
-data_path="../data/"
+data_path="../"+execution_name+"/"
 mitos_scripts_path=""
+
 
 
 #structures=["2trx","4wxt"]
@@ -76,18 +84,39 @@ mitos_scripts_path=""
 pattern=["sequences"]
 pdbs_folder=data_path+"pdbs/"
 contact_map_path=data_path+"contact_map/"
-clustered_sequences_path=data_path+"clustered_sequences/test_data/"
-curated_sequences_path=data_path+"curated_sequences/test_data/" 
-scpe_sequences=data_path+"scpe_sequences/test_data/"
+clustered_sequences_path=data_path+"clustered_sequences/"
+curated_sequences_path=data_path+"curated_sequences/" 
+scpe_sequences=data_path+"scpe_sequences/"
 result_auc_path=data_path+"results/"
-mi_results_path=data_path+"mi_data/test_data/"
-mi_results_plot_path=data_path+"mi_data/plots/test_data/"
-zmip_natural_result_path = data_path+"natural/zmip_PF00085_THIO_ECOLI_reference.dat"
+mi_results_path=data_path+"mi_data/"
+mi_results_plot_path=data_path+"mi_data/plots/"
+zmip_natural_result_path = data_path+"natural/"
+zmip_natural_result_file = zmip_natural_result_path + "zmip_PF00085_THIO_ECOLI_reference.dat"
 
-
+if not os.path.exists(data_path):
+    os.makedirs(data_path)
+if not os.path.exists(pdbs_folder):
+    os.makedirs(pdbs_folder)
+if not os.path.exists(contact_map_path):
+    os.makedirs(contact_map_path)
+if not os.path.exists(clustered_sequences_path):
+    os.makedirs(clustered_sequences_path)
+if not os.path.exists(curated_sequences_path):
+    os.makedirs(curated_sequences_path)
+if not os.path.exists(scpe_sequences):
+    os.makedirs(scpe_sequences)
+if not os.path.exists(mi_results_path):
+    os.makedirs(mi_results_path)
+if not os.path.exists(mi_results_plot_path):
+    os.makedirs(mi_results_plot_path)
+if not os.path.exists(zmip_natural_result_path):
+    os.makedirs(zmip_natural_result_path)    
+if not os.path.exists(result_auc_path):
+    os.makedirs(result_auc_path)  
+    
 if(execute_natural_mi_msa):
-    msa.setProteinReference(data_path+"natural/PF00085.fasta")
-    dataanalisys.buslje09(data_path+"natural/PF00085_THIO_ECOLI_reference.fasta",zmip_natural_result_path)    
+    msa.setProteinReference("../data/natural/PF00085.fasta")
+    dataanalisys.buslje09("../data/natural/PF00085_THIO_ECOLI_reference.fasta",zmip_natural_result_file)    
     
 '''
 Iterates over the structures, pdbs and execute the all process 
@@ -105,14 +134,13 @@ for s in structures:
     contact_map=contact_map_path+"contact_map_" + pdb_name + ".dat"
     result_auc_file_name=result_auc_path+"result_auc_"+pdb_name+".dat"
     #'results/auc.dat'
-    scpe_sequences_file=scpe_sequences+"sequences_w4_"+pdb_name
+    scpe_sequences_file=scpe_sequences+"sequences_"+pdb_name
     if(execute_scpe):
         scpe.run(pdb_complete_path,beta,run,nsus,chain_name,scpe_sequences_file,contact_map)
     if(execute_clustering):
         msa.clustering("0.62",scpe_sequences, clustered_sequences_path,pattern)
     if(execute_auc_process):
         dataanalisys.auc_job(pdb_name,model_name,chain_name,contact_map,clustered_sequences_path,result_auc_file_name,result_auc_path)
-    
     
     if(execute_table_results):
         generate_table.run_job(data_path+'results/auc.dat', data_path+'results/auc_table.dat', ["0.05","0.15","0.40","0.60","0.80","1.0"],["5000","10000","15000","20000"], ["1.0","2.0","3.0","4.0","5.0"])
@@ -121,19 +149,21 @@ for s in structures:
     
     if(execute_natural_auc):
         util.sincronize_contact_map(contact_map,contact_map+"sync",2,106)#todo automatizar la sincronizacion
-        dataanalisys.auc(data_path+"natural/PF00085_THIO_ECOLI_reference.fasta", contact_map+"sync")
+        dataanalisys.auc("../data/natural/PF00085_THIO_ECOLI_reference.fasta", contact_map+"sync")
     
     if(data_analisys):
         if(execute_sincronize_natural_evol_msas):
             util.sincronize_natural_evol_msas(clustered_sequences_path, curated_sequences_path,pattern,2,-3)
             dataanalisys.buslje09_(curated_sequences_path,mi_results_path, pattern)
         util.sincronize_contact_map(contact_map,contact_map+"sync",2,106)    
-        dataanalisys.run_analisys(zmip_natural_result_path, mi_results_path, pattern,contact_map+"sync",mi_results_plot_path)    
+        dataanalisys.run_analisys(zmip_natural_result_file, mi_results_path, pattern,contact_map+"sync",mi_results_plot_path)    
     
     #el auc del MSA evolucionado y sincronizao con la matriz de contacto sincronizado solo a lo natural 
     #tambien da 0,83 alto el auc.  
     #
     #auc.run(pdb_name,model_name,chain_name,contact_map+"sync",curated_sequences_path,result_auc_file_name,result_auc_path)
+    
+    #http://scikit-learn.org/stable/auto_examples/model_selection/plot_roc.html#sphx-glr-auto-examples-model-selection-plot-roc-py
     
     '''
     natural_zmip = utils.load_zmip(mi_results_path + filename)

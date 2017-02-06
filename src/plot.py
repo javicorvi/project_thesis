@@ -6,6 +6,7 @@ Created on Jan 12, 2017
 import itertools
 import matplotlib.pyplot as plt
 import numpy as np
+from sklearn import metrics
 '''
 Generates a plot describe the contacts with de MI of the natural and evolution msa
 '''
@@ -37,6 +38,57 @@ def contacts_with_mi(x_nat_t,y_evol_t,x_nat_f,y_evol_f,output_path,filename):
     plt.savefig(output_path)
     plt.show()
     plt.gcf().clear()
+
+'''
+Deprecated
+'''
+def roc_curve_dep(y_true,scores_nat,scores_evol):
+    fpr, tpr, _ = metrics.roc_curve(y_true, scores_nat)
+    roc_auc = metrics.auc(fpr, tpr)
+    
+    fpr2, tpr2, _ = metrics.roc_curve(y_true, scores_evol)
+    roc_auc2 = metrics.auc(fpr2, tpr2)      
+            
+    plt.figure()
+    lw = 2
+    
+    
+    plt.plot(fpr, tpr, color='blue', lw=lw, label='ROC curve Nat (area = %0.2f)' % roc_auc)
+    plt.plot(fpr2, tpr2, color='red', lw=lw, label='ROC curve Evol (area = %0.2f)' % roc_auc2)
+    
+    plt.plot([0, 1], [0, 1], color='black', lw=lw, linestyle='--')
+    plt.xlim([0.0, 1.0])
+    plt.ylim([0.0, 1.05])
+    plt.xlabel('False Positive Rate')
+    plt.ylabel('True Positive Rate')
+    plt.title('Receiver operating characteristic example')
+    plt.legend(loc="lower right")
+    plt.show()
+    plt.gcf().clear()
+    
+def roc_curve(y_true,scores,labels,colors,output_file):
+    fpr = dict()
+    tpr = dict()
+    roc_auc = dict()
+    lw = 2
+    plt.figure()
+    #for i, (a, b) in enumerate(zip(alist, blist)):
+    for i,(label,color) in enumerate(zip(labels, colors)):
+        fpr[i], tpr[i], _ = metrics.roc_curve(y_true, scores[i])
+        roc_auc[i] = metrics.auc(fpr[i], tpr[i])
+        plt.plot(fpr[i], tpr[i], color=color, lw=lw,label='ROC curve of class {0} (area = {1:0.2f})'''.format(label, roc_auc[i]))
+    plt.plot([0, 1], [0, 1], color='black', lw=lw, linestyle='--')
+    plt.xlim([0.0, 1.0])
+    plt.ylim([0.0, 1.05])
+    plt.xlabel('False Positive Rate')
+    plt.ylabel('True Positive Rate')
+    plt.title('ROC CONTACTS MI')
+    plt.legend(loc="lower right")
+    plt.savefig(output_file)
+    plt.show()
+    plt.gcf().clear()
+
+    
 '''
 Generate the plot for the diferents auc taking into account the beta, nsus and runs
 Open the result_auc_path parse all the results and plot them into 4 subplots
