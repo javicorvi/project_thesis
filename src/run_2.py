@@ -17,7 +17,7 @@ import os
 #3  if(atom[j].sequential < thisresidue-3 || atom[j].sequential > thisresidue+3) w=4
 #4  if(atom[j].sequential < thisresidue-3 || atom[j].sequential > thisresidue+3) w=0
 #5 if(atom[j].sequential < thisresidue-1 || atom[j].sequential > thisresidue+1) w=0
-execution_name="scpe_4_window_0"
+execution_name="1thx_s3_w0"
 window = 0
 '''
 Calculate the MI for the natural MSA putting the protein as the reference
@@ -27,7 +27,7 @@ execute_natural_mi_msa=False
 PDBs to evolve. 
 Take each of this structures and run the all process.
 '''
-structures=["2trx"]
+structures=["1thx_edit"]
 '''
 Execute the evolution of the protein with SCPE.
 Generate several families; taking account de parameters beta, nsus and runs 
@@ -91,7 +91,7 @@ result_auc_path=data_path+"results/"
 mi_results_path=data_path+"mi_data/"
 mi_results_plot_path=data_path+"mi_data/plots/"
 zmip_natural_result_path = data_path+"natural/"
-zmip_natural_result_file = zmip_natural_result_path + "zmip_PF00085_THIO_ECOLI_reference.dat"
+zmip_natural_result_file = zmip_natural_result_path + "zmip_PF00085_THIO_ECOLI_reference_1thx.dat"
 
 if not os.path.exists(data_path):
     os.makedirs(data_path)
@@ -115,16 +115,19 @@ if not os.path.exists(result_auc_path):
     os.makedirs(result_auc_path)  
     
 if(execute_natural_mi_msa):
-    msa.setProteinReference("../data/natural/PF00085.fasta")
-    dataanalisys.buslje09("../data/natural/PF00085_THIO_ECOLI_reference.fasta",zmip_natural_result_file)    
+    #msa.setProteinReference("../data/natural/PF00085.fasta")
+    dataanalisys.buslje09("../data/natural/PF00085_THIO_ECOLI_reference_1thx.fst",zmip_natural_result_file)    
     
 '''
 Iterates over the structures, pdbs and execute the all process 
 '''        
 for s in structures:
     pdb_name=s
-    pdb_data = urllib.urlopen('http://files.rcsb.org/download/'+pdb_name+'.pdb').read()
+    #pdb_data = urllib.urlopen('http://files.rcsb.org/download/'+pdb_name+'.pdb').read()
+    file_pdb = open("../pdbs/1thx_edit.pdb")
+    pdb_data = file_pdb.read()
     #download de fasta sino esta , idem pdb
+    #pdb_complete_path=pdbs_folder+pdb_name+".pdb"
     pdb_complete_path=pdbs_folder+pdb_name+".pdb"
     pdb_file = open(pdb_complete_path, "w")
     pdb_file.write(pdb_data)
@@ -152,12 +155,12 @@ for s in structures:
         dataanalisys.auc("../data/natural/PF00085_THIO_ECOLI_reference.fasta", contact_map+"sync")
     if(data_analisys):
         if(execute_sincronize_natural_evol_msas):
-            util.sincronize_natural_evol_msas(clustered_sequences_path, curated_sequences_path,pattern,2,-3)
+            util.sincronize_natural_evol_msas(clustered_sequences_path, curated_sequences_path,pattern,0,-3)
             dataanalisys.buslje09_(curated_sequences_path,mi_results_path, pattern)
-        util.sincronize_contact_map(contact_map,contact_map+"sync",2,106)    
+        util.sincronize_contact_map(contact_map,contact_map+"sync",0,103)    
         dataanalisys.run_analisys(zmip_natural_result_file, mi_results_path, pattern,contact_map+"sync",mi_results_plot_path, window)    
     
-    msa.conservation(clustered_sequences_path)   
+    #msa.conservation(clustered_sequences_path)   
         
     #el auc del MSA evolucionado y sincronizao con la matriz de contacto sincronizado solo a lo natural 
     #tambien da 0,83 alto el auc.  

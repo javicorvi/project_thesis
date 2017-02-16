@@ -36,7 +36,7 @@ def contacts_with_mi(x_nat_t,y_evol_t,x_nat_f,y_evol_f,output_path,filename):
     #x=[[1.0,2.4]]
     #plt.scatter(x,color="r")
     plt.savefig(output_path)
-    plt.show()
+    #plt.show()
     plt.gcf().clear()
 
 '''
@@ -85,7 +85,7 @@ def roc_curve(y_true,scores,labels,colors,output_file):
     plt.title('ROC CONTACTS MI')
     plt.legend(loc="lower right")
     plt.savefig(output_file)
-    plt.show()
+    #plt.show()
     plt.gcf().clear()
 
     
@@ -137,7 +137,7 @@ def plot_auc(result_auc_path,output_path,beta,runs,nsus):
     f.text(0.04, 0.5, 'AUC', va='center', rotation='vertical')
     #f.canvas.mpl_connect('pick_event', onpick3)
     plt.legend(loc=1,prop={'size':10},title="Betas")
-    plt.show()   
+    #plt.show()   
     #plt.savefig(output_path+'/auc.png')
     plt.gcf().clear()
 
@@ -164,7 +164,7 @@ def contact_map_with_top_rank_mi(contact_map, x_nat, y_nat, x_evol,y_evol,output
     plt.imshow(g, cmap='Greys')
     plt.title(filename)
     plt.savefig(output_path)
-    plt.show()
+    #plt.show()
     plt.gcf().clear()
 '''
 Test function not in use

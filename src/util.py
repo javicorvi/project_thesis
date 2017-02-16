@@ -7,6 +7,7 @@ import numpy as np
 import os
 import time
 import re
+import csv
 def load_zmip(zmip_result_path,window_mi_neightboards=0):
     column = []
     file = open(zmip_result_path)
@@ -22,6 +23,14 @@ def load_zmip(zmip_result_path,window_mi_neightboards=0):
     return column
 def order(zmip_natural):    
     zmip_natural.sort(key=lambda x:x[2], reverse=True)
+    
+
+def save_list_to_csv(filename, zmip, header):
+    zmip.insert(0, header)
+    with open(filename, "wb") as f:
+        writer = csv.writer(f)
+        writer.writerows(zmip)    
+    zmip.pop(0)
 '''
 Syncronize matrix_ref with matrix_evol.
 '''    
@@ -43,13 +52,16 @@ def sincronice_mi(matrix_ref, matrix_evol):
 def sincronize_natural_evol_msas(input_folder,output_folder,pattern_array,reg_init,reg_end_back):
     start_time = time.time()
     print "sincronize_natural_evol_alignments"
+    count=0
     for filename in os.listdir(input_folder):
         if filename.endswith(".cluster") & any(r in filename for r in pattern_array):
             with open(output_folder+"/"+filename,'w') as new_file:
                 with open(input_folder+"/"+filename) as old_file:
                     for line in old_file:
                         if('>' in line):
+                            line = line.replace('\n','_'+str(count)+'\n')
                             new_file.write(line)
+                            count=count+1
                         else:
                             new_file.write(line[reg_init:reg_end_back]+'\n')    
             old_file.close()
@@ -64,11 +76,29 @@ def load_contact_map(contact_map_path):
         #test=[[1,2,3,4,5,6,7,8],[1,2,3,4,5,6,7,8],[1,2,3,4,5,6,7,8],[1,2,3,4,5,6,7,8],[1,2,3,4,5,6,7,8],[1,2,3,4,5,6,7,8],[1,2,3,4,5,6,7,8],[1,2,3,4,5,6,7,8]]
         a=np.array(l, order='F')
         a[a == 'false\n']=0
-        a[a == 'true\n']=1
         a[a == 'false']=0
+        a[a == '0\n']=0
+        a[a == '0']=0
+        a[a == 'true\n']=1
         a[a == 'true']=1
+        a[a == '1']=1
+        a[a == '1\n']=1
+        a[a == '2']=1
+        a[a == '2\n']=1
+        cmap=np.array(a, dtype='i4')
+        np.set_printoptions(threshold='nan')
+        print (cmap)
+        return cmap
+def load_contact_map_(contact_map_path):
+    with open(contact_map_path) as file:
+        l = [map(str,line.split(' ')) for line in file ]
+        file.close()
+        #test=[[1,2,3,4,5,6,7,8],[1,2,3,4,5,6,7,8],[1,2,3,4,5,6,7,8],[1,2,3,4,5,6,7,8],[1,2,3,4,5,6,7,8],[1,2,3,4,5,6,7,8],[1,2,3,4,5,6,7,8],[1,2,3,4,5,6,7,8]]
+        a=np.array(l, order='F')
+        a[a !=0 ] = 1
         cmap=np.array(a, dtype='i4')
         return cmap
+        
 '''
 Sincronize contact map adjusting with the information of reg_init and reg_end_back
 contact_map_path: input contact map
@@ -95,4 +125,13 @@ def sincronize_contact_map(contact_map_path, contact_map_output, reg_init, reg_e
     print("--- %s seconds ---" % (time.time() - start_time))
     
     
-    
+def add_matrix(m1,m2):
+    (m, n)=m1.shape
+    m3=np.zeros((m, n), dtype='i4')
+    for i in range(m):
+        for j in range(n):
+            m3[i][j] = m1[i][j]+ m2[i][j]
+    return m3       
+
+def save_contact_map(m, path):
+    np.savetxt(path, m, delimiter=' ',fmt="%s")   

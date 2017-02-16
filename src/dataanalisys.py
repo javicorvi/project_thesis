@@ -61,23 +61,27 @@ def buslje09_(input_folder, zmip_result_path,pattern_array):
     print "buslje09_"
     print("--- %s seconds ---" % (time.time() - start_time))
 
-def run_analisys(zmip_natural_result_path, mi_results_path, pattern_array,contact_map_path,outputpath):
+def run_analisys(zmip_natural_result_path, mi_results_path, pattern_array,contact_map_path,outputpath,window):
     #levanto el zmip natural
-    zmip_natural = util.load_zmip(zmip_natural_result_path)
+    zmip_natural = util.load_zmip(zmip_natural_result_path,window)
     util.order(zmip_natural)
+    util.save_list_to_csv(zmip_natural_result_path+"_order.csv", zmip_natural, ['Position 1',' Position 2','ZMIP'])
     contact_map=util.load_contact_map(contact_map_path)
     
     for filename in os.listdir(mi_results_path):
         if filename.endswith(".dat") & any(r in filename for r in pattern_array):
             print " Calculation of : " + filename + " with contact map " + contact_map_path
             #levanto el zmip evolucionado 
-            zmip_evol = util.load_zmip(mi_results_path + filename)
+            zmip_evol = util.load_zmip(mi_results_path + filename,window)
             #sincronizo las senales de coevolucion para calcular spearman rank correlation
             m,m2=util.sincronice_mi(zmip_natural, zmip_evol)
             m_=[row [2] for row in m]
             m2_=[row[2] for row in m2]
             value_spearman = spearman(m_,m2_)
             print " Spearman total " + str(value_spearman)
+            
+            
+            
             
             #MI PLOT
             #contact_map=util.load_contact_map(contact_map_path)
@@ -86,7 +90,7 @@ def run_analisys(zmip_natural_result_path, mi_results_path, pattern_array,contac
             #v=contact_map[4][2]
             #v=contact_map[4][1]
             #v=contact_map[4][3]
-            #v=contact_map[12][4]
+            v=contact_map[80][81]
             m1_norm,m2_norm=normalice_(m_,m2_)
             m_np = np.c_[ np.asarray(m), np.asarray(m1_norm) ]
             m2_np = np.c_[ np.asarray(m2), np.asarray(m2_norm) ]   
@@ -112,15 +116,14 @@ def run_analisys(zmip_natural_result_path, mi_results_path, pattern_array,contac
                 #x[3] = mi normalizado
                 scores_nat.append(x[3])
                 scores_evol.append(y[3])
-                if(  v == 1):
-                    x_nat_t.append(x[3])
-                    y_evol_t.append(y[3])
-                    y_true.append(1)
-                else:
+                if(  v == 0):
                     x_nat_f.append(x[3])
                     y_evol_f.append(y[3])
                     y_true.append(0)
-                    
+                else:
+                    x_nat_t.append(x[3])
+                    y_evol_t.append(y[3])
+                    y_true.append(1)
             
             #y_true = np.array([0, 1, 1, 1])
             #y_scores = np.array([0.1, 0.4, 0.35, 0.8])
@@ -140,6 +143,8 @@ def run_analisys(zmip_natural_result_path, mi_results_path, pattern_array,contac
             #ordeno zmip evolucionado sincronizado 
             util.order(m2)
             
+            util.save_list_to_csv(mi_results_path+filename+"_order.csv", m2, ['Position 1',' Position 2','ZMIP'])
+            
             print "TOTAL PAR POSITIONS " + str(len(zmip_natural))
             
             result_file = open(outputpath+filename+".txt","w")
@@ -153,6 +158,9 @@ def run_analisys(zmip_natural_result_path, mi_results_path, pattern_array,contac
             top_rank(zmip_natural,m2,5,contact_map,outputpath+filename+'top_5percent_withcon.png',filename,result_file)
             result_file.close()
             print '************************************************************************'
+            
+            
+           
 '''
 Normalize information m,m2
 '''
@@ -175,8 +183,10 @@ def matches_coevolved_positions(matrix_ref,matrix_evol):
             pos_  = e[0]     
             pos2_ = e[1]
             if (pos_==pos and pos2_==pos2):
-                j.append(e[2])   
-                data.append(j)
+                #j.append(e[2])
+                aux=j[:]
+                aux.append(e[2])   
+                data.append(aux)
                 break    
     return  data
 def remove_column(matrix, column):
@@ -200,11 +210,10 @@ def top_rank(x,y,top,contact_map,outputpath,filename,result_file):
     y_nat=[]
     x_evol=[]
     y_evol=[]
-    
+    evol_contact_pairs=[]
     nat_contact = 0
     evol_contact = 0
     for x, y in map(None, a, b):
-        
         pos1 = int(x[0]-1)
         pos2 = int(x[1]-1)
         v = contact_map[pos1][pos2]
@@ -214,7 +223,8 @@ def top_rank(x,y,top,contact_map,outputpath,filename,result_file):
         pos2 = int(y[1]-1)
         v = contact_map[pos1][pos2]
         if(v == 1):
-            evol_contact=evol_contact+1        
+            evol_contact=evol_contact+1 
+            evol_contact_pairs.append(y)       
         
         #se le resta a uno porque los arrays comienzan en la posicion 0
         x_nat.append(int(x[0]-1))
@@ -224,12 +234,25 @@ def top_rank(x,y,top,contact_map,outputpath,filename,result_file):
     
     plot.contact_map_with_top_rank_mi(contact_map,  x_nat, y_nat, x_evol,y_evol,outputpath,filename)
     
-    
+    #find information about secondary structure.
+    #find information functional information about position.
     
     result_file.write("TOP : "  + str(top) + "% PAR POSITIONS : " + str(num)+ '\n')
-    result_file.write("MATCH POSITIONS BETWEEN NAT AND EVOL (NO WINDOW) : " + str(len(data))+ '\n')
     result_file.write("NATURAL CONTACTS QUANTITY : " + str(nat_contact) + " - %"+ str(nat_contact*100/num)+ '\n')
     result_file.write("EVOL CONTACTS QUANTITY : " + str(evol_contact) + " - %"+ str(evol_contact*100/num)+ '\n')
+    
+    result_file.write("MATCH POSITIONS BETWEEN NAT AND EVOL (NO WINDOW) : " + str(len(data))+ '\n')
+    result_file.write("MATCH POSITIONS  : " + str(data) + '\n')
+    
+    data_contact=[]
+    for d in data:
+        pos1 = int(d[0]-1)
+        pos2 = int(d[1]-1)
+        v=contact_map[pos1][pos2]
+        if(v==1):
+            data_contact.append(d)
+    result_file.write("MATCH POSITIONS CONTACTS BETWEEN NAT AND EVOL (NO WINDOW) : " + str(len(data_contact))+ '\n')
+    result_file.write("MATCH POSITIONS CONTACTS  : " + str(data_contact) + '\n')
     result_file.write("************************************************************************" + '\n')
     
     
