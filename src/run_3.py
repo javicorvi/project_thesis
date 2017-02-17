@@ -17,8 +17,8 @@ import os
 #3  if(atom[j].sequential < thisresidue-3 || atom[j].sequential > thisresidue+3) w=4
 #4  if(atom[j].sequential < thisresidue-3 || atom[j].sequential > thisresidue+3) w=0
 #5 if(atom[j].sequential < thisresidue-1 || atom[j].sequential > thisresidue+1) w=0
-execution_name="2trx_s3_0b"
-window = 0
+execution_name="2trx_s3_w3"
+window = 3
 '''
 Calculate the MI for the natural MSA putting the protein as the reference
 '''
@@ -62,7 +62,7 @@ All the plots where in the data_path .. /plots
 '''
 data_analisys = True
 
-execute_sincronize_natural_evol_msas=True
+execute_sincronize_natural_evol_msas=False
 
 
 

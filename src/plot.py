@@ -166,6 +166,32 @@ def contact_map_with_top_rank_mi(contact_map, x_nat, y_nat, x_evol,y_evol,output
     plt.savefig(output_path)
     #plt.show()
     plt.gcf().clear()
+
+def contact_map_with_top_rank_mi_desarrollo(contact_map, x_nat, y_nat, x_evol,y_evol,x_evol2,y_evol2,output_path,filename):
+    #np.set_printoptions(threshold=np.nan)
+    #print contact_map
+    #contact_map[contact_map == 'false']=0
+    #contact_map[contact_map == 'true']=1
+    #cmap=np.array(contact_map, dtype='i4')
+    #print cmap2
+    #print len(cmap2)
+    #cmap=np.random.randint(2, size=(108, 108))
+    #print len(cmap)
+    #np.random.seed(101)
+    cmap=contact_map
+    #x_nat_t = [27.0,89.0,25.0]
+    #y_evol_t = [5.9,3.2,4.0]
+    plt.scatter(x_nat, y_nat,color="b",s=40,  marker=(5, 2))
+    plt.scatter(y_evol, x_evol, color="r",s=40,  marker=(5, 2))
+    g = np.floor(cmap)
+    plt.imshow(g, cmap='Greys')
+    plt.title(filename)
+    plt.savefig(output_path)
+    #plt.show()
+    plt.gcf().clear()
+
+
+
 '''
 Test function not in use
 '''

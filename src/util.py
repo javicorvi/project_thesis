@@ -86,8 +86,8 @@ def load_contact_map(contact_map_path):
         a[a == '2']=1
         a[a == '2\n']=1
         cmap=np.array(a, dtype='i4')
-        np.set_printoptions(threshold='nan')
-        print (cmap)
+        #np.set_printoptions(threshold='nan')
+        #print (cmap)
         return cmap
 def load_contact_map_(contact_map_path):
     with open(contact_map_path) as file:
