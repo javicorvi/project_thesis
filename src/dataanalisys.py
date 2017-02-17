@@ -261,7 +261,94 @@ def top_rank(x,y,top,contact_map,outputpath,filename,result_file):
     print "NATURAL CONTACTS QUANTITY : " + str(nat_contact) + " - %"+ str(nat_contact*100/num)
     print "EVOL CONTACTS QUANTITY : " + str(evol_contact) + " - %"+ str(evol_contact*100/num)
     #print data
+
+
+'''
+Plots information about the top_rank.
+For example give information about the top_rank matches
+Plot a matrix with the contact and the high values (top_rank) of the evolution and the natural msa
+'''
+def top_rank_desa(x,evol1,evol2,top,contact_map,outputpath,filename,result_file):
+    num = len(x)*top/100
+    a=x[0:int(num)]
+    b=evol1[0:int(num)]
+    c=evol2[0:int(num)]
     
+    data=matches_coevolved_positions(b,c)
+    a=remove_column(a, 2)
+    b=remove_column(b, 2)
+    c=remove_column(c, 2)
+    x_nat=[]
+    y_nat=[]
+    x_evol1=[]
+    y_evol1=[]
+    x_evol2=[]
+    y_evol2=[]
+    evol_contact_pairs=[]
+    evol_contact_pairs2=[]
+    nat_contact = 0
+    evol_contact = 0
+    evol_contact2 = 0
+    for x, y, f in map(None, a, b, c):
+        pos1 = int(x[0]-1)
+        pos2 = int(x[1]-1)
+        v = contact_map[pos1][pos2]
+        if(v == 1):
+            nat_contact=nat_contact+1
+            
+        pos1 = int(y[0]-1)
+        pos2 = int(y[1]-1)
+        v = contact_map[pos1][pos2]
+        if(v == 1):
+            evol_contact=evol_contact+1 
+            evol_contact_pairs.append(y)
+        
+        pos1 = int(f[0]-1)
+        pos2 = int(f[1]-1)
+        v = contact_map[pos1][pos2]
+        if(v == 1):
+            evol_contact2=evol_contact2+1 
+            evol_contact_pairs2.append(y)           
+        
+        #se le resta a uno porque los arrays comienzan en la posicion 0
+        x_nat.append(int(x[0]-1))
+        y_nat.append(int(x[1]-1))
+        
+        x_evol1.append(int(y[0]-1))
+        y_evol1.append(int(y[1]-1))
+        
+        x_evol2.append(int(f[0]-1))
+        y_evol2.append(int(f[1]-1))
+    
+    plot.contact_map_with_top_rank_mi(contact_map,  x_nat, y_nat, x_evol1,y_evol1,x_evol2,y_evol2,outputpath,filename)
+    
+    #find information about secondary structure.
+    #find information functional information about position.
+    
+    result_file.write("TOP : "  + str(top) + "% PAR POSITIONS : " + str(num)+ '\n')
+    result_file.write("NATURAL CONTACTS QUANTITY : " + str(nat_contact) + " - %"+ str(nat_contact*100/num)+ '\n')
+    result_file.write("EVOL CONTACTS QUANTITY : " + str(evol_contact) + " - %"+ str(evol_contact*100/num)+ '\n')
+    
+    result_file.write("MATCH POSITIONS BETWEEN NAT AND EVOL (NO WINDOW) : " + str(len(data))+ '\n')
+    result_file.write("MATCH POSITIONS  : " + str(data) + '\n')
+    
+    data_contact=[]
+    for d in data:
+        pos1 = int(d[0]-1)
+        pos2 = int(d[1]-1)
+        v=contact_map[pos1][pos2]
+        if(v==1):
+            data_contact.append(d)
+    result_file.write("MATCH POSITIONS CONTACTS BETWEEN NAT AND EVOL (NO WINDOW) : " + str(len(data_contact))+ '\n')
+    result_file.write("MATCH POSITIONS CONTACTS  : " + str(data_contact) + '\n')
+    result_file.write("************************************************************************" + '\n')
+    
+    
+    print "TOP : "  + str(top) + "% PAR POSITIONS : " + str(num)
+    print "MATCH POSITIONS BETWEEN NAT AND EVOL (NO WINDOW) : " + str(len(data))
+    print "NATURAL CONTACTS QUANTITY : " + str(nat_contact) + " - %"+ str(nat_contact*100/num)
+    print "EVOL CONTACTS QUANTITY : " + str(evol_contact) + " - %"+ str(evol_contact*100/num)
+    #print data    
 
 '''
 Not in use.

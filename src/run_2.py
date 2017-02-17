@@ -17,8 +17,8 @@ import os
 #3  if(atom[j].sequential < thisresidue-3 || atom[j].sequential > thisresidue+3) w=4
 #4  if(atom[j].sequential < thisresidue-3 || atom[j].sequential > thisresidue+3) w=0
 #5 if(atom[j].sequential < thisresidue-1 || atom[j].sequential > thisresidue+1) w=0
-execution_name="1thx_s3_w0"
-window = 0
+execution_name="1thx_s3_w3"
+window = 3
 '''
 Calculate the MI for the natural MSA putting the protein as the reference
 '''
