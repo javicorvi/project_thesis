@@ -183,6 +183,7 @@ def contact_map_with_top_rank_mi_desarrollo(contact_map, x_nat, y_nat, x_evol,y_
     #y_evol_t = [5.9,3.2,4.0]
     plt.scatter(x_nat, y_nat,color="b",s=40,  marker=(5, 2))
     plt.scatter(y_evol, x_evol, color="r",s=40,  marker=(5, 2))
+    plt.scatter(y_evol2, x_evol2, color="g",s=40,  marker=(5, 2))
     g = np.floor(cmap)
     plt.imshow(g, cmap='Greys')
     plt.title(filename)
@@ -190,7 +191,39 @@ def contact_map_with_top_rank_mi_desarrollo(contact_map, x_nat, y_nat, x_evol,y_
     #plt.show()
     plt.gcf().clear()
 
-
+'''
+Generates a plot describe the contacts with de MI of the natural and evolution msa
+'''
+def contacts_with_mi_desarrollo(x_nat_t,y_evol_t,y_evol2_t,x_nat_f,y_evol_f,y_evol2_f,output_path,filename):
+    #trues
+    #x_nat_t = [27.0,89.0,25.0]
+    #y_evol_t = [5.9,3.2,4.0]
+    #falses
+    #x_nat_f = [3.0,1.0,3.0]
+    #y_evol_f = [1.1,0.32,1.0]
+    #plt.scatter(x_nat_t, y_evol_t,color="b")
+    #plt.scatter(x_nat_f, y_evol_f,color="r")
+    plt.axis([0, 1, 0, 1])
+    no = plt.scatter(y_evol_f, x_nat_f,color="r")
+    no2= plt.scatter(y_evol2_f, x_nat_f,color="r")
+    co = plt.scatter(y_evol_t, x_nat_t,color="b")
+    co2 = plt.scatter(y_evol2_t, x_nat_t,color="g")
+    plt.legend((no, co,co2),
+           ('No Contact', 'Contact 2TRX', 'CONTACT 1THX'),
+           scatterpoints=1,
+           loc='lower left',
+           ncol=3,
+           fontsize=8)
+    #plt.set_title(filename)
+    plt.ylabel('Natural MI Values')
+    plt.xlabel('Evolution MI Values')
+    plt.title(filename)
+    
+    #x=[[1.0,2.4]]
+    #plt.scatter(x,color="r")
+    plt.savefig(output_path)
+    #plt.show()
+    plt.gcf().clear()
 
 '''
 Test function not in use

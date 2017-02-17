@@ -158,8 +158,17 @@ def run_analisys(zmip_natural_result_path, mi_results_path, pattern_array,contac
             top_rank(zmip_natural,m2,5,contact_map,outputpath+filename+'top_5percent_withcon.png',filename,result_file)
             result_file.close()
             print '************************************************************************'
-            
-            
+'''
+Normalize information m,m2
+'''
+def normalice_desarrollo(m,m2,m3):
+    #import numpy as np   
+    #X_train = np.array([[ 1., -1.,  2.],[ 2.,  0.,  0.],[ 0.,  1., -1.]])
+    min_max_scaler = preprocessing.MinMaxScaler()
+    m_train_minmax = min_max_scaler.fit_transform(m)
+    m2_train_minmax = min_max_scaler.fit_transform(m2) 
+    m3_train_minmax = min_max_scaler.fit_transform(m3) 
+    return m_train_minmax,m2_train_minmax,m3_train_minmax           
            
 '''
 Normalize information m,m2
@@ -320,7 +329,7 @@ def top_rank_desa(x,evol1,evol2,top,contact_map,outputpath,filename,result_file)
         x_evol2.append(int(f[0]-1))
         y_evol2.append(int(f[1]-1))
     
-    plot.contact_map_with_top_rank_mi(contact_map,  x_nat, y_nat, x_evol1,y_evol1,x_evol2,y_evol2,outputpath,filename)
+    plot.contact_map_with_top_rank_mi_desarrollo(contact_map,  x_nat, y_nat, x_evol1,y_evol1,x_evol2,y_evol2,outputpath,filename)
     
     #find information about secondary structure.
     #find information functional information about position.
