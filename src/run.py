@@ -17,12 +17,12 @@ import os
 #3  if(atom[j].sequential < thisresidue-3 || atom[j].sequential > thisresidue+3) w=4
 #4  if(atom[j].sequential < thisresidue-3 || atom[j].sequential > thisresidue+3) w=0
 #5 if(atom[j].sequential < thisresidue-1 || atom[j].sequential > thisresidue+1) w=0
-execution_name="scpe_4_window_0"
+execution_name="lab_pc_test"
 window = 0
 '''
 Calculate the MI for the natural MSA putting the protein as the reference
 '''
-execute_natural_mi_msa=False
+execute_natural_mi_msa=True
 '''
 PDBs to evolve. 
 Take each of this structures and run the all process.
@@ -32,14 +32,14 @@ structures=["2trx"]
 Execute the evolution of the protein with SCPE.
 Generate several families; taking account de parameters beta, nsus and runs 
 '''
-execute_scpe = False
+execute_scpe = True
 beta = ["1.00"]
-run = ["20000"]
+run = ["1000"]
 nsus = ["3.0"]
 '''
 Execute the clustering for the families generated with SCPE to avoid redundant sequences with high identity
 '''
-execute_clustering = False
+execute_clustering = True
 '''
 Execute the AUC for all the sequences generated and clustered
 '''
@@ -55,14 +55,14 @@ execute_auc_plot = False
 '''
 Calculates the natural AUC with the protein as reference, with the contact map generates by scpe
 '''
-execute_natural_auc=False
+execute_natural_auc=True
 '''
 Run calculations of MI with contact maps. Top Ranks. Spearman and more.
 All the plots where in the data_path .. /plots
 '''
 data_analisys = True
 
-execute_sincronize_natural_evol_msas=False
+execute_sincronize_natural_evol_msas=True
 
 
 

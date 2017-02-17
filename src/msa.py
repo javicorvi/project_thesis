@@ -27,7 +27,7 @@ def clustering(clust, input_folder, output_folder, pattern_array=[".fasta"]):
             print(filename)
             filenameclust = filename + "_"+clust + ".cluster"
             print(filenameclust)
-            call(["cd-hit", "-i" , input_folder+"/"+filename ,"-o", output_folder+"/"+filenameclust,"-c",clust,"-n", "4", "-M", "3000"])
+            call(["cdhit", "-i" , input_folder+"/"+filename ,"-o", output_folder+"/"+filenameclust,"-c",clust,"-n", "4", "-M", "3000"])
     print "clustering_ends"
     print("--- %s seconds ---" % (time.time() - start_time))
     
