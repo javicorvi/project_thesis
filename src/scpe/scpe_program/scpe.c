@@ -42,7 +42,7 @@ FILE *seqprint;
 int GetOptions(FILE *fin);
 
 struct info {
-  char pdbin[MAXNAME],qmut[MAXNAME]; 
+  char pdbin[1000],qmut[1000];
   char chain,outfile[MAXNAME];
   int monomer;
   int acceptmodel;
@@ -64,10 +64,10 @@ struct info {
   char path[MAXNAME];
   int homo;
   int print_sequences;
-  char print_sequences_output[MAXNAME];
+  char print_sequences_output[1000];
   float print_sequences_identity;
   int print_sequences_screening;
-  char print_sequences_contact_map_outputfile[100];
+  char print_sequences_contact_map_outputfile[1000];
 }Options;
 
 struct {
@@ -106,7 +106,7 @@ int fixedAA[MAXPROTLEN][MAXCONTACTS];
 char seq_aa_print[10000];
 int seq_num_print[10000];
 float iden;
-char mutated_secuence_file_name[100];
+char mutated_secuence_file_name[500];
 
 
 time_t  time_start,time_end;
