@@ -13,13 +13,15 @@ import msa
 import plot 
 import util 
 import os
+import re
 #Ver que es ejecucion
 #2   if(atom[j].sequential < thisresidue-1 || atom[j].sequential > thisresidue+1) w=4
 #3  if(atom[j].sequential < thisresidue-3 || atom[j].sequential > thisresidue+3) w=4
 #4  if(atom[j].sequential < thisresidue-3 || atom[j].sequential > thisresidue+3) w=0
 #5 if(atom[j].sequential < thisresidue-1 || atom[j].sequential > thisresidue+1) w=0
-execution_name="fpf00085"
+execution_name="fpf00085"  
 window = 0
+input_folder="../FAMILIES/PF00085_BIS/" 
 '''
 Calculate the MI for the natural MSA putting the protein as the reference
 '''
@@ -56,14 +58,14 @@ execute_auc_plot = False
 '''
 Calculates the natural AUC with the protein as reference, with the contact map generates by scpe
 '''
-execute_natural_auc=True
+execute_natural_auc=False
 '''
 Run calculations of MI with contact maps. Top Ranks. Spearman and more.
 All the plots where in the data_path .. /plots
 '''
 data_analisys = False
 
-execute_sincronize_natural_evol_msas=True
+execute_sincronize_natural_evol_msas=False
 
 
 data_path="../"+execution_name+"/"
@@ -81,7 +83,9 @@ mitos_scripts_path=""
 #"secuencias-beta1.00-nsus3.00-runs20000.fasta_0.62.cluster",0.8477336520262113
 
 
+
 pattern=["sequences"]
+'''
 pdbs_folder=data_path+"pdbs/"
 contact_map_path=data_path+"contact_map/"
 clustered_sequences_path=data_path+"clustered_sequences/"
@@ -92,29 +96,32 @@ mi_results_path=data_path+"mi_data/"
 mi_results_plot_path=data_path+"mi_data/plots/"
 zmip_natural_result_path = data_path+"natural/"
 zmip_natural_result_file = zmip_natural_result_path + "zmip_PF00085_THIO_ECOLI_reference.dat"
+'''
 
-if not os.path.exists(data_path):
-    os.makedirs(data_path)
-if not os.path.exists(pdbs_folder):
-    os.makedirs(pdbs_folder)
-if not os.path.exists(contact_map_path):
-    os.makedirs(contact_map_path)
-if not os.path.exists(clustered_sequences_path):
-    os.makedirs(clustered_sequences_path)
-if not os.path.exists(curated_sequences_path):
-    os.makedirs(curated_sequences_path)
-if not os.path.exists(scpe_sequences):
-    os.makedirs(scpe_sequences)
-if not os.path.exists(mi_results_path):
-    os.makedirs(mi_results_path)
-if not os.path.exists(mi_results_plot_path):
-    os.makedirs(mi_results_plot_path)
-if not os.path.exists(zmip_natural_result_path):
-    os.makedirs(zmip_natural_result_path)    
-if not os.path.exists(result_auc_path):
-    os.makedirs(result_auc_path)  
+aux_path=glob.glob(input_folder+"*.final.gz")
+msa_gz=aux_path[0]
+with gzip.open(msa_gz, 'rb') as f:
+    aux_path=f.filename.split('/')
+    msa_filename=os.path.basename(f.filename)
+    msa_complete_filename=aux_path[0]+"/"+aux_path[1]+"/"+aux_path[2]+"/"+msa_filename[:-3]
+    msa_file = open(msa_complete_filename ,"w")
+    file_content = f.read()
+    msa_file.write(file_content)
+    msa_file.flush()
+    msa_file.close()
     
-input_folder="../FAMILIES/PF00085/"   
+    with open(msa_complete_filename+".fasta",'w') as new_file:
+        with open(msa_complete_filename) as old_file:
+            for line in old_file:
+                if('#' not in line):
+                    new_line = re.split(r'\t+', line.rstrip('\t'))
+                    if(len(new_line)==2):
+                        new_file.write(">"+new_line[0]+"\n")
+                        new_file.write(new_line[1])
+    old_file.close()
+    new_file.close()
+    
+    dataanalisys.buslje09(msa_complete_filename+".fasta",aux_path[0]+"/"+aux_path[1]+"/"+aux_path[2]+"/"+"zmip_"+msa_complete_filename)
     
 '''
 Iterates over the structures, pdbs and execute the all process 
