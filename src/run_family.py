@@ -13,7 +13,7 @@ import msa
 import plot 
 import util 
 import os
-import re
+
 #Ver que es ejecucion
 #2   if(atom[j].sequential < thisresidue-1 || atom[j].sequential > thisresidue+1) w=4
 #3  if(atom[j].sequential < thisresidue-3 || atom[j].sequential > thisresidue+3) w=4
@@ -98,30 +98,11 @@ zmip_natural_result_path = data_path+"natural/"
 zmip_natural_result_file = zmip_natural_result_path + "zmip_PF00085_THIO_ECOLI_reference.dat"
 '''
 
-aux_path=glob.glob(input_folder+"*.final.gz")
-msa_gz=aux_path[0]
-with gzip.open(msa_gz, 'rb') as f:
-    aux_path=f.filename.split('/')
-    msa_filename=os.path.basename(f.filename)
-    msa_complete_filename=aux_path[0]+"/"+aux_path[1]+"/"+aux_path[2]+"/"+msa_filename[:-3]
-    msa_file = open(msa_complete_filename ,"w")
-    file_content = f.read()
-    msa_file.write(file_content)
-    msa_file.flush()
-    msa_file.close()
+
     
-    with open(msa_complete_filename+".fasta",'w') as new_file:
-        with open(msa_complete_filename) as old_file:
-            for line in old_file:
-                if('#' not in line):
-                    new_line = re.split(r'\t+', line.rstrip('\t'))
-                    if(len(new_line)==2):
-                        new_file.write(">"+new_line[0]+"\n")
-                        new_file.write(new_line[1])
-    old_file.close()
-    new_file.close()
-    
-    dataanalisys.buslje09(msa_complete_filename+".fasta",aux_path[0]+"/"+aux_path[1]+"/"+aux_path[2]+"/"+"zmip_"+msa_complete_filename)
+
+msa_path=msa.generateFamilyMSA(input_folder+"*.final.gz")
+
     
 '''
 Iterates over the structures, pdbs and execute the all process 

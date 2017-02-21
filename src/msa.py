@@ -6,8 +6,12 @@ Created on Jan 6, 2017
 import os
 from subprocess import call
 from Bio.Align.AlignInfo import PSSM
-exten=".fasta"
+import glob
+import gzip
 import time
+import re
+exten=".fasta"
+
 
 letters = {'A':0,'R':0,'N':0,'D':0,'B':0,'C':0,'E':0,'Q':0,'Z':0,'G':0,'H':0,'I':0,'L':0,'K':0,'M':0,'F':0,'P':0,'S':0,'T':0,'W':0,'Y':0,'V':0}
 
@@ -84,4 +88,38 @@ def conservation(msa_path):
         for j in range(0, n):
             if(i != j):
                 kld[i, j] = sc.entropy(distributions[i, :], distributions[j, :])'''
-            
+
+#Conver from Stockholm MSA to Fasta MSA            
+def convertMSAToFasta(msa_, new_msa):
+    with open(new_msa,'w') as new_file:
+        with open(msa_) as old_file:
+            for line in old_file:
+                if('#' not in line):
+                    new_line = re.split(r'\t+', line.rstrip('\t'))
+                    if(len(new_line)==2):
+                        new_file.write(">"+new_line[0]+"\n")
+                        new_file.write(new_line[1])
+    old_file.close()
+    new_file.close()
+
+# Unzip file and the convert file to fasta format and save it.  Return the path of de msa fasta format 
+def generateFamilyMSA(file):
+    aux_path=glob.glob(file)
+    msa_gz=aux_path[0]
+    with gzip.open(msa_gz, 'rb') as f:
+        aux_path=f.filename.split('/')
+        msa_filename=os.path.basename(f.filename)
+        msa_complete_filename=aux_path[0]+"/"+aux_path[1]+"/"+aux_path[2]+"/"+msa_filename[:-3]
+        msa_file = open(msa_complete_filename ,"w")
+        file_content = f.read()
+        msa_file.write(file_content)
+        msa_file.flush()
+        msa_file.close()
+    
+    msa_file_name = msa_complete_filename+".fasta"    
+    #convierto el msa a formato fasta
+    convertMSAToFasta(msa_complete_filename, msa_file_name)
+    import dataanalisys
+    dataanalisys.buslje09(msa_file_name, aux_path[0]+"/"+aux_path[1]+"/"+aux_path[2]+"/"+"zmip_"+msa_complete_filename)
+    return msa_file_name    
+        
