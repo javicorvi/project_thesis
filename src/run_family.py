@@ -13,6 +13,7 @@ import msa
 import plot 
 import util 
 import os
+import time
 
 #Ver que es ejecucion
 #2   if(atom[j].sequential < thisresidue-1 || atom[j].sequential > thisresidue+1) w=4
@@ -43,6 +44,10 @@ nsus = ["3.0"]
 Execute the clustering for the families generated with SCPE to avoid redundant sequences with high identity
 '''
 execute_clustering = True
+'''
+Execute the MI calcultation busjle09
+'''
+execute_mi = True
 '''
 Execute the AUC for all the sequences generated and clustered
 '''
@@ -101,45 +106,75 @@ zmip_natural_result_file = zmip_natural_result_path + "zmip_PF00085_THIO_ECOLI_r
 
     
 
-msa_path=msa.generateFamilyMSA(input_folder+"*.final.gz")
+#msa_path=msa.generateFamilyMSA(input_folder+"*.final.gz")
 
-    
 '''
-Iterates over the structures, pdbs and execute the all process 
+Iterates over the structures, pdbs and execute the scpe and the clusterization 
 '''        
-for pdb_gz in glob.glob(input_folder+"PDB/*.pdb.gz"):
-    with gzip.open(pdb_gz, 'rb') as f:
-        aux_path=f.filename.split('/')
-        pdb_file_name=os.path.basename(f.filename)
-        pdb_file_name=pdb_file_name[:-3]
-        pdb_folder=aux_path[0]+"/"+aux_path[1]+"/"+aux_path[2]+"/"+aux_path[3]+"/"+pdb_file_name[:-17]
-        if not os.path.exists(pdb_folder):
-            os.makedirs(pdb_folder)
-        pdb_complete_path=pdb_folder+"/"+pdb_file_name    
-        pdb_file = open(pdb_complete_path ,"w")
-        file_content = f.read()
-        pdb_file.write(file_content)
-        pdb_file.close()
+
+
+try:
+    value = 29/0
+    
+
+input_families_folder="../FAMILIES/"
+def run_families_evol():
+    start_time = time.time()
+    print "run_families_evol"
+    for family_folder in os.listdir(input_families_folder):
+        print (family_folder)
+        family_evol(input_families_folder, family_folder)
+    print "run_families_evol"
+    print("--- %s seconds ---" % (time.time() - start_time))     
+       
+
+def family_evol(input_families_folder, family_folder):
+    start_time = time.time()
+    print "family_evol " + family_folder
+    pdb_paths_files = input_families_folder + "/" + family_folder  +"/PDB/*.pdb.gz"
+    for pdb_gz in glob.glob(pdb_paths_files):
+        #unzip pdb and move to pdb folder
+        with gzip.open(pdb_gz, 'rb') as f:
+            aux_path=f.filename.split('/')
+            pdb_file_name=os.path.basename(f.filename[:-3])
+            print (pdb_file_name)
+            pdb_folder=aux_path[0]+"/"+aux_path[1]+"/"+aux_path[2]+"/"+aux_path[3]+"/"+pdb_file_name[:-17]
+            if not os.path.exists(pdb_folder):
+                os.makedirs(pdb_folder)
+            pdb_complete_path=pdb_folder+"/"+pdb_file_name    
+            pdb_file = open(pdb_complete_path ,"w")
+            file_content = f.read()
+            pdb_file.write(file_content)
+            pdb_file.close()
+        #chain name to evol
+        chain_name = pdb_file_name[-18:-17]
+        #the contact map will be created by scpe 
+        contact_map=pdb_folder+"/contact_map.dat"
+        #the folder to put de evol scpe sequences
+        scpe_sequences=pdb_folder+"/scpe_sequences/"
+        #the folder to put de evol clustered sequences
+        clustered_sequences_path = pdb_folder + "/clustered_sequences/"
         
-    contact_map=pdb_folder+"/contact_map.dat"
-    #result_auc_file_name=result_auc_path+"result_auc_"+pdb_file_name+".dat"
-    #'results/auc.dat'
-    scpe_sequences=pdb_folder+"/scpe_sequences/"
-    if not os.path.exists(scpe_sequences):
-        os.makedirs(scpe_sequences)
-    clustered_sequences_path = pdb_folder + "/clustered_sequences/"
-    if not os.path.exists(clustered_sequences_path):
-        os.makedirs(clustered_sequences_path)
-    chain_name = pdb_file_name[-18:-17]
-    
-    scpe_sequences_file=scpe_sequences+"sequences_"+pdb_file_name
-    
-    if(execute_scpe):
-        scpe.run(pdb_complete_path,beta,run,nsus,chain_name,scpe_sequences_file,contact_map)
-    if(execute_clustering):
-        msa.clustering("0.62",scpe_sequences, clustered_sequences_path,pattern)
-    
-    '''
+        mi_data = pdb_folder + "/mi_data/"
+        if not os.path.exists(scpe_sequences):
+            os.makedirs(scpe_sequences)
+        if not os.path.exists(clustered_sequences_path):
+            os.makedirs(clustered_sequences_path)
+        if not os.path.exists(mi_data):
+            os.makedirs(mi_data)
+            
+        scpe_sequences_file=scpe_sequences+"sequences_"+pdb_file_name
+        
+        if(execute_scpe):
+            scpe.run(pdb_complete_path,beta,run,nsus,chain_name,scpe_sequences_file,contact_map)
+        if(execute_clustering):
+            msa.clustering("0.62",scpe_sequences, clustered_sequences_path)
+        if(execute_mi):
+            dataanalisys.buslje09_(clustered_sequences_path,mi_data)
+    print "end family_evol " + family_folder
+    print("--- %s seconds ---" % (time.time() - start_time))   
+
+'''    
     if(execute_auc_process):
         dataanalisys.auc_job(pdb_name,model_name,chain_name,contact_map,clustered_sequences_path,result_auc_file_name,result_auc_path)
     
@@ -167,9 +202,12 @@ for pdb_gz in glob.glob(input_folder+"PDB/*.pdb.gz"):
     
     #http://scikit-learn.org/stable/auto_examples/model_selection/plot_roc.html#sphx-glr-auto-examples-model-selection-plot-roc-py
     
-    '''
+'''
     natural_zmip = utils.load_zmip(mi_results_path + filename)
     utils.load_zmip(mi_results_path + filename)
     contact_map = utils.load_contact_map(contact_map+"sync")
     
-    '''                                        
+'''      
+
+
+run_families_evol()                                   
