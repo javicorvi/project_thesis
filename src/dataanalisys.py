@@ -1,6 +1,5 @@
 '''
 Created on Jan 6, 2017
-
 @author: javi
 '''
 import os
@@ -52,7 +51,7 @@ def buslje09(fasta_path, zmip_result_path):
     print "buslje09"
     print("--- %s seconds ---" % (time.time() - start_time))   
         
-def buslje09_(input_folder, zmip_result_path,pattern_array):
+def buslje09_(input_folder, zmip_result_path,pattern_array=["sequences"]): 
     start_time = time.time()
     print "buslje09_"
     for filename in os.listdir(input_folder):
@@ -364,7 +363,3 @@ Not in use.
 '''    
 def kendall(x,y):
     print 1 - Bio.Cluster.distancematrix((x,y), dist="k")[1][0]
-
-    
-        
-    

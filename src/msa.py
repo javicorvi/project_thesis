@@ -120,6 +120,7 @@ def generateFamilyMSA(file):
     #convierto el msa a formato fasta
     convertMSAToFasta(msa_complete_filename, msa_file_name)
     import dataanalisys
-    dataanalisys.buslje09(msa_file_name, aux_path[0]+"/"+aux_path[1]+"/"+aux_path[2]+"/"+"zmip_"+msa_complete_filename)
+    result_zmip_path = msa_file_name + "_zmip.dat"
+    dataanalisys.buslje09(msa_file_name, result_zmip_path)
     return msa_file_name    
         
