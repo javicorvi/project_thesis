@@ -365,11 +365,11 @@ if((contactmap=fopen(Options.print_sequences_contact_map_outputfile,"w"))==NULL)
   for(i=0;i<protsize;++i) {
             for(j=0;j<total_length;++j) {
 				if(j<protsize){
-					if(*(cmat+(i*total_length+j))==0){
-						fprintf(contactmap,"%s ","false");
-					}else{
+					//if(*(cmat+(i*total_length+j))==0){
+						fprintf(contactmap,"%i ",*(cmat+(i*total_length+j)));
+					/*}else{
 						fprintf(contactmap,"%s ","true");
-					}
+					}*/
 					
 				}
 			}

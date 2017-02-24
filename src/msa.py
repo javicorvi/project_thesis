@@ -10,6 +10,7 @@ import glob
 import gzip
 import time
 import re
+import dataanalisys
 exten=".fasta"
 
 
@@ -103,9 +104,7 @@ def convertMSAToFasta(msa_, new_msa):
     new_file.close()
 
 # Unzip file and the convert file to fasta format and save it.  Return the path of de msa fasta format 
-def generateFamilyMSA(file):
-    aux_path=glob.glob(file)
-    msa_gz=aux_path[0]
+def natural_msa_mi(msa_gz, msa_file_name_fasta, result_zmip_path):
     with gzip.open(msa_gz, 'rb') as f:
         aux_path=f.filename.split('/')
         msa_filename=os.path.basename(f.filename)
@@ -115,12 +114,8 @@ def generateFamilyMSA(file):
         msa_file.write(file_content)
         msa_file.flush()
         msa_file.close()
-    
-    msa_file_name = msa_complete_filename+".fasta"    
     #convierto el msa a formato fasta
-    convertMSAToFasta(msa_complete_filename, msa_file_name)
-    import dataanalisys
-    result_zmip_path = msa_file_name + "_zmip.dat"
-    dataanalisys.buslje09(msa_file_name, result_zmip_path)
-    return msa_file_name    
+    convertMSAToFasta(msa_complete_filename, msa_file_name_fasta)
+    dataanalisys.buslje09(msa_file_name_fasta, result_zmip_path)
+      
         

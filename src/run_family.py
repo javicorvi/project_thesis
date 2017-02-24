@@ -20,9 +20,9 @@ import time
 #3  if(atom[j].sequential < thisresidue-3 || atom[j].sequential > thisresidue+3) w=4
 #4  if(atom[j].sequential < thisresidue-3 || atom[j].sequential > thisresidue+3) w=0
 #5 if(atom[j].sequential < thisresidue-1 || atom[j].sequential > thisresidue+1) w=0
-execution_name="fpf00085"  
+ 
 window = 0
-input_folder="../FAMILIES/PF00085_BIS/" 
+
 '''
 Calculate the MI for the natural MSA putting the protein as the reference
 '''
@@ -49,74 +49,22 @@ Execute the MI calcultation busjle09
 '''
 execute_mi = True
 '''
-Execute the AUC for all the sequences generated and clustered
+Execute the analisys of the information
 '''
-execute_auc_process = False
+execute_dataanalisys = True
+
 '''
-Generate the table with the results as a txt for documentation
+Pattern to execute process
 '''
-execute_table_results=False
-'''
-Generate the plot for the diferents auc taking into account the beta, nsus and runs
-'''
-execute_auc_plot = False
-'''
-Calculates the natural AUC with the protein as reference, with the contact map generates by scpe
-'''
-execute_natural_auc=False
-'''
-Run calculations of MI with contact maps. Top Ranks. Spearman and more.
-All the plots where in the data_path .. /plots
-'''
-data_analisys = False
-
-execute_sincronize_natural_evol_msas=False
-
-
-data_path="../"+execution_name+"/"
-mitos_scripts_path=""
-
-
-
-#structures=["2trx","4wxt"]
-
-
-#beta = ["0.05","0.15","0.40","0.60","0.80","1.0"]
-#run = ["5000","10000","15000","20000"]
-#nsus = ["1.0","2.0","3.0","4.0","5.0"]
-
-#"secuencias-beta1.00-nsus3.00-runs20000.fasta_0.62.cluster",0.8477336520262113
-
-
-
 pattern=["sequences"]
-'''
-pdbs_folder=data_path+"pdbs/"
-contact_map_path=data_path+"contact_map/"
-clustered_sequences_path=data_path+"clustered_sequences/"
-curated_sequences_path=data_path+"curated_sequences/" 
-scpe_sequences=data_path+"scpe_sequences/"
-result_auc_path=data_path+"results/"
-mi_results_path=data_path+"mi_data/"
-mi_results_plot_path=data_path+"mi_data/plots/"
-zmip_natural_result_path = data_path+"natural/"
-zmip_natural_result_file = zmip_natural_result_path + "zmip_PF00085_THIO_ECOLI_reference.dat"
-'''
 
 
-    
 
-#msa_path=msa.generateFamilyMSA(input_folder+"*.final.gz")
+#
 
 '''
 Iterates over the structures, pdbs and execute the scpe and the clusterization 
 '''        
-
-
-try:
-    value = 29/0
-    
-
 input_families_folder="../FAMILIES/"
 def run_families_evol():
     start_time = time.time()
@@ -131,7 +79,20 @@ def run_families_evol():
 def family_evol(input_families_folder, family_folder):
     start_time = time.time()
     print "family_evol " + family_folder
-    pdb_paths_files = input_families_folder + "/" + family_folder  +"/PDB/*.pdb.gz"
+    #todo manejar errores
+    msa_gz_path=glob.glob(input_families_folder + family_folder+"/*.final.gz")
+    msa_gz_path=msa_gz_path[0]
+    aux_path=msa_gz_path.split('/')
+    
+    msa_file_name_fasta = aux_path[0]+"/"+aux_path[1]+"/"+aux_path[2] +"/"+aux_path[2]+".fasta"    
+    
+    zmip_natural_path = msa_file_name_fasta + "_zmip.dat"
+    
+    if(execute_natural_mi_msa):
+        msa.natural_msa_mi(msa_gz_path, msa_file_name_fasta, zmip_natural_path)
+    
+    pdb_paths_files = input_families_folder +  family_folder  +"/PDB/*.pdb.gz"
+    
     for pdb_gz in glob.glob(pdb_paths_files):
         #unzip pdb and move to pdb folder
         with gzip.open(pdb_gz, 'rb') as f:
@@ -156,6 +117,7 @@ def family_evol(input_families_folder, family_folder):
         clustered_sequences_path = pdb_folder + "/clustered_sequences/"
         
         mi_data = pdb_folder + "/mi_data/"
+        mi_data_analisys = mi_data + "/info/"
         if not os.path.exists(scpe_sequences):
             os.makedirs(scpe_sequences)
         if not os.path.exists(clustered_sequences_path):
@@ -171,6 +133,8 @@ def family_evol(input_families_folder, family_folder):
             msa.clustering("0.62",scpe_sequences, clustered_sequences_path)
         if(execute_mi):
             dataanalisys.buslje09_(clustered_sequences_path,mi_data)
+        if(execute_dataanalisys):
+            dataanalisys.run_analisys(zmip_natural_path, mi_data, pattern, contact_map, mi_data_analisys, window)
     print "end family_evol " + family_folder
     print("--- %s seconds ---" % (time.time() - start_time))   
 
