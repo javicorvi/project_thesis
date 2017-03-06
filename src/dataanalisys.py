@@ -78,10 +78,6 @@ def run_analisys(zmip_natural_result_path, mi_results_path, pattern_array,contac
             m2_=[row[2] for row in m2]
             value_spearman = spearman(m_,m2_)
             print " Spearman total " + str(value_spearman)
-            
-            
-            
-            
             #MI PLOT
             #contact_map=util.load_contact_map(contact_map_path)
             #plot.contact_map_(contact_map, outputpath)
@@ -89,7 +85,6 @@ def run_analisys(zmip_natural_result_path, mi_results_path, pattern_array,contac
             #v=contact_map[4][2]
             #v=contact_map[4][1]
             #v=contact_map[4][3]
-            v=contact_map[80][81]
             m1_norm,m2_norm=normalice_(m_,m2_)
             m_np = np.c_[ np.asarray(m), np.asarray(m1_norm) ]
             m2_np = np.c_[ np.asarray(m2), np.asarray(m2_norm) ]   

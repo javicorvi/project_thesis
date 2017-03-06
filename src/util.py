@@ -8,6 +8,7 @@ import os
 import time
 import re
 import csv
+import glob
 def load_zmip(zmip_result_path,window_mi_neightboards=0):
     column = []
     file = open(zmip_result_path)
@@ -70,9 +71,18 @@ def sincronize_natural_evol_msas(input_folder,output_folder,pattern_array,reg_in
     print("--- %s seconds ---" % (time.time() - start_time))
 
 def load_contact_map(contact_map_path):
+    cmap = np.loadtxt(contact_map_path, dtype='i4')
+    np.set_printoptions(threshold='nan')
+    print (cmap)
+    return cmap
+def load_contact_map_deprecated(contact_map_path):
     with open(contact_map_path) as file:
         l = [map(str,line.split(' ')) for line in file ]
         file.close()
+        
+        a = np.loadtxt(contact_map_path, dtype='i4')
+        np.set_printoptions(threshold='nan')
+        #print (cmap)
         #test=[[1,2,3,4,5,6,7,8],[1,2,3,4,5,6,7,8],[1,2,3,4,5,6,7,8],[1,2,3,4,5,6,7,8],[1,2,3,4,5,6,7,8],[1,2,3,4,5,6,7,8],[1,2,3,4,5,6,7,8],[1,2,3,4,5,6,7,8]]
         a=np.array(l, order='F')
         a[a == 'false\n']=0
@@ -88,7 +98,7 @@ def load_contact_map(contact_map_path):
         cmap=np.array(a, dtype='i4')
         #np.set_printoptions(threshold='nan')
         #print (cmap)
-        return cmap
+        return cmap    
 def load_contact_map_(contact_map_path):
     with open(contact_map_path) as file:
         l = [map(str,line.split(' ')) for line in file ]
@@ -135,3 +145,32 @@ def add_matrix(m1,m2):
 
 def save_contact_map(m, path):
     np.savetxt(path, m, delimiter=' ',fmt="%s")   
+    
+def delete_files(folder):
+    files = glob.glob(folder+'*')
+    for f in files:
+        os.remove(f)
+'''    
+import math, string, sys, fileinput
+
+def range_bytes (): return range(256)
+def range_printable(): return (ord(c) for c in string.printable)
+def H(data, iterator=range_bytes):
+    if not data:
+        return 0
+    entropy = 0
+    for x in iterator():
+        p_x = float(data.count(chr(x)))/len(data)
+        if p_x > 0:
+            entropy += - p_x*math.log(p_x, 2)
+    return entropy
+
+def main ():
+    for row in fileinput.input():
+        string = row.rstrip('\n')
+        print ("%s: %f" % (string, H(string, range_printable)))
+
+for str in ['gargleblaster', 'tripleee', 'magnus', 'lkjasdlk',
+               'aaaaaaaa', 'sadfasdfasdf', '7&wS/p(']:
+    print ("%s: %f" % (str, H(str, range_printable)))
+'''    

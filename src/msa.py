@@ -11,6 +11,7 @@ import gzip
 import time
 import re
 import dataanalisys
+import web_logo
 exten=".fasta"
 
 
@@ -32,8 +33,31 @@ def clustering(clust, input_folder, output_folder, pattern_array=[".fasta"]):
             print(filename)
             filenameclust = filename + "_"+clust + ".cluster"
             print(filenameclust)
-            call(["cdhit", "-i" , input_folder+"/"+filename ,"-o", output_folder+"/"+filenameclust,"-c",clust,"-n", "4", "-M", "3000"])
+            try:
+                call(["cdhit", "-i" , input_folder+"/"+filename ,"-o", output_folder+"/"+filenameclust,"-c",clust,"-n", "4", "-M", "3000"])
+            except Exception:
+                print "The clusterization  get an exception with de pdb file " + input_folder+"/"+filename
+                raise Exception ("The clusterization  get an exception with de pdb file " + input_folder+"/"+filename)    
+
     print "clustering_ends"
+    print("--- %s seconds ---" % (time.time() - start_time))
+
+def msa_information(input_folder, output_folder, pattern_array=[".cluster"]):
+    start_time = time.time()
+    print "msa_information"
+    for filename in os.listdir(input_folder):
+        if filename.endswith(".cluster") & any(r in filename for r in pattern_array):
+            print(filename)
+            try:
+                web_logo.create_web_logo(input_folder + filename, output_folder + filename + "_logo_sh.png",output_folder + filename + "_data_sh.csv", 'png', filename, logo_type='SHANNON')
+                web_logo.create_web_logo(input_folder + filename, output_folder + filename + "_logo_kl.png",output_folder + filename + "_data_kl.csv", 'png', filename, logo_type='KL')
+                #web_logo.create_web_logo(input_folder + filename, output_folder + filename + "_logo_rob.png",output_folder + filename + "_data_rob.csv", 'png', filename, logo_type='ROB')
+            except Exception as inst:
+                print inst
+                print "LOGO  get an exception with the msa  " + input_folder+"/"+filename
+                raise Exception ("LOGO  get an exception with the msa  " + input_folder+"/"+filename)    
+
+    print "msa_information"
     print("--- %s seconds ---" % (time.time() - start_time))
     
 def conservation(msa_path):
@@ -105,17 +129,40 @@ def convertMSAToFasta(msa_, new_msa):
 
 # Unzip file and the convert file to fasta format and save it.  Return the path of de msa fasta format 
 def natural_msa_mi(msa_gz, msa_file_name_fasta, result_zmip_path):
-    with gzip.open(msa_gz, 'rb') as f:
-        aux_path=f.filename.split('/')
-        msa_filename=os.path.basename(f.filename)
-        msa_complete_filename=aux_path[0]+"/"+aux_path[1]+"/"+aux_path[2]+"/"+msa_filename[:-3]
-        msa_file = open(msa_complete_filename ,"w")
-        file_content = f.read()
-        msa_file.write(file_content)
-        msa_file.flush()
-        msa_file.close()
-    #convierto el msa a formato fasta
-    convertMSAToFasta(msa_complete_filename, msa_file_name_fasta)
-    dataanalisys.buslje09(msa_file_name_fasta, result_zmip_path)
-      
+    try:
+        with gzip.open(msa_gz, 'rb') as f:
+            aux_path=f.filename.split('/')
+            msa_filename=os.path.basename(f.filename)
+            msa_complete_filename=aux_path[0]+"/"+aux_path[1]+"/"+aux_path[2]+"/"+msa_filename[:-3]
+            msa_file = open(msa_complete_filename ,"w")
+            file_content = f.read()
+            msa_file.write(file_content)
+            msa_file.flush()
+            msa_file.close()
+        #convierto el msa a formato fasta
+        convertMSAToFasta(msa_complete_filename, msa_file_name_fasta)
+        dataanalisys.buslje09(msa_file_name_fasta, result_zmip_path)
+    except BaseException as inst:
+        print "Error execution MI form the natural MSA"
+        raise Exception('Error execution MI form the natural MSA')
+    
+def lettercount(pos):
+    return {c: pos.count(c) for c in pos}
+
+def frequency():
+    sequences = ['AATC','GCCT','ATCA']
+    f = zip(*sequences)
+    counts = [{letter: column.count(letter) for letter in column} for column in f]
+    print(counts)
+    import csv
+    with open('test', "wb") as f:
+        writer = csv.writer(f)
+        for row in counts:
+            for l in ['A','T','G','C']:
+                if(row.has_key(l)):
+                    print l  + str(row[l])
+                else:
+                    print l + "0"    
+        f.close()   
+#frequency()        
         
