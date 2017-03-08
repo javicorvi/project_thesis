@@ -10,6 +10,8 @@ import util
 import plot
 from sklearn import preprocessing
 import numpy as np 
+import glob
+import msa
 from sklearn.datasets.california_housing import TARGET_FILENAME
  
 '''
@@ -353,6 +355,14 @@ def top_rank_desa(x,evol1,evol2,top,contact_map,outputpath,filename,result_file)
     print "EVOL CONTACTS QUANTITY : " + str(evol_contact) + " - %"+ str(evol_contact*100/num)
     #print data    
 
+def comparative_conservation(family_folder):
+    family_folder_pdb = family_folder+"/PDB/"
+    #[ name for name in os.listdir(thedir) if os.path.isdir(os.path.join(thedir, name)) ]
+    for protein_pdb in os.listdir(family_folder_pdb):
+       if(os.path.isdir(family_folder_pdb + protein_pdb)): 
+           conservation_file = family_folder_pdb + protein_pdb + "/clustered_sequences/information/*kl.csv"
+           conservation_file = glob.glob(conservation_file) 
+           msa.read_conservation(conservation_file[0])
 '''
 Not in use.
 '''    

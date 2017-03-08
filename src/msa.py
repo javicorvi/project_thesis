@@ -59,6 +59,18 @@ def msa_information(input_folder, output_folder, pattern_array=[".cluster"]):
 
     print "msa_information"
     print("--- %s seconds ---" % (time.time() - start_time))
+
+
+    
+
+def read_conservation(file_conservation_path):
+    import pandas
+    print file_conservation_path
+    fields=["K","Entropy"]
+    df = pandas.read_csv(file_conservation_path, delim_whitespace=True,header=7)
+    
+    #df = pandas.read_csv(file_conservation_path, delim_whitespace=True)
+    print df
     
 def conservation(msa_path):
     import numpy as np

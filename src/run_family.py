@@ -22,6 +22,10 @@ import time
 #5 if(atom[j].sequential < thisresidue-1 || atom[j].sequential > thisresidue+1) w=0
  
 window = 3
+'''
+Family Evolution
+'''
+execute_family_evol=False
 
 '''
 Calculate the MI for the natural MSA putting the protein as the reference
@@ -70,7 +74,10 @@ def run_families_evol():
     print "run_families_evol"
     for family_folder in os.listdir(input_families_folder):
         print (family_folder)
-        family_evol(input_families_folder, family_folder)
+        if(execute_family_evol):
+            family_evol(input_families_folder, family_folder)
+        dataanalisys.comparative_conservation(input_families_folder + family_folder)
+        
     print "run_families_evol"
     print("--- %s seconds ---" % (time.time() - start_time))     
        
