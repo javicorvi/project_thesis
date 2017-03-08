@@ -9,6 +9,7 @@ import time
 import re
 import csv
 import glob
+import zipfile
 def load_zmip(zmip_result_path,window_mi_neightboards=0):
     column = []
     file = open(zmip_result_path)
@@ -146,10 +147,16 @@ def add_matrix(m1,m2):
 def save_contact_map(m, path):
     np.savetxt(path, m, delimiter=' ',fmt="%s")   
     
-def delete_files(folder):
-    files = glob.glob(folder+'*')
+def delete_files(files_pattern):
+    files = glob.glob(files_pattern)
     for f in files:
         os.remove(f)
+        
+def zip_files(files_pattern):
+    files = glob.glob(files_pattern)
+    for f in files:
+        zf = zipfile.ZipFile(f+'.zip', mode='w')
+        zf.write(f)        
 '''    
 import math, string, sys, fileinput
 

@@ -38,7 +38,7 @@ Generate several families; taking account de parameters beta, nsus and runs
 '''
 execute_scpe = True
 beta = ["1.00"]
-run = ["1000"]
+run = ["20000"]
 nsus = ["3.0"]
 '''
 Execute the clustering for the families generated with SCPE to avoid redundant sequences with high identity
@@ -144,9 +144,12 @@ def family_evol(input_families_folder, family_folder):
                     scpe.run(pdb_complete_path,beta,run,nsus,chain_name,scpe_sequences_file,contact_map)
                 if(execute_clustering):
                     msa.clustering("0.62",scpe_sequences, clustered_sequences_path)
-                    util.delete_files(scpe_sequences)
+                    util.delete_files(scpe_sequences+'*')
+                    util.delete_files(clustered_sequences_path+'*.clstr')
                 if(execute_msa_information):
                         msa.msa_information(clustered_sequences_path, msa_information_path)
+                        #util.zip_files(clustered_sequences_path+'*.cluster')
+                        #util.delete_files(clustered_sequences_path+'*.cluster')
                 if(execute_mi):
                     dataanalisys.buslje09_(clustered_sequences_path,mi_data)
                 if(execute_dataanalisys):
