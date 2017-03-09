@@ -87,7 +87,6 @@ def roc_curve(y_true,scores,labels,colors,output_file):
     plt.savefig(output_file)
     #plt.show()
     plt.gcf().clear()
-
     
 '''
 Generate the plot for the diferents auc taking into account the beta, nsus and runs
@@ -223,6 +222,19 @@ def contacts_with_mi_desarrollo(x_nat_t,y_evol_t,y_evol2_t,x_nat_f,y_evol_f,y_ev
     #plt.scatter(x,color="r")
     plt.savefig(output_path)
     #plt.show()
+    plt.gcf().clear()
+
+def conservation_between_msas(msas_entropy):
+    for index,msa_entropy in enumerate(msas_entropy):
+        if(index==0):
+            plt.plot(msa_entropy[0],color=np.random.rand(3,1), label=msa_entropy[1],linewidth=5,linestyle='--')
+        else:
+            plt.plot(msa_entropy[0],color=np.random.rand(3,1), label=msa_entropy[1])
+    plt.ylabel('Bits Entropy')
+    plt.xlabel('Position')
+    plt.legend(loc=1,prop={'size':10},title="PDB")
+    plt.show()       
+    #plt.savefig(output_path+'/auc.png')
     plt.gcf().clear()
 
 '''

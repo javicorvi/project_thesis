@@ -12,11 +12,19 @@ import time
 import re
 import dataanalisys
 import web_logo
+import pandas
+
+'''
+Global Variables
+'''
 exten=".fasta"
-
-
 letters = {'A':0,'R':0,'N':0,'D':0,'B':0,'C':0,'E':0,'Q':0,'Z':0,'G':0,'H':0,'I':0,'L':0,'K':0,'M':0,'F':0,'P':0,'S':0,'T':0,'W':0,'Y':0,'V':0}
 
+
+'''
+Set the protein as reference in the msa.
+This process called MIToS script to acomplish this function 
+'''
 def setProteinReference(fasta_path):
     start_time = time.time()
     print "msa_set_reference"
@@ -42,9 +50,9 @@ def clustering(clust, input_folder, output_folder, pattern_array=[".fasta"]):
     print "clustering_ends"
     print("--- %s seconds ---" % (time.time() - start_time))
 
-def msa_information(input_folder, output_folder, pattern_array=[".cluster"]):
+def msa_information_process(input_folder, output_folder, pattern_array=[".cluster"]):
     start_time = time.time()
-    print "msa_information"
+    print "msa_information_process"
     for filename in os.listdir(input_folder):
         if filename.endswith(".cluster") & any(r in filename for r in pattern_array):
             print(filename)
@@ -57,20 +65,36 @@ def msa_information(input_folder, output_folder, pattern_array=[".cluster"]):
                 print "LOGO  get an exception with the msa  " + input_folder+"/"+filename
                 raise Exception ("LOGO  get an exception with the msa  " + input_folder+"/"+filename)    
 
-    print "msa_information"
+    print "msa_information_process"
     print("--- %s seconds ---" % (time.time() - start_time))
 
+def msa_information(input_msa, output_msa, msa_name):
+    start_time = time.time()
+    print "msa_information"
+    print(msa_name)
+    try:
+        web_logo.create_web_logo(input_msa, output_msa + "_logo_sh.png",output_msa + "_data_sh.csv", 'png', msa_name, logo_type='SHANNON')
+        web_logo.create_web_logo(input_msa, output_msa + "_logo_kl.png",output_msa + "_data_kl.csv", 'png', msa_name, logo_type='KL')
+    except Exception as inst:
+        print inst
+        print "LOGO  get an exception with the msa  " + input_msa
+        raise Exception ("LOGO  get an exception with the msa  " + input_msa)    
 
+    print "msa_information"
+    print("--- %s seconds ---" % (time.time() - start_time))
     
-
+'''
+Read the conservation info stored in file_conservation_path  
+'''
 def read_conservation(file_conservation_path):
-    import pandas
+    start_time = time.time()
+    print "read_conservation"
     print file_conservation_path
-    fields=["K","Entropy"]
-    df = pandas.read_csv(file_conservation_path, delim_whitespace=True,header=7)
-    
-    #df = pandas.read_csv(file_conservation_path, delim_whitespace=True)
-    print df
+    fields=["#","Entropy"]
+    df = pandas.read_csv(file_conservation_path, delim_whitespace=True,header=7,usecols=fields)
+    print "msa_information"
+    print("--- %s seconds ---" % (time.time() - start_time))
+    return df
     
 def conservation(msa_path):
     import numpy as np

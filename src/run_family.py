@@ -15,6 +15,7 @@ import util
 import os
 import time
 
+
 #Ver que es ejecucion
 #2   if(atom[j].sequential < thisresidue-1 || atom[j].sequential > thisresidue+1) w=4
 #3  if(atom[j].sequential < thisresidue-3 || atom[j].sequential > thisresidue+3) w=4
@@ -25,12 +26,17 @@ window = 3
 '''
 Family Evolution
 '''
-execute_family_evol=False
+execute_family_evol=True
 
 '''
 Calculate the MI for the natural MSA putting the protein as the reference
 '''
-execute_natural_mi_msa=True
+execute_natural_mi_msa=False
+
+'''
+Calculate the Conservation of the families natural MSA
+'''
+execute_msa_natural_information=False
 '''
 PDBs to evolve. 
 Take each of this structures and run the all process.
@@ -40,26 +46,26 @@ Take each of this structures and run the all process.
 Execute the evolution of the protein with SCPE.
 Generate several families; taking account de parameters beta, nsus and runs 
 '''
-execute_scpe = True
+execute_scpe = False
 beta = ["1.00"]
 run = ["20000"]
 nsus = ["3.0"]
 '''
 Execute the clustering for the families generated with SCPE to avoid redundant sequences with high identity
 '''
-execute_clustering = True
+execute_clustering = False
 '''
 Execute the analisys of the MSA: Seq Logo.
 '''
-execute_msa_information = True
+execute_msa_information = False
 '''
 Execute the MI calcultation busjle09
 '''
-execute_mi = True
+execute_mi = False
 '''
 Execute the analisys of the information
 '''
-execute_dataanalisys = True
+execute_dataanalisys = False
 '''
 Pattern to execute process
 '''
@@ -77,7 +83,7 @@ def run_families_evol():
         if(execute_family_evol):
             family_evol(input_families_folder, family_folder)
         dataanalisys.comparative_conservation(input_families_folder + family_folder)
-        
+        dataanalisys.sum_contact_map(input_families_folder + family_folder)  
     print "run_families_evol"
     print("--- %s seconds ---" % (time.time() - start_time))     
        
@@ -102,6 +108,13 @@ def family_evol(input_families_folder, family_folder):
         
         if(execute_natural_mi_msa):
             msa.natural_msa_mi(msa_gz_path, msa_file_name_fasta, zmip_natural_path)
+        
+        #Natural Conservation Information
+        if(execute_msa_natural_information):
+            msa.msa_information(msa_file_name_fasta, msa_file_name_fasta, aux_path[2])
+        
+        #web_logo.create_web_logo(msa_file_name_fasta, msa_file_name_fasta + "_logo_sh.png",msa_file_name_fasta + "_data_sh.csv", 'png', aux_path[2], logo_type='SHANNON')
+        #web_logo.create_web_logo(msa_file_name_fasta, msa_file_name_fasta + "_logo_kl.png",msa_file_name_fasta + "_data_kl.csv", 'png', aux_path[2], logo_type='KL')
         
         pdb_paths_files = input_families_folder +  family_folder  +"/PDB/*.pdb.gz"
         
@@ -154,7 +167,7 @@ def family_evol(input_families_folder, family_folder):
                     util.delete_files(scpe_sequences+'*')
                     util.delete_files(clustered_sequences_path+'*.clstr')
                 if(execute_msa_information):
-                        msa.msa_information(clustered_sequences_path, msa_information_path)
+                        msa.msa_information_process(clustered_sequences_path, msa_information_path)
                         #util.zip_files(clustered_sequences_path+'*.cluster')
                         #util.delete_files(clustered_sequences_path+'*.cluster')
                 if(execute_mi):

@@ -74,7 +74,6 @@ def sincronize_natural_evol_msas(input_folder,output_folder,pattern_array,reg_in
 def load_contact_map(contact_map_path):
     cmap = np.loadtxt(contact_map_path, dtype='i4')
     np.set_printoptions(threshold='nan')
-    print (cmap)
     return cmap
 def load_contact_map_deprecated(contact_map_path):
     with open(contact_map_path) as file:

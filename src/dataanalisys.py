@@ -355,14 +355,41 @@ def top_rank_desa(x,evol1,evol2,top,contact_map,outputpath,filename,result_file)
     print "EVOL CONTACTS QUANTITY : " + str(evol_contact) + " - %"+ str(evol_contact*100/num)
     #print data    
 
+def sum_contact_map(family_folder):
+    family_folder_pdb = family_folder+"/PDB/"
+    cmap_sum = None
+    pdb_cant=0
+    for protein_pdb in os.listdir(family_folder_pdb):
+       if(os.path.isdir(family_folder_pdb + protein_pdb)):
+           contact_map = family_folder_pdb + protein_pdb + "/contact_map.dat"
+           pdb_cant = pdb_cant + 1
+           cmap = util.load_contact_map(contact_map)
+           if(cmap_sum==None):
+               cmap_sum = cmap
+           else:
+               cmap_sum = cmap_sum + cmap
+    print cmap_sum 
+    util.save_contact_map(cmap_sum, family_folder + "/sum_contact_map.dat")
+    camp_sum = cmap_sum.astype(float)
+    camp_prob = cmap_sum / pdb_cant
+    print camp_prob      
 def comparative_conservation(family_folder):
+    natural_msa_conservation= family_folder + "/PF00085_BIS.fasta_data_kl.csv"
     family_folder_pdb = family_folder+"/PDB/"
     #[ name for name in os.listdir(thedir) if os.path.isdir(os.path.join(thedir, name)) ]
+    msas_entropy=[]
+    msa_label=[]
+    df=msa.read_conservation(natural_msa_conservation)
+    msa_entropy = [df['Entropy'].tolist(),"PF00085_NATURAL"]
+    msas_entropy.append(msa_entropy)
     for protein_pdb in os.listdir(family_folder_pdb):
        if(os.path.isdir(family_folder_pdb + protein_pdb)): 
            conservation_file = family_folder_pdb + protein_pdb + "/clustered_sequences/information/*kl.csv"
            conservation_file = glob.glob(conservation_file) 
-           msa.read_conservation(conservation_file[0])
+           df=msa.read_conservation(conservation_file[0])
+           msa_entropy = [df['Entropy'].tolist(),protein_pdb]
+           msas_entropy.append(msa_entropy)
+    plot.conservation_between_msas(msas_entropy)       
 '''
 Not in use.
 '''    

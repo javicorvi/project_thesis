@@ -16,7 +16,7 @@ aa_composition = [amino_acid_composition[_k]  for _k in weblogolib.unambiguous_p
 #https://www.ncbi.nlm.nih.gov/CBBresearch/Yu/logoddslogo/apidocs/logoddslogolib.logodds-pysrc.html#info1
 
 def create_web_logo(sequences_path, logo_output_file=None, data_output_file=None ,out_format=None, title=None, units='bits',
-                    alphabet=corebio.seq.unambiguous_protein_alphabet,logo_type='SHANNON'):
+                    alphabet=corebio.seq.protein_alphabet,logo_type='SHANNON'):
     if out_format is None:
         extension = os.path.splitext(logo_output_file)[1] if logo_output_file is not None else ''
         out_format = extension[1:] if extension else 'png'
