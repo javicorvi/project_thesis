@@ -398,7 +398,11 @@ def comparative_conservation(family_folder):
            df=msa.read_conservation(conservation_file[0])
            msa_entropy = [df['Entropy'].tolist(),protein_pdb]
            msas_entropy.append(msa_entropy)
-    plot.conservation_between_msas(msas_entropy,family_folder + "/conservation.png")       
+    plot.conservation_between_msas(msas_entropy,family_folder + "/conservation.png")   
+    
+def comparative_mi_information(family_folder):      
+    family_folder_pdb = family_folder+"/PDB/"
+    #for protein_pdb in os.listdir(family_folder_pdb):    
 '''
 Not in use.
 '''    

@@ -83,7 +83,8 @@ def run_families_evol():
         if(execute_family_evol):
             family_evol(input_families_folder, family_folder)
         dataanalisys.comparative_conservation(input_families_folder + family_folder)
-        dataanalisys.sum_contact_map(input_families_folder + family_folder)  
+        dataanalisys.sum_contact_map(input_families_folder + family_folder)
+        dataanalisys.comparative_mi_information(input_families_folder + family_folder)  
     print "run_families_evol"
     print("--- %s seconds ---" % (time.time() - start_time))     
        
