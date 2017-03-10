@@ -10,6 +10,8 @@ import re
 import csv
 import glob
 import zipfile
+import pandas
+
 def load_zmip(zmip_result_path,window_mi_neightboards=0):
     column = []
     file = open(zmip_result_path)
@@ -155,7 +157,17 @@ def zip_files(files_pattern):
     files = glob.glob(files_pattern)
     for f in files:
         zf = zipfile.ZipFile(f+'.zip', mode='w')
-        zf.write(f)        
+        zf.write(f)       
+        
+        
+def find_pdb_to_evolve(family_pdb_information):
+    #fields = ["pdb"]
+    fields = ['seq',"pdb","chain","cluster","n_residues"]
+    df = pandas.read_csv(family_pdb_information,header=0,usecols=fields)
+    df=df.sort(["cluster","pdb"])
+    df=df.groupby("cluster").first()
+    print df
+    return df
 '''    
 import math, string, sys, fileinput
 

@@ -355,6 +355,10 @@ def top_rank_desa(x,evol1,evol2,top,contact_map,outputpath,filename,result_file)
     print "EVOL CONTACTS QUANTITY : " + str(evol_contact) + " - %"+ str(evol_contact*100/num)
     #print data    
 
+'''
+Sumarize the contact maps of all the PDB Evolutionated.
+Saves the sumarized matrix and another probabilistic matrix to find the conserved contacts 
+'''
 def sum_contact_map(family_folder):
     family_folder_pdb = family_folder+"/PDB/"
     cmap_sum = None
@@ -368,11 +372,16 @@ def sum_contact_map(family_folder):
                cmap_sum = cmap
            else:
                cmap_sum = cmap_sum + cmap
-    print cmap_sum 
+    #print cmap_sum 
     util.save_contact_map(cmap_sum, family_folder + "/sum_contact_map.dat")
-    camp_sum = cmap_sum.astype(float)
+    cmap_sum = cmap_sum.astype(float)
     camp_prob = cmap_sum / pdb_cant
-    print camp_prob      
+    #print camp_prob   
+    util.save_contact_map(camp_prob, family_folder + "/prob_contact_map.dat") 
+    plot.contact_map(camp_prob,family_folder + "/prob_contact_map.png")
+    conserved_contacts = np.count_nonzero(camp_prob == 1.0)  
+    print conserved_contacts
+    
 def comparative_conservation(family_folder):
     natural_msa_conservation= family_folder + "/PF00085_BIS.fasta_data_kl.csv"
     family_folder_pdb = family_folder+"/PDB/"
@@ -389,7 +398,7 @@ def comparative_conservation(family_folder):
            df=msa.read_conservation(conservation_file[0])
            msa_entropy = [df['Entropy'].tolist(),protein_pdb]
            msas_entropy.append(msa_entropy)
-    plot.conservation_between_msas(msas_entropy)       
+    plot.conservation_between_msas(msas_entropy,family_folder + "/conservation.png")       
 '''
 Not in use.
 '''    

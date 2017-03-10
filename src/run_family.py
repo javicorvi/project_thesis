@@ -31,12 +31,12 @@ execute_family_evol=True
 '''
 Calculate the MI for the natural MSA putting the protein as the reference
 '''
-execute_natural_mi_msa=False
+execute_natural_mi_msa=True
 
 '''
 Calculate the Conservation of the families natural MSA
 '''
-execute_msa_natural_information=False
+execute_msa_natural_information=True
 '''
 PDBs to evolve. 
 Take each of this structures and run the all process.
@@ -46,14 +46,14 @@ Take each of this structures and run the all process.
 Execute the evolution of the protein with SCPE.
 Generate several families; taking account de parameters beta, nsus and runs 
 '''
-execute_scpe = False
+execute_scpe = True
 beta = ["1.00"]
 run = ["20000"]
 nsus = ["3.0"]
 '''
 Execute the clustering for the families generated with SCPE to avoid redundant sequences with high identity
 '''
-execute_clustering = False
+execute_clustering = True
 '''
 Execute the analisys of the MSA: Seq Logo.
 '''
@@ -74,7 +74,7 @@ pattern=["sequences"]
 '''
 Iterates over the structures, pdbs and execute the scpe and the clusterization 
 '''        
-input_families_folder="../FAMILIES/"
+input_families_folder="../FAMILIES_2/"
 def run_families_evol():
     start_time = time.time()
     print "run_families_evol"
@@ -106,6 +106,8 @@ def family_evol(input_families_folder, family_folder):
         msa_file_name_fasta = aux_path[0]+"/"+aux_path[1]+"/"+aux_path[2] +"/"+aux_path[2]+".fasta"    
         zmip_natural_path = msa_file_name_fasta + "_zmip.dat"
         
+        family_pdb_information = aux_path[0]+"/"+aux_path[1]+"/"+aux_path[2] +"/"+aux_path[2]+"_pdb_level.csv"    
+        
         if(execute_natural_mi_msa):
             msa.natural_msa_mi(msa_gz_path, msa_file_name_fasta, zmip_natural_path)
         
@@ -116,13 +118,22 @@ def family_evol(input_families_folder, family_folder):
         #web_logo.create_web_logo(msa_file_name_fasta, msa_file_name_fasta + "_logo_sh.png",msa_file_name_fasta + "_data_sh.csv", 'png', aux_path[2], logo_type='SHANNON')
         #web_logo.create_web_logo(msa_file_name_fasta, msa_file_name_fasta + "_logo_kl.png",msa_file_name_fasta + "_data_kl.csv", 'png', aux_path[2], logo_type='KL')
         
-        pdb_paths_files = input_families_folder +  family_folder  +"/PDB/*.pdb.gz"
+        #pdb_paths_files = input_families_folder +  family_folder  +"/PDB/*.pdb.gz"
+        pdb_paths_files = input_families_folder +  family_folder  +"/PDB/"
         
-        for pdb_gz in glob.glob(pdb_paths_files):
+        
+        sufix="_superimposed.pdb.gz"
+        pdb_to_evol_df = util.find_pdb_to_evolve(family_pdb_information)
+        for index,pdb_protein_to_evolve in pdb_to_evol_df.iterrows():
+            p=pdb_protein_to_evolve['pdb']
+            file_name_pdb =pdb_protein_to_evolve['seq'].replace("/","_").replace("-","_") + "_" + pdb_protein_to_evolve['pdb']+"_"+pdb_protein_to_evolve['chain'] + sufix
+            complete_file_name_pdb = pdb_paths_files + file_name_pdb
+            print complete_file_name_pdb
+            #for pdb_gz in glob.glob(pdb_paths_files):
             #aca arrancar otro try
             #unzip pdb and move to pdb folder
             try:
-                with gzip.open(pdb_gz, 'rb') as f:
+                with gzip.open(complete_file_name_pdb, 'rb') as f:
                     aux_path=f.filename.split('/')
                     pdb_file_name=os.path.basename(f.filename[:-3])
                     print (pdb_file_name)
@@ -179,7 +190,7 @@ def family_evol(input_families_folder, family_folder):
                 print inst
                 x = inst.args
                 print x
-                print "The PDB was not evolutionated " + pdb_file_name 
+                print "The PDB was not evolutionated " + file_name_pdb 
     except Exception as inst:
         print inst
         x = inst.args

@@ -167,19 +167,7 @@ def contact_map_with_top_rank_mi(contact_map, x_nat, y_nat, x_evol,y_evol,output
     plt.gcf().clear()
 
 def contact_map_with_top_rank_mi_desarrollo(contact_map, x_nat, y_nat, x_evol,y_evol,x_evol2,y_evol2,output_path,filename):
-    #np.set_printoptions(threshold=np.nan)
-    #print contact_map
-    #contact_map[contact_map == 'false']=0
-    #contact_map[contact_map == 'true']=1
-    #cmap=np.array(contact_map, dtype='i4')
-    #print cmap2
-    #print len(cmap2)
-    #cmap=np.random.randint(2, size=(108, 108))
-    #print len(cmap)
-    #np.random.seed(101)
     cmap=contact_map
-    #x_nat_t = [27.0,89.0,25.0]
-    #y_evol_t = [5.9,3.2,4.0]
     plt.scatter(x_nat, y_nat,color="b",s=40,  marker=(5, 2))
     plt.scatter(y_evol, x_evol, color="r",s=40,  marker=(5, 2))
     plt.scatter(y_evol2, x_evol2, color="g",s=40,  marker=(5, 2))
@@ -190,6 +178,26 @@ def contact_map_with_top_rank_mi_desarrollo(contact_map, x_nat, y_nat, x_evol,y_
     #plt.show()
     plt.gcf().clear()
 
+'''
+Plot the contact map and saved in output_file
+'''
+def contact_map(contact_map, output_file):
+    import matplotlib.cm as cm
+    '''
+    import matplotlib.pyplot as plt
+    import matplotlib.cm as cm
+    from matplotlib.colors import LogNorm
+    import numpy as np
+    x, y, z = np.loadtxt('data.txt', unpack=True)
+    '''
+    cmap=contact_map
+    
+    plt.imshow(cmap,cmap=cm.Blues)
+    plt.colorbar()
+    #plt.imshow(cmap,cmap=cm.hot)
+    plt.savefig(output_file)
+    plt.show()
+    plt.gcf().clear()
 '''
 Generates a plot describe the contacts with de MI of the natural and evolution msa
 '''
@@ -221,10 +229,12 @@ def contacts_with_mi_desarrollo(x_nat_t,y_evol_t,y_evol2_t,x_nat_f,y_evol_f,y_ev
     #x=[[1.0,2.4]]
     #plt.scatter(x,color="r")
     plt.savefig(output_path)
-    #plt.show()
+    plt.show()
     plt.gcf().clear()
-
-def conservation_between_msas(msas_entropy):
+'''
+Plot the conservation of the MSA evolutionated and the Natural MSA
+'''
+def conservation_between_msas(msas_entropy, output_file):
     for index,msa_entropy in enumerate(msas_entropy):
         if(index==0):
             plt.plot(msa_entropy[0],color=np.random.rand(3,1), label=msa_entropy[1],linewidth=5,linestyle='--')
@@ -233,35 +243,7 @@ def conservation_between_msas(msas_entropy):
     plt.ylabel('Bits Entropy')
     plt.xlabel('Position')
     plt.legend(loc=1,prop={'size':10},title="PDB")
-    plt.show()       
-    #plt.savefig(output_path+'/auc.png')
+    plt.savefig(output_file)
+    plt.show()  
     plt.gcf().clear()
 
-'''
-Test function not in use
-'''
-def contact_map_(contact_map, outputpath):
-    np.set_printoptions(threshold=np.nan)
-    #print contact_map
-    #contact_map[contact_map == 'false']=0
-    #contact_map[contact_map == 'true']=1
-    #cmap=np.array(contact_map, dtype='i4')
-    #print cmap2
-    #print len(cmap2)
-    #cmap=np.random.randint(2, size=(108, 108))
-    #print len(cmap)
-    #np.random.seed(101)
-    cmap=contact_map
-    x_nat_t = [27.0,12.0,25.0]
-    y_nat_t = [35.0,101.0,37]
-    
-    x_evol_t = [35.0,101.0,37]
-    y_evol_t = [27.0,12.0,25.0]
-    plt.scatter(x_nat_t, y_nat_t,color="b")
-    plt.scatter(x_evol_t, y_evol_t,color="r")
-    g = np.floor(cmap)
-    print len(cmap)
-    plt.imshow(g, cmap='Greys')   
-    #plt.show()
-    plt.savefig(outputpath + "/contact_map_mi.png")
-    plt.gcf().clear()
