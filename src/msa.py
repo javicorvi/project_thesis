@@ -29,7 +29,7 @@ def setProteinReference(fasta_path):
     start_time = time.time()
     print "msa_set_reference"
     #call(["julia", "auc_script.jl" ])
-    call(["julia", "mitos/setProteinReferenceToMSA.jl",fasta_path])
+    call(["julia2", "mitos/setProteinReferenceToMSA.jl",fasta_path])
     print "msa_set_reference"
     print("--- %s seconds ---" % (time.time() - start_time)) 
     

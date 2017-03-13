@@ -46,14 +46,14 @@ Take each of this structures and run the all process.
 Execute the evolution of the protein with SCPE.
 Generate several families; taking account de parameters beta, nsus and runs 
 '''
-execute_scpe = True
+execute_scpe = False
 beta = ["1.00"]
 run = ["20000"]
 nsus = ["3.0"]
 '''
 Execute the clustering for the families generated with SCPE to avoid redundant sequences with high identity
 '''
-execute_clustering = True
+execute_clustering = False
 '''
 Execute the analisys of the MSA: Seq Logo.
 '''
@@ -66,6 +66,10 @@ execute_mi = False
 Execute the analisys of the information
 '''
 execute_dataanalisys = False
+'''
+Execute the analisys of the information between all the PDBS and MSA generated. All together
+'''
+execute_joined_pdb_analisys = False
 '''
 Pattern to execute process
 '''
@@ -82,9 +86,10 @@ def run_families_evol():
         print (family_folder)
         if(execute_family_evol):
             family_evol(input_families_folder, family_folder)
-        dataanalisys.comparative_conservation(input_families_folder + family_folder)
-        dataanalisys.sum_contact_map(input_families_folder + family_folder)
-        dataanalisys.comparative_mi_information(input_families_folder + family_folder)  
+        if(execute_joined_pdb_analisys):
+            dataanalisys.comparative_conservation(input_families_folder + family_folder)
+            dataanalisys.sum_contact_map(input_families_folder + family_folder)
+            dataanalisys.comparative_mi_information(input_families_folder + family_folder)  
     print "run_families_evol"
     print("--- %s seconds ---" % (time.time() - start_time))     
        

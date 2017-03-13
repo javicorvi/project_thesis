@@ -22,7 +22,7 @@ def auc(fasta_path,contact_map):
     start_time = time.time()
     print "auc"
     #call(["julia", "auc_script.jl" ])
-    call(["julia", "mitos/auc.jl",fasta_path,contact_map])
+    call(["julia2", "mitos/auc.jl",fasta_path,contact_map])
     print "auc"
     print("--- %s seconds ---" % (time.time() - start_time)) 
 '''
@@ -36,7 +36,7 @@ def auc_job(pdb_name,model_name,chain_name,contact_map_path,clustered_sequences_
     start_time = time.time()
     print "auc_process_all"
     #call(["julia", "auc_script.jl" ])
-    call(["julia", "mitos/auc_process_all.jl",pdb_name,model_name,chain_name,contact_map_path,clustered_sequences_path,result_auc_file_name,result_zmip_path])
+    call(["julia2", "mitos/auc_process_all.jl",pdb_name,model_name,chain_name,contact_map_path,clustered_sequences_path,result_auc_file_name,result_zmip_path])
     print "auc_process_all"
     print("--- %s seconds ---" % (time.time() - start_time)) 
 
@@ -49,7 +49,7 @@ def buslje09(fasta_path, zmip_result_path):
     start_time = time.time()
     print "buslje09"
     #call(["julia", "auc_script.jl" ])
-    call(["julia", "mitos/buslje09.jl",fasta_path, zmip_result_path])
+    call(["julia2", "mitos/buslje09.jl",fasta_path, zmip_result_path])
     print "buslje09"
     print("--- %s seconds ---" % (time.time() - start_time))   
         
