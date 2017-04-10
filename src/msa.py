@@ -13,7 +13,8 @@ import re
 import dataanalisys
 import web_logo
 import pandas
-
+import logging
+import constants as cons
 '''
 Global Variables
 '''
@@ -27,11 +28,10 @@ This process called MIToS script to acomplish this function
 '''
 def setProteinReference(fasta_path):
     start_time = time.time()
-    print "msa_set_reference"
+    logging.info('Begin of the method')
     #call(["julia", "auc_script.jl" ])
-    call(["julia2", "mitos/setProteinReferenceToMSA.jl",fasta_path])
-    print "msa_set_reference"
-    print("--- %s seconds ---" % (time.time() - start_time)) 
+    call([cons.julia_exe_path, "mitos/setProteinReferenceToMSA.jl",fasta_path])
+    logging.info('Time of Execution --- %s seconds ---' % (time.time() - start_time)) 
     
 def clustering(clust, input_folder, output_folder, pattern_array=[".fasta"]):
     start_time = time.time()
@@ -179,7 +179,7 @@ def natural_msa_mi(msa_gz, msa_file_name_fasta, result_zmip_path):
         convertMSAToFasta(msa_complete_filename, msa_file_name_fasta)
         dataanalisys.buslje09(msa_file_name_fasta, result_zmip_path)
     except BaseException as inst:
-        print "Error execution MI form the natural MSA"
+        logging.error('Error execution MI form the natural MSA ' )
         raise Exception('Error execution MI form the natural MSA')
     
 def lettercount(pos):

@@ -13,7 +13,8 @@ import numpy as np
 import glob
 import msa
 from sklearn.datasets.california_housing import TARGET_FILENAME
- 
+import constants as cons
+import pandas 
 '''
 Calculate the AUC.  
 For the protein family (fasta_path) and the contact_map calculates the AUC. 
@@ -22,7 +23,7 @@ def auc(fasta_path,contact_map):
     start_time = time.time()
     print "auc"
     #call(["julia", "auc_script.jl" ])
-    call(["julia2", "mitos/auc.jl",fasta_path,contact_map])
+    call([cons.julia_exe_path, "mitos/auc.jl",fasta_path,contact_map])
     print "auc"
     print("--- %s seconds ---" % (time.time() - start_time)) 
 '''
@@ -36,7 +37,7 @@ def auc_job(pdb_name,model_name,chain_name,contact_map_path,clustered_sequences_
     start_time = time.time()
     print "auc_process_all"
     #call(["julia", "auc_script.jl" ])
-    call(["julia2", "mitos/auc_process_all.jl",pdb_name,model_name,chain_name,contact_map_path,clustered_sequences_path,result_auc_file_name,result_zmip_path])
+    call([cons.julia_exe_path, "mitos/auc_process_all.jl",pdb_name,model_name,chain_name,contact_map_path,clustered_sequences_path,result_auc_file_name,result_zmip_path])
     print "auc_process_all"
     print("--- %s seconds ---" % (time.time() - start_time)) 
 
@@ -48,8 +49,11 @@ The result is stored in zmip_result_path
 def buslje09(fasta_path, zmip_result_path):
     start_time = time.time()
     print "buslje09"
-    #call(["julia", "auc_script.jl" ])
-    call(["julia2", "mitos/buslje09.jl",fasta_path, zmip_result_path])
+    #call(["julia"])
+    #call(["julia04/bin/julia", "mitos/buslje09.jl" ])
+    #h=heatmap(full(zmip), yflip=true)
+    #call(["julia04/bin/julia", "mitos/buslje09.jl",fasta_path, zmip_result_path])
+    call([cons.julia_exe_path, "mitos/buslje09.jl",fasta_path, zmip_result_path])
     print "buslje09"
     print("--- %s seconds ---" % (time.time() - start_time))   
         
@@ -356,8 +360,7 @@ def top_rank_desa(x,evol1,evol2,top,contact_map,outputpath,filename,result_file)
     #print data    
 
 '''
-Sumarize the contact maps of all the PDB Evolutionated.
-Saves the sumarized matrix and another probabilistic matrix to find the conserved contacts 
+Toma todas las matrices de contactos de todas la proteinas evolucionadas,  retorna una matriz con la sumas y otra matriz con las probabilidad de los contactos.
 '''
 def sum_contact_map(family_folder):
     family_folder_pdb = family_folder+"/PDB/"
@@ -368,22 +371,32 @@ def sum_contact_map(family_folder):
            contact_map = family_folder_pdb + protein_pdb + "/contact_map.dat"
            pdb_cant = pdb_cant + 1
            cmap = util.load_contact_map(contact_map)
+           print contact_map
            if(cmap_sum==None):
                cmap_sum = cmap
            else:
-               cmap_sum = cmap_sum + cmap
+               if(cmap.shape==cmap_sum.shape):
+                   cmap_sum = cmap_sum + cmap
+               else:
+                   pdb_cant = pdb_cant - 1
+                   print " diferent size natural : " + str(cmap_sum.shape)  + " AND " + contact_map + " : " + str(cmap.shape)
     #print cmap_sum 
     util.save_contact_map(cmap_sum, family_folder + "/sum_contact_map.dat")
     cmap_sum = cmap_sum.astype(float)
     camp_prob = cmap_sum / pdb_cant
     #print camp_prob   
+    print "cantidad de PDB analizados " + str(pdb_cant)
     util.save_contact_map(camp_prob, family_folder + "/prob_contact_map.dat") 
     plot.contact_map(camp_prob,family_folder + "/prob_contact_map.png")
     conserved_contacts = np.count_nonzero(camp_prob == 1.0)  
     print conserved_contacts
-    
+"""
+Lee la informacion sobre consevacion (KL) por columna de cada una de las proteinas evolucionadas. 
+No se esta aplicando ningun entrecruzamiento de la informacion.
+Solamente se esta ploteando la conservacion por columna para cada una de las proteinas (el grafico no puede apreciar resultados concretos)  
+"""    
 def comparative_conservation(family_folder):
-    natural_msa_conservation= family_folder + "/PF00085_BIS.fasta_data_kl.csv"
+    natural_msa_conservation= family_folder + "/PF00085.fasta_data_kl.csv"
     family_folder_pdb = family_folder+"/PDB/"
     #[ name for name in os.listdir(thedir) if os.path.isdir(os.path.join(thedir, name)) ]
     msas_entropy=[]
@@ -399,10 +412,75 @@ def comparative_conservation(family_folder):
            msa_entropy = [df['Entropy'].tolist(),protein_pdb]
            msas_entropy.append(msa_entropy)
     plot.conservation_between_msas(msas_entropy,family_folder + "/conservation.png")   
-    
-def comparative_mi_information(family_folder):      
+"""
+Esta funcion toma el top de MI de todas las proteinas evolucionadas y luego realiza una agrupacion indicando la cantidad de veces que aparecen los pares.
+Ordena los pares de forma descendente, osea los pares que mas aparecen en el top quedan arriba. 
+Ademas se agrega la columna indicando la probabilidad de contacto que existen entre ellos.
+"""
+def comparative_mi_information(family_folder,top, window):           
+    logging.info('Begin of the execution process family MI information')
     family_folder_pdb = family_folder+"/PDB/"
-    #for protein_pdb in os.listdir(family_folder_pdb):    
+    #for protein_pdb in os.listdir(family_folder_pdb):
+   
+    fields=["Position1","Position2","Count"]
+    df_total = pandas.DataFrame([],columns=fields)
+    for protein_pdb in os.listdir(family_folder_pdb):
+        if(os.path.isdir(family_folder_pdb + protein_pdb)): 
+            zmip_file_pattern = family_folder_pdb + protein_pdb + "/mi_data/zmipsequences*.dat"
+            zmip_file = glob.glob(zmip_file_pattern) 
+            if(len(zmip_file)==0):
+                logging.error('No existe archivo de informacion mutua de la familia ' + protein_pdb)
+                return
+            if(len(zmip_file)>1):
+                logging.error('Existe mas de un archivo de informacion mutua de la familia ' + protein_pdb)
+                return
+            zmip_evol = util.load_zmip(zmip_file[0],window)
+            util.order(zmip_evol)
+            num = len(zmip_evol)*top/100
+            zmip_evol_top=zmip_evol[0:int(num)]
+            df = pandas.DataFrame(zmip_evol_top,columns=fields)
+            df_total=df_total.append(df)
+            #print df_total
+    print df_total
+    
+    """a=[14.0,76.0, 45.2345]
+    b=[23.0,54.0, 34.5]
+    c=[[14.0,76.0, 45.2345],[23.0,54.0, 34.5],[45.0,90.0, 34.5]]
+    #c.append(a)
+    #c.append(b)
+    df = pandas.DataFrame(c,columns=fields)
+    d=[[11.0,76.0, 45.2345],[23.0,54.0, 34.5],[45.0,90.0, 34.5]]
+    #d.append(a)
+    #d.append(b)
+    df2 = pandas.DataFrame(d,columns=fields)
+    dfres=df.append(df2)
+    e=[[10.0,76.0, 45.2345],[23.0,54.0, 34.5],[45.0,90.0, 34.5]]
+    dfe = pandas.DataFrame(e,columns=fields)
+    dfres=dfres.append(dfe)
+   
+    """
+    #After append all the evolution MI TOP do this
+    #counts = dfres.groupby(['Position1','Position2']).size()
+    #print counts
+    counts_df = pandas.DataFrame(df_total.groupby(['Position1','Position2']).size().rename('Count'))
+    print counts_df
+    sorted_df=counts_df.sort_values(by=['Count'],ascending=[False])
+    print sorted_df
+    sorted_df['ProbContact']=pandas.Series(0.0, index=sorted_df.index)
+    prob_contact_map = util.load_contact_map(family_folder + "/prob_contact_map.dat",np.float64)
+    print prob_contact_map
+    for index,mi_par in sorted_df.iterrows():
+        #print mi_par
+        pos1 = int(index[0]-1)
+        pos2 = int(index[1]-1)
+        v=prob_contact_map[pos1][pos2]
+        sorted_df.set_value(index, 'ProbContact' , v)
+        #sorted_df[index]['ProbContact']=v
+    sorted_df.to_csv(family_folder + "/top_family_mi.csv", sep='\t', encoding='utf-8')
+    print sorted_df
+    
+
+                     
 '''
 Not in use.
 '''    

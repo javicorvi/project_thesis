@@ -11,7 +11,7 @@ import csv
 import glob
 import zipfile
 import pandas
-
+import logging
 def load_zmip(zmip_result_path,window_mi_neightboards=0):
     column = []
     file = open(zmip_result_path)
@@ -73,8 +73,8 @@ def sincronize_natural_evol_msas(input_folder,output_folder,pattern_array,reg_in
     print "sincronize_natural_evol_alignments"
     print("--- %s seconds ---" % (time.time() - start_time))
 
-def load_contact_map(contact_map_path):
-    cmap = np.loadtxt(contact_map_path, dtype='i4')
+def load_contact_map(contact_map_path, dtype='i4'):
+    cmap = np.loadtxt(contact_map_path, dtype=dtype)
     np.set_printoptions(threshold='nan')
     return cmap
 def load_contact_map_deprecated(contact_map_path):
@@ -159,14 +159,20 @@ def zip_files(files_pattern):
         zf = zipfile.ZipFile(f+'.zip', mode='w')
         zf.write(f)       
         
-        
+"""
+Retorna los PDB/Proteinas a evolucionar.  
+Se queda con un pdb por cluster para evitar redundancia.
+Con el primer PDB encontrado del cluster
+"""        
 def find_pdb_to_evolve(family_pdb_information):
     #fields = ["pdb"]
     fields = ['seq',"pdb","chain","cluster","n_residues"]
     df = pandas.read_csv(family_pdb_information,header=0,usecols=fields)
+    logging.info("Cantidad Total Proteinas/PDB: " + str(len(df.index)))
     df=df.sort(["cluster","pdb"])
     df=df.groupby("cluster").first()
-    print df
+    #print df
+    logging.info("Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):" + str(len(df.index)))
     return df
 '''    
 import math, string, sys, fileinput
