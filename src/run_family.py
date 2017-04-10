@@ -73,7 +73,7 @@ execute_joined_pdb_analisys = False
 '''
 Pattern to execute process
 '''
-pattern=["sequences"]
+pattern=["sequences"] 
 
 '''
 Iterates over the structures, pdbs and execute the scpe and the clusterization 
