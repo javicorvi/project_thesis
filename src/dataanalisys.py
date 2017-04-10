@@ -15,6 +15,7 @@ import msa
 from sklearn.datasets.california_housing import TARGET_FILENAME
 import constants as cons
 import pandas 
+import logging
 '''
 Calculate the AUC.  
 For the protein family (fasta_path) and the contact_map calculates the AUC. 

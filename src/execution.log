@@ -236,3 +236,11 @@ WARNING:root:And this, too
 2017-04-10 17:12:25,994 - INFO - run_family.py - run_families_evol - PF00085 
 2017-04-10 17:12:25,999 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
 2017-04-10 17:12:26,005 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-04-10 18:28:27,591 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-04-10 18:28:27,592 - INFO - run_family.py - run_families_evol - PF00085 
+2017-04-10 18:28:27,596 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-04-10 18:28:27,604 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-04-10 18:29:08,614 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-04-10 18:29:12,179 - INFO - run_family.py - run_families_evol - PF00085 
+2017-04-10 18:29:16,086 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-04-10 18:29:16,094 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
