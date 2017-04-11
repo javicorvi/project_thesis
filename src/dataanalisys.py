@@ -401,10 +401,12 @@ def comparative_conservation(family_folder):
     family_folder_pdb = family_folder+"/PDB/"
     #[ name for name in os.listdir(thedir) if os.path.isdir(os.path.join(thedir, name)) ]
     msas_entropy=[]
+    msa_entropy_media=[]
     msa_label=[]
     df=msa.read_conservation(natural_msa_conservation)
     msa_entropy = [df['Entropy'].tolist(),"PF00085_NATURAL"]
     msas_entropy.append(msa_entropy)
+    cant=0
     for protein_pdb in os.listdir(family_folder_pdb):
        if(os.path.isdir(family_folder_pdb + protein_pdb)): 
            conservation_file = family_folder_pdb + protein_pdb + "/clustered_sequences/information/*kl.csv"
@@ -412,7 +414,18 @@ def comparative_conservation(family_folder):
            df=msa.read_conservation(conservation_file[0])
            msa_entropy = [df['Entropy'].tolist(),protein_pdb]
            msas_entropy.append(msa_entropy)
-    plot.conservation_between_msas(msas_entropy,family_folder + "/conservation.png")   
+           if(cant==0):
+               msa_entropy_media = df['Entropy'].tolist()
+           else:
+               msa_entropy_media = [x + y for x, y in zip(msa_entropy_media , df['Entropy'].tolist() )]
+           cant=cant+1
+    msa_entropy_media =   [x / cant  for x in msa_entropy_media]     
+    plot.conservation_between_msas(msas_entropy,family_folder + "/conservation.png")  
+    msas_entropy=[]
+    msa_entropy = [df['Entropy'].tolist(),"PF00085_NATURAL"]
+    msas_entropy.append(msa_entropy)
+    msas_entropy.append([msa_entropy_media,"MEDIA"])
+    plot.conservation_between_msas(msas_entropy,family_folder + "/conservation_media.png") 
 """
 Esta funcion toma el top de MI de todas las proteinas evolucionadas y luego realiza una agrupacion indicando la cantidad de veces que aparecen los pares.
 Ordena los pares de forma descendente, osea los pares que mas aparecen en el top quedan arriba. 

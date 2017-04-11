@@ -234,16 +234,16 @@ def contacts_with_mi_desarrollo(x_nat_t,y_evol_t,y_evol2_t,x_nat_f,y_evol_f,y_ev
 '''
 Plot the conservation of the MSA evolutionated and the Natural MSA
 '''
-def conservation_between_msas(msas_entropy, output_file):
+def conservation_between_msas(msas_entropy, output_file,natural_line_style='-'):
     for index,msa_entropy in enumerate(msas_entropy):
         if(index==0):
-            plt.plot(msa_entropy[0],color=np.random.rand(3,1), label=msa_entropy[1],linewidth=5,linestyle='--')
+            plt.plot(msa_entropy[0],color=np.random.rand(3,1), label=msa_entropy[1],linewidth=5,linestyle=natural_line_style)
         else:
             plt.plot(msa_entropy[0],color=np.random.rand(3,1), label=msa_entropy[1])
     plt.ylabel('Bits Entropy')
     plt.xlabel('Position')
     plt.legend(loc=1,prop={'size':10},title="PDB")
-    plt.savefig(output_file)
+    #plt.savefig(output_file)
     plt.show()  
     plt.gcf().clear()
 
