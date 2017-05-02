@@ -575,3 +575,91 @@ WARNING:root:And this, too
 2017-05-02 13:50:11,716 - INFO - dataanalisys.py - comparative_mi_information - Begin of the execution process family MI information 
 2017-05-02 13:50:38,127 - INFO - run_family.py - run_families_evol - End of the execution process 
 2017-05-02 13:50:38,133 - INFO - run_family.py - run_families_evol - Time of Execution --- 41.5899600983 seconds --- 
+2017-05-02 15:25:11,996 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-02 15:25:11,996 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-02 15:25:12,048 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-02 15:25:12,083 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-02 15:57:57,919 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-02 15:57:57,919 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-02 15:57:57,923 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-02 15:57:57,935 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-02 15:58:47,514 - INFO - dataanalisys.py - comparative_mi_information - Begin of the execution process family MI information 
+2017-05-02 15:59:05,810 - INFO - run_family.py - run_families_evol - End of the execution process 
+2017-05-02 15:59:05,811 - INFO - run_family.py - run_families_evol - Time of Execution --- 67.8916559219 seconds --- 
+2017-05-02 15:59:25,024 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-02 15:59:25,024 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-02 15:59:25,029 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-02 15:59:25,039 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-02 15:59:49,415 - INFO - dataanalisys.py - comparative_mi_information - Begin of the execution process family MI information 
+2017-05-02 17:38:18,126 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-02 17:38:18,127 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-02 17:38:18,131 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-02 17:38:18,142 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-02 17:39:46,143 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-02 17:39:46,143 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-02 17:39:46,147 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-02 17:39:46,159 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-02 17:40:28,505 - INFO - dataanalisys.py - comparative_mi_information - Begin of the execution process family MI information 
+2017-05-02 17:40:35,715 - INFO - run_family.py - run_families_evol - End of the execution process 
+2017-05-02 17:40:35,715 - INFO - run_family.py - run_families_evol - Time of Execution --- 49.5723228455 seconds --- 
+2017-05-02 17:43:13,308 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-02 17:43:13,309 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-02 17:43:13,313 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-02 17:43:13,324 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-02 17:49:30,368 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-02 17:49:30,369 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-02 17:49:30,373 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-02 17:49:30,384 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-02 17:51:28,776 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-02 17:51:28,776 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-02 17:51:28,781 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-02 17:51:28,792 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-02 17:54:10,014 - INFO - dataanalisys.py - comparative_mi_information - Begin of the execution process family MI information 
+2017-05-02 17:54:16,541 - INFO - run_family.py - run_families_evol - End of the execution process 
+2017-05-02 17:54:16,541 - INFO - run_family.py - run_families_evol - Time of Execution --- 167.764850855 seconds --- 
+2017-05-02 17:55:58,726 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-02 17:55:58,726 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-02 17:55:58,730 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-02 17:55:58,741 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-02 17:58:22,268 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-02 17:58:22,268 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-02 17:58:22,272 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-02 17:58:22,283 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-02 18:00:26,398 - INFO - dataanalisys.py - comparative_mi_information - Begin of the execution process family MI information 
+2017-05-02 18:00:32,184 - INFO - run_family.py - run_families_evol - End of the execution process 
+2017-05-02 18:00:32,184 - INFO - run_family.py - run_families_evol - Time of Execution --- 129.916249037 seconds --- 
+2017-05-02 18:03:02,364 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-02 18:03:02,364 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-02 18:03:02,367 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-02 18:03:02,371 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-02 18:04:15,932 - INFO - dataanalisys.py - comparative_mi_information - Begin of the execution process family MI information 
+2017-05-02 18:04:20,112 - INFO - run_family.py - run_families_evol - End of the execution process 
+2017-05-02 18:04:20,112 - INFO - run_family.py - run_families_evol - Time of Execution --- 77.748210907 seconds --- 
+2017-05-02 18:07:15,851 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-02 18:07:15,851 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-02 18:07:15,854 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-02 18:07:15,858 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-02 18:10:21,478 - INFO - dataanalisys.py - comparative_mi_information - Begin of the execution process family MI information 
+2017-05-02 18:10:25,762 - INFO - run_family.py - run_families_evol - End of the execution process 
+2017-05-02 18:10:25,762 - INFO - run_family.py - run_families_evol - Time of Execution --- 189.911064148 seconds --- 
+2017-05-02 18:10:29,738 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-02 18:10:29,739 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-02 18:10:29,741 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-02 18:10:29,745 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-02 18:24:39,762 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-02 18:24:39,762 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-02 18:24:39,766 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-02 18:24:39,777 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-02 18:24:58,585 - INFO - dataanalisys.py - comparative_mi_information - Begin of the execution process family MI information 
+2017-05-02 18:28:42,156 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-02 18:28:42,156 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-02 18:28:42,160 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-02 18:28:42,171 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-02 18:28:54,671 - INFO - dataanalisys.py - comparative_mi_information - Begin of the execution process family MI information 
+2017-05-02 18:30:19,318 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-02 18:30:19,318 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-02 18:30:19,322 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-02 18:30:19,333 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-02 18:30:32,705 - INFO - dataanalisys.py - comparative_mi_information - Begin of the execution process family MI information 
+2017-05-02 18:31:02,239 - INFO - run_family.py - run_families_evol - End of the execution process 
+2017-05-02 18:31:02,240 - INFO - run_family.py - run_families_evol - Time of Execution --- 42.9215171337 seconds --- 

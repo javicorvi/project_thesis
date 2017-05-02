@@ -111,7 +111,7 @@ def run_families_evol():
         if(execute_joined_pdb_analisys):
             dataanalisys.comparative_conservation(input_families_folder + family_folder, family_folder, pdb_to_evol_df)
             dataanalisys.sum_contact_map(input_families_folder + family_folder, pdb_to_evol_df)
-            dataanalisys.comparative_mi_information(input_families_folder + family_folder, 2 ,window, pdb_to_evol_df)  
+            dataanalisys.comparative_mi_information(input_families_folder + family_folder, family_folder , 2 ,window, pdb_to_evol_df)  
     logging.info('End of the execution process')
     logging.info('Time of Execution --- %s seconds ---' % (time.time() - start_time))
 

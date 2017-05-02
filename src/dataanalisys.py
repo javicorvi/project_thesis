@@ -20,6 +20,7 @@ import logging
 Calculate the AUC.  
 For the protein family (fasta_path) and the contact_map calculates the AUC. 
 '''
+#interpolate false
 def auc(fasta_path,contact_map):
     start_time = time.time()
     print "auc"
@@ -400,8 +401,8 @@ def comparative_conservation(family_folder, family_name, pdb_to_evol_df):
     #[ name for name in os.listdir(thedir) if os.path.isdir(os.path.join(thedir, name)) ]
     msas_entropy=[]
     msa_entropy_media=[]
-    msa_label=[]
     df=msa.read_conservation(natural_msa_conservation)
+    df = df.dropna()
     msa_entropy = [df['Entropy'].tolist(),family_name + "_NATURAL"]
     msas_entropy.append(msa_entropy)
     cant=0
@@ -411,6 +412,7 @@ def comparative_conservation(family_folder, family_name, pdb_to_evol_df):
             conservation_file = pdb_folder + "/clustered_sequences/information/*kl.csv"
             conservation_file = glob.glob(conservation_file) 
             df=msa.read_conservation(conservation_file[0])
+            df = df.dropna()
             msa_entropy = [df['Entropy'].tolist(),pdb_folder]
             msas_entropy.append(msa_entropy)
             if(cant==0):
@@ -420,8 +422,11 @@ def comparative_conservation(family_folder, family_name, pdb_to_evol_df):
             cant=cant+1
     msa_entropy_media =   [x / cant  for x in msa_entropy_media]     
     plot.conservation_between_msas(msas_entropy,family_folder + "/conservation.png")  
+    #Media Graphic with natural
     msas_entropy=[]
-    msa_entropy = [df['Entropy'].tolist(),family_name+"_NATURAL"]
+    df=msa.read_conservation(natural_msa_conservation)
+    df = df.dropna()
+    msa_entropy = [df['Entropy'].tolist(),family_name + "_NATURAL"]
     msas_entropy.append(msa_entropy)
     msas_entropy.append([msa_entropy_media,"MEDIA"])
     plot.conservation_between_msas(msas_entropy,family_folder + "/conservation_media.png") 
@@ -430,7 +435,7 @@ Esta funcion toma el top de MI de todas las proteinas evolucionadas y luego real
 Ordena los pares de forma descendente, osea los pares que mas aparecen en el top quedan arriba. 
 Ademas se agrega la columna indicando la probabilidad de contacto que existen entre ellos.
 """
-def comparative_mi_information(family_folder,top, window, pdb_to_evol_df):     
+def comparative_mi_information(family_folder, family_name,top, window, pdb_to_evol_df):     
     import matplotlib.pyplot as plt      
     logging.info('Begin of the execution process family MI information')
     family_folder_pdb = family_folder+"/PDB/"
@@ -496,15 +501,27 @@ def comparative_mi_information(family_folder,top, window, pdb_to_evol_df):
         prob_top = mi_par['Count'] * 100 / cant 
         sorted_df.set_value(index, 'ProbTop' , prob_top/100)
         #sorted_df[index]['ProbContact']=v
+    
+    
     sorted_df.to_csv(family_folder + "/top_family_mi.csv", sep='\t', encoding='utf-8')
     
+    
+    correlation_p = sorted_df['ProbContact'].corr(sorted_df['ProbTop'], method='pearson')
+    correlation_k = sorted_df['ProbContact'].corr(sorted_df['ProbTop'], method='kendall')
+    correlation_s = sorted_df['ProbContact'].corr(sorted_df['ProbTop'], method='spearman')
+    
+    '''correlation_sp = df.corr(method='pearson')
+    correlation_sp = df.corr(method='kendall')
+    correlation_sp = df.corr(method='spearman')
+    '''
     mean = sorted_df["ProbTop"].mean()
     median = sorted_df["ProbTop"].median()
     var = sorted_df["ProbTop"].var()
     mode = sorted_df["ProbTop"].mode()
-    
     sorted_df.plot.scatter(x='ProbTop', y='ProbContact');
-    plt.show();
+    plt.savefig(family_folder + "/top_family_mi.png");
+    plt.show()
+    plt.gcf().clear()
     print sorted_df
     
 
