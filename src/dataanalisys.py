@@ -430,7 +430,8 @@ Esta funcion toma el top de MI de todas las proteinas evolucionadas y luego real
 Ordena los pares de forma descendente, osea los pares que mas aparecen en el top quedan arriba. 
 Ademas se agrega la columna indicando la probabilidad de contacto que existen entre ellos.
 """
-def comparative_mi_information(family_folder,top, window, pdb_to_evol_df):           
+def comparative_mi_information(family_folder,top, window, pdb_to_evol_df):     
+    import matplotlib.pyplot as plt      
     logging.info('Begin of the execution process family MI information')
     family_folder_pdb = family_folder+"/PDB/"
     #for protein_pdb in os.listdir(family_folder_pdb):
@@ -485,21 +486,16 @@ def comparative_mi_information(family_folder,top, window, pdb_to_evol_df):
     sorted_df['ProbTop']=pandas.Series(0.0, index=sorted_df.index)
     prob_contact_map = util.load_contact_map(family_folder + "/prob_contact_map.dat",np.float64)
     print prob_contact_map
-    #por bug es 66
-    cant = 66
     for index,mi_par in sorted_df.iterrows():
         #por bug arreglar
         #print mi_par
         pos1 = int(index[0]-1)
         pos2 = int(index[1]-1)
-        if(pos2<=68):
-            v=prob_contact_map[pos1][pos2]
-            sorted_df.set_value(index, 'ProbContact' , v)
-            prob_top = mi_par['Count'] * 100 / cant 
-            sorted_df.set_value(index, 'ProbTop' , prob_top/100)
-            #sorted_df[index]['ProbContact']=v
-        else:
-            print ""    
+        v=prob_contact_map[pos1][pos2]
+        sorted_df.set_value(index, 'ProbContact' , v)
+        prob_top = mi_par['Count'] * 100 / cant 
+        sorted_df.set_value(index, 'ProbTop' , prob_top/100)
+        #sorted_df[index]['ProbContact']=v
     sorted_df.to_csv(family_folder + "/top_family_mi.csv", sep='\t', encoding='utf-8')
     
     mean = sorted_df["ProbTop"].mean()
@@ -508,6 +504,7 @@ def comparative_mi_information(family_folder,top, window, pdb_to_evol_df):
     mode = sorted_df["ProbTop"].mode()
     
     sorted_df.plot.scatter(x='ProbTop', y='ProbContact');
+    plt.show();
     print sorted_df
     
 

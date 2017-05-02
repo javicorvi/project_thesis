@@ -107,7 +107,7 @@ def run_families_evol():
         if(execute_family_evol):
             family_evol(input_families_folder, family_folder, pdb_to_evol_df)
         
-        validate_pdb_evolution(input_families_folder + family_folder, pdb_to_evol_df)
+        pdb_to_evol_df = validate_pdb_evolution(input_families_folder + family_folder, pdb_to_evol_df)
         if(execute_joined_pdb_analisys):
             dataanalisys.comparative_conservation(input_families_folder + family_folder, family_folder, pdb_to_evol_df)
             dataanalisys.sum_contact_map(input_families_folder + family_folder, pdb_to_evol_df)
@@ -122,8 +122,9 @@ def validate_pdb_evolution(family_folder, pdb_to_evol_df):
         if(os.path.isdir(pdb_folder)):
             contact_map = pdb_folder + "/contact_map.dat"
             cmap = util.load_contact_map(contact_map)
-            if(cmap.shape[0]!=69):
+            if(cmap.shape[0]!=69):#fix load natura size
                 pdb_to_evol_df=pdb_to_evol_df.drop(index)
+    return pdb_to_evol_df           
 def family_evol(input_families_folder, family_folder, pdb_to_evol_df):
     start_time = time.time()
     try:
