@@ -92,6 +92,7 @@ def read_conservation(file_conservation_path):
     print file_conservation_path
     fields=["#","Entropy"]
     df = pandas.read_csv(file_conservation_path, delim_whitespace=True,header=7,usecols=fields)
+    #df.shape[0]
     print "msa_information"
     print("--- %s seconds ---" % (time.time() - start_time))
     return df

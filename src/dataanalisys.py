@@ -363,30 +363,28 @@ def top_rank_desa(x,evol1,evol2,top,contact_map,outputpath,filename,result_file)
 '''
 Toma todas las matrices de contactos de todas la proteinas evolucionadas,  retorna una matriz con la sumas y otra matriz con las probabilidad de los contactos.
 '''
-def sum_contact_map(family_folder):
+def sum_contact_map(family_folder,pdb_to_evol_df):
     family_folder_pdb = family_folder+"/PDB/"
     cmap_sum = None
-    pdb_cant=0
-    for protein_pdb in os.listdir(family_folder_pdb):
-       if(os.path.isdir(family_folder_pdb + protein_pdb)):
-           contact_map = family_folder_pdb + protein_pdb + "/contact_map.dat"
-           pdb_cant = pdb_cant + 1
-           cmap = util.load_contact_map(contact_map)
-           print contact_map
-           if(cmap_sum==None):
-               cmap_sum = cmap
-           else:
-               if(cmap.shape==cmap_sum.shape):
-                   cmap_sum = cmap_sum + cmap
-               else:
-                   pdb_cant = pdb_cant - 1
-                   print " diferent size natural : " + str(cmap_sum.shape)  + " AND " + contact_map + " : " + str(cmap.shape)
+    for index,pdb_protein_to_evolve in pdb_to_evol_df.iterrows():
+        pdb_folder = family_folder_pdb + pdb_protein_to_evolve['pdb_folder_name']
+        if(os.path.isdir(pdb_folder)): 
+            contact_map = pdb_folder + "/contact_map.dat"
+            cmap = util.load_contact_map(contact_map)
+            print contact_map
+            if(cmap_sum==None):
+                cmap_sum = cmap
+            else:
+                if(cmap.shape==cmap_sum.shape):
+                    cmap_sum = cmap_sum + cmap
+                else:
+                    print " diferent size natural : " + str(cmap_sum.shape)  + " AND " + contact_map + " : " + str(cmap.shape)
+                    #pdb_to_evol_df=pdb_to_evol_df.drop(index)
     #print cmap_sum 
     util.save_contact_map(cmap_sum, family_folder + "/sum_contact_map.dat")
     cmap_sum = cmap_sum.astype(float)
-    camp_prob = cmap_sum / pdb_cant
+    camp_prob = cmap_sum / pdb_to_evol_df.shape[0]
     #print camp_prob   
-    print "cantidad de PDB analizados " + str(pdb_cant)
     util.save_contact_map(camp_prob, family_folder + "/prob_contact_map.dat") 
     plot.contact_map(camp_prob,family_folder + "/prob_contact_map.png")
     conserved_contacts = np.count_nonzero(camp_prob == 1.0)  
@@ -396,33 +394,34 @@ Lee la informacion sobre consevacion (KL) por columna de cada una de las protein
 No se esta aplicando ningun entrecruzamiento de la informacion.
 Solamente se esta ploteando la conservacion por columna para cada una de las proteinas (el grafico no puede apreciar resultados concretos)  
 """    
-def comparative_conservation(family_folder):
-    natural_msa_conservation= family_folder + "/PF00085.fasta_data_kl.csv"
+def comparative_conservation(family_folder, family_name, pdb_to_evol_df):
+    natural_msa_conservation= family_folder + "/"+family_name+".fasta_data_kl.csv"
     family_folder_pdb = family_folder+"/PDB/"
     #[ name for name in os.listdir(thedir) if os.path.isdir(os.path.join(thedir, name)) ]
     msas_entropy=[]
     msa_entropy_media=[]
     msa_label=[]
     df=msa.read_conservation(natural_msa_conservation)
-    msa_entropy = [df['Entropy'].tolist(),"PF00085_NATURAL"]
+    msa_entropy = [df['Entropy'].tolist(),family_name + "_NATURAL"]
     msas_entropy.append(msa_entropy)
     cant=0
-    for protein_pdb in os.listdir(family_folder_pdb):
-       if(os.path.isdir(family_folder_pdb + protein_pdb)): 
-           conservation_file = family_folder_pdb + protein_pdb + "/clustered_sequences/information/*kl.csv"
-           conservation_file = glob.glob(conservation_file) 
-           df=msa.read_conservation(conservation_file[0])
-           msa_entropy = [df['Entropy'].tolist(),protein_pdb]
-           msas_entropy.append(msa_entropy)
-           if(cant==0):
-               msa_entropy_media = df['Entropy'].tolist()
-           else:
-               msa_entropy_media = [x + y for x, y in zip(msa_entropy_media , df['Entropy'].tolist() )]
-           cant=cant+1
+    for index,pdb_protein_to_evolve in pdb_to_evol_df.iterrows():
+        pdb_folder = family_folder_pdb + pdb_protein_to_evolve['pdb_folder_name']
+        if(os.path.isdir(pdb_folder)): 
+            conservation_file = pdb_folder + "/clustered_sequences/information/*kl.csv"
+            conservation_file = glob.glob(conservation_file) 
+            df=msa.read_conservation(conservation_file[0])
+            msa_entropy = [df['Entropy'].tolist(),pdb_folder]
+            msas_entropy.append(msa_entropy)
+            if(cant==0):
+                msa_entropy_media = df['Entropy'].tolist()
+            else:
+                msa_entropy_media = [x + y for x, y in zip(msa_entropy_media , df['Entropy'].tolist() )]
+            cant=cant+1
     msa_entropy_media =   [x / cant  for x in msa_entropy_media]     
     plot.conservation_between_msas(msas_entropy,family_folder + "/conservation.png")  
     msas_entropy=[]
-    msa_entropy = [df['Entropy'].tolist(),"PF00085_NATURAL"]
+    msa_entropy = [df['Entropy'].tolist(),family_name+"_NATURAL"]
     msas_entropy.append(msa_entropy)
     msas_entropy.append([msa_entropy_media,"MEDIA"])
     plot.conservation_between_msas(msas_entropy,family_folder + "/conservation_media.png") 
@@ -431,23 +430,25 @@ Esta funcion toma el top de MI de todas las proteinas evolucionadas y luego real
 Ordena los pares de forma descendente, osea los pares que mas aparecen en el top quedan arriba. 
 Ademas se agrega la columna indicando la probabilidad de contacto que existen entre ellos.
 """
-def comparative_mi_information(family_folder,top, window):           
+def comparative_mi_information(family_folder,top, window, pdb_to_evol_df):           
     logging.info('Begin of the execution process family MI information')
     family_folder_pdb = family_folder+"/PDB/"
     #for protein_pdb in os.listdir(family_folder_pdb):
-   
     fields=["Position1","Position2","Count"]
     df_total = pandas.DataFrame([],columns=fields)
-    for protein_pdb in os.listdir(family_folder_pdb):
-        if(os.path.isdir(family_folder_pdb + protein_pdb)): 
-            zmip_file_pattern = family_folder_pdb + protein_pdb + "/mi_data/zmipsequences*.dat"
+    cant = 0
+    for index,pdb_protein_to_evolve in pdb_to_evol_df.iterrows():
+        pdb_folder = family_folder_pdb + pdb_protein_to_evolve['pdb_folder_name']
+        if(os.path.isdir(pdb_folder)): 
+            zmip_file_pattern = pdb_folder + "/mi_data/zmipsequences*.dat"
             zmip_file = glob.glob(zmip_file_pattern) 
             if(len(zmip_file)==0):
-                logging.error('No existe archivo de informacion mutua de la familia ' + protein_pdb)
+                logging.error('No existe archivo de informacion mutua de la familia ' + pdb_folder)
                 return
             if(len(zmip_file)>1):
-                logging.error('Existe mas de un archivo de informacion mutua de la familia ' + protein_pdb)
+                logging.error('Existe mas de un archivo de informacion mutua de la familia ' + pdb_folder)
                 return
+            cant = cant + 1
             zmip_evol = util.load_zmip(zmip_file[0],window)
             util.order(zmip_evol)
             num = len(zmip_evol)*top/100
@@ -481,16 +482,32 @@ def comparative_mi_information(family_folder,top, window):
     sorted_df=counts_df.sort_values(by=['Count'],ascending=[False])
     print sorted_df
     sorted_df['ProbContact']=pandas.Series(0.0, index=sorted_df.index)
+    sorted_df['ProbTop']=pandas.Series(0.0, index=sorted_df.index)
     prob_contact_map = util.load_contact_map(family_folder + "/prob_contact_map.dat",np.float64)
     print prob_contact_map
+    #por bug es 66
+    cant = 66
     for index,mi_par in sorted_df.iterrows():
+        #por bug arreglar
         #print mi_par
         pos1 = int(index[0]-1)
         pos2 = int(index[1]-1)
-        v=prob_contact_map[pos1][pos2]
-        sorted_df.set_value(index, 'ProbContact' , v)
-        #sorted_df[index]['ProbContact']=v
+        if(pos2<=68):
+            v=prob_contact_map[pos1][pos2]
+            sorted_df.set_value(index, 'ProbContact' , v)
+            prob_top = mi_par['Count'] * 100 / cant 
+            sorted_df.set_value(index, 'ProbTop' , prob_top/100)
+            #sorted_df[index]['ProbContact']=v
+        else:
+            print ""    
     sorted_df.to_csv(family_folder + "/top_family_mi.csv", sep='\t', encoding='utf-8')
+    
+    mean = sorted_df["ProbTop"].mean()
+    median = sorted_df["ProbTop"].median()
+    var = sorted_df["ProbTop"].var()
+    mode = sorted_df["ProbTop"].mode()
+    
+    sorted_df.plot.scatter(x='ProbTop', y='ProbContact');
     print sorted_df
     
 

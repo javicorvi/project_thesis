@@ -106,13 +106,24 @@ def run_families_evol():
         
         if(execute_family_evol):
             family_evol(input_families_folder, family_folder, pdb_to_evol_df)
+        
+        validate_pdb_evolution(input_families_folder + family_folder, pdb_to_evol_df)
         if(execute_joined_pdb_analisys):
-            dataanalisys.comparative_conservation(input_families_folder + family_folder)
-            #dataanalisys.sum_contact_map(input_families_folder + family_folder)
-            dataanalisys.comparative_mi_information(input_families_folder + family_folder, 1 ,window)  
+            dataanalisys.comparative_conservation(input_families_folder + family_folder, family_folder, pdb_to_evol_df)
+            dataanalisys.sum_contact_map(input_families_folder + family_folder, pdb_to_evol_df)
+            dataanalisys.comparative_mi_information(input_families_folder + family_folder, 2 ,window, pdb_to_evol_df)  
     logging.info('End of the execution process')
     logging.info('Time of Execution --- %s seconds ---' % (time.time() - start_time))
-    
+
+def validate_pdb_evolution(family_folder, pdb_to_evol_df):
+    family_folder_pdb = family_folder+"/PDB/"
+    for index,pdb_protein_to_evolve in pdb_to_evol_df.iterrows():
+        pdb_folder = family_folder_pdb + pdb_protein_to_evolve['pdb_folder_name']
+        if(os.path.isdir(pdb_folder)):
+            contact_map = pdb_folder + "/contact_map.dat"
+            cmap = util.load_contact_map(contact_map)
+            if(cmap.shape[0]!=69):
+                pdb_to_evol_df=pdb_to_evol_df.drop(index)
 def family_evol(input_families_folder, family_folder, pdb_to_evol_df):
     start_time = time.time()
     try:

@@ -171,6 +171,7 @@ def find_pdb_to_evolve(family_pdb_information):
     logging.info("Cantidad Total Proteinas/PDB: " + str(len(df.index)))
     df=df.sort(["cluster","pdb"])
     df=df.groupby("cluster").first()
+    df['pdb_folder_name']=df['seq'].str.replace("/","_").str.replace("-","_") + "_" + df['pdb']+"_"+df['chain']
     #print df
     logging.info("Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):" + str(len(df.index)))
     return df
