@@ -75,8 +75,9 @@ def roc_curve(y_true,scores,labels,colors,output_file):
     #for i, (a, b) in enumerate(zip(alist, blist)):
     for i,(label,color) in enumerate(zip(labels, colors)):
         fpr[i], tpr[i], _ = metrics.roc_curve(y_true, scores[i])
+        partial_auc_value_0_1 = partial_auc(fpr[i], tpr[i], 0.1)
         roc_auc[i] = metrics.auc(fpr[i], tpr[i])
-        plt.plot(fpr[i], tpr[i], color=color, lw=lw,label='ROC curve of class {0} (area = {1:0.2f})'''.format(label, roc_auc[i]))
+        plt.plot(fpr[i], tpr[i], color=color, lw=lw,label='ROC curve of class {0} (auc = {1:0.2f} | auc 0.1 = {2:0.2f})'''.format(label, roc_auc[i], partial_auc_value_0_1))
     plt.plot([0, 1], [0, 1], color='black', lw=lw, linestyle='--')
     plt.xlim([0.0, 1.0])
     plt.ylim([0.0, 1.05])
@@ -85,9 +86,23 @@ def roc_curve(y_true,scores,labels,colors,output_file):
     plt.title('ROC CONTACTS MI')
     plt.legend(loc="lower right")
     plt.savefig(output_file)
-    #plt.show()
+    plt.show()
     plt.gcf().clear()
-    
+
+def partial_auc(fpr, tpr, max_fpr):
+    idx = np.where(fpr <= max_fpr)[0]
+    # linearly interpolate the ROC curve until max_fpr
+    idx_last = idx.max()
+    idx_next = idx_last + 1
+    xc = [fpr[idx_last], fpr[idx_next]]
+    yc = [tpr[idx_last], fpr[idx_next]]
+    tpr = np.r_[tpr[idx], np.interp(max_fpr, xc, yc)]
+    fpr = np.r_[fpr[idx], max_fpr]
+    partial_roc = metrics.auc(fpr, tpr, reorder=True)
+    # standardize result to lie between 0.5 and 1
+    min_area = max_fpr**2/2
+    max_area = max_fpr
+    return 0.5*(1+(partial_roc-min_area)/(max_area-min_area))    
 '''
 Generate the plot for the diferents auc taking into account the beta, nsus and runs
 Open the result_auc_path parse all the results and plot them into 4 subplots

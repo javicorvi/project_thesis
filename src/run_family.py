@@ -32,17 +32,17 @@ window = 3
 '''
 Family Evolution
 '''
-execute_family_evol=False
+execute_family_evol=True
 
 '''
 Calculate the MI for the natural MSA putting the protein as the reference
 '''
-execute_natural_mi_msa=True
+execute_natural_mi_msa=False
 
 '''
 Calculate the Conservation of the families natural MSA
 '''
-execute_msa_natural_information=True
+execute_msa_natural_information=False
 '''
 PDBs to evolve. 
 Take each of this structures and run the all process.
@@ -52,14 +52,14 @@ Take each of this structures and run the all process.
 Execute the evolution of the protein with SCPE.
 Generate several families; taking account de parameters beta, nsus and runs 
 '''
-execute_scpe = False
+execute_scpe = True
 beta = ["1.00"]
 run = ["20000"]
 nsus = ["3.0"]
 '''
 Execute the clustering for the families generated with SCPE to avoid redundant sequences with high identity
 '''
-execute_clustering = False
+execute_clustering = True
 '''
 Execute the analisys of the MSA: Seq Logo.
 '''
@@ -75,7 +75,10 @@ execute_dataanalisys = True
 '''
 Execute the analisys of the information between all the PDBS and MSA generated. All together
 '''
-execute_joined_pdb_analisys = True
+execute_joined_pdb_analisys = False
+
+
+execute_download_pdbs=False
 '''
 Pattern to execute process
 '''
@@ -84,13 +87,16 @@ pattern=["sequences"]
 '''
 Iterates over the structures, pdbs and execute the scpe and the clusterization 
 '''        
-input_families_folder="../FAMILIES_2/"
+input_families_folder="../FAMILIES_3/"
 def run_families_evol():
     logging.info('Begin of the execution process')
     start_time = time.time()
     for family_folder in os.listdir(input_families_folder):
         logging.info(family_folder)
         #todo manejar errores
+        
+        
+        
         msa_gz_path=glob.glob(input_families_folder + family_folder+"/*.final.gz")
         if(len(msa_gz_path)==0):
             logging.error('No existe alineamiento de la familia ' + family_folder)
@@ -103,6 +109,9 @@ def run_families_evol():
         aux_path=msa_gz_path.split('/')
         family_pdb_information = aux_path[0]+"/"+aux_path[1]+"/"+aux_path[2] +"/"+aux_path[2]+"_pdb_level.csv" 
         pdb_to_evol_df = util.find_pdb_to_evolve(family_pdb_information)
+        
+        if(execute_download_pdbs):
+            download_pdbs(input_families_folder,family_folder,pdb_to_evol_df)
         
         if(execute_family_evol):
             family_evol(input_families_folder, family_folder, pdb_to_evol_df)
@@ -166,6 +175,10 @@ def family_evol(input_families_folder, family_folder, pdb_to_evol_df):
             file_name_pdb =pdb_protein_to_evolve['seq'].replace("/","_").replace("-","_") + "_" + pdb_protein_to_evolve['pdb']+"_"+pdb_protein_to_evolve['chain'] + sufix
             complete_file_name_pdb = pdb_paths_files + file_name_pdb
             logging.info('Begin of the PDB ' + file_name_pdb)
+            
+            pdb_file_complete_filename_to_evolve =  pdb_paths_files + pdb_protein_to_evolve['pdb_folder_name'] + "/"+pdb_protein_to_evolve['pdb_folder_name']+"_complete.pdb"
+            
+            
             #for pdb_gz in glob.glob(pdb_paths_files):
             #aca arrancar otro try
             #unzip pdb and move to pdb folder
@@ -208,7 +221,7 @@ def family_evol(input_families_folder, family_folder, pdb_to_evol_df):
                 scpe_sequences_file=scpe_sequences+"sequences_"+pdb_file_name
                 
                 if(execute_scpe):
-                    scpe.run(pdb_complete_path,beta,run,nsus,chain_name,scpe_sequences_file,contact_map)
+                    scpe.run(pdb_file_complete_filename_to_evolve,beta,run,nsus,chain_name,scpe_sequences_file,contact_map)
                 if(execute_clustering):
                     msa.clustering("0.62",scpe_sequences, clustered_sequences_path)
                     util.delete_files(scpe_sequences+'*')
@@ -236,7 +249,18 @@ def family_evol(input_families_folder, family_folder, pdb_to_evol_df):
         logging.error('The family was not evolutionated  ' + family_folder)
     logging.info('End family Evol  ' + family_folder)
     logging.info('--- %s seconds ---' % (time.time() - start_time))   
-
+    
+def download_pdbs(input_families_folder, family_folder, pdb_to_evol_df):
+    pdb_paths_files = input_families_folder +  family_folder  +"/PDB/"
+    for index,pdb_protein_to_evolve in pdb_to_evol_df.iterrows():
+        pdb_folder = pdb_paths_files + pdb_protein_to_evolve["pdb_folder_name"]
+        if not os.path.exists(pdb_folder):
+            os.makedirs(pdb_folder)
+        pdb_data = urllib.urlopen('http://files.rcsb.org/download/'+pdb_protein_to_evolve["pdb"]+'.pdb').read()
+        pdb_complete_path=pdb_folder +"/"+pdb_protein_to_evolve["pdb_folder_name"]+"_complete.pdb"
+        pdb_file = open(pdb_complete_path, "w")
+        pdb_file.write(pdb_data)
+        pdb_file.close()
 '''    
     if(execute_auc_process):
         dataanalisys.auc_job(pdb_name,model_name,chain_name,contact_map,clustered_sequences_path,result_auc_file_name,result_auc_path)
