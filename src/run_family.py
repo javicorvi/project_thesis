@@ -219,8 +219,8 @@ def family_evol(input_families_folder, family_folder, pdb_to_evol_df):
                     
                 scpe_sequences_file=scpe_sequences+"sequences_"+pdb_name
                 
-               # if(execute_scpe):
-                #    scpe.run(pdb_file_complete_filename_to_evolve,beta,run,nsus,chain_name,scpe_sequences_file,contact_map)
+                if(execute_scpe):
+                    scpe.run(pdb_file_complete_filename_to_evolve,beta,run,nsus,chain_name,scpe_sequences_file,contact_map)
                 if(execute_clustering):
                     msa.clustering("0.62",scpe_sequences, clustered_sequences_path)
                     util.delete_files(scpe_sequences+'*')
