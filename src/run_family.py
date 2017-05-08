@@ -71,7 +71,7 @@ execute_mi = True
 '''
 Execute the analisys of the information
 '''
-execute_dataanalisys = True
+execute_dataanalisys = False
 '''
 Execute the analisys of the information between all the PDBS and MSA generated. All together
 '''
@@ -87,7 +87,7 @@ pattern=["sequences"]
 '''
 Iterates over the structures, pdbs and execute the scpe and the clusterization 
 '''        
-input_families_folder="../FAMILIES_3/"
+input_families_folder="../FAMILIES_TO_EVOL/"
 def run_families_evol():
     logging.info('Begin of the execution process')
     start_time = time.time()
@@ -171,11 +171,10 @@ def family_evol(input_families_folder, family_folder, pdb_to_evol_df):
         #pdb_to_evol_df = util.find_pdb_to_evolve(family_pdb_information)
         logging.info('Begin of the PDBs Evolution ')
         for index,pdb_protein_to_evolve in pdb_to_evol_df.iterrows():
-            p=pdb_protein_to_evolve['pdb']
+            pdb_name=pdb_protein_to_evolve['pdb']
             file_name_pdb =pdb_protein_to_evolve['seq'].replace("/","_").replace("-","_") + "_" + pdb_protein_to_evolve['pdb']+"_"+pdb_protein_to_evolve['chain'] + sufix
             complete_file_name_pdb = pdb_paths_files + file_name_pdb
             logging.info('Begin of the PDB ' + file_name_pdb)
-            
             pdb_file_complete_filename_to_evolve =  pdb_paths_files + pdb_protein_to_evolve['pdb_folder_name'] + "/"+pdb_protein_to_evolve['pdb_folder_name']+"_complete.pdb"
             
             
@@ -218,10 +217,10 @@ def family_evol(input_families_folder, family_folder, pdb_to_evol_df):
                     os.makedirs(mi_data_analisys)    
                 
                     
-                scpe_sequences_file=scpe_sequences+"sequences_"+pdb_file_name
+                scpe_sequences_file=scpe_sequences+"sequences_"+pdb_name
                 
-                if(execute_scpe):
-                    scpe.run(pdb_file_complete_filename_to_evolve,beta,run,nsus,chain_name,scpe_sequences_file,contact_map)
+               # if(execute_scpe):
+                #    scpe.run(pdb_file_complete_filename_to_evolve,beta,run,nsus,chain_name,scpe_sequences_file,contact_map)
                 if(execute_clustering):
                     msa.clustering("0.62",scpe_sequences, clustered_sequences_path)
                     util.delete_files(scpe_sequences+'*')

@@ -42,7 +42,7 @@ def clustering(clust, input_folder, output_folder, pattern_array=[".fasta"]):
             filenameclust = filename + "_"+clust + ".cluster"
             print(filenameclust)
             try:
-                call(["cdhit", "-i" , input_folder+"/"+filename ,"-o", output_folder+"/"+filenameclust,"-c",clust,"-n", "4", "-M", "3000"])
+                call(["cdhit", "-i" , input_folder+"/"+filename ,"-o", output_folder+"/"+filenameclust,"-c",clust,"-n", "4", "-M", "6000"])
             except Exception:
                 print "The clusterization  get an exception with de pdb file " + input_folder+"/"+filename
                 raise Exception ("The clusterization  get an exception with de pdb file " + input_folder+"/"+filename)    
