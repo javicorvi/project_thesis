@@ -50,6 +50,9 @@ def clustering(clust, input_folder, output_folder, pattern_array=[".fasta"]):
     print "clustering_ends"
     print("--- %s seconds ---" % (time.time() - start_time))
 
+'''
+Crea los logo shannon y kl 
+'''
 def msa_information_process(input_folder, output_folder, pattern_array=[".cluster"]):
     start_time = time.time()
     print "msa_information_process"

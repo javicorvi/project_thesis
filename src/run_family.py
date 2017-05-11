@@ -28,7 +28,7 @@ rootLogger.addHandler(consoleHandler)
 #4  if(atom[j].sequential < thisresidue-3 || atom[j].sequential > thisresidue+3) w=0
 #5 if(atom[j].sequential < thisresidue-1 || atom[j].sequential > thisresidue+1) w=0
  
-window = 3
+window = 1
 '''
 Family Evolution
 '''
@@ -43,23 +43,19 @@ execute_natural_mi_msa=False
 Calculate the Conservation of the families natural MSA
 '''
 execute_msa_natural_information=False
-'''
-PDBs to evolve. 
-Take each of this structures and run the all process.
-'''
 
 '''
 Execute the evolution of the protein with SCPE.
 Generate several families; taking account de parameters beta, nsus and runs 
 '''
-execute_scpe = True
+execute_scpe = False
 beta = ["1.00"]
 run = ["20000"]
 nsus = ["3.0"]
 '''
 Execute the clustering for the families generated with SCPE to avoid redundant sequences with high identity
 '''
-execute_clustering = True
+execute_clustering = False
 '''
 Execute the analisys of the MSA: Seq Logo.
 '''
@@ -77,6 +73,11 @@ Execute the analisys of the information between all the PDBS and MSA generated. 
 '''
 execute_joined_pdb_analisys = False
 
+'''
+Recorta el msa
+'''
+execute_cut_msa = True
+
 
 execute_download_pdbs=False
 '''
@@ -87,7 +88,7 @@ pattern=["sequences"]
 '''
 Iterates over the structures, pdbs and execute the scpe and the clusterization 
 '''        
-input_families_folder="../FAMILIES_TO_EVOL/"
+input_families_folder="../FAMILIES_3/"
 def run_families_evol():
     logging.info('Begin of the execution process')
     start_time = time.time()
@@ -197,10 +198,14 @@ def family_evol(input_families_folder, family_folder, pdb_to_evol_df):
                 chain_name = pdb_file_name[-18:-17]
                 #the contact map will be created by scpe 
                 contact_map=pdb_folder+"/contact_map.dat"
+                
+                contact_map_syncronized = pdb_folder+"/contact_map_sync.dat"
                 #the folder to put de evol scpe sequences
                 scpe_sequences=pdb_folder+"/scpe_sequences/"
                 #the folder to put de evol clustered sequences
                 clustered_sequences_path = pdb_folder + "/clustered_sequences/"
+                #the folder to put de evol clustered sequences sincronized
+                sincronized_evol_path = pdb_folder + "/sincronized_evol_path/"
                 #MSA information
                 msa_information_path = clustered_sequences_path + "/information/"
                 mi_data = pdb_folder + "/mi_data/"
@@ -209,6 +214,8 @@ def family_evol(input_families_folder, family_folder, pdb_to_evol_df):
                     os.makedirs(scpe_sequences)
                 if not os.path.exists(clustered_sequences_path):
                     os.makedirs(clustered_sequences_path)
+                if not os.path.exists(sincronized_evol_path):
+                    os.makedirs(sincronized_evol_path)
                 if not os.path.exists(msa_information_path):
                     os.makedirs(msa_information_path)    
                 if not os.path.exists(mi_data):
@@ -216,21 +223,27 @@ def family_evol(input_families_folder, family_folder, pdb_to_evol_df):
                 if not os.path.exists(mi_data_analisys):
                     os.makedirs(mi_data_analisys)    
                 
-                    
                 scpe_sequences_file=scpe_sequences+"sequences_"+pdb_name
-                
                 if(execute_scpe):
                     scpe.run(pdb_file_complete_filename_to_evolve,beta,run,nsus,chain_name,scpe_sequences_file,contact_map)
                 if(execute_clustering):
                     msa.clustering("0.62",scpe_sequences, clustered_sequences_path)
                     util.delete_files(scpe_sequences+'*')
                     util.delete_files(clustered_sequences_path+'*.clstr')
+                if(execute_cut_msa):
+                    util.sincronice_evol_with_cutted_pdb(pdb_complete_path, clustered_sequences_path, sincronized_evol_path, contact_map, contact_map_syncronized)
+                
+                    
+                
+                #if(execute_msa_information):
+                        #msa.msa_information_process(clustered_sequences_path, msa_information_path)
                 if(execute_msa_information):
-                        msa.msa_information_process(clustered_sequences_path, msa_information_path)
+                        msa.msa_information_process(sincronized_evol_path, msa_information_path)        
                         #util.zip_files(clustered_sequences_path+'*.cluster')
                         #util.delete_files(clustered_sequences_path+'*.cluster')
                 if(execute_mi):
-                    dataanalisys.buslje09_(clustered_sequences_path,mi_data)
+                    dataanalisys.buslje09_(sincronized_evol_path,mi_data)
+                
                 if(execute_dataanalisys):
                     dataanalisys.run_analisys(zmip_natural_path, mi_data, pattern, contact_map, mi_data_analisys, window)
                     #create_web_logo('../2trx_s0_w0/clustered_sequences/sequences_2trx_edit-beta1.00-nsus3.00-runs20000.fasta_0.62.cluster', 'loco.png', 'png', 'Logo')    
@@ -260,6 +273,11 @@ def download_pdbs(input_families_folder, family_folder, pdb_to_evol_df):
         pdb_file = open(pdb_complete_path, "w")
         pdb_file.write(pdb_data)
         pdb_file.close()
+
+
+    
+    
+    
 '''    
     if(execute_auc_process):
         dataanalisys.auc_job(pdb_name,model_name,chain_name,contact_map,clustered_sequences_path,result_auc_file_name,result_auc_path)

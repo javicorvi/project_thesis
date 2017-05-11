@@ -73,6 +73,78 @@ def sincronize_natural_evol_msas(input_folder,output_folder,pattern_array,reg_in
     print "sincronize_natural_evol_alignments"
     print("--- %s seconds ---" % (time.time() - start_time))
 
+'''
+Sincroniza y corta los msa evolucionados teniendo en cuenta solo la escructura en comun que existe entre los pdb de la familia
+Recibe el pdf recortado con las posiciones que deben mantenerse luego elimina las posiciones del msa evolucionado.
+'''
+def sincronice_evol_with_cutted_pdb(pdb_complete_path,pdb_cutted_path, clustered_sequences_path, sincronized_evol_path, contact_map_path, sincronized_contact_map):
+    start_time = time.time()
+    print "sincronize_natural_evol_alignments"  
+    with open(pdb_complete_path + '_clean','w') as new_file:
+        with open(pdb_complete_path ) as old_file:
+            for line in old_file:
+                if(line.startswith("hello")):  
+                    new_file.write(line)     
+    old_file.close()
+    new_file.close()
+    df_columnas = pandas.read_csv(pdb_cutted_path, delim_whitespace=True,header=None,usecols=[5])
+    df_columnas=df_columnas.dropna()
+    df_columnas[5] = df_columnas[5].astype('int32')
+    df_columnas=df_columnas.groupby(5).first().reset_index()
+    df_columnas[5] = df_columnas[5].apply(lambda x: x - 1 )
+    count=0
+    for filename in os.listdir(clustered_sequences_path):
+        if filename.endswith(".cluster"):
+            with open(sincronized_evol_path+"/"+filename,'w') as new_file:
+                with open(clustered_sequences_path+"/"+filename) as old_file:
+                    for line in old_file:
+                        if('>' in line):
+                            line = line.replace('\n','_'+str(count)+'\n')
+                            new_file.write(line)
+                            count=count+1
+                        else:
+                            #line = random_char(10000)
+                            #print(line)
+                            #print("\n")
+                            new_line=''
+                            #for i in df_columnas[5]:
+                            #    new_line += line[int(i)]
+                            #print (new_line)
+                            #new_file.write(new_line+'\n')
+                            
+                            '''line2 = line[1]
+                            
+                            line=['d','s','a']
+                            line2=line[1,2]
+                            line2= line[1|2]
+                            l = line
+                            
+                            np_line = np.array(line)
+                            b = np.array([ ['h','e','l','l','o'],['s','n','a','k','e'],['p','l','a','t','e'] ])
+                            b2 = np.array([['s','n','a','k','e']])
+                            b3 = np.array(['h','e','l','l','o'])
+                            #b = np.array([ ['h','e','l','l','o'],['s','n','a','k','e'],['p','l','a','t','e'] ])
+                            #np.delete(np_line, df_columnas[5], axis=1)
+                            new_file.write(np_line+'\n')'''
+            old_file.close()
+            new_file.close()
+    cmap = load_contact_map(contact_map_path)
+    print (cmap.shape)
+    cmap_sync=cmap[np.ix_(df_columnas[5].tolist(),df_columnas[5].tolist())]
+    print (cmap_sync.shape)
+    
+    #cmap_sync = np.delete(cmap, df_columnas[5].tolist(), axis=0)
+    #print (cmap_sync.shape)
+    #cmap_sync = np.delete(cmap_sync, df_columnas[5].tolist(), axis=1)
+    
+    save_contact_map(cmap_sync, sincronized_contact_map)        
+    print "sincronize_natural_evol_alignments"
+    print("--- %s seconds ---" % (time.time() - start_time))
+import random
+import string 
+def random_char(y):
+    return ''.join(random.choice(string.ascii_letters) for x in range(y))
+
 def load_contact_map(contact_map_path, dtype='i4'):
     cmap = np.loadtxt(contact_map_path, dtype=dtype)
     np.set_printoptions(threshold='nan')
@@ -136,6 +208,7 @@ def sincronize_contact_map(contact_map_path, contact_map_output, reg_init, reg_e
     print "sincronize_contact_map"
     print("--- %s seconds ---" % (time.time() - start_time))
     
+
     
 def add_matrix(m1,m2):
     (m, n)=m1.shape
