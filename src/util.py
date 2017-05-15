@@ -77,21 +77,21 @@ def sincronize_natural_evol_msas(input_folder,output_folder,pattern_array,reg_in
 Sincroniza y corta los msa evolucionados teniendo en cuenta solo la escructura en comun que existe entre los pdb de la familia
 Recibe el pdf recortado con las posiciones que deben mantenerse luego elimina las posiciones del msa evolucionado.
 '''
-def sincronice_evol_with_cutted_pdb(pdb_complete_path,pdb_cutted_path, clustered_sequences_path, sincronized_evol_path, contact_map_path, sincronized_contact_map):
+def synchronize_evol_with_cutted_pdb(pdb_complete_path, pdb_cutted_path, clustered_sequences_path, sincronized_evol_path, contact_map_path, sincronized_contact_map):
     start_time = time.time()
     print "sincronize_natural_evol_alignments"  
-    with open(pdb_complete_path + '_clean','w') as new_file:
-        with open(pdb_complete_path ) as old_file:
-            for line in old_file:
-                if(line.startswith("hello")):  
-                    new_file.write(line)     
-    old_file.close()
-    new_file.close()
+    df = pandas.read_csv(pdb_complete_path, delim_whitespace=True,header=None)
+    df=df.loc[df[4] == 'A']
+    df=df.dropna()
+    df[5] = df[5].astype('int32')
+    df=df.groupby(5).first().reset_index()
+    start = df[5].min()
+    end = df[5].max()
     df_columnas = pandas.read_csv(pdb_cutted_path, delim_whitespace=True,header=None,usecols=[5])
     df_columnas=df_columnas.dropna()
     df_columnas[5] = df_columnas[5].astype('int32')
     df_columnas=df_columnas.groupby(5).first().reset_index()
-    df_columnas[5] = df_columnas[5].apply(lambda x: x - 1 )
+    df_columnas[5] = df_columnas[5].apply(lambda x: x - start)
     count=0
     for filename in os.listdir(clustered_sequences_path):
         if filename.endswith(".cluster"):
@@ -103,43 +103,23 @@ def sincronice_evol_with_cutted_pdb(pdb_complete_path,pdb_cutted_path, clustered
                             new_file.write(line)
                             count=count+1
                         else:
-                            #line = random_char(10000)
-                            #print(line)
-                            #print("\n")
-                            new_line=''
-                            #for i in df_columnas[5]:
-                            #    new_line += line[int(i)]
-                            #print (new_line)
-                            #new_file.write(new_line+'\n')
-                            
-                            '''line2 = line[1]
-                            
-                            line=['d','s','a']
-                            line2=line[1,2]
-                            line2= line[1|2]
-                            l = line
-                            
-                            np_line = np.array(line)
-                            b = np.array([ ['h','e','l','l','o'],['s','n','a','k','e'],['p','l','a','t','e'] ])
-                            b2 = np.array([['s','n','a','k','e']])
-                            b3 = np.array(['h','e','l','l','o'])
-                            #b = np.array([ ['h','e','l','l','o'],['s','n','a','k','e'],['p','l','a','t','e'] ])
-                            #np.delete(np_line, df_columnas[5], axis=1)
-                            new_file.write(np_line+'\n')'''
+                            line_array=np.array(list(line))
+                            new_line = line_array[df_columnas[5]]
+                            print (new_line.tostring())
+                            new_file.write(new_line.tostring())
             old_file.close()
             new_file.close()
+    
+    
+    #Y = np.arange(36).reshape(6,6)
+    #test = Y[np.ix_([0,3,5],[0,3,5])]
     cmap = load_contact_map(contact_map_path)
-    print (cmap.shape)
     cmap_sync=cmap[np.ix_(df_columnas[5].tolist(),df_columnas[5].tolist())]
-    print (cmap_sync.shape)
-    
-    #cmap_sync = np.delete(cmap, df_columnas[5].tolist(), axis=0)
-    #print (cmap_sync.shape)
-    #cmap_sync = np.delete(cmap_sync, df_columnas[5].tolist(), axis=1)
-    
     save_contact_map(cmap_sync, sincronized_contact_map)        
+    
     print "sincronize_natural_evol_alignments"
     print("--- %s seconds ---" % (time.time() - start_time))
+
 import random
 import string 
 def random_char(y):
@@ -248,6 +228,21 @@ def find_pdb_to_evolve(family_pdb_information):
     #print df
     logging.info("Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):" + str(len(df.index)))
     return df
+'''
+REMOVE PDB HEADER, SAVE ONLY THE ATOMS
+'''
+def remove_header(pdb_path):
+    pdb_temp_path = pdb_path + '_clean'
+    with open(pdb_temp_path,'w') as new_file:
+        with open(pdb_path) as old_file:
+            for line in old_file:
+                if(line.startswith("ATOM")):  
+                    new_file.write(line)     
+    old_file.close()
+    new_file.close()
+    os.remove(pdb_path)
+    os.rename(pdb_temp_path, pdb_path)
+
 '''    
 import math, string, sys, fileinput
 

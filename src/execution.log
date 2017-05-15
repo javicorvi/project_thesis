@@ -1690,3 +1690,924 @@ WARNING:root:And this, too
 2017-05-11 13:24:58,590 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q8IEV4_TRIVA_6_111_2F51_A_superimposed.pdb.gz 
 2017-05-11 13:24:58,591 - INFO - run_family.py - family_evol - End family Evol  PF00085 
 2017-05-11 13:24:58,591 - INFO - run_family.py - family_evol - --- 1.19598698616 seconds --- 
+2017-05-11 15:19:09,014 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-11 15:19:09,040 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-11 15:19:09,114 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-11 15:19:09,208 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-11 15:19:09,210 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-11 15:19:09,211 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-11 15:19:09,214 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-11 15:19:09,243 - ERROR - run_family.py - family_evol - The PDB was not evolutionated PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-11 15:19:09,245 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_F_superimposed.pdb.gz 
+2017-05-11 15:19:09,289 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIOM_HUMAN_61_164_1UVZ_F_superimposed.pdb.gz 
+2017-05-11 15:19:09,296 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2H6X_B_superimposed.pdb.gz 
+2017-05-11 15:19:09,382 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO_ECOLI_4_107_2H6X_B_superimposed.pdb.gz 
+2017-05-11 15:19:09,384 - INFO - run_family.py - family_evol - Begin of the PDB THIO_PLAF7_2_102_1SYR_B_superimposed.pdb.gz 
+2017-05-11 15:19:09,404 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO_PLAF7_2_102_1SYR_B_superimposed.pdb.gz 
+2017-05-11 15:19:09,408 - INFO - run_family.py - family_evol - Begin of the PDB DJC10_MOUSE_672_776_3APS_B_superimposed.pdb.gz 
+2017-05-11 15:19:09,480 - ERROR - run_family.py - family_evol - The PDB was not evolutionated DJC10_MOUSE_672_776_3APS_B_superimposed.pdb.gz 
+2017-05-11 15:19:09,486 - INFO - run_family.py - family_evol - Begin of the PDB Q7XZK2_HORVD_14_118_2VLT_A_superimposed.pdb.gz 
+2017-05-11 15:19:09,546 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q7XZK2_HORVD_14_118_2VLT_A_superimposed.pdb.gz 
+2017-05-11 15:19:09,548 - INFO - run_family.py - family_evol - Begin of the PDB Q9YED4_AERPE_239_342_3EMX_A_superimposed.pdb.gz 
+2017-05-11 15:19:09,594 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q9YED4_AERPE_239_342_3EMX_A_superimposed.pdb.gz 
+2017-05-11 15:19:09,608 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2H6X_A_superimposed.pdb.gz 
+2017-05-11 15:19:09,664 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO_ECOLI_4_107_2H6X_A_superimposed.pdb.gz 
+2017-05-11 15:19:09,666 - INFO - run_family.py - family_evol - Begin of the PDB PDIA1_HUMAN_368_473_4EL1_A_superimposed.pdb.gz 
+2017-05-11 15:19:09,712 - ERROR - run_family.py - family_evol - The PDB was not evolutionated PDIA1_HUMAN_368_473_4EL1_A_superimposed.pdb.gz 
+2017-05-11 15:19:09,718 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_B_superimposed.pdb.gz 
+2017-05-11 15:19:09,784 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIOM_HUMAN_61_164_1UVZ_B_superimposed.pdb.gz 
+2017-05-11 15:19:09,795 - INFO - run_family.py - family_evol - Begin of the PDB PDIA1_HUMAN_25_132_4EL1_A_superimposed.pdb.gz 
+2017-05-11 15:19:09,841 - ERROR - run_family.py - family_evol - The PDB was not evolutionated PDIA1_HUMAN_25_132_4EL1_A_superimposed.pdb.gz 
+2017-05-11 15:19:09,853 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_C_superimposed.pdb.gz 
+2017-05-11 15:19:09,896 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIOM_HUMAN_61_164_1UVZ_C_superimposed.pdb.gz 
+2017-05-11 15:19:09,902 - INFO - run_family.py - family_evol - Begin of the PDB TRX2_YEAST_2_103_2FA4_B_superimposed.pdb.gz 
+2017-05-11 15:19:09,945 - ERROR - run_family.py - family_evol - The PDB was not evolutionated TRX2_YEAST_2_103_2FA4_B_superimposed.pdb.gz 
+2017-05-11 15:19:09,946 - INFO - run_family.py - family_evol - Begin of the PDB Q8T9N5_SCHMA_5_106_2XBQ_B_superimposed.pdb.gz 
+2017-05-11 15:19:10,001 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q8T9N5_SCHMA_5_106_2XBQ_B_superimposed.pdb.gz 
+2017-05-11 15:19:10,002 - INFO - run_family.py - family_evol - Begin of the PDB PDIA6_HUMAN_26_129_4EF0_A_superimposed.pdb.gz 
+2017-05-11 15:19:10,064 - ERROR - run_family.py - family_evol - The PDB was not evolutionated PDIA6_HUMAN_26_129_4EF0_A_superimposed.pdb.gz 
+2017-05-11 15:19:10,065 - INFO - run_family.py - family_evol - Begin of the PDB TXND5_HUMAN_323_427_3UVT_A_superimposed.pdb.gz 
+2017-05-11 15:19:10,080 - ERROR - run_family.py - family_evol - The PDB was not evolutionated TXND5_HUMAN_323_427_3UVT_A_superimposed.pdb.gz 
+2017-05-11 15:19:10,082 - INFO - run_family.py - family_evol - Begin of the PDB TRX3_YEAST_27_127_2OE0_B_superimposed.pdb.gz 
+2017-05-11 15:19:10,162 - ERROR - run_family.py - family_evol - The PDB was not evolutionated TRX3_YEAST_27_127_2OE0_B_superimposed.pdb.gz 
+2017-05-11 15:19:10,168 - INFO - run_family.py - family_evol - Begin of the PDB THIO2_DROME_11_113_1XWB_D_superimposed.pdb.gz 
+2017-05-11 15:19:10,201 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO2_DROME_11_113_1XWB_D_superimposed.pdb.gz 
+2017-05-11 15:19:10,202 - INFO - run_family.py - family_evol - Begin of the PDB TXND5_HUMAN_63_167_3WGD_E_superimposed.pdb.gz 
+2017-05-11 15:19:10,228 - ERROR - run_family.py - family_evol - The PDB was not evolutionated TXND5_HUMAN_63_167_3WGD_E_superimposed.pdb.gz 
+2017-05-11 15:19:10,229 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_E_superimposed.pdb.gz 
+2017-05-11 15:19:10,248 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIOM_HUMAN_61_164_1UVZ_E_superimposed.pdb.gz 
+2017-05-11 15:19:10,249 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_1SKR_B_superimposed.pdb.gz 
+2017-05-11 15:19:10,285 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO_ECOLI_4_107_1SKR_B_superimposed.pdb.gz 
+2017-05-11 15:19:10,310 - INFO - run_family.py - family_evol - Begin of the PDB THIO2_DROME_11_113_1XW9_C_superimposed.pdb.gz 
+2017-05-11 15:19:10,359 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO2_DROME_11_113_1XW9_C_superimposed.pdb.gz 
+2017-05-11 15:19:10,361 - INFO - run_family.py - family_evol - Begin of the PDB THIO_HUMAN_2_104_1AUC_A_superimposed.pdb.gz 
+2017-05-11 15:19:10,400 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO_HUMAN_2_104_1AUC_A_superimposed.pdb.gz 
+2017-05-11 15:19:10,402 - INFO - run_family.py - family_evol - Begin of the PDB DJC10_MOUSE_130_232_3APQ_B_superimposed.pdb.gz 
+2017-05-11 15:19:10,445 - ERROR - run_family.py - family_evol - The PDB was not evolutionated DJC10_MOUSE_130_232_3APQ_B_superimposed.pdb.gz 
+2017-05-11 15:19:10,460 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1W4V_D_superimposed.pdb.gz 
+2017-05-11 15:19:10,502 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIOM_HUMAN_61_164_1W4V_D_superimposed.pdb.gz 
+2017-05-11 15:19:10,505 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2TRX_A_superimposed.pdb.gz 
+2017-05-11 15:19:10,588 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO_ECOLI_4_107_2TRX_A_superimposed.pdb.gz 
+2017-05-11 15:19:10,589 - INFO - run_family.py - family_evol - Begin of the PDB GLRX3_HUMAN_14_115_2WZ9_A_superimposed.pdb.gz 
+2017-05-11 15:19:10,633 - ERROR - run_family.py - family_evol - The PDB was not evolutionated GLRX3_HUMAN_14_115_2WZ9_A_superimposed.pdb.gz 
+2017-05-11 15:19:10,635 - INFO - run_family.py - family_evol - Begin of the PDB B1MMM4_MYCA9_5_107_4POB_A_superimposed.pdb.gz 
+2017-05-11 15:19:10,658 - ERROR - run_family.py - family_evol - The PDB was not evolutionated B1MMM4_MYCA9_5_107_4POB_A_superimposed.pdb.gz 
+2017-05-11 15:19:10,672 - INFO - run_family.py - family_evol - Begin of the PDB B1MMM4_MYCA9_5_107_4POB_B_superimposed.pdb.gz 
+2017-05-11 15:19:10,695 - ERROR - run_family.py - family_evol - The PDB was not evolutionated B1MMM4_MYCA9_5_107_4POB_B_superimposed.pdb.gz 
+2017-05-11 15:19:10,696 - INFO - run_family.py - family_evol - Begin of the PDB PDIA4_HUMAN_178_282_3IDV_A_superimposed.pdb.gz 
+2017-05-11 15:19:10,728 - ERROR - run_family.py - family_evol - The PDB was not evolutionated PDIA4_HUMAN_178_282_3IDV_A_superimposed.pdb.gz 
+2017-05-11 15:19:10,732 - INFO - run_family.py - family_evol - Begin of the PDB Q4DV70_TRYCC_42_151_3H79_A_superimposed.pdb.gz 
+2017-05-11 15:19:10,757 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q4DV70_TRYCC_42_151_3H79_A_superimposed.pdb.gz 
+2017-05-11 15:19:10,760 - INFO - run_family.py - family_evol - Begin of the PDB TXND5_HUMAN_323_427_3UVT_C_superimposed.pdb.gz 
+2017-05-11 15:19:10,770 - ERROR - run_family.py - family_evol - The PDB was not evolutionated TXND5_HUMAN_323_427_3UVT_C_superimposed.pdb.gz 
+2017-05-11 15:19:10,776 - INFO - run_family.py - family_evol - Begin of the PDB TXND5_HUMAN_323_427_3UVT_D_superimposed.pdb.gz 
+2017-05-11 15:19:10,871 - ERROR - run_family.py - family_evol - The PDB was not evolutionated TXND5_HUMAN_323_427_3UVT_D_superimposed.pdb.gz 
+2017-05-11 15:19:10,873 - INFO - run_family.py - family_evol - Begin of the PDB G0W5T0_NAUDC_35_141_4TVE_A_superimposed.pdb.gz 
+2017-05-11 15:19:10,886 - ERROR - run_family.py - family_evol - The PDB was not evolutionated G0W5T0_NAUDC_35_141_4TVE_A_superimposed.pdb.gz 
+2017-05-11 15:19:10,888 - INFO - run_family.py - family_evol - Begin of the PDB Q2G000_STAA8_2_104_4RUV_A_superimposed.pdb.gz 
+2017-05-11 15:19:10,956 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q2G000_STAA8_2_104_4RUV_A_superimposed.pdb.gz 
+2017-05-11 15:19:10,958 - INFO - run_family.py - family_evol - Begin of the PDB THIO1_STRCO_4_106_1T00_A_superimposed.pdb.gz 
+2017-05-11 15:19:11,006 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO1_STRCO_4_106_1T00_A_superimposed.pdb.gz 
+2017-05-11 15:19:11,019 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2BTO_T_superimposed.pdb.gz 
+2017-05-11 15:19:11,071 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO_ECOLI_4_107_2BTO_T_superimposed.pdb.gz 
+2017-05-11 15:19:11,073 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2AJQ_I_superimposed.pdb.gz 
+2017-05-11 15:19:11,079 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO_ECOLI_4_107_2AJQ_I_superimposed.pdb.gz 
+2017-05-11 15:19:11,083 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2AJQ_B_superimposed.pdb.gz 
+2017-05-11 15:19:11,097 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO_ECOLI_4_107_2AJQ_B_superimposed.pdb.gz 
+2017-05-11 15:19:11,098 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_1THO_A_superimposed.pdb.gz 
+2017-05-11 15:19:11,166 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO_ECOLI_4_107_1THO_A_superimposed.pdb.gz 
+2017-05-11 15:19:11,167 - INFO - run_family.py - family_evol - Begin of the PDB TRX1_YEAST_2_102_3F3Q_A_superimposed.pdb.gz 
+2017-05-11 15:19:11,179 - ERROR - run_family.py - family_evol - The PDB was not evolutionated TRX1_YEAST_2_102_3F3Q_A_superimposed.pdb.gz 
+2017-05-11 15:19:11,181 - INFO - run_family.py - family_evol - Begin of the PDB PDIA1_HUMAN_25_132_4EKZ_A_superimposed.pdb.gz 
+2017-05-11 15:19:11,205 - ERROR - run_family.py - family_evol - The PDB was not evolutionated PDIA1_HUMAN_25_132_4EKZ_A_superimposed.pdb.gz 
+2017-05-11 15:19:11,211 - INFO - run_family.py - family_evol - Begin of the PDB Q97WI4_SULSO_32_133_3HHV_A_superimposed.pdb.gz 
+2017-05-11 15:19:11,234 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q97WI4_SULSO_32_133_3HHV_A_superimposed.pdb.gz 
+2017-05-11 15:19:11,235 - INFO - run_family.py - family_evol - Begin of the PDB PDIA6_HUMAN_161_267_4GWR_A_superimposed.pdb.gz 
+2017-05-11 15:19:11,253 - ERROR - run_family.py - family_evol - The PDB was not evolutionated PDIA6_HUMAN_161_267_4GWR_A_superimposed.pdb.gz 
+2017-05-11 15:19:11,254 - INFO - run_family.py - family_evol - Begin of the PDB YBBN_ECOLI_5_109_3QOU_A_superimposed.pdb.gz 
+2017-05-11 15:19:11,274 - ERROR - run_family.py - family_evol - The PDB was not evolutionated YBBN_ECOLI_5_109_3QOU_A_superimposed.pdb.gz 
+2017-05-11 15:19:11,276 - INFO - run_family.py - family_evol - Begin of the PDB Q8IDP4_PLAF7_55_156_3UL3_B_superimposed.pdb.gz 
+2017-05-11 15:19:11,294 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q8IDP4_PLAF7_55_156_3UL3_B_superimposed.pdb.gz 
+2017-05-11 15:19:11,296 - INFO - run_family.py - family_evol - Begin of the PDB Q8IDP4_PLAF7_55_156_3UL3_A_superimposed.pdb.gz 
+2017-05-11 15:19:11,304 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q8IDP4_PLAF7_55_156_3UL3_A_superimposed.pdb.gz 
+2017-05-11 15:19:11,305 - INFO - run_family.py - family_evol - Begin of the PDB Q8ZR92_SALTY_5_109_3QDN_A_superimposed.pdb.gz 
+2017-05-11 15:19:11,314 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q8ZR92_SALTY_5_109_3QDN_A_superimposed.pdb.gz 
+2017-05-11 15:19:11,316 - INFO - run_family.py - family_evol - Begin of the PDB PDI_YEAST_377_483_2B5E_A_superimposed.pdb.gz 
+2017-05-11 15:19:11,349 - ERROR - run_family.py - family_evol - The PDB was not evolutionated PDI_YEAST_377_483_2B5E_A_superimposed.pdb.gz 
+2017-05-11 15:19:11,351 - INFO - run_family.py - family_evol - Begin of the PDB Q8T9N5_SCHMA_5_106_2XBI_A_superimposed.pdb.gz 
+2017-05-11 15:19:11,370 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q8T9N5_SCHMA_5_106_2XBI_A_superimposed.pdb.gz 
+2017-05-11 15:19:11,372 - INFO - run_family.py - family_evol - Begin of the PDB TRX3_YEAST_27_127_2OE3_A_superimposed.pdb.gz 
+2017-05-11 15:19:11,393 - ERROR - run_family.py - family_evol - The PDB was not evolutionated TRX3_YEAST_27_127_2OE3_A_superimposed.pdb.gz 
+2017-05-11 15:19:11,394 - INFO - run_family.py - family_evol - Begin of the PDB TRX3_YEAST_27_127_2OE3_B_superimposed.pdb.gz 
+2017-05-11 15:19:11,429 - ERROR - run_family.py - family_evol - The PDB was not evolutionated TRX3_YEAST_27_127_2OE3_B_superimposed.pdb.gz 
+2017-05-11 15:19:11,431 - INFO - run_family.py - family_evol - Begin of the PDB THIO2_DROME_11_113_1XWC_A_superimposed.pdb.gz 
+2017-05-11 15:19:11,471 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO2_DROME_11_113_1XWC_A_superimposed.pdb.gz 
+2017-05-11 15:19:11,473 - INFO - run_family.py - family_evol - Begin of the PDB THIO2_DROME_11_113_1XWA_A_superimposed.pdb.gz 
+2017-05-11 15:19:11,492 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO2_DROME_11_113_1XWA_A_superimposed.pdb.gz 
+2017-05-11 15:19:11,494 - INFO - run_family.py - family_evol - Begin of the PDB THIO2_DROME_11_113_1XWB_B_superimposed.pdb.gz 
+2017-05-11 15:19:11,528 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO2_DROME_11_113_1XWB_B_superimposed.pdb.gz 
+2017-05-11 15:19:11,530 - INFO - run_family.py - family_evol - Begin of the PDB THIO_MYCTU_8_111_2I1U_A_superimposed.pdb.gz 
+2017-05-11 15:19:11,548 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO_MYCTU_8_111_2I1U_A_superimposed.pdb.gz 
+2017-05-11 15:19:11,549 - INFO - run_family.py - family_evol - Begin of the PDB PDI_YEAST_33_138_2B5E_A_superimposed.pdb.gz 
+2017-05-11 15:19:11,587 - ERROR - run_family.py - family_evol - The PDB was not evolutionated PDI_YEAST_33_138_2B5E_A_superimposed.pdb.gz 
+2017-05-11 15:19:11,589 - INFO - run_family.py - family_evol - Begin of the PDB TXND5_HUMAN_190_293_3WGE_A_superimposed.pdb.gz 
+2017-05-11 15:19:11,640 - ERROR - run_family.py - family_evol - The PDB was not evolutionated TXND5_HUMAN_190_293_3WGE_A_superimposed.pdb.gz 
+2017-05-11 15:19:11,641 - INFO - run_family.py - family_evol - Begin of the PDB PDIA4_HUMAN_63_167_3IDV_A_superimposed.pdb.gz 
+2017-05-11 15:19:11,656 - ERROR - run_family.py - family_evol - The PDB was not evolutionated PDIA4_HUMAN_63_167_3IDV_A_superimposed.pdb.gz 
+2017-05-11 15:19:11,657 - INFO - run_family.py - family_evol - Begin of the PDB Q980E5_SULSO_29_131_3TCO_A_superimposed.pdb.gz 
+2017-05-11 15:19:11,687 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q980E5_SULSO_29_131_3TCO_A_superimposed.pdb.gz 
+2017-05-11 15:19:11,689 - INFO - run_family.py - family_evol - Begin of the PDB Q980E5_SULSO_29_131_3TCO_B_superimposed.pdb.gz 
+2017-05-11 15:19:11,698 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q980E5_SULSO_29_131_3TCO_B_superimposed.pdb.gz 
+2017-05-11 15:19:11,700 - INFO - run_family.py - family_evol - Begin of the PDB Q980E5_SULSO_29_131_3TCO_C_superimposed.pdb.gz 
+2017-05-11 15:19:11,719 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q980E5_SULSO_29_131_3TCO_C_superimposed.pdb.gz 
+2017-05-11 15:19:11,721 - INFO - run_family.py - family_evol - Begin of the PDB PDIA1_HUMAN_368_473_4EKZ_A_superimposed.pdb.gz 
+2017-05-11 15:19:11,725 - ERROR - run_family.py - family_evol - The PDB was not evolutionated PDIA1_HUMAN_368_473_4EKZ_A_superimposed.pdb.gz 
+2017-05-11 15:19:11,727 - INFO - run_family.py - family_evol - Begin of the PDB PDIA1_HUMAN_368_473_3UEM_A_superimposed.pdb.gz 
+2017-05-11 15:19:11,761 - ERROR - run_family.py - family_evol - The PDB was not evolutionated PDIA1_HUMAN_368_473_3UEM_A_superimposed.pdb.gz 
+2017-05-11 15:19:11,767 - INFO - run_family.py - family_evol - Begin of the PDB THIO_HUMAN_2_104_5DQY_A_superimposed.pdb.gz 
+2017-05-11 15:19:11,791 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO_HUMAN_2_104_5DQY_A_superimposed.pdb.gz 
+2017-05-11 15:19:11,792 - INFO - run_family.py - family_evol - Begin of the PDB THIO2_NOSS1_4_107_1THX_A_superimposed.pdb.gz 
+2017-05-11 15:19:11,809 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO2_NOSS1_4_107_1THX_A_superimposed.pdb.gz 
+2017-05-11 15:19:11,811 - INFO - run_family.py - family_evol - Begin of the PDB Q8IEV4_TRIVA_6_111_2F51_B_superimposed.pdb.gz 
+2017-05-11 15:19:11,819 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q8IEV4_TRIVA_6_111_2F51_B_superimposed.pdb.gz 
+2017-05-11 15:19:11,821 - INFO - run_family.py - family_evol - Begin of the PDB Q8IEV4_TRIVA_6_111_2F51_A_superimposed.pdb.gz 
+2017-05-11 15:19:11,855 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q8IEV4_TRIVA_6_111_2F51_A_superimposed.pdb.gz 
+2017-05-11 15:19:11,857 - INFO - run_family.py - family_evol - End family Evol  PF00085 
+2017-05-11 15:19:11,858 - INFO - run_family.py - family_evol - --- 2.64755511284 seconds --- 
+2017-05-11 15:20:39,651 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-11 15:20:39,652 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-11 15:20:39,660 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-11 15:20:39,685 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-11 15:20:39,685 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-11 15:20:39,686 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-11 15:20:39,689 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-11 15:20:39,691 - ERROR - run_family.py - family_evol - The PDB was not evolutionated PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-11 15:20:39,693 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_F_superimposed.pdb.gz 
+2017-05-11 15:20:39,695 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIOM_HUMAN_61_164_1UVZ_F_superimposed.pdb.gz 
+2017-05-11 15:20:39,697 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2H6X_B_superimposed.pdb.gz 
+2017-05-11 15:20:39,699 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO_ECOLI_4_107_2H6X_B_superimposed.pdb.gz 
+2017-05-11 15:20:39,701 - INFO - run_family.py - family_evol - Begin of the PDB THIO_PLAF7_2_102_1SYR_B_superimposed.pdb.gz 
+2017-05-11 15:20:39,703 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO_PLAF7_2_102_1SYR_B_superimposed.pdb.gz 
+2017-05-11 15:20:39,705 - INFO - run_family.py - family_evol - Begin of the PDB DJC10_MOUSE_672_776_3APS_B_superimposed.pdb.gz 
+2017-05-11 15:20:39,708 - ERROR - run_family.py - family_evol - The PDB was not evolutionated DJC10_MOUSE_672_776_3APS_B_superimposed.pdb.gz 
+2017-05-11 15:20:39,710 - INFO - run_family.py - family_evol - Begin of the PDB Q7XZK2_HORVD_14_118_2VLT_A_superimposed.pdb.gz 
+2017-05-11 15:20:39,712 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q7XZK2_HORVD_14_118_2VLT_A_superimposed.pdb.gz 
+2017-05-11 15:20:39,714 - INFO - run_family.py - family_evol - Begin of the PDB Q9YED4_AERPE_239_342_3EMX_A_superimposed.pdb.gz 
+2017-05-11 15:20:39,716 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q9YED4_AERPE_239_342_3EMX_A_superimposed.pdb.gz 
+2017-05-11 15:20:39,718 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2H6X_A_superimposed.pdb.gz 
+2017-05-11 15:20:39,720 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO_ECOLI_4_107_2H6X_A_superimposed.pdb.gz 
+2017-05-11 15:20:39,722 - INFO - run_family.py - family_evol - Begin of the PDB PDIA1_HUMAN_368_473_4EL1_A_superimposed.pdb.gz 
+2017-05-11 15:20:39,724 - ERROR - run_family.py - family_evol - The PDB was not evolutionated PDIA1_HUMAN_368_473_4EL1_A_superimposed.pdb.gz 
+2017-05-11 15:20:39,726 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_B_superimposed.pdb.gz 
+2017-05-11 15:20:39,728 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIOM_HUMAN_61_164_1UVZ_B_superimposed.pdb.gz 
+2017-05-11 15:20:39,730 - INFO - run_family.py - family_evol - Begin of the PDB PDIA1_HUMAN_25_132_4EL1_A_superimposed.pdb.gz 
+2017-05-11 15:20:39,732 - ERROR - run_family.py - family_evol - The PDB was not evolutionated PDIA1_HUMAN_25_132_4EL1_A_superimposed.pdb.gz 
+2017-05-11 15:20:39,734 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_C_superimposed.pdb.gz 
+2017-05-11 15:20:39,736 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIOM_HUMAN_61_164_1UVZ_C_superimposed.pdb.gz 
+2017-05-11 15:20:39,738 - INFO - run_family.py - family_evol - Begin of the PDB TRX2_YEAST_2_103_2FA4_B_superimposed.pdb.gz 
+2017-05-11 15:20:39,740 - ERROR - run_family.py - family_evol - The PDB was not evolutionated TRX2_YEAST_2_103_2FA4_B_superimposed.pdb.gz 
+2017-05-11 15:20:39,742 - INFO - run_family.py - family_evol - Begin of the PDB Q8T9N5_SCHMA_5_106_2XBQ_B_superimposed.pdb.gz 
+2017-05-11 15:20:39,745 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q8T9N5_SCHMA_5_106_2XBQ_B_superimposed.pdb.gz 
+2017-05-11 15:20:39,746 - INFO - run_family.py - family_evol - Begin of the PDB PDIA6_HUMAN_26_129_4EF0_A_superimposed.pdb.gz 
+2017-05-11 15:20:39,749 - ERROR - run_family.py - family_evol - The PDB was not evolutionated PDIA6_HUMAN_26_129_4EF0_A_superimposed.pdb.gz 
+2017-05-11 15:20:39,750 - INFO - run_family.py - family_evol - Begin of the PDB TXND5_HUMAN_323_427_3UVT_A_superimposed.pdb.gz 
+2017-05-11 15:20:39,773 - ERROR - run_family.py - family_evol - The PDB was not evolutionated TXND5_HUMAN_323_427_3UVT_A_superimposed.pdb.gz 
+2017-05-11 15:20:39,776 - INFO - run_family.py - family_evol - Begin of the PDB TRX3_YEAST_27_127_2OE0_B_superimposed.pdb.gz 
+2017-05-11 15:20:39,782 - ERROR - run_family.py - family_evol - The PDB was not evolutionated TRX3_YEAST_27_127_2OE0_B_superimposed.pdb.gz 
+2017-05-11 15:20:39,784 - INFO - run_family.py - family_evol - Begin of the PDB THIO2_DROME_11_113_1XWB_D_superimposed.pdb.gz 
+2017-05-11 15:20:39,789 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO2_DROME_11_113_1XWB_D_superimposed.pdb.gz 
+2017-05-11 15:20:39,792 - INFO - run_family.py - family_evol - Begin of the PDB TXND5_HUMAN_63_167_3WGD_E_superimposed.pdb.gz 
+2017-05-11 15:20:39,827 - ERROR - run_family.py - family_evol - The PDB was not evolutionated TXND5_HUMAN_63_167_3WGD_E_superimposed.pdb.gz 
+2017-05-11 15:20:39,836 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_E_superimposed.pdb.gz 
+2017-05-11 15:20:39,868 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIOM_HUMAN_61_164_1UVZ_E_superimposed.pdb.gz 
+2017-05-11 15:20:39,870 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_1SKR_B_superimposed.pdb.gz 
+2017-05-11 15:20:39,888 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO_ECOLI_4_107_1SKR_B_superimposed.pdb.gz 
+2017-05-11 15:20:39,911 - INFO - run_family.py - family_evol - Begin of the PDB THIO2_DROME_11_113_1XW9_C_superimposed.pdb.gz 
+2017-05-11 15:20:39,920 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO2_DROME_11_113_1XW9_C_superimposed.pdb.gz 
+2017-05-11 15:20:39,928 - INFO - run_family.py - family_evol - Begin of the PDB THIO_HUMAN_2_104_1AUC_A_superimposed.pdb.gz 
+2017-05-11 15:20:39,944 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO_HUMAN_2_104_1AUC_A_superimposed.pdb.gz 
+2017-05-11 15:20:39,955 - INFO - run_family.py - family_evol - Begin of the PDB DJC10_MOUSE_130_232_3APQ_B_superimposed.pdb.gz 
+2017-05-11 15:20:39,973 - ERROR - run_family.py - family_evol - The PDB was not evolutionated DJC10_MOUSE_130_232_3APQ_B_superimposed.pdb.gz 
+2017-05-11 15:20:39,974 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1W4V_D_superimposed.pdb.gz 
+2017-05-11 15:20:39,988 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIOM_HUMAN_61_164_1W4V_D_superimposed.pdb.gz 
+2017-05-11 15:20:40,004 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2TRX_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,013 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO_ECOLI_4_107_2TRX_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,032 - INFO - run_family.py - family_evol - Begin of the PDB GLRX3_HUMAN_14_115_2WZ9_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,043 - ERROR - run_family.py - family_evol - The PDB was not evolutionated GLRX3_HUMAN_14_115_2WZ9_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,060 - INFO - run_family.py - family_evol - Begin of the PDB B1MMM4_MYCA9_5_107_4POB_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,066 - ERROR - run_family.py - family_evol - The PDB was not evolutionated B1MMM4_MYCA9_5_107_4POB_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,084 - INFO - run_family.py - family_evol - Begin of the PDB B1MMM4_MYCA9_5_107_4POB_B_superimposed.pdb.gz 
+2017-05-11 15:20:40,108 - ERROR - run_family.py - family_evol - The PDB was not evolutionated B1MMM4_MYCA9_5_107_4POB_B_superimposed.pdb.gz 
+2017-05-11 15:20:40,110 - INFO - run_family.py - family_evol - Begin of the PDB PDIA4_HUMAN_178_282_3IDV_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,126 - ERROR - run_family.py - family_evol - The PDB was not evolutionated PDIA4_HUMAN_178_282_3IDV_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,128 - INFO - run_family.py - family_evol - Begin of the PDB Q4DV70_TRYCC_42_151_3H79_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,156 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q4DV70_TRYCC_42_151_3H79_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,158 - INFO - run_family.py - family_evol - Begin of the PDB TXND5_HUMAN_323_427_3UVT_C_superimposed.pdb.gz 
+2017-05-11 15:20:40,195 - ERROR - run_family.py - family_evol - The PDB was not evolutionated TXND5_HUMAN_323_427_3UVT_C_superimposed.pdb.gz 
+2017-05-11 15:20:40,213 - INFO - run_family.py - family_evol - Begin of the PDB TXND5_HUMAN_323_427_3UVT_D_superimposed.pdb.gz 
+2017-05-11 15:20:40,247 - ERROR - run_family.py - family_evol - The PDB was not evolutionated TXND5_HUMAN_323_427_3UVT_D_superimposed.pdb.gz 
+2017-05-11 15:20:40,255 - INFO - run_family.py - family_evol - Begin of the PDB G0W5T0_NAUDC_35_141_4TVE_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,272 - ERROR - run_family.py - family_evol - The PDB was not evolutionated G0W5T0_NAUDC_35_141_4TVE_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,276 - INFO - run_family.py - family_evol - Begin of the PDB Q2G000_STAA8_2_104_4RUV_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,306 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q2G000_STAA8_2_104_4RUV_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,312 - INFO - run_family.py - family_evol - Begin of the PDB THIO1_STRCO_4_106_1T00_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,323 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO1_STRCO_4_106_1T00_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,325 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2BTO_T_superimposed.pdb.gz 
+2017-05-11 15:20:40,360 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO_ECOLI_4_107_2BTO_T_superimposed.pdb.gz 
+2017-05-11 15:20:40,361 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2AJQ_I_superimposed.pdb.gz 
+2017-05-11 15:20:40,376 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO_ECOLI_4_107_2AJQ_I_superimposed.pdb.gz 
+2017-05-11 15:20:40,378 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2AJQ_B_superimposed.pdb.gz 
+2017-05-11 15:20:40,396 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO_ECOLI_4_107_2AJQ_B_superimposed.pdb.gz 
+2017-05-11 15:20:40,398 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_1THO_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,439 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO_ECOLI_4_107_1THO_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,441 - INFO - run_family.py - family_evol - Begin of the PDB TRX1_YEAST_2_102_3F3Q_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,452 - ERROR - run_family.py - family_evol - The PDB was not evolutionated TRX1_YEAST_2_102_3F3Q_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,454 - INFO - run_family.py - family_evol - Begin of the PDB PDIA1_HUMAN_25_132_4EKZ_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,469 - ERROR - run_family.py - family_evol - The PDB was not evolutionated PDIA1_HUMAN_25_132_4EKZ_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,470 - INFO - run_family.py - family_evol - Begin of the PDB Q97WI4_SULSO_32_133_3HHV_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,481 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q97WI4_SULSO_32_133_3HHV_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,487 - INFO - run_family.py - family_evol - Begin of the PDB PDIA6_HUMAN_161_267_4GWR_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,490 - ERROR - run_family.py - family_evol - The PDB was not evolutionated PDIA6_HUMAN_161_267_4GWR_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,492 - INFO - run_family.py - family_evol - Begin of the PDB YBBN_ECOLI_5_109_3QOU_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,500 - ERROR - run_family.py - family_evol - The PDB was not evolutionated YBBN_ECOLI_5_109_3QOU_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,501 - INFO - run_family.py - family_evol - Begin of the PDB Q8IDP4_PLAF7_55_156_3UL3_B_superimposed.pdb.gz 
+2017-05-11 15:20:40,509 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q8IDP4_PLAF7_55_156_3UL3_B_superimposed.pdb.gz 
+2017-05-11 15:20:40,510 - INFO - run_family.py - family_evol - Begin of the PDB Q8IDP4_PLAF7_55_156_3UL3_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,535 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q8IDP4_PLAF7_55_156_3UL3_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,537 - INFO - run_family.py - family_evol - Begin of the PDB Q8ZR92_SALTY_5_109_3QDN_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,562 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q8ZR92_SALTY_5_109_3QDN_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,571 - INFO - run_family.py - family_evol - Begin of the PDB PDI_YEAST_377_483_2B5E_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,592 - ERROR - run_family.py - family_evol - The PDB was not evolutionated PDI_YEAST_377_483_2B5E_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,607 - INFO - run_family.py - family_evol - Begin of the PDB Q8T9N5_SCHMA_5_106_2XBI_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,625 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q8T9N5_SCHMA_5_106_2XBI_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,636 - INFO - run_family.py - family_evol - Begin of the PDB TRX3_YEAST_27_127_2OE3_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,647 - ERROR - run_family.py - family_evol - The PDB was not evolutionated TRX3_YEAST_27_127_2OE3_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,653 - INFO - run_family.py - family_evol - Begin of the PDB TRX3_YEAST_27_127_2OE3_B_superimposed.pdb.gz 
+2017-05-11 15:20:40,675 - ERROR - run_family.py - family_evol - The PDB was not evolutionated TRX3_YEAST_27_127_2OE3_B_superimposed.pdb.gz 
+2017-05-11 15:20:40,677 - INFO - run_family.py - family_evol - Begin of the PDB THIO2_DROME_11_113_1XWC_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,692 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO2_DROME_11_113_1XWC_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,693 - INFO - run_family.py - family_evol - Begin of the PDB THIO2_DROME_11_113_1XWA_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,705 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO2_DROME_11_113_1XWA_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,724 - INFO - run_family.py - family_evol - Begin of the PDB THIO2_DROME_11_113_1XWB_B_superimposed.pdb.gz 
+2017-05-11 15:20:40,748 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO2_DROME_11_113_1XWB_B_superimposed.pdb.gz 
+2017-05-11 15:20:40,751 - INFO - run_family.py - family_evol - Begin of the PDB THIO_MYCTU_8_111_2I1U_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,767 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO_MYCTU_8_111_2I1U_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,769 - INFO - run_family.py - family_evol - Begin of the PDB PDI_YEAST_33_138_2B5E_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,784 - ERROR - run_family.py - family_evol - The PDB was not evolutionated PDI_YEAST_33_138_2B5E_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,785 - INFO - run_family.py - family_evol - Begin of the PDB TXND5_HUMAN_190_293_3WGE_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,827 - ERROR - run_family.py - family_evol - The PDB was not evolutionated TXND5_HUMAN_190_293_3WGE_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,829 - INFO - run_family.py - family_evol - Begin of the PDB PDIA4_HUMAN_63_167_3IDV_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,845 - ERROR - run_family.py - family_evol - The PDB was not evolutionated PDIA4_HUMAN_63_167_3IDV_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,846 - INFO - run_family.py - family_evol - Begin of the PDB Q980E5_SULSO_29_131_3TCO_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,870 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q980E5_SULSO_29_131_3TCO_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,875 - INFO - run_family.py - family_evol - Begin of the PDB Q980E5_SULSO_29_131_3TCO_B_superimposed.pdb.gz 
+2017-05-11 15:20:40,884 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q980E5_SULSO_29_131_3TCO_B_superimposed.pdb.gz 
+2017-05-11 15:20:40,892 - INFO - run_family.py - family_evol - Begin of the PDB Q980E5_SULSO_29_131_3TCO_C_superimposed.pdb.gz 
+2017-05-11 15:20:40,902 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q980E5_SULSO_29_131_3TCO_C_superimposed.pdb.gz 
+2017-05-11 15:20:40,908 - INFO - run_family.py - family_evol - Begin of the PDB PDIA1_HUMAN_368_473_4EKZ_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,911 - ERROR - run_family.py - family_evol - The PDB was not evolutionated PDIA1_HUMAN_368_473_4EKZ_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,916 - INFO - run_family.py - family_evol - Begin of the PDB PDIA1_HUMAN_368_473_3UEM_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,935 - ERROR - run_family.py - family_evol - The PDB was not evolutionated PDIA1_HUMAN_368_473_3UEM_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,938 - INFO - run_family.py - family_evol - Begin of the PDB THIO_HUMAN_2_104_5DQY_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,964 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO_HUMAN_2_104_5DQY_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,966 - INFO - run_family.py - family_evol - Begin of the PDB THIO2_NOSS1_4_107_1THX_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,986 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO2_NOSS1_4_107_1THX_A_superimposed.pdb.gz 
+2017-05-11 15:20:40,992 - INFO - run_family.py - family_evol - Begin of the PDB Q8IEV4_TRIVA_6_111_2F51_B_superimposed.pdb.gz 
+2017-05-11 15:20:41,016 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q8IEV4_TRIVA_6_111_2F51_B_superimposed.pdb.gz 
+2017-05-11 15:20:41,033 - INFO - run_family.py - family_evol - Begin of the PDB Q8IEV4_TRIVA_6_111_2F51_A_superimposed.pdb.gz 
+2017-05-11 15:20:41,047 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q8IEV4_TRIVA_6_111_2F51_A_superimposed.pdb.gz 
+2017-05-11 15:20:41,048 - INFO - run_family.py - family_evol - End family Evol  PF00085 
+2017-05-11 15:20:41,048 - INFO - run_family.py - family_evol - --- 1.36312508583 seconds --- 
+2017-05-11 15:24:12,608 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-11 15:24:12,609 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-11 15:24:12,617 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-11 15:24:12,640 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-11 15:24:12,640 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-11 15:24:12,641 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-11 15:24:12,644 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-11 15:25:51,330 - ERROR - run_family.py - family_evol - The PDB was not evolutionated PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-11 15:25:51,334 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_F_superimposed.pdb.gz 
+2017-05-11 15:28:56,658 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-11 15:28:56,658 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-11 15:28:56,666 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-11 15:28:56,689 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-11 15:28:56,689 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-11 15:28:56,690 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-11 15:28:56,693 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-11 15:34:30,853 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-11 15:34:30,853 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-11 15:34:30,861 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-11 15:34:30,883 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-11 15:34:30,884 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-11 15:34:30,885 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-11 15:34:30,888 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-11 15:45:42,891 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-11 15:45:42,892 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-11 15:45:42,900 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-11 15:45:42,923 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-11 15:45:42,924 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-11 15:45:42,924 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-11 15:45:42,927 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-11 15:56:12,682 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-11 15:56:12,683 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-11 15:56:12,691 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-11 15:56:12,727 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-11 15:56:12,731 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-11 15:56:12,732 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-11 15:56:12,742 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-11 15:59:09,755 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-11 15:59:09,755 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-11 15:59:09,764 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-11 15:59:09,787 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-11 15:59:09,788 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-11 15:59:09,795 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-11 15:59:09,799 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-11 16:00:09,029 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-11 16:00:09,030 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-11 16:00:09,038 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-11 16:00:09,062 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-11 16:00:09,062 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-11 16:00:09,063 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-11 16:00:09,066 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-11 16:02:12,344 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-11 16:02:12,345 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-11 16:02:12,373 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-11 16:02:12,449 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-11 16:02:12,453 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-11 16:02:12,454 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-11 16:02:12,462 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-11 16:38:17,261 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-11 16:38:17,262 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-11 16:38:17,270 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-11 16:38:17,293 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-11 16:38:17,294 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-11 16:38:17,294 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-11 16:38:17,297 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-11 16:45:30,971 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-11 16:45:30,972 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-11 16:45:30,980 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-11 16:45:31,003 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-11 16:45:31,004 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-11 16:45:31,004 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-11 16:45:31,007 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-11 16:51:21,122 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-11 16:51:21,122 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-11 16:51:21,139 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-11 16:51:21,163 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-11 16:51:21,163 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-11 16:51:21,164 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-11 16:51:21,167 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-11 16:56:52,824 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-11 16:56:52,825 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-11 16:56:52,833 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-11 16:56:52,868 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-11 16:56:52,868 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-11 16:56:52,869 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-11 16:56:52,876 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-11 17:42:22,964 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-11 17:42:22,979 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-11 17:42:23,020 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-11 17:42:23,056 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-11 17:42:23,057 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-11 17:42:23,057 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-11 17:42:23,060 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-11 17:43:16,085 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-11 17:43:16,086 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-11 17:43:16,094 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-11 17:43:16,117 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-11 17:43:16,118 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-11 17:43:16,118 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-11 17:43:16,122 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-11 17:43:37,755 - ERROR - run_family.py - family_evol - The PDB was not evolutionated PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-11 17:43:37,762 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_F_superimposed.pdb.gz 
+2017-05-11 17:50:42,477 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-11 17:50:42,479 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-11 17:50:42,498 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-11 17:50:42,563 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-11 17:50:42,564 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-11 17:50:42,565 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-11 17:50:42,570 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-11 17:51:04,415 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-11 17:51:04,416 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-11 17:51:04,426 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-11 17:51:04,449 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-11 17:51:04,450 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-11 17:51:04,450 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-11 17:51:04,453 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-11 17:52:54,677 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-11 17:52:54,678 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-11 17:52:54,686 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-11 17:52:54,711 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-11 17:52:54,711 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-11 17:52:54,712 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-11 17:52:54,715 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-11 17:53:47,642 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-11 17:53:47,642 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-11 17:53:47,650 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-11 17:53:47,677 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-11 17:53:47,677 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-11 17:53:47,678 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-11 17:53:47,681 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-11 18:21:28,594 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-11 18:21:28,595 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-11 18:21:28,604 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-11 18:21:28,627 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-11 18:21:28,628 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-11 18:21:28,628 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-11 18:21:28,631 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-11 18:37:08,275 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-11 18:37:08,276 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-11 18:37:08,284 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-11 18:37:08,311 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-11 18:37:08,312 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-11 18:37:08,319 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-11 18:37:08,323 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-11 18:37:08,329 - ERROR - run_family.py - family_evol - The PDB was not evolutionated PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-11 18:37:08,331 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_F_superimposed.pdb.gz 
+2017-05-11 18:37:08,333 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIOM_HUMAN_61_164_1UVZ_F_superimposed.pdb.gz 
+2017-05-11 18:37:08,335 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2H6X_B_superimposed.pdb.gz 
+2017-05-11 18:37:08,407 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO_ECOLI_4_107_2H6X_B_superimposed.pdb.gz 
+2017-05-11 18:37:08,410 - INFO - run_family.py - family_evol - Begin of the PDB THIO_PLAF7_2_102_1SYR_B_superimposed.pdb.gz 
+2017-05-11 18:37:08,444 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO_PLAF7_2_102_1SYR_B_superimposed.pdb.gz 
+2017-05-11 18:37:08,448 - INFO - run_family.py - family_evol - Begin of the PDB DJC10_MOUSE_672_776_3APS_B_superimposed.pdb.gz 
+2017-05-11 18:37:08,465 - ERROR - run_family.py - family_evol - The PDB was not evolutionated DJC10_MOUSE_672_776_3APS_B_superimposed.pdb.gz 
+2017-05-11 18:37:08,484 - INFO - run_family.py - family_evol - Begin of the PDB Q7XZK2_HORVD_14_118_2VLT_A_superimposed.pdb.gz 
+2017-05-11 18:37:08,502 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q7XZK2_HORVD_14_118_2VLT_A_superimposed.pdb.gz 
+2017-05-11 18:37:08,504 - INFO - run_family.py - family_evol - Begin of the PDB Q9YED4_AERPE_239_342_3EMX_A_superimposed.pdb.gz 
+2017-05-11 18:37:08,518 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q9YED4_AERPE_239_342_3EMX_A_superimposed.pdb.gz 
+2017-05-11 18:37:08,520 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2H6X_A_superimposed.pdb.gz 
+2017-05-11 18:37:08,542 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO_ECOLI_4_107_2H6X_A_superimposed.pdb.gz 
+2017-05-11 18:37:08,544 - INFO - run_family.py - family_evol - Begin of the PDB PDIA1_HUMAN_368_473_4EL1_A_superimposed.pdb.gz 
+2017-05-11 18:37:08,564 - ERROR - run_family.py - family_evol - The PDB was not evolutionated PDIA1_HUMAN_368_473_4EL1_A_superimposed.pdb.gz 
+2017-05-11 18:37:08,566 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_B_superimposed.pdb.gz 
+2017-05-11 18:37:08,575 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIOM_HUMAN_61_164_1UVZ_B_superimposed.pdb.gz 
+2017-05-11 18:37:08,577 - INFO - run_family.py - family_evol - Begin of the PDB PDIA1_HUMAN_25_132_4EL1_A_superimposed.pdb.gz 
+2017-05-11 18:37:08,609 - ERROR - run_family.py - family_evol - The PDB was not evolutionated PDIA1_HUMAN_25_132_4EL1_A_superimposed.pdb.gz 
+2017-05-11 18:37:08,614 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_C_superimposed.pdb.gz 
+2017-05-11 18:37:08,632 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIOM_HUMAN_61_164_1UVZ_C_superimposed.pdb.gz 
+2017-05-11 18:37:08,634 - INFO - run_family.py - family_evol - Begin of the PDB TRX2_YEAST_2_103_2FA4_B_superimposed.pdb.gz 
+2017-05-11 18:37:08,650 - ERROR - run_family.py - family_evol - The PDB was not evolutionated TRX2_YEAST_2_103_2FA4_B_superimposed.pdb.gz 
+2017-05-11 18:37:08,653 - INFO - run_family.py - family_evol - Begin of the PDB Q8T9N5_SCHMA_5_106_2XBQ_B_superimposed.pdb.gz 
+2017-05-11 18:37:08,673 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q8T9N5_SCHMA_5_106_2XBQ_B_superimposed.pdb.gz 
+2017-05-11 18:37:08,677 - INFO - run_family.py - family_evol - Begin of the PDB PDIA6_HUMAN_26_129_4EF0_A_superimposed.pdb.gz 
+2017-05-11 18:37:08,685 - ERROR - run_family.py - family_evol - The PDB was not evolutionated PDIA6_HUMAN_26_129_4EF0_A_superimposed.pdb.gz 
+2017-05-11 18:37:08,686 - INFO - run_family.py - family_evol - Begin of the PDB TXND5_HUMAN_323_427_3UVT_A_superimposed.pdb.gz 
+2017-05-11 18:37:08,693 - ERROR - run_family.py - family_evol - The PDB was not evolutionated TXND5_HUMAN_323_427_3UVT_A_superimposed.pdb.gz 
+2017-05-11 18:37:08,696 - INFO - run_family.py - family_evol - Begin of the PDB TRX3_YEAST_27_127_2OE0_B_superimposed.pdb.gz 
+2017-05-11 18:37:08,726 - ERROR - run_family.py - family_evol - The PDB was not evolutionated TRX3_YEAST_27_127_2OE0_B_superimposed.pdb.gz 
+2017-05-11 18:37:08,734 - INFO - run_family.py - family_evol - Begin of the PDB THIO2_DROME_11_113_1XWB_D_superimposed.pdb.gz 
+2017-05-11 18:37:08,743 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO2_DROME_11_113_1XWB_D_superimposed.pdb.gz 
+2017-05-11 18:37:08,745 - INFO - run_family.py - family_evol - Begin of the PDB TXND5_HUMAN_63_167_3WGD_E_superimposed.pdb.gz 
+2017-05-11 18:37:08,754 - ERROR - run_family.py - family_evol - The PDB was not evolutionated TXND5_HUMAN_63_167_3WGD_E_superimposed.pdb.gz 
+2017-05-11 18:37:08,756 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_E_superimposed.pdb.gz 
+2017-05-11 18:37:08,761 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIOM_HUMAN_61_164_1UVZ_E_superimposed.pdb.gz 
+2017-05-11 18:37:08,770 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_1SKR_B_superimposed.pdb.gz 
+2017-05-11 18:37:08,798 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO_ECOLI_4_107_1SKR_B_superimposed.pdb.gz 
+2017-05-11 18:37:08,800 - INFO - run_family.py - family_evol - Begin of the PDB THIO2_DROME_11_113_1XW9_C_superimposed.pdb.gz 
+2017-05-11 18:37:08,813 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO2_DROME_11_113_1XW9_C_superimposed.pdb.gz 
+2017-05-11 18:37:08,814 - INFO - run_family.py - family_evol - Begin of the PDB THIO_HUMAN_2_104_1AUC_A_superimposed.pdb.gz 
+2017-05-11 18:37:08,840 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO_HUMAN_2_104_1AUC_A_superimposed.pdb.gz 
+2017-05-11 18:37:08,842 - INFO - run_family.py - family_evol - Begin of the PDB DJC10_MOUSE_130_232_3APQ_B_superimposed.pdb.gz 
+2017-05-11 18:37:08,871 - ERROR - run_family.py - family_evol - The PDB was not evolutionated DJC10_MOUSE_130_232_3APQ_B_superimposed.pdb.gz 
+2017-05-11 18:37:08,873 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1W4V_D_superimposed.pdb.gz 
+2017-05-11 18:37:08,897 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIOM_HUMAN_61_164_1W4V_D_superimposed.pdb.gz 
+2017-05-11 18:37:08,898 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2TRX_A_superimposed.pdb.gz 
+2017-05-11 18:37:08,924 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO_ECOLI_4_107_2TRX_A_superimposed.pdb.gz 
+2017-05-11 18:37:08,926 - INFO - run_family.py - family_evol - Begin of the PDB GLRX3_HUMAN_14_115_2WZ9_A_superimposed.pdb.gz 
+2017-05-11 18:37:08,952 - ERROR - run_family.py - family_evol - The PDB was not evolutionated GLRX3_HUMAN_14_115_2WZ9_A_superimposed.pdb.gz 
+2017-05-11 18:37:08,958 - INFO - run_family.py - family_evol - Begin of the PDB B1MMM4_MYCA9_5_107_4POB_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,001 - ERROR - run_family.py - family_evol - The PDB was not evolutionated B1MMM4_MYCA9_5_107_4POB_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,002 - INFO - run_family.py - family_evol - Begin of the PDB B1MMM4_MYCA9_5_107_4POB_B_superimposed.pdb.gz 
+2017-05-11 18:37:09,023 - ERROR - run_family.py - family_evol - The PDB was not evolutionated B1MMM4_MYCA9_5_107_4POB_B_superimposed.pdb.gz 
+2017-05-11 18:37:09,027 - INFO - run_family.py - family_evol - Begin of the PDB PDIA4_HUMAN_178_282_3IDV_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,067 - ERROR - run_family.py - family_evol - The PDB was not evolutionated PDIA4_HUMAN_178_282_3IDV_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,068 - INFO - run_family.py - family_evol - Begin of the PDB Q4DV70_TRYCC_42_151_3H79_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,087 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q4DV70_TRYCC_42_151_3H79_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,093 - INFO - run_family.py - family_evol - Begin of the PDB TXND5_HUMAN_323_427_3UVT_C_superimposed.pdb.gz 
+2017-05-11 18:37:09,115 - ERROR - run_family.py - family_evol - The PDB was not evolutionated TXND5_HUMAN_323_427_3UVT_C_superimposed.pdb.gz 
+2017-05-11 18:37:09,117 - INFO - run_family.py - family_evol - Begin of the PDB TXND5_HUMAN_323_427_3UVT_D_superimposed.pdb.gz 
+2017-05-11 18:37:09,139 - ERROR - run_family.py - family_evol - The PDB was not evolutionated TXND5_HUMAN_323_427_3UVT_D_superimposed.pdb.gz 
+2017-05-11 18:37:09,148 - INFO - run_family.py - family_evol - Begin of the PDB G0W5T0_NAUDC_35_141_4TVE_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,176 - ERROR - run_family.py - family_evol - The PDB was not evolutionated G0W5T0_NAUDC_35_141_4TVE_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,178 - INFO - run_family.py - family_evol - Begin of the PDB Q2G000_STAA8_2_104_4RUV_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,200 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q2G000_STAA8_2_104_4RUV_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,202 - INFO - run_family.py - family_evol - Begin of the PDB THIO1_STRCO_4_106_1T00_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,226 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO1_STRCO_4_106_1T00_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,230 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2BTO_T_superimposed.pdb.gz 
+2017-05-11 18:37:09,241 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO_ECOLI_4_107_2BTO_T_superimposed.pdb.gz 
+2017-05-11 18:37:09,245 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2AJQ_I_superimposed.pdb.gz 
+2017-05-11 18:37:09,259 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO_ECOLI_4_107_2AJQ_I_superimposed.pdb.gz 
+2017-05-11 18:37:09,261 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2AJQ_B_superimposed.pdb.gz 
+2017-05-11 18:37:09,271 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO_ECOLI_4_107_2AJQ_B_superimposed.pdb.gz 
+2017-05-11 18:37:09,273 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_1THO_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,285 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO_ECOLI_4_107_1THO_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,290 - INFO - run_family.py - family_evol - Begin of the PDB TRX1_YEAST_2_102_3F3Q_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,321 - ERROR - run_family.py - family_evol - The PDB was not evolutionated TRX1_YEAST_2_102_3F3Q_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,330 - INFO - run_family.py - family_evol - Begin of the PDB PDIA1_HUMAN_25_132_4EKZ_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,337 - ERROR - run_family.py - family_evol - The PDB was not evolutionated PDIA1_HUMAN_25_132_4EKZ_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,345 - INFO - run_family.py - family_evol - Begin of the PDB Q97WI4_SULSO_32_133_3HHV_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,364 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q97WI4_SULSO_32_133_3HHV_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,366 - INFO - run_family.py - family_evol - Begin of the PDB PDIA6_HUMAN_161_267_4GWR_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,374 - ERROR - run_family.py - family_evol - The PDB was not evolutionated PDIA6_HUMAN_161_267_4GWR_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,377 - INFO - run_family.py - family_evol - Begin of the PDB YBBN_ECOLI_5_109_3QOU_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,410 - ERROR - run_family.py - family_evol - The PDB was not evolutionated YBBN_ECOLI_5_109_3QOU_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,416 - INFO - run_family.py - family_evol - Begin of the PDB Q8IDP4_PLAF7_55_156_3UL3_B_superimposed.pdb.gz 
+2017-05-11 18:37:09,429 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q8IDP4_PLAF7_55_156_3UL3_B_superimposed.pdb.gz 
+2017-05-11 18:37:09,435 - INFO - run_family.py - family_evol - Begin of the PDB Q8IDP4_PLAF7_55_156_3UL3_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,449 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q8IDP4_PLAF7_55_156_3UL3_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,451 - INFO - run_family.py - family_evol - Begin of the PDB Q8ZR92_SALTY_5_109_3QDN_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,476 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q8ZR92_SALTY_5_109_3QDN_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,480 - INFO - run_family.py - family_evol - Begin of the PDB PDI_YEAST_377_483_2B5E_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,509 - ERROR - run_family.py - family_evol - The PDB was not evolutionated PDI_YEAST_377_483_2B5E_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,520 - INFO - run_family.py - family_evol - Begin of the PDB Q8T9N5_SCHMA_5_106_2XBI_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,549 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q8T9N5_SCHMA_5_106_2XBI_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,551 - INFO - run_family.py - family_evol - Begin of the PDB TRX3_YEAST_27_127_2OE3_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,573 - ERROR - run_family.py - family_evol - The PDB was not evolutionated TRX3_YEAST_27_127_2OE3_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,576 - INFO - run_family.py - family_evol - Begin of the PDB TRX3_YEAST_27_127_2OE3_B_superimposed.pdb.gz 
+2017-05-11 18:37:09,585 - ERROR - run_family.py - family_evol - The PDB was not evolutionated TRX3_YEAST_27_127_2OE3_B_superimposed.pdb.gz 
+2017-05-11 18:37:09,587 - INFO - run_family.py - family_evol - Begin of the PDB THIO2_DROME_11_113_1XWC_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,604 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO2_DROME_11_113_1XWC_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,606 - INFO - run_family.py - family_evol - Begin of the PDB THIO2_DROME_11_113_1XWA_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,626 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO2_DROME_11_113_1XWA_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,632 - INFO - run_family.py - family_evol - Begin of the PDB THIO2_DROME_11_113_1XWB_B_superimposed.pdb.gz 
+2017-05-11 18:37:09,640 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO2_DROME_11_113_1XWB_B_superimposed.pdb.gz 
+2017-05-11 18:37:09,642 - INFO - run_family.py - family_evol - Begin of the PDB THIO_MYCTU_8_111_2I1U_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,650 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO_MYCTU_8_111_2I1U_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,652 - INFO - run_family.py - family_evol - Begin of the PDB PDI_YEAST_33_138_2B5E_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,664 - ERROR - run_family.py - family_evol - The PDB was not evolutionated PDI_YEAST_33_138_2B5E_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,671 - INFO - run_family.py - family_evol - Begin of the PDB TXND5_HUMAN_190_293_3WGE_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,686 - ERROR - run_family.py - family_evol - The PDB was not evolutionated TXND5_HUMAN_190_293_3WGE_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,691 - INFO - run_family.py - family_evol - Begin of the PDB PDIA4_HUMAN_63_167_3IDV_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,704 - ERROR - run_family.py - family_evol - The PDB was not evolutionated PDIA4_HUMAN_63_167_3IDV_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,705 - INFO - run_family.py - family_evol - Begin of the PDB Q980E5_SULSO_29_131_3TCO_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,723 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q980E5_SULSO_29_131_3TCO_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,724 - INFO - run_family.py - family_evol - Begin of the PDB Q980E5_SULSO_29_131_3TCO_B_superimposed.pdb.gz 
+2017-05-11 18:37:09,742 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q980E5_SULSO_29_131_3TCO_B_superimposed.pdb.gz 
+2017-05-11 18:37:09,746 - INFO - run_family.py - family_evol - Begin of the PDB Q980E5_SULSO_29_131_3TCO_C_superimposed.pdb.gz 
+2017-05-11 18:37:09,754 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q980E5_SULSO_29_131_3TCO_C_superimposed.pdb.gz 
+2017-05-11 18:37:09,756 - INFO - run_family.py - family_evol - Begin of the PDB PDIA1_HUMAN_368_473_4EKZ_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,771 - ERROR - run_family.py - family_evol - The PDB was not evolutionated PDIA1_HUMAN_368_473_4EKZ_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,775 - INFO - run_family.py - family_evol - Begin of the PDB PDIA1_HUMAN_368_473_3UEM_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,783 - ERROR - run_family.py - family_evol - The PDB was not evolutionated PDIA1_HUMAN_368_473_3UEM_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,784 - INFO - run_family.py - family_evol - Begin of the PDB THIO_HUMAN_2_104_5DQY_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,801 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO_HUMAN_2_104_5DQY_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,803 - INFO - run_family.py - family_evol - Begin of the PDB THIO2_NOSS1_4_107_1THX_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,813 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO2_NOSS1_4_107_1THX_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,815 - INFO - run_family.py - family_evol - Begin of the PDB Q8IEV4_TRIVA_6_111_2F51_B_superimposed.pdb.gz 
+2017-05-11 18:37:09,825 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q8IEV4_TRIVA_6_111_2F51_B_superimposed.pdb.gz 
+2017-05-11 18:37:09,827 - INFO - run_family.py - family_evol - Begin of the PDB Q8IEV4_TRIVA_6_111_2F51_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,872 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q8IEV4_TRIVA_6_111_2F51_A_superimposed.pdb.gz 
+2017-05-11 18:37:09,872 - INFO - run_family.py - family_evol - End family Evol  PF00085 
+2017-05-11 18:37:09,873 - INFO - run_family.py - family_evol - --- 1.56033301353 seconds --- 
+2017-05-11 18:37:22,571 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-11 18:37:22,572 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-11 18:37:22,580 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-11 18:37:22,606 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-11 18:37:22,606 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-11 18:37:22,607 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-11 18:37:22,611 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-11 18:37:22,613 - ERROR - run_family.py - family_evol - The PDB was not evolutionated PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-11 18:37:22,614 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_F_superimposed.pdb.gz 
+2017-05-11 18:37:22,617 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIOM_HUMAN_61_164_1UVZ_F_superimposed.pdb.gz 
+2017-05-11 18:37:22,618 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2H6X_B_superimposed.pdb.gz 
+2017-05-11 18:37:22,636 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO_ECOLI_4_107_2H6X_B_superimposed.pdb.gz 
+2017-05-11 18:37:22,642 - INFO - run_family.py - family_evol - Begin of the PDB THIO_PLAF7_2_102_1SYR_B_superimposed.pdb.gz 
+2017-05-11 18:37:22,645 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO_PLAF7_2_102_1SYR_B_superimposed.pdb.gz 
+2017-05-11 18:37:22,646 - INFO - run_family.py - family_evol - Begin of the PDB DJC10_MOUSE_672_776_3APS_B_superimposed.pdb.gz 
+2017-05-11 18:37:22,655 - ERROR - run_family.py - family_evol - The PDB was not evolutionated DJC10_MOUSE_672_776_3APS_B_superimposed.pdb.gz 
+2017-05-11 18:37:22,656 - INFO - run_family.py - family_evol - Begin of the PDB Q7XZK2_HORVD_14_118_2VLT_A_superimposed.pdb.gz 
+2017-05-11 18:37:22,664 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q7XZK2_HORVD_14_118_2VLT_A_superimposed.pdb.gz 
+2017-05-11 18:37:22,666 - INFO - run_family.py - family_evol - Begin of the PDB Q9YED4_AERPE_239_342_3EMX_A_superimposed.pdb.gz 
+2017-05-11 18:37:22,669 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q9YED4_AERPE_239_342_3EMX_A_superimposed.pdb.gz 
+2017-05-11 18:37:22,679 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2H6X_A_superimposed.pdb.gz 
+2017-05-11 18:37:22,702 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO_ECOLI_4_107_2H6X_A_superimposed.pdb.gz 
+2017-05-11 18:37:22,707 - INFO - run_family.py - family_evol - Begin of the PDB PDIA1_HUMAN_368_473_4EL1_A_superimposed.pdb.gz 
+2017-05-11 18:37:22,715 - ERROR - run_family.py - family_evol - The PDB was not evolutionated PDIA1_HUMAN_368_473_4EL1_A_superimposed.pdb.gz 
+2017-05-11 18:37:22,717 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_B_superimposed.pdb.gz 
+2017-05-11 18:37:22,723 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIOM_HUMAN_61_164_1UVZ_B_superimposed.pdb.gz 
+2017-05-11 18:37:22,725 - INFO - run_family.py - family_evol - Begin of the PDB PDIA1_HUMAN_25_132_4EL1_A_superimposed.pdb.gz 
+2017-05-11 18:37:22,739 - ERROR - run_family.py - family_evol - The PDB was not evolutionated PDIA1_HUMAN_25_132_4EL1_A_superimposed.pdb.gz 
+2017-05-11 18:37:22,741 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_C_superimposed.pdb.gz 
+2017-05-11 18:37:22,749 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIOM_HUMAN_61_164_1UVZ_C_superimposed.pdb.gz 
+2017-05-11 18:37:22,760 - INFO - run_family.py - family_evol - Begin of the PDB TRX2_YEAST_2_103_2FA4_B_superimposed.pdb.gz 
+2017-05-11 18:37:22,773 - ERROR - run_family.py - family_evol - The PDB was not evolutionated TRX2_YEAST_2_103_2FA4_B_superimposed.pdb.gz 
+2017-05-11 18:37:22,776 - INFO - run_family.py - family_evol - Begin of the PDB Q8T9N5_SCHMA_5_106_2XBQ_B_superimposed.pdb.gz 
+2017-05-11 18:37:22,785 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q8T9N5_SCHMA_5_106_2XBQ_B_superimposed.pdb.gz 
+2017-05-11 18:37:22,790 - INFO - run_family.py - family_evol - Begin of the PDB PDIA6_HUMAN_26_129_4EF0_A_superimposed.pdb.gz 
+2017-05-11 18:37:22,799 - ERROR - run_family.py - family_evol - The PDB was not evolutionated PDIA6_HUMAN_26_129_4EF0_A_superimposed.pdb.gz 
+2017-05-11 18:37:22,801 - INFO - run_family.py - family_evol - Begin of the PDB TXND5_HUMAN_323_427_3UVT_A_superimposed.pdb.gz 
+2017-05-11 18:37:22,808 - ERROR - run_family.py - family_evol - The PDB was not evolutionated TXND5_HUMAN_323_427_3UVT_A_superimposed.pdb.gz 
+2017-05-11 18:37:22,809 - INFO - run_family.py - family_evol - Begin of the PDB TRX3_YEAST_27_127_2OE0_B_superimposed.pdb.gz 
+2017-05-11 18:37:22,817 - ERROR - run_family.py - family_evol - The PDB was not evolutionated TRX3_YEAST_27_127_2OE0_B_superimposed.pdb.gz 
+2017-05-11 18:37:22,830 - INFO - run_family.py - family_evol - Begin of the PDB THIO2_DROME_11_113_1XWB_D_superimposed.pdb.gz 
+2017-05-11 18:37:22,844 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO2_DROME_11_113_1XWB_D_superimposed.pdb.gz 
+2017-05-11 18:37:22,846 - INFO - run_family.py - family_evol - Begin of the PDB TXND5_HUMAN_63_167_3WGD_E_superimposed.pdb.gz 
+2017-05-11 18:37:22,856 - ERROR - run_family.py - family_evol - The PDB was not evolutionated TXND5_HUMAN_63_167_3WGD_E_superimposed.pdb.gz 
+2017-05-11 18:37:22,862 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_E_superimposed.pdb.gz 
+2017-05-11 18:37:22,865 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIOM_HUMAN_61_164_1UVZ_E_superimposed.pdb.gz 
+2017-05-11 18:37:22,866 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_1SKR_B_superimposed.pdb.gz 
+2017-05-11 18:37:22,873 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO_ECOLI_4_107_1SKR_B_superimposed.pdb.gz 
+2017-05-11 18:37:22,875 - INFO - run_family.py - family_evol - Begin of the PDB THIO2_DROME_11_113_1XW9_C_superimposed.pdb.gz 
+2017-05-11 18:37:22,881 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO2_DROME_11_113_1XW9_C_superimposed.pdb.gz 
+2017-05-11 18:37:22,884 - INFO - run_family.py - family_evol - Begin of the PDB THIO_HUMAN_2_104_1AUC_A_superimposed.pdb.gz 
+2017-05-11 18:37:22,896 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO_HUMAN_2_104_1AUC_A_superimposed.pdb.gz 
+2017-05-11 18:37:22,914 - INFO - run_family.py - family_evol - Begin of the PDB DJC10_MOUSE_130_232_3APQ_B_superimposed.pdb.gz 
+2017-05-11 18:37:22,923 - ERROR - run_family.py - family_evol - The PDB was not evolutionated DJC10_MOUSE_130_232_3APQ_B_superimposed.pdb.gz 
+2017-05-11 18:37:22,929 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1W4V_D_superimposed.pdb.gz 
+2017-05-11 18:37:22,934 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIOM_HUMAN_61_164_1W4V_D_superimposed.pdb.gz 
+2017-05-11 18:37:22,940 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2TRX_A_superimposed.pdb.gz 
+2017-05-11 18:37:22,943 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO_ECOLI_4_107_2TRX_A_superimposed.pdb.gz 
+2017-05-11 18:37:22,945 - INFO - run_family.py - family_evol - Begin of the PDB GLRX3_HUMAN_14_115_2WZ9_A_superimposed.pdb.gz 
+2017-05-11 18:37:22,959 - ERROR - run_family.py - family_evol - The PDB was not evolutionated GLRX3_HUMAN_14_115_2WZ9_A_superimposed.pdb.gz 
+2017-05-11 18:37:22,961 - INFO - run_family.py - family_evol - Begin of the PDB B1MMM4_MYCA9_5_107_4POB_A_superimposed.pdb.gz 
+2017-05-11 18:37:22,968 - ERROR - run_family.py - family_evol - The PDB was not evolutionated B1MMM4_MYCA9_5_107_4POB_A_superimposed.pdb.gz 
+2017-05-11 18:37:22,970 - INFO - run_family.py - family_evol - Begin of the PDB B1MMM4_MYCA9_5_107_4POB_B_superimposed.pdb.gz 
+2017-05-11 18:37:22,977 - ERROR - run_family.py - family_evol - The PDB was not evolutionated B1MMM4_MYCA9_5_107_4POB_B_superimposed.pdb.gz 
+2017-05-11 18:37:22,981 - INFO - run_family.py - family_evol - Begin of the PDB PDIA4_HUMAN_178_282_3IDV_A_superimposed.pdb.gz 
+2017-05-11 18:37:22,985 - ERROR - run_family.py - family_evol - The PDB was not evolutionated PDIA4_HUMAN_178_282_3IDV_A_superimposed.pdb.gz 
+2017-05-11 18:37:22,988 - INFO - run_family.py - family_evol - Begin of the PDB Q4DV70_TRYCC_42_151_3H79_A_superimposed.pdb.gz 
+2017-05-11 18:37:22,993 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q4DV70_TRYCC_42_151_3H79_A_superimposed.pdb.gz 
+2017-05-11 18:37:22,997 - INFO - run_family.py - family_evol - Begin of the PDB TXND5_HUMAN_323_427_3UVT_C_superimposed.pdb.gz 
+2017-05-11 18:37:23,003 - ERROR - run_family.py - family_evol - The PDB was not evolutionated TXND5_HUMAN_323_427_3UVT_C_superimposed.pdb.gz 
+2017-05-11 18:37:23,005 - INFO - run_family.py - family_evol - Begin of the PDB TXND5_HUMAN_323_427_3UVT_D_superimposed.pdb.gz 
+2017-05-11 18:37:23,008 - ERROR - run_family.py - family_evol - The PDB was not evolutionated TXND5_HUMAN_323_427_3UVT_D_superimposed.pdb.gz 
+2017-05-11 18:37:23,009 - INFO - run_family.py - family_evol - Begin of the PDB G0W5T0_NAUDC_35_141_4TVE_A_superimposed.pdb.gz 
+2017-05-11 18:37:23,012 - ERROR - run_family.py - family_evol - The PDB was not evolutionated G0W5T0_NAUDC_35_141_4TVE_A_superimposed.pdb.gz 
+2017-05-11 18:37:23,013 - INFO - run_family.py - family_evol - Begin of the PDB Q2G000_STAA8_2_104_4RUV_A_superimposed.pdb.gz 
+2017-05-11 18:37:23,028 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q2G000_STAA8_2_104_4RUV_A_superimposed.pdb.gz 
+2017-05-11 18:37:23,034 - INFO - run_family.py - family_evol - Begin of the PDB THIO1_STRCO_4_106_1T00_A_superimposed.pdb.gz 
+2017-05-11 18:37:23,048 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO1_STRCO_4_106_1T00_A_superimposed.pdb.gz 
+2017-05-11 18:37:23,050 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2BTO_T_superimposed.pdb.gz 
+2017-05-11 18:37:23,057 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO_ECOLI_4_107_2BTO_T_superimposed.pdb.gz 
+2017-05-11 18:37:23,058 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2AJQ_I_superimposed.pdb.gz 
+2017-05-11 18:37:23,065 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO_ECOLI_4_107_2AJQ_I_superimposed.pdb.gz 
+2017-05-11 18:37:23,066 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2AJQ_B_superimposed.pdb.gz 
+2017-05-11 18:37:23,077 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO_ECOLI_4_107_2AJQ_B_superimposed.pdb.gz 
+2017-05-11 18:37:23,088 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_1THO_A_superimposed.pdb.gz 
+2017-05-11 18:37:23,106 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO_ECOLI_4_107_1THO_A_superimposed.pdb.gz 
+2017-05-11 18:37:23,109 - INFO - run_family.py - family_evol - Begin of the PDB TRX1_YEAST_2_102_3F3Q_A_superimposed.pdb.gz 
+2017-05-11 18:37:23,116 - ERROR - run_family.py - family_evol - The PDB was not evolutionated TRX1_YEAST_2_102_3F3Q_A_superimposed.pdb.gz 
+2017-05-11 18:37:23,118 - INFO - run_family.py - family_evol - Begin of the PDB PDIA1_HUMAN_25_132_4EKZ_A_superimposed.pdb.gz 
+2017-05-11 18:37:23,125 - ERROR - run_family.py - family_evol - The PDB was not evolutionated PDIA1_HUMAN_25_132_4EKZ_A_superimposed.pdb.gz 
+2017-05-11 18:37:23,128 - INFO - run_family.py - family_evol - Begin of the PDB Q97WI4_SULSO_32_133_3HHV_A_superimposed.pdb.gz 
+2017-05-11 18:37:23,139 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q97WI4_SULSO_32_133_3HHV_A_superimposed.pdb.gz 
+2017-05-11 18:37:23,140 - INFO - run_family.py - family_evol - Begin of the PDB PDIA6_HUMAN_161_267_4GWR_A_superimposed.pdb.gz 
+2017-05-11 18:37:23,147 - ERROR - run_family.py - family_evol - The PDB was not evolutionated PDIA6_HUMAN_161_267_4GWR_A_superimposed.pdb.gz 
+2017-05-11 18:37:23,149 - INFO - run_family.py - family_evol - Begin of the PDB YBBN_ECOLI_5_109_3QOU_A_superimposed.pdb.gz 
+2017-05-11 18:37:23,156 - ERROR - run_family.py - family_evol - The PDB was not evolutionated YBBN_ECOLI_5_109_3QOU_A_superimposed.pdb.gz 
+2017-05-11 18:37:23,159 - INFO - run_family.py - family_evol - Begin of the PDB Q8IDP4_PLAF7_55_156_3UL3_B_superimposed.pdb.gz 
+2017-05-11 18:37:23,164 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q8IDP4_PLAF7_55_156_3UL3_B_superimposed.pdb.gz 
+2017-05-11 18:37:23,165 - INFO - run_family.py - family_evol - Begin of the PDB Q8IDP4_PLAF7_55_156_3UL3_A_superimposed.pdb.gz 
+2017-05-11 18:37:23,172 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q8IDP4_PLAF7_55_156_3UL3_A_superimposed.pdb.gz 
+2017-05-11 18:37:23,174 - INFO - run_family.py - family_evol - Begin of the PDB Q8ZR92_SALTY_5_109_3QDN_A_superimposed.pdb.gz 
+2017-05-11 18:37:23,193 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q8ZR92_SALTY_5_109_3QDN_A_superimposed.pdb.gz 
+2017-05-11 18:37:23,199 - INFO - run_family.py - family_evol - Begin of the PDB PDI_YEAST_377_483_2B5E_A_superimposed.pdb.gz 
+2017-05-11 18:37:23,202 - ERROR - run_family.py - family_evol - The PDB was not evolutionated PDI_YEAST_377_483_2B5E_A_superimposed.pdb.gz 
+2017-05-11 18:37:23,205 - INFO - run_family.py - family_evol - Begin of the PDB Q8T9N5_SCHMA_5_106_2XBI_A_superimposed.pdb.gz 
+2017-05-11 18:37:23,210 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q8T9N5_SCHMA_5_106_2XBI_A_superimposed.pdb.gz 
+2017-05-11 18:37:23,213 - INFO - run_family.py - family_evol - Begin of the PDB TRX3_YEAST_27_127_2OE3_A_superimposed.pdb.gz 
+2017-05-11 18:37:23,221 - ERROR - run_family.py - family_evol - The PDB was not evolutionated TRX3_YEAST_27_127_2OE3_A_superimposed.pdb.gz 
+2017-05-11 18:37:23,223 - INFO - run_family.py - family_evol - Begin of the PDB TRX3_YEAST_27_127_2OE3_B_superimposed.pdb.gz 
+2017-05-11 18:37:23,235 - ERROR - run_family.py - family_evol - The PDB was not evolutionated TRX3_YEAST_27_127_2OE3_B_superimposed.pdb.gz 
+2017-05-11 18:37:23,238 - INFO - run_family.py - family_evol - Begin of the PDB THIO2_DROME_11_113_1XWC_A_superimposed.pdb.gz 
+2017-05-11 18:37:23,248 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO2_DROME_11_113_1XWC_A_superimposed.pdb.gz 
+2017-05-11 18:37:23,249 - INFO - run_family.py - family_evol - Begin of the PDB THIO2_DROME_11_113_1XWA_A_superimposed.pdb.gz 
+2017-05-11 18:37:23,264 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO2_DROME_11_113_1XWA_A_superimposed.pdb.gz 
+2017-05-11 18:37:23,272 - INFO - run_family.py - family_evol - Begin of the PDB THIO2_DROME_11_113_1XWB_B_superimposed.pdb.gz 
+2017-05-11 18:37:23,274 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO2_DROME_11_113_1XWB_B_superimposed.pdb.gz 
+2017-05-11 18:37:23,280 - INFO - run_family.py - family_evol - Begin of the PDB THIO_MYCTU_8_111_2I1U_A_superimposed.pdb.gz 
+2017-05-11 18:37:23,283 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO_MYCTU_8_111_2I1U_A_superimposed.pdb.gz 
+2017-05-11 18:37:23,287 - INFO - run_family.py - family_evol - Begin of the PDB PDI_YEAST_33_138_2B5E_A_superimposed.pdb.gz 
+2017-05-11 18:37:23,293 - ERROR - run_family.py - family_evol - The PDB was not evolutionated PDI_YEAST_33_138_2B5E_A_superimposed.pdb.gz 
+2017-05-11 18:37:23,301 - INFO - run_family.py - family_evol - Begin of the PDB TXND5_HUMAN_190_293_3WGE_A_superimposed.pdb.gz 
+2017-05-11 18:37:23,310 - ERROR - run_family.py - family_evol - The PDB was not evolutionated TXND5_HUMAN_190_293_3WGE_A_superimposed.pdb.gz 
+2017-05-11 18:37:23,313 - INFO - run_family.py - family_evol - Begin of the PDB PDIA4_HUMAN_63_167_3IDV_A_superimposed.pdb.gz 
+2017-05-11 18:37:23,319 - ERROR - run_family.py - family_evol - The PDB was not evolutionated PDIA4_HUMAN_63_167_3IDV_A_superimposed.pdb.gz 
+2017-05-11 18:37:23,321 - INFO - run_family.py - family_evol - Begin of the PDB Q980E5_SULSO_29_131_3TCO_A_superimposed.pdb.gz 
+2017-05-11 18:37:23,332 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q980E5_SULSO_29_131_3TCO_A_superimposed.pdb.gz 
+2017-05-11 18:37:23,333 - INFO - run_family.py - family_evol - Begin of the PDB Q980E5_SULSO_29_131_3TCO_B_superimposed.pdb.gz 
+2017-05-11 18:37:23,336 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q980E5_SULSO_29_131_3TCO_B_superimposed.pdb.gz 
+2017-05-11 18:37:23,340 - INFO - run_family.py - family_evol - Begin of the PDB Q980E5_SULSO_29_131_3TCO_C_superimposed.pdb.gz 
+2017-05-11 18:37:23,344 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q980E5_SULSO_29_131_3TCO_C_superimposed.pdb.gz 
+2017-05-11 18:37:23,349 - INFO - run_family.py - family_evol - Begin of the PDB PDIA1_HUMAN_368_473_4EKZ_A_superimposed.pdb.gz 
+2017-05-11 18:37:23,352 - ERROR - run_family.py - family_evol - The PDB was not evolutionated PDIA1_HUMAN_368_473_4EKZ_A_superimposed.pdb.gz 
+2017-05-11 18:37:23,353 - INFO - run_family.py - family_evol - Begin of the PDB PDIA1_HUMAN_368_473_3UEM_A_superimposed.pdb.gz 
+2017-05-11 18:37:23,356 - ERROR - run_family.py - family_evol - The PDB was not evolutionated PDIA1_HUMAN_368_473_3UEM_A_superimposed.pdb.gz 
+2017-05-11 18:37:23,357 - INFO - run_family.py - family_evol - Begin of the PDB THIO_HUMAN_2_104_5DQY_A_superimposed.pdb.gz 
+2017-05-11 18:37:23,380 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO_HUMAN_2_104_5DQY_A_superimposed.pdb.gz 
+2017-05-11 18:37:23,384 - INFO - run_family.py - family_evol - Begin of the PDB THIO2_NOSS1_4_107_1THX_A_superimposed.pdb.gz 
+2017-05-11 18:37:23,390 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO2_NOSS1_4_107_1THX_A_superimposed.pdb.gz 
+2017-05-11 18:37:23,394 - INFO - run_family.py - family_evol - Begin of the PDB Q8IEV4_TRIVA_6_111_2F51_B_superimposed.pdb.gz 
+2017-05-11 18:37:23,400 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q8IEV4_TRIVA_6_111_2F51_B_superimposed.pdb.gz 
+2017-05-11 18:37:23,402 - INFO - run_family.py - family_evol - Begin of the PDB Q8IEV4_TRIVA_6_111_2F51_A_superimposed.pdb.gz 
+2017-05-11 18:37:23,411 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q8IEV4_TRIVA_6_111_2F51_A_superimposed.pdb.gz 
+2017-05-11 18:37:23,411 - INFO - run_family.py - family_evol - End family Evol  PF00085 
+2017-05-11 18:37:23,416 - INFO - run_family.py - family_evol - --- 0.805644989014 seconds --- 
+2017-05-11 18:38:12,682 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-11 18:38:12,684 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-11 18:38:12,702 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-11 18:38:12,794 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-11 18:38:12,795 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-11 18:38:12,799 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-11 18:38:12,802 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-12 00:25:23,422 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-12 00:25:23,452 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-12 00:25:23,543 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-12 00:25:23,617 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-12 00:25:23,618 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-12 00:25:23,619 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-12 00:25:23,623 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-12 00:25:40,603 - ERROR - run_family.py - family_evol - The family was not evolutionated  PF00085 
+2017-05-12 00:25:40,604 - INFO - run_family.py - family_evol - End family Evol  PF00085 
+2017-05-12 00:25:40,604 - INFO - run_family.py - family_evol - --- 16.9856898785 seconds --- 
+2017-05-12 00:29:12,657 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-12 00:29:12,658 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-12 00:29:12,666 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-12 00:29:12,689 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-12 00:29:12,690 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-12 00:29:12,691 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-12 00:29:12,694 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-12 00:34:03,647 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-12 00:34:03,647 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-12 00:34:03,655 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-12 00:34:03,680 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-12 00:34:03,681 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-12 00:34:03,681 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-12 00:34:03,684 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-12 00:35:35,397 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-12 00:35:35,397 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-12 00:35:35,406 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-12 00:35:35,429 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-12 00:35:35,430 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-12 00:35:35,431 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-12 00:35:35,434 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-12 00:40:00,258 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-12 00:40:00,259 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-12 00:40:00,267 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-12 00:40:00,291 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-12 00:40:00,292 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-12 00:40:00,293 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-12 00:40:00,296 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-12 00:55:10,928 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-12 00:55:10,929 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-12 00:55:10,937 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-12 00:55:10,961 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-12 00:55:10,962 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-12 00:55:10,963 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-12 00:55:10,966 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-12 01:00:25,523 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-12 01:00:25,524 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-12 01:00:25,534 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-12 01:00:25,557 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-12 01:00:25,558 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-12 01:00:25,559 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-12 01:00:25,562 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-12 01:05:06,132 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-12 01:05:06,133 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-12 01:05:06,141 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-12 01:05:06,172 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-12 01:05:06,173 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-12 01:05:06,174 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-12 01:05:06,177 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-12 01:13:43,790 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-12 01:13:43,791 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-12 01:13:43,800 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-12 01:13:43,823 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-12 01:13:43,824 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-12 01:13:43,825 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-12 01:13:43,828 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-12 01:14:50,704 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-12 01:14:50,704 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-12 01:14:50,713 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-12 01:14:50,736 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-12 01:14:50,737 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-12 01:14:50,738 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-12 01:14:50,741 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-12 01:16:15,999 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-12 01:16:16,000 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-12 01:16:16,009 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-12 01:16:16,034 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-12 01:16:16,035 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-12 01:16:16,035 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-12 01:16:16,038 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-12 01:21:13,287 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-12 01:21:13,287 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-12 01:21:13,296 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-12 01:21:13,319 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-12 01:21:13,319 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-12 01:21:13,320 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-12 01:21:13,324 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-12 01:22:44,867 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-12 01:22:44,868 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-12 01:22:44,876 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-12 01:22:44,900 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-12 01:22:44,900 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-12 01:22:44,901 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-12 01:22:44,904 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-12 01:25:34,283 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-12 01:25:34,285 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-12 01:25:34,293 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-12 01:25:34,316 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-12 01:25:34,317 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-12 01:25:34,318 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-12 01:25:34,321 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-12 01:28:02,977 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-12 01:28:02,978 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-12 01:28:02,987 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-12 01:28:03,011 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-12 01:28:03,011 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-12 01:28:03,012 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-12 01:28:03,015 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-12 01:28:50,278 - ERROR - run_family.py - family_evol - The PDB was not evolutionated PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-12 01:30:22,443 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-12 01:30:22,444 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-12 01:30:22,452 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-12 01:30:22,475 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-12 01:30:22,475 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-12 01:30:22,476 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-12 01:30:22,479 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-12 01:33:13,428 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-12 01:33:13,429 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-12 01:33:13,438 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-12 01:33:13,461 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-12 01:33:13,462 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-12 01:33:13,463 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-12 01:33:13,466 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-12 01:34:24,321 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-12 01:34:24,322 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-12 01:34:24,330 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-12 01:34:24,355 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-12 01:34:24,355 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-12 01:34:24,356 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-12 01:34:24,359 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-12 19:05:58,365 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-12 19:05:58,396 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-12 19:05:58,481 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-12 19:05:58,576 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-12 19:05:58,577 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-12 19:05:58,578 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-12 19:05:58,586 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-12 19:09:56,802 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-12 19:09:56,802 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-12 19:09:56,811 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-12 19:09:56,836 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-12 19:09:56,839 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-12 19:09:56,840 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-12 19:09:56,843 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-12 19:11:15,004 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-12 19:11:15,005 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-12 19:11:15,013 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-12 19:11:15,037 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-12 19:11:15,037 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-12 19:11:15,038 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-12 19:11:15,041 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-12 19:12:56,532 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-12 19:12:56,533 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-12 19:12:56,543 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-12 19:12:56,573 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-12 19:12:56,574 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-12 19:12:56,575 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-12 19:12:56,578 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-12 19:15:13,115 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-12 19:15:13,116 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-12 19:15:13,124 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-12 19:15:13,148 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-12 19:15:13,148 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-12 19:15:13,149 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-12 19:15:13,152 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-12 19:15:47,134 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-12 19:15:47,134 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-12 19:15:47,143 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-12 19:15:47,167 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-12 19:15:47,167 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-12 19:15:47,168 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-12 19:15:47,171 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-12 19:20:31,570 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-12 19:20:31,622 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-12 19:20:31,658 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-12 19:20:31,726 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-12 19:20:31,727 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-12 19:20:31,728 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-12 19:20:31,746 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-12 19:27:32,946 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-12 19:27:32,947 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-12 19:27:32,955 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-12 19:27:32,978 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-12 19:27:32,979 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-12 19:27:32,980 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-12 19:27:43,332 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-12 19:30:13,691 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-12 19:30:13,692 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-12 19:30:13,701 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-12 19:30:13,724 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-12 19:30:13,725 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-12 19:30:13,726 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-12 19:30:17,167 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-12 19:30:28,057 - ERROR - run_family.py - family_evol - The PDB was not evolutionated PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-12 19:31:22,279 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-12 19:31:22,279 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-12 19:31:22,288 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-12 19:31:22,311 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-12 19:31:22,312 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-12 19:31:22,313 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-12 19:31:26,326 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
