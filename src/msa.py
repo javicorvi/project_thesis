@@ -50,6 +50,17 @@ def clustering(clust, input_folder, output_folder, pattern_array=[".fasta"]):
     print "clustering_ends"
     print("--- %s seconds ---" % (time.time() - start_time))
 
+def clustering_singular(clust, input_file, output_file):
+    start_time = time.time()
+    print(input_file)
+    try:
+        call(["cdhit", "-i" , input_file ,"-o", output_file,"-c",clust,"-n", "4", "-M", "6000"])
+    except Exception:
+        print "The clusterization  get an exception with de pdb file " + input_file
+        raise Exception ("The clusterization  get an exception with de pdb file " + input_file)    
+    print "clustering_ends"
+    print("--- %s seconds ---" % (time.time() - start_time))
+
 '''
 Crea los logo shannon y kl 
 '''

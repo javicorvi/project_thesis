@@ -373,9 +373,12 @@ main (int argc, char * argv[])
     printf("file to print \n ");
 
 
-    sprintf(mutated_secuence_file_name,"%s-beta%2.2f-nsus%2.2f-runs%d.fasta",
-    Options.print_sequences_output,beta,Options.accept,Options.runs);
-    printf("Print Sequences  %d\n ",Options.print_sequences);
+	//sprintf(mutated_secuence_file_name,"%s-beta%2.2f-nsus%2.2f-runs%d.fasta",
+    //Options.print_sequences_output,beta,Options.accept,Options.runs);
+
+	sprintf(mutated_secuence_file_name,"%s",Options.print_sequences_output,beta,Options.accept,Options.runs);
+
+	printf("Print Sequences  %d\n ",Options.print_sequences);
 	printf("Print Sequences File %s\n ",mutated_secuence_file_name);
 	printf("Print Sequences Identity %f\n ",Options.print_sequences_identity);
 	printf("Print Sequences Screening %d\n ",Options.print_sequences_screening);

@@ -68,7 +68,7 @@ def buslje09_(input_folder, zmip_result_path,pattern_array=["sequences"]):
     print "buslje09_"
     print("--- %s seconds ---" % (time.time() - start_time))
 
-def run_analisys(zmip_natural_result_path, mi_results_path, pattern_array,contact_map_path,outputpath,window):
+def run_analisys(df,index, zmip_natural_result_path, mi_results_path, pattern_array,contact_map_path,outputpath,window):
     #levanto el zmip natural
     zmip_natural = util.load_zmip(zmip_natural_result_path,window)
     util.order(zmip_natural)
@@ -85,7 +85,7 @@ def run_analisys(zmip_natural_result_path, mi_results_path, pattern_array,contac
             m_=[row [2] for row in m]
             m2_=[row[2] for row in m2]
             value_spearman = spearman(m_,m2_)
-            print " Spearman total " + str(value_spearman)
+            df.set_value(index, 'spearman_zmip_evol_nat', value_spearman) 
             #MI PLOT
             #contact_map=util.load_contact_map(contact_map_path)
             #plot.contact_map_(contact_map, outputpath)
@@ -138,7 +138,7 @@ def run_analisys(zmip_natural_result_path, mi_results_path, pattern_array,contac
             scores.append(scores_evol)
             #plot.roc_curve(y_true,scores_nat,scores_evol)
             colors = ['blue', 'red']
-            plot.roc_curve(y_true,scores,labels,colors, outputpath+filename+'_roc_curve.png')
+            plot.roc_curve(df,index,y_true,scores,labels,colors, outputpath+filename+'_roc_curve.png')
             
             plot.contacts_with_mi(x_nat_t,y_evol_t,x_nat_f,y_evol_f,outputpath+filename+'contacts_with_mi.png',filename)
             

@@ -12,6 +12,11 @@ import glob
 import zipfile
 import pandas
 import logging
+from sklearn import metrics
+def getAUC(target,scores):
+    fpr, tpr, _ = metrics.roc_curve(target, scores)
+    auc = metrics.auc(fpr, tpr)
+    return auc
 def load_zmip(zmip_result_path,window_mi_neightboards=0):
     column = []
     file = open(zmip_result_path)
@@ -105,8 +110,7 @@ def synchronize_evol_with_cutted_pdb(pdb_complete_path, pdb_cutted_path, cluster
                         else:
                             line_array=np.array(list(line))
                             new_line = line_array[df_columnas[5]]
-                            print (new_line.tostring())
-                            new_file.write(new_line.tostring())
+                            new_file.write(new_line.tostring()+'\n')
             old_file.close()
             new_file.close()
     
@@ -225,8 +229,14 @@ def find_pdb_to_evolve(family_pdb_information):
     df=df.sort(["cluster","pdb"])
     df=df.groupby("cluster").first()
     df['pdb_folder_name']=df['seq'].str.replace("/","_").str.replace("-","_") + "_" + df['pdb']+"_"+df['chain']
+    df['auc']= np.NaN
+    df['auc_01']= np.NaN
+    df['auc_nat']= np.NaN
+    df['auc_nat_01']= np.NaN
+    df['spearman_zmip_evol_nat']= np.NaN
     #print df
     logging.info("Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):" + str(len(df.index)))
+    print df
     return df
 '''
 REMOVE PDB HEADER, SAVE ONLY THE ATOMS
