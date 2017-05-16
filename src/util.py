@@ -13,10 +13,27 @@ import zipfile
 import pandas
 import logging
 from sklearn import metrics
+
+def getPartialAUC(fpr, tpr, max_fpr):
+    idx = np.where(fpr <= max_fpr)[0]
+    # linearly interpolate the ROC curve until max_fpr
+    idx_last = idx.max()
+    idx_next = idx_last + 1
+    xc = [fpr[idx_last], fpr[idx_next]]
+    yc = [tpr[idx_last], fpr[idx_next]]
+    tpr = np.r_[tpr[idx], np.interp(max_fpr, xc, yc)]
+    fpr = np.r_[fpr[idx], max_fpr]
+    partial_roc = metrics.auc(fpr, tpr, reorder=True)
+    # standardize result to lie between 0.5 and 1
+    min_area = max_fpr**2/2
+    max_area = max_fpr
+    return 0.5*(1+(partial_roc-min_area)/(max_area-min_area))    
+
 def getAUC(target,scores):
     fpr, tpr, _ = metrics.roc_curve(target, scores)
     auc = metrics.auc(fpr, tpr)
-    return auc
+    auc01 = getPartialAUC(fpr, tpr, 0.1)
+    return auc,auc01
 def load_zmip(zmip_result_path,window_mi_neightboards=0):
     column = []
     file = open(zmip_result_path)
@@ -115,6 +132,48 @@ def synchronize_evol_with_cutted_pdb(pdb_complete_path, pdb_cutted_path, cluster
             new_file.close()
     
     
+    #Y = np.arange(36).reshape(6,6)
+    #test = Y[np.ix_([0,3,5],[0,3,5])]
+    cmap = load_contact_map(contact_map_path)
+    cmap_sync=cmap[np.ix_(df_columnas[5].tolist(),df_columnas[5].tolist())]
+    save_contact_map(cmap_sync, sincronized_contact_map)        
+    
+    print "sincronize_natural_evol_alignments"
+    print("--- %s seconds ---" % (time.time() - start_time))
+
+'''
+Sincroniza y corta los msa evolucionados teniendo en cuenta solo la escructura en comun que existe entre los pdb de la familia
+Recibe el pdf recortado con las posiciones que deben mantenerse luego elimina las posiciones del msa evolucionado.
+'''
+def synchronize_evol_with_cutted_pdb_singular(pdb_complete_path, pdb_cutted_path, clustered_sequences_path, sincronized_evol_path, contact_map_path, sincronized_contact_map):
+    start_time = time.time()
+    print "sincronize_natural_evol_alignments"  
+    df = pandas.read_csv(pdb_complete_path, delim_whitespace=True,header=None)
+    df=df.loc[df[4] == 'A']
+    df=df.dropna()
+    df[5] = df[5].astype('int32')
+    df=df.groupby(5).first().reset_index()
+    start = df[5].min()
+    end = df[5].max()
+    df_columnas = pandas.read_csv(pdb_cutted_path, delim_whitespace=True,header=None,usecols=[5])
+    df_columnas=df_columnas.dropna()
+    df_columnas[5] = df_columnas[5].astype('int32')
+    df_columnas=df_columnas.groupby(5).first().reset_index()
+    df_columnas[5] = df_columnas[5].apply(lambda x: x - start)
+    count=0
+    with open(sincronized_evol_path,'w') as new_file:
+        with open(clustered_sequences_path) as old_file:
+            for line in old_file:
+                if('>' in line):
+                    line = line.replace('\n','_'+str(count)+'\n')
+                    new_file.write(line)
+                    count=count+1
+                else:
+                    line_array=np.array(list(line))
+                    new_line = line_array[df_columnas[5]]
+                    new_file.write(new_line.tostring()+'\n')
+    old_file.close()
+    new_file.close()
     #Y = np.arange(36).reshape(6,6)
     #test = Y[np.ix_([0,3,5],[0,3,5])]
     cmap = load_contact_map(contact_map_path)
@@ -229,6 +288,9 @@ def find_pdb_to_evolve(family_pdb_information):
     df=df.sort(["cluster","pdb"])
     df=df.groupby("cluster").first()
     df['pdb_folder_name']=df['seq'].str.replace("/","_").str.replace("-","_") + "_" + df['pdb']+"_"+df['chain']
+    df['beta']= np.NaN
+    df['nsus']= np.NaN
+    df['runs']= np.NaN
     df['auc']= np.NaN
     df['auc_01']= np.NaN
     df['auc_nat']= np.NaN
