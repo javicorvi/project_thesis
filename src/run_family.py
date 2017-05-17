@@ -51,9 +51,12 @@ Execute the evolution of the protein with SCPE.
 Generate several families; taking account de parameters beta, nsus and runs 
 '''
 execute_scpe = False
-beta = ["1.00"]
-runs = ["20000"]
-nsus = ["3.0"]
+'''
+DefaultParameters
+'''
+beta = "1.00"
+runs = "1000"
+nsus = "3.0"
 '''
 Execute the clustering for the families generated with SCPE to avoid redundant sequences with high identity
 '''
@@ -65,7 +68,7 @@ execute_cut_msa = False
 '''
 Execute the analisys of the MSA: Seq Logo.
 '''
-execute_msa_information = False
+execute_msa_information = True
 '''
 Execute the MI calcultation busjle09
 '''
@@ -106,7 +109,7 @@ def run_families_evol():
         msa_gz_path=msa_gz_path[0]
         aux_path=msa_gz_path.split('/')
         family_pdb_information = aux_path[0]+"/"+aux_path[1]+"/"+aux_path[2] +"/"+aux_path[2]+"_pdb_level.csv" 
-        family_pdb_evol_info = aux_path[0]+"/"+aux_path[1]+"/"+aux_path[2] +"/"+aux_path[2]+"_evol_info.csv"
+        family_pdb_evol_info_path = aux_path[0]+"/"+aux_path[1]+"/"+aux_path[2] +"/"+aux_path[2]+"_evol_info.csv"
         pdb_to_evol_df = util.find_pdb_to_evolve(family_pdb_information)
         
         if(execute_download_pdbs):
@@ -115,7 +118,7 @@ def run_families_evol():
         if(execute_family_evol):
             family_evol(input_families_folder, family_folder, pdb_to_evol_df)
         
-        pdb_to_evol_df.to_csv(family_pdb_evol_info)
+        pdb_to_evol_df.to_csv(family_pdb_evol_info_path)
         
         pdb_to_evol_df = validate_pdb_evolution(input_families_folder + family_folder, pdb_to_evol_df)
         if(execute_joined_pdb_analisys):
@@ -210,7 +213,7 @@ def family_evol(input_families_folder, family_folder, pdb_to_evol_df):
                 #the folder to put de evol clustered sequences sincronized
                 sincronized_evol_path = pdb_folder + "/sincronized_evol_path/"
                 #MSA information
-                msa_information_path = clustered_sequences_path + "/information/"
+                msa_information_path = sincronized_evol_path + "conservation/"
                 mi_data = pdb_folder + "/mi_data/"
                 mi_data_analisys = mi_data + "info/"
                 if not os.path.exists(scpe_sequences):
@@ -232,28 +235,51 @@ def family_evol(input_families_folder, family_folder, pdb_to_evol_df):
                 
                 scpe_sequences_file=scpe_sequences+"sequences_"+pdb_name
                 
-                if(index==1):
+                '''if(index==1):
                     return_variables_optimizated = run_methaherustic_for_optimization_parameters(pdb_name,optimization_folder, pdb_file_complete_filename_to_evolve, cutted_pdb_path, chain_name)
-                    pdb_to_evol_df.set_value(index,"beta",return_variables_optimizated[0])
-                    pdb_to_evol_df.set_value(index,"nsus",return_variables_optimizated[1])
-                    pdb_to_evol_df.set_value(index,"runs",return_variables_optimizated[2])
+                    beta=return_variables_optimizated[0]
+                    nsus=return_variables_optimizated[1]
+                    runs=return_variables_optimizated[2]
+                    pdb_to_evol_df.set_value(index,"beta",beta)
+                    pdb_to_evol_df.set_value(index,"nsus",nsus)
+                    pdb_to_evol_df.set_value(index,"runs",runs)
+                '''
                 
+                evol_protein(pdb_file_complete_filename_to_evolve, cutted_pdb_path, beta, runs, nsus, chain_name, scpe_sequences, clustered_sequences_path, sincronized_evol_path, mi_data, msa_information_path, contact_map, contact_map_syncronized)
+                 
+                '''    
                 if(execute_scpe):
-                    scpe.run(pdb_file_complete_filename_to_evolve,beta,runs,nsus,chain_name,scpe_sequences_file,contact_map)
+                    sufix = "sequences-beta"+beta+"-nsus"+nsus+"-runs"+runs
+                    file_name = sufix +".fasta"
+                    output_msa_path = scpe_sequences + file_name
+                    scpe.run_singular(pdb_file_complete_filename_to_evolve, beta, runs,nsus,chain_name,output_msa_path,contact_map)
+                    #scpe.run(pdb_file_complete_filename_to_evolve,beta,runs,nsus,chain_name,scpe_sequences_file,contact_map)
                 if(execute_clustering):
-                    msa.clustering("0.62",scpe_sequences, clustered_sequences_path)
-                    util.delete_files(scpe_sequences+'*')
-                    util.delete_files(clustered_sequences_path+'*.clstr')
+                    clustered_sequences_path = clustered_sequences_path + file_name + ".cluster"
+                    clustered_tmp_sequences_path = clustered_sequences_path + file_name + ".clstr"
+                    msa.clustering_singular("0.62",output_msa_path, clustered_sequences_path)
+                    util.delete_files(output_msa_path)
+                    util.delete_files(clustered_tmp_sequences_path)
+                    #msa.clustering("0.62",scpe_sequences, clustered_sequences_path)
+                    #util.delete_files(scpe_sequences+'*')
+                    #util.delete_files(clustered_sequences_path+'*.clstr')
                 if(execute_cut_msa):
-                    util.synchronize_evol_with_cutted_pdb(pdb_file_complete_filename_to_evolve, cutted_pdb_path, clustered_sequences_path, sincronized_evol_path, contact_map, contact_map_syncronized)
+                    sincronized_evol_path = sincronized_evol_path + file_name
+                    util.synchronize_evol_with_cutted_pdb_singular(pdb_file_complete_filename_to_evolve, cutted_pdb_path, clustered_sequences_path, sincronized_evol_path, contact_map, contact_map_syncronized)
+                    util.delete_files(clustered_sequences_path)
+                    #util.synchronize_evol_with_cutted_pdb(pdb_file_complete_filename_to_evolve, cutted_pdb_path, clustered_sequences_path, sincronized_evol_path, contact_map, contact_map_syncronized)
                 #if(execute_msa_information):
                         #msa.msa_information_process(clustered_sequences_path, msa_information_path)
+                if(execute_mi):
+                    #dataanalisys.buslje09_(sincronized_evol_path,mi_data)
+                    mi_data_path = mi_data + "zmip_"+sufix+".csv"
+                    dataanalisys.buslje09(sincronized_evol_path,mi_data_path)
+                '''
+                #TODO incorporar estas dos funciones para que sean singulares.
                 if(execute_msa_information):
                     msa.msa_information_process(sincronized_evol_path, msa_information_path)        
                     #util.zip_files(clustered_sequences_path+'*.cluster')
                     #util.delete_files(clustered_sequences_path+'*.cluster')
-                if(execute_mi):
-                    dataanalisys.buslje09_(sincronized_evol_path,mi_data)
                 
                 if(execute_dataanalisys):
                     dataanalisys.run_analisys(pdb_to_evol_df,index, zmip_natural_path, mi_data, pattern, contact_map_syncronized, mi_data_analisys, window)
@@ -319,6 +345,29 @@ def run_methaherustic_for_optimization_parameters(pdb_name,optimization_folder,p
                 index=index+1    
     df.to_csv(optimization_folder+"optimization.csv")                
     return parameters
+
+def evol_protein(pdb_file_complete_filename_to_evolve,cutted_pdb_path, beta,runs,nsus,chain,scpe_sequences,clustered_sequences_folder_path,sincronized_evol_path,mi_data_path,msa_conservation_path,contact_map_path, contact_map_sync):    
+    sufix = "sequences-beta"+beta+"-nsus"+nsus+"-runs"+runs
+    file_name = sufix +".fasta"
+    output_msa_path = scpe_sequences + file_name
+    clustered_sequences_path = clustered_sequences_folder_path + file_name + ".cluster"
+    clustered_tmp_sequences_path = clustered_sequences_folder_path + file_name + ".clstr"
+    sincronized_evol_file_path = sincronized_evol_path + file_name 
+    mi_data_path = mi_data_path + "zmip_"+sufix+".csv"
+    scpe.run_singular(pdb_file_complete_filename_to_evolve, beta, runs,nsus,chain,output_msa_path,contact_map_path)
+    msa.clustering_singular("0.62",output_msa_path, clustered_sequences_path)
+    util.delete_files(output_msa_path)
+    util.delete_files(clustered_tmp_sequences_path)
+    #se realiza la optimizacion sobre el msa ya recortado
+    util.synchronize_evol_with_cutted_pdb_singular(pdb_file_complete_filename_to_evolve, cutted_pdb_path, clustered_sequences_path, sincronized_evol_file_path, contact_map_path, contact_map_sync)
+    util.delete_files(clustered_sequences_path)
+    
+    dataanalisys.buslje09(sincronized_evol_file_path,mi_data_path)
+    
+    msa.msa_information(sincronized_evol_file_path, msa_conservation_path + sufix, file_name)
+    
+    dataanalisys.run_analisys_singular(df, index, zmip_natural_result_path, mi_result_file_path, pattern_array, contact_map_path, outputpath, window)
+    
 def run(pdb_file_complete_filename_to_evolve,cutted_pdb_path, beta,runs,nsus,chain,scpe_sequences,clustered_sequences_folder_path,sincronized_evol_path,mi_data_path,contact_map_path, contact_map_sync):    
     sufix = "sequences-beta"+beta+"-nsus"+nsus+"-runs"+runs
     file_name = sufix +".fasta"
