@@ -190,7 +190,7 @@ def random_char(y):
 
 def load_contact_map(contact_map_path, dtype='i4'):
     cmap = np.loadtxt(contact_map_path, dtype=dtype)
-    np.set_printoptions(threshold='nan')
+    #np.set_printoptions(threshold='nan')
     return cmap
 def load_contact_map_deprecated(contact_map_path):
     with open(contact_map_path) as file:
@@ -288,6 +288,8 @@ def find_pdb_to_evolve(family_pdb_information):
     df=df.sort(["cluster","pdb"])
     df=df.groupby("cluster").first()
     df['pdb_folder_name']=df['seq'].str.replace("/","_").str.replace("-","_") + "_" + df['pdb']+"_"+df['chain']
+    df['status']= 'pending'
+    df['contacts_count']= np.NaN
     df['beta']= np.NaN
     df['nsus']= np.NaN
     df['runs']= np.NaN
@@ -296,6 +298,7 @@ def find_pdb_to_evolve(family_pdb_information):
     df['auc_nat']= np.NaN
     df['auc_nat_01']= np.NaN
     df['spearman_zmip_evol_nat']= np.NaN
+    df['par_positions_count']= np.NaN
     #print df
     logging.info("Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):" + str(len(df.index)))
     print df
@@ -314,7 +317,13 @@ def remove_header(pdb_path):
     new_file.close()
     os.remove(pdb_path)
     os.rename(pdb_temp_path, pdb_path)
-
+    
+def clean_pdb(pdb_path, chain):    
+    df = pandas.read_csv(pdb_path, delim_whitespace=True,header=None)
+    df=df.loc[df[4] == chain]
+    df=df.dropna()
+    df.to_csv(pdb_path,sep='\t',index=False,header=False)    
+    
 '''    
 import math, string, sys, fileinput
 

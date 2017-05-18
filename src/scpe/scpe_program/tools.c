@@ -248,7 +248,8 @@ if((contactmap=fopen(Options.print_sequences_contact_map_outputfile,"w"))==NULL)
     } 
  
 /*Monomer cmat*/
-    i=thisresidue=0;
+	printf("Chain in tools %c\n ",Options.chain);
+	i=thisresidue=0;
     while(i<natoms){
     thisresidue=atom[i].sequential;
     if(atom[i].sidechain==1 && atom[i].chain[0]== Options.chain){

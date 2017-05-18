@@ -383,7 +383,7 @@ main (int argc, char * argv[])
 	printf("Print Sequences Identity %f\n ",Options.print_sequences_identity);
 	printf("Print Sequences Screening %d\n ",Options.print_sequences_screening);
 	printf("Print Sequences Contact Map Output File %s\n ",Options.print_sequences_contact_map_outputfile);
-
+	printf("Chain  %c\n ",Options.chain);
 	fflush(stdout);
 	
 	if(Options.print_sequences==1){

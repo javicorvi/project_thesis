@@ -84,7 +84,7 @@ def roc_curve(df,index,y_true,scores,labels,colors,output_file):
         else:
             df.set_value(index,'auc',auc)
             df.set_value(index,'auc_01',partial_auc_value_0_1)
-        plt.plot(fpr[i], tpr[i], color=color, lw=lw,label='ROC curve of class {0} (auc = {1:0.2f} | auc 0.1 = {2:0.2f})'''.format(label, roc_auc[i], partial_auc_value_0_1))
+        plt.plot(fpr[i], tpr[i], color=color, lw=lw,label='ROC curve  {0} (auc = {1:0.2f} | auc 0.1 = {2:0.2f})'''.format(label, roc_auc[i], partial_auc_value_0_1))
     plt.plot([0, 1], [0, 1], color='black', lw=lw, linestyle='--')
     plt.xlim([0.0, 1.0])
     plt.ylim([0.0, 1.05])
@@ -93,7 +93,7 @@ def roc_curve(df,index,y_true,scores,labels,colors,output_file):
     plt.title('ROC CONTACTS MI')
     plt.legend(loc="lower right")
     plt.savefig(output_file)
-    plt.show()
+    #plt.show()
     plt.gcf().clear()
 
 def partial_auc(fpr, tpr, max_fpr):
@@ -218,7 +218,7 @@ def contact_map(contact_map, output_file):
     plt.colorbar()
     #plt.imshow(cmap,cmap=cm.hot)
     plt.savefig(output_file)
-    plt.show()
+    #plt.show()
     plt.gcf().clear()
 '''
 Generates a plot describe the contacts with de MI of the natural and evolution msa

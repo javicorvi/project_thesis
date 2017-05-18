@@ -68,6 +68,11 @@ def buslje09_(input_folder, zmip_result_path,pattern_array=["sequences"]):
     print "buslje09_"
     print("--- %s seconds ---" % (time.time() - start_time))
 
+
+def evol_analisys(msa_file, mi_data_output_path, msa_conservation_path,msa_name):
+    buslje09(msa_file,mi_data_output_path)
+    msa.msa_information(msa_file, msa_conservation_path,msa_name)
+
 def run_analisys(df,index, zmip_natural_result_path, mi_results_path, pattern_array,contact_map_path,outputpath,window):
     #levanto el zmip natural
     zmip_natural = util.load_zmip(zmip_natural_result_path,window)
@@ -161,29 +166,43 @@ def run_analisys(df,index, zmip_natural_result_path, mi_results_path, pattern_ar
             result_file.close()
             print '************************************************************************'
 
-def run_analisys_singular(df,index, zmip_natural_result_path, mi_result_file_path, pattern_array,contact_map_path,outputpath,window):
+def getTargetScores(mi_file_path,contact_map,window=1):
+    cmap=util.load_contact_map(contact_map)
+    zmip_evol = util.load_zmip(mi_file_path, window)
+    scores = []
+    target = []
+    for x in zmip_evol:
+        v = cmap[int(x[0]-1)][int(x[1]-1)] 
+        scores.append(x[2])
+        target.append(v)
+    return target,scores    
+def run_analisys_singular(df,index, zmip_natural_result_path, mi_result_file_path, contact_map_path,outputpath,window):
     #levanto el zmip natural
     zmip_natural = util.load_zmip(zmip_natural_result_path,window)
     util.order(zmip_natural)
-    util.save_list_to_csv(zmip_natural_result_path+"_order.csv", zmip_natural, ['Position 1',' Position 2','ZMIP'])
+    #util.save_list_to_csv(zmip_natural_result_path+"_order.csv", zmip_natural, ['Position 1',' Position 2','ZMIP'])
     contact_map=util.load_contact_map(contact_map_path)
+    #Agrego los numeros de contactos de la matriz
+    contacts_count = np.count_nonzero(contact_map)
+    df.set_value(index, 'contacts_count', contacts_count)
     
-    print " Calculation of : " + filename + " with contact map " + contact_map_path
+    print " Calculation of : " + mi_result_file_path + " with contact map " + contact_map_path
     #levanto el zmip evolucionado 
-    zmip_evol = util.load_zmip(mi_results_path + filename,window)
+    zmip_evol = util.load_zmip(mi_result_file_path ,window)
     #sincronizo las senales de coevolucion para calcular spearman rank correlation
     m,m2=util.sincronice_mi(zmip_natural, zmip_evol)
     m_=[row [2] for row in m]
     m2_=[row[2] for row in m2]
+    
+    #Agrego spearman entre natural y evolucionado
     value_spearman = spearman(m_,m2_)
     df.set_value(index, 'spearman_zmip_evol_nat', value_spearman) 
-    #MI PLOT
-    #contact_map=util.load_contact_map(contact_map_path)
-    #plot.contact_map_(contact_map, outputpath)
-    #Test load_contact_map
-    #v=contact_map[4][2]
-    #v=contact_map[4][1]
-    #v=contact_map[4][3]
+    #0.100578206022
+    #0.102156238538
+    
+    #par positions 
+    df.set_value(index, 'par_positions_count', len(zmip_natural)) 
+    
     m1_norm,m2_norm=normalice_(m_,m2_)
     m_np = np.c_[ np.asarray(m), np.asarray(m1_norm) ]
     m2_np = np.c_[ np.asarray(m2), np.asarray(m2_norm) ]   
@@ -218,34 +237,34 @@ def run_analisys_singular(df,index, zmip_natural_result_path, mi_result_file_pat
             y_evol_t.append(y[3])
             y_true.append(1)
             
-        labels=['Natural', 'Evol']
-        scores=[]
-        scores.append(scores_nat)
-        scores.append(scores_evol)
-        #plot.roc_curve(y_true,scores_nat,scores_evol)
-        colors = ['blue', 'red']
-        plot.roc_curve(df,index,y_true,scores,labels,colors, outputpath+filename+'_roc_curve.png')
+    labels=['Natural', 'Evol']
+    scores=[]
+    scores.append(scores_nat)
+    scores.append(scores_evol)
+    #plot.roc_curve(y_true,scores_nat,scores_evol)
+    colors = ['blue', 'red']
+    plot.roc_curve(df,index,y_true,scores,labels,colors, mi_result_file_path+'_roc_curve.png')
             
-        plot.contacts_with_mi(x_nat_t,y_evol_t,x_nat_f,y_evol_f,outputpath+filename+'contacts_with_mi.png',filename)
+    plot.contacts_with_mi(x_nat_t,y_evol_t,x_nat_f,y_evol_f,mi_result_file_path+'contacts_with_mi.png',mi_result_file_path)
             
-        #ordeno zmip evolucionado sincronizado 
-        util.order(m2)
+    #ordeno zmip evolucionado sincronizado 
+    util.order(m2)
             
-        util.save_list_to_csv(mi_results_path+filename+"_order.csv", m2, ['Position 1',' Position 2','ZMIP'])
+    #util.save_list_to_csv(mi_result_file_path+"_order.csv", m2, ['Position 1',' Position 2','ZMIP'])
             
-        print "TOTAL PAR POSITIONS " + str(len(zmip_natural))
+    print "TOTAL PAR POSITIONS " + str(len(zmip_natural))
             
-        result_file = open(outputpath+filename+".txt","w")
-        result_file.write(filename+ '\n')
-        result_file.write(" SPEARMAN RANK CORRELATION " + str(value_spearman)+ '\n')
-        top_rank(zmip_natural,m2,0.5,contact_map,outputpath+filename+'top_0.5percent_withcon.png',filename,result_file)
-        top_rank(zmip_natural,m2,1,contact_map,outputpath+filename+'top_1percent_withcon.png',filename,result_file)
-        top_rank(zmip_natural,m2,2,contact_map,outputpath+filename+'top_2percent_withcon.png',filename,result_file)
-        top_rank(zmip_natural,m2,3,contact_map,outputpath+filename+'top_3percent_withcon.png',filename,result_file)
-        top_rank(zmip_natural,m2,4,contact_map,outputpath+filename+'top_4percent_withcon.png',filename,result_file)
-        top_rank(zmip_natural,m2,5,contact_map,outputpath+filename+'top_5percent_withcon.png',filename,result_file)
-        result_file.close()
-        print '************************************************************************'
+    result_file = open(mi_result_file_path+".txt","w")
+    result_file.write(mi_result_file_path+ '\n')
+    result_file.write(" SPEARMAN RANK CORRELATION " + str(value_spearman)+ '\n')
+    top_rank_result = top_rank(zmip_natural,m2,0.5,contact_map,mi_result_file_path+'top_0.5percent_withcon.png',mi_result_file_path,result_file)
+    top_rank_result = top_rank(zmip_natural,m2,1,contact_map,mi_result_file_path+'top_1percent_withcon.png',mi_result_file_path,result_file)
+    top_rank_result = top_rank(zmip_natural,m2,2,contact_map,mi_result_file_path+'top_2percent_withcon.png',mi_result_file_path,result_file)
+    #top_rank(zmip_natural,m2,3,contact_map,mi_result_file_path+'top_3percent_withcon.png',mi_result_file_path,result_file)
+    #top_rank(zmip_natural,m2,4,contact_map,mi_result_file_path+'top_4percent_withcon.png',mi_result_file_path,result_file)
+    #top_rank(zmip_natural,m2,5,contact_map,mi_result_file_path+'top_5percent_withcon.png',mi_result_file_path,result_file)
+    result_file.close()
+    print '************************************************************************'
 
 '''
 Normalize information m,m2
@@ -359,7 +378,7 @@ def top_rank(x,y,top,contact_map,outputpath,filename,result_file):
     print "NATURAL CONTACTS QUANTITY : " + str(nat_contact) + " - %"+ str(nat_contact*100/num)
     print "EVOL CONTACTS QUANTITY : " + str(evol_contact) + " - %"+ str(evol_contact*100/num)
     #print data
-
+    return nat_contact, nat_contact*100/num, evol_contact, evol_contact*100/num, len(data),len(data_contact)
 
 '''
 Plots information about the top_rank.
