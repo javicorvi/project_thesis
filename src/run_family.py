@@ -123,13 +123,10 @@ def run_families_evol():
         
         pdb_to_evol_df = validate_pdb_evolution(input_families_folder + family_folder, pdb_to_evol_df)
         
-        
-        
         if(execute_joined_pdb_analisys):
             dataanalisys.comparative_conservation(input_families_folder + family_folder, family_folder, pdb_to_evol_df)
             dataanalisys.sum_contact_map(input_families_folder + family_folder, pdb_to_evol_df)
             dataanalisys.comparative_mi_information(input_families_folder + family_folder, family_folder , 2 ,window, pdb_to_evol_df)  
-        
         
         compute_joined_msas(input_families_folder,family_folder,pdb_to_evol_df)
         
@@ -218,9 +215,9 @@ def family_evol(input_families_folder, family_folder, pdb_to_evol_df, family_pdb
             file_name_pdb =pdb_protein_to_evolve['seq'].replace("/","_").replace("-","_") + "_" + pdb_protein_to_evolve['pdb']+"_"+pdb_protein_to_evolve['chain'] + sufix
             complete_file_name_pdb = pdb_paths_files + file_name_pdb
             logging.info('Begin of the PDB ' + file_name_pdb)
-            pdb_file_complete_filename_to_evolve =  pdb_paths_files + pdb_protein_to_evolve['pdb_folder_name'] + "/"+pdb_protein_to_evolve['pdb_folder_name']+"_complete.pdb"
-            
-            util.remove_header(pdb_file_complete_filename_to_evolve)
+            pdb_file_complete =  pdb_paths_files + pdb_protein_to_evolve['pdb_folder_name'] + "/"+pdb_protein_to_evolve['pdb_folder_name']+"_complete.pdb"
+            pdb_file_complete_filename_to_evolve = pdb_paths_files + pdb_protein_to_evolve['pdb_folder_name'] + "/"+pdb_protein_to_evolve['pdb_folder_name']+"_clean.pdb"
+            #util.remove_header(pdb_file_complete_filename_to_evolve)
             
             #for pdb_gz in glob.glob(pdb_paths_files):
             #aca arrancar otro try
@@ -240,7 +237,7 @@ def family_evol(input_families_folder, family_folder, pdb_to_evol_df, family_pdb
                 #chain name to evol
                 chain_name = pdb_file_name[-18:-17]
                 
-                util.clean_pdb(pdb_file_complete_filename_to_evolve, chain_name)
+                
                 
                 #the contact map will be created by scpe 
                 optimization_folder=input_families_folder +  family_folder + "/optimization_folder/"
@@ -274,9 +271,9 @@ def family_evol(input_families_folder, family_folder, pdb_to_evol_df, family_pdb
                 if not os.path.exists(optimization_folder):
                     os.makedirs(optimization_folder)
                     
-                        
+                util.clean_pdb(pdb_file_complete,pdb_file_complete_filename_to_evolve, chain_name)        
                 
-                scpe_sequences_file=scpe_sequences+"sequences_"+pdb_name
+                #scpe_sequences_file=scpe_sequences+"sequences_"+pdb_name
                 
                 '''if(index==1):
                     return_variables_optimizated = run_methaherustic_for_optimization_parameters(pdb_name,optimization_folder, pdb_file_complete_filename_to_evolve, cutted_pdb_path, chain_name)
@@ -288,11 +285,11 @@ def family_evol(input_families_folder, family_folder, pdb_to_evol_df, family_pdb
                     #pdb_to_evol_df.set_value(index,"runs",runs)
                     #pdb_to_evol_df.to_csv(family_pdb_evol_info_path)
                 '''
-                if(index==2):
-                    pdb_to_evol_df.set_value(index,"beta",beta)
-                    pdb_to_evol_df.set_value(index,"nsus",nsus)
-                    pdb_to_evol_df.set_value(index,"runs",runs)
-                    evol_protein(pdb_to_evol_df, index,pdb_file_complete_filename_to_evolve, cutted_pdb_path, beta, runs, nsus, chain_name, scpe_sequences, clustered_sequences_path, sincronized_evol_path, zmip_natural_path, mi_data, mi_data_analisys ,msa_information_path, contact_map, contact_map_syncronized)
+                
+                pdb_to_evol_df.set_value(index,"beta",beta)
+                pdb_to_evol_df.set_value(index,"nsus",nsus)
+                pdb_to_evol_df.set_value(index,"runs",runs)
+                evol_protein(pdb_to_evol_df, index,pdb_file_complete_filename_to_evolve, cutted_pdb_path, beta, runs, nsus, chain_name, scpe_sequences, clustered_sequences_path, sincronized_evol_path, zmip_natural_path, mi_data, mi_data_analisys ,msa_information_path, contact_map, contact_map_syncronized)
                  
                 '''    
                 if(execute_scpe):
@@ -402,12 +399,8 @@ def evol_protein(data_frame_evol, index,pdb_file_complete_filename_to_evolve,cut
     #se realiza la optimizacion sobre el msa ya recortado
     util.synchronize_evol_with_cutted_pdb_singular(pdb_file_complete_filename_to_evolve, cutted_pdb_path, clustered_sequences_path, sincronized_evol_file_path, contact_map_path, contact_map_sync)
     util.delete_files(clustered_sequences_path)
-    
     dataanalisys.evol_analisys(sincronized_evol_file_path, mi_data_path, msa_conservation_path + sufix, file_name)
-    
     dataanalisys.run_analisys_singular(data_frame_evol, index, zmip_natural_result_path, mi_data_path, contact_map_sync, mi_data_analisys, window)
-
-    print "d"
     
 def run(pdb_file_complete_filename_to_evolve,cutted_pdb_path, beta,runs,nsus,chain,scpe_sequences,clustered_sequences_folder_path,sincronized_evol_path,mi_data_path,contact_map_path, contact_map_sync):    
     sufix = "sequences-beta"+beta+"-nsus"+nsus+"-runs"+runs

@@ -149,7 +149,6 @@ def synchronize_evol_with_cutted_pdb_singular(pdb_complete_path, pdb_cutted_path
     start_time = time.time()
     print "sincronize_natural_evol_alignments"  
     df = pandas.read_csv(pdb_complete_path, delim_whitespace=True,header=None)
-    df=df.loc[df[4] == 'A']
     df=df.dropna()
     df[5] = df[5].astype('int32')
     df=df.groupby(5).first().reset_index()
@@ -303,26 +302,20 @@ def find_pdb_to_evolve(family_pdb_information):
     logging.info("Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):" + str(len(df.index)))
     print df
     return df
+
 '''
-REMOVE PDB HEADER, SAVE ONLY THE ATOMS
-'''
-def remove_header(pdb_path):
-    pdb_temp_path = pdb_path + '_clean'
-    with open(pdb_temp_path,'w') as new_file:
+Elimina informacion innecesaria
+'''    
+def clean_pdb(pdb_path, new_pdb , chain):    
+    with open(new_pdb,'w') as new_file:
         with open(pdb_path) as old_file:
             for line in old_file:
-                if(line.startswith("ATOM")):  
-                    new_file.write(line)     
+                if(line.startswith("ATOM") and line[21]==chain):  
+                    new_file.write(line)  
     old_file.close()
     new_file.close()
-    os.remove(pdb_path)
-    os.rename(pdb_temp_path, pdb_path)
-    
-def clean_pdb(pdb_path, chain):    
-    df = pandas.read_csv(pdb_path, delim_whitespace=True,header=None)
-    df=df.loc[df[4] == chain]
-    df=df.dropna()
-    df.to_csv(pdb_path,sep='\t',index=False,header=False)    
+    #os.remove(pdb_path)
+    #os.rename(pdb_temp_path, pdb_path)
     
 '''    
 import math, string, sys, fileinput
