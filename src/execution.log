@@ -4629,3 +4629,227 @@ WARNING:root:And this, too
 2017-05-19 15:20:09,210 - INFO - run_family.py - run_families_evol - PF00085 
 2017-05-19 15:20:09,345 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
 2017-05-19 15:20:09,564 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-19 15:25:15,051 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-19 15:25:15,056 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-19 15:25:15,064 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-19 15:29:07,137 - INFO - run_family.py - family_evol - End of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-19 15:29:07,142 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_F_superimposed.pdb.gz 
+2017-05-19 15:35:33,428 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-19 15:35:33,429 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-19 15:35:33,438 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-19 15:35:33,486 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-19 15:37:41,458 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-19 15:37:41,459 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-19 15:37:41,467 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-19 15:37:41,506 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-19 15:37:42,028 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-19 15:37:42,032 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-19 15:37:42,056 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-19 15:38:13,239 - INFO - run_family.py - family_evol - End of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-19 15:38:16,274 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_F_superimposed.pdb.gz 
+2017-05-19 15:41:54,143 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-19 15:41:54,151 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-19 15:41:54,168 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-19 15:41:54,218 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-19 15:41:54,745 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-19 15:41:54,752 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-19 15:41:54,768 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-19 15:42:05,512 - INFO - run_family.py - family_evol - End of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-19 15:42:08,161 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_F_superimposed.pdb.gz 
+2017-05-19 15:46:31,901 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-19 15:46:31,902 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-19 15:46:31,910 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-19 15:46:31,949 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-19 15:46:32,479 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-19 15:46:32,480 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-19 15:46:32,511 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-19 15:46:43,756 - INFO - run_family.py - family_evol - End of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-19 15:46:43,760 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_F_superimposed.pdb.gz 
+2017-05-19 15:49:03,675 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-19 15:49:03,676 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-19 15:49:03,684 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-19 15:49:03,723 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-19 15:49:04,250 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-19 15:49:04,252 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-19 15:49:04,293 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-19 15:49:09,066 - INFO - run_family.py - family_evol - End of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-19 15:49:09,070 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_F_superimposed.pdb.gz 
+2017-05-19 15:51:15,057 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-19 15:51:15,057 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-19 15:51:15,065 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-19 15:51:15,104 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-19 15:51:15,633 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-19 15:51:15,640 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-19 15:51:15,652 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-19 15:51:15,673 - INFO - run_family.py - family_evol - End of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-19 15:51:15,680 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_F_superimposed.pdb.gz 
+2017-05-19 15:54:24,741 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-19 15:54:24,747 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-19 15:54:24,760 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-19 15:54:24,801 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-19 15:54:25,309 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-19 15:54:25,316 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-19 15:54:25,325 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-19 15:54:25,331 - INFO - run_family.py - family_evol - End of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-19 15:54:25,337 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_F_superimposed.pdb.gz 
+2017-05-19 15:56:47,247 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-19 15:56:47,248 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-19 15:56:47,256 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-19 15:56:47,296 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-19 15:56:47,831 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-19 15:56:47,833 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-19 15:56:47,846 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-19 15:57:06,368 - INFO - run_family.py - family_evol - End of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-19 15:57:06,372 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_F_superimposed.pdb.gz 
+2017-05-19 16:00:43,547 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-19 16:00:43,548 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-19 16:00:43,558 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-19 16:00:43,634 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-19 16:00:44,158 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-19 16:00:44,164 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-19 16:00:44,173 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-19 16:12:42,348 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-19 16:12:42,349 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-19 16:12:42,357 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-19 16:12:42,396 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-19 16:12:42,913 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-19 16:12:42,931 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-19 16:12:42,943 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-19 16:15:20,329 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-19 16:15:20,330 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-19 16:15:20,338 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-19 16:15:20,403 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-19 16:15:20,921 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-19 16:15:20,928 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-19 16:15:20,936 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-19 16:15:20,945 - INFO - run_family.py - family_evol - End of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-19 16:15:20,957 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_F_superimposed.pdb.gz 
+2017-05-19 16:16:49,856 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-19 16:16:49,857 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-19 16:16:49,865 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-19 16:16:49,904 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-19 16:16:50,406 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-19 16:16:50,413 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-19 16:16:50,422 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-19 16:16:50,429 - INFO - run_family.py - family_evol - End of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-19 16:16:50,434 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_F_superimposed.pdb.gz 
+2017-05-19 16:18:32,693 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-19 16:18:32,693 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-19 16:18:32,702 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-19 16:18:32,744 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-19 16:18:33,262 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-19 16:18:33,268 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-19 16:18:33,282 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-19 16:18:33,285 - INFO - run_family.py - family_evol - End of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-19 16:18:33,300 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_F_superimposed.pdb.gz 
+2017-05-19 16:22:27,084 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-19 16:22:27,085 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-19 16:22:27,093 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-19 16:22:27,151 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-19 16:22:28,007 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-19 16:22:28,012 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-19 16:22:28,031 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-19 16:22:28,054 - INFO - run_family.py - family_evol - End of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-19 16:22:28,058 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_F_superimposed.pdb.gz 
+2017-05-19 16:23:59,160 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-19 16:23:59,161 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-19 16:23:59,173 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-19 16:23:59,221 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-19 16:23:59,845 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-19 16:23:59,847 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-19 16:23:59,876 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-19 16:23:59,899 - INFO - run_family.py - family_evol - End of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-19 16:23:59,917 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_F_superimposed.pdb.gz 
+2017-05-19 16:26:17,216 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-19 16:26:17,217 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-19 16:26:17,225 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-19 16:26:17,265 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-19 16:26:17,793 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-19 16:26:17,801 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-19 16:26:17,838 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-19 16:26:17,842 - INFO - run_family.py - family_evol - End of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-19 16:26:17,858 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_F_superimposed.pdb.gz 
+2017-05-19 16:28:33,599 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-19 16:28:33,600 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-19 16:28:33,608 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-19 16:28:33,651 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-19 16:28:34,162 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-19 16:28:34,168 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-19 16:28:34,177 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-19 16:28:34,184 - INFO - run_family.py - family_evol - End of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-19 16:28:34,189 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_F_superimposed.pdb.gz 
+2017-05-19 16:37:34,923 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-19 16:37:34,924 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-19 16:37:34,932 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-19 16:37:34,971 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-19 16:37:35,484 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-19 16:37:35,487 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-19 16:37:35,499 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-19 16:37:35,502 - INFO - run_family.py - family_evol - End of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-19 16:37:35,530 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_F_superimposed.pdb.gz 
+2017-05-19 16:40:37,362 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-19 16:40:37,363 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-19 16:40:37,371 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-19 16:40:37,414 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-19 16:40:37,947 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-19 16:40:37,952 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-19 16:40:37,967 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-19 16:40:37,971 - INFO - run_family.py - family_evol - End of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-19 16:40:37,998 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_F_superimposed.pdb.gz 
+2017-05-19 16:49:10,462 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-19 16:49:10,463 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-19 16:49:10,471 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-19 16:49:10,510 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-19 16:53:21,416 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-19 16:53:21,421 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-19 16:53:21,429 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-19 16:59:54,572 - INFO - run_family.py - family_evol - End of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-19 16:59:54,576 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_F_superimposed.pdb.gz 
+2017-05-19 17:01:30,017 - INFO - run_family.py - family_evol - End of the PDB THIOM_HUMAN_61_164_1UVZ_F_superimposed.pdb.gz 
+2017-05-19 17:01:30,021 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2H6X_B_superimposed.pdb.gz 
+2017-05-19 17:10:51,769 - INFO - run_family.py - family_evol - End of the PDB THIO_ECOLI_4_107_2H6X_B_superimposed.pdb.gz 
+2017-05-19 17:10:51,831 - INFO - run_family.py - family_evol - Begin of the PDB THIO_PLAF7_2_102_1SYR_B_superimposed.pdb.gz 
+2017-05-19 17:11:57,107 - INFO - run_family.py - family_evol - End of the PDB THIO_PLAF7_2_102_1SYR_B_superimposed.pdb.gz 
+2017-05-19 17:11:57,111 - INFO - run_family.py - family_evol - Begin of the PDB DJC10_MOUSE_672_776_3APS_B_superimposed.pdb.gz 
+2017-05-19 17:13:09,344 - INFO - run_family.py - family_evol - End of the PDB DJC10_MOUSE_672_776_3APS_B_superimposed.pdb.gz 
+2017-05-19 17:13:09,348 - INFO - run_family.py - family_evol - Begin of the PDB Q7XZK2_HORVD_14_118_2VLT_A_superimposed.pdb.gz 
+2017-05-19 17:13:58,229 - INFO - run_family.py - family_evol - End of the PDB Q7XZK2_HORVD_14_118_2VLT_A_superimposed.pdb.gz 
+2017-05-19 17:13:58,233 - INFO - run_family.py - family_evol - Begin of the PDB Q9YED4_AERPE_239_342_3EMX_A_superimposed.pdb.gz 
+2017-05-19 17:14:43,687 - INFO - run_family.py - family_evol - End of the PDB Q9YED4_AERPE_239_342_3EMX_A_superimposed.pdb.gz 
+2017-05-19 17:14:43,691 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2H6X_A_superimposed.pdb.gz 
+2017-05-19 17:15:35,684 - INFO - run_family.py - family_evol - End of the PDB THIO_ECOLI_4_107_2H6X_A_superimposed.pdb.gz 
+2017-05-19 17:15:35,689 - INFO - run_family.py - family_evol - Begin of the PDB PDIA1_HUMAN_368_473_4EL1_A_superimposed.pdb.gz 
+2017-05-19 17:20:33,027 - INFO - run_family.py - family_evol - End of the PDB PDIA1_HUMAN_368_473_4EL1_A_superimposed.pdb.gz 
+2017-05-19 17:20:33,031 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_B_superimposed.pdb.gz 
+2017-05-19 17:25:32,368 - INFO - run_family.py - family_evol - End of the PDB THIOM_HUMAN_61_164_1UVZ_B_superimposed.pdb.gz 
+2017-05-19 17:25:32,373 - INFO - run_family.py - family_evol - Begin of the PDB PDIA1_HUMAN_25_132_4EL1_A_superimposed.pdb.gz 
+2017-05-19 17:27:32,086 - INFO - run_family.py - family_evol - End of the PDB PDIA1_HUMAN_25_132_4EL1_A_superimposed.pdb.gz 
+2017-05-19 17:27:32,090 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_C_superimposed.pdb.gz 
+2017-05-19 17:28:07,082 - INFO - run_family.py - family_evol - End of the PDB THIOM_HUMAN_61_164_1UVZ_C_superimposed.pdb.gz 
+2017-05-19 17:28:07,086 - INFO - run_family.py - family_evol - Begin of the PDB TRX2_YEAST_2_103_2FA4_B_superimposed.pdb.gz 
+2017-05-19 17:28:43,627 - INFO - run_family.py - family_evol - End of the PDB TRX2_YEAST_2_103_2FA4_B_superimposed.pdb.gz 
+2017-05-19 17:28:43,631 - INFO - run_family.py - family_evol - Begin of the PDB Q8T9N5_SCHMA_5_106_2XBQ_B_superimposed.pdb.gz 
+2017-05-19 17:29:27,273 - INFO - run_family.py - family_evol - End of the PDB Q8T9N5_SCHMA_5_106_2XBQ_B_superimposed.pdb.gz 
+2017-05-19 17:29:27,277 - INFO - run_family.py - family_evol - Begin of the PDB PDIA6_HUMAN_26_129_4EF0_A_superimposed.pdb.gz 
+2017-05-19 17:30:05,997 - INFO - run_family.py - family_evol - End of the PDB PDIA6_HUMAN_26_129_4EF0_A_superimposed.pdb.gz 
+2017-05-19 17:30:06,001 - INFO - run_family.py - family_evol - Begin of the PDB TXND5_HUMAN_323_427_3UVT_A_superimposed.pdb.gz 
+2017-05-19 17:30:50,472 - INFO - run_family.py - family_evol - End of the PDB TXND5_HUMAN_323_427_3UVT_A_superimposed.pdb.gz 
+2017-05-19 17:30:50,488 - INFO - run_family.py - family_evol - Begin of the PDB TRX3_YEAST_27_127_2OE0_B_superimposed.pdb.gz 
+2017-05-19 17:31:40,483 - INFO - run_family.py - family_evol - End of the PDB TRX3_YEAST_27_127_2OE0_B_superimposed.pdb.gz 
+2017-05-19 17:31:40,487 - INFO - run_family.py - family_evol - Begin of the PDB THIO2_DROME_11_113_1XWB_D_superimposed.pdb.gz 
+2017-05-19 17:32:14,988 - INFO - run_family.py - family_evol - End of the PDB THIO2_DROME_11_113_1XWB_D_superimposed.pdb.gz 
+2017-05-19 17:32:14,992 - INFO - run_family.py - family_evol - Begin of the PDB TXND5_HUMAN_63_167_3WGD_E_superimposed.pdb.gz 
+2017-05-19 17:32:49,792 - INFO - run_family.py - family_evol - End of the PDB TXND5_HUMAN_63_167_3WGD_E_superimposed.pdb.gz 
+2017-05-19 17:32:49,796 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_E_superimposed.pdb.gz 
+2017-05-19 17:33:25,441 - INFO - run_family.py - family_evol - End of the PDB THIOM_HUMAN_61_164_1UVZ_E_superimposed.pdb.gz 
+2017-05-19 17:33:25,445 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_1SKR_B_superimposed.pdb.gz 
+2017-05-19 17:33:59,448 - INFO - run_family.py - family_evol - End of the PDB THIO_ECOLI_4_107_1SKR_B_superimposed.pdb.gz 
+2017-05-19 17:33:59,453 - INFO - run_family.py - family_evol - Begin of the PDB THIO2_DROME_11_113_1XW9_C_superimposed.pdb.gz 
+2017-05-19 17:34:47,584 - INFO - run_family.py - family_evol - End of the PDB THIO2_DROME_11_113_1XW9_C_superimposed.pdb.gz 
+2017-05-19 17:34:47,588 - INFO - run_family.py - family_evol - Begin of the PDB THIO_HUMAN_2_104_1AUC_A_superimposed.pdb.gz 
+2017-05-19 17:35:42,837 - INFO - run_family.py - family_evol - End of the PDB THIO_HUMAN_2_104_1AUC_A_superimposed.pdb.gz 
+2017-05-19 17:35:42,842 - INFO - run_family.py - family_evol - Begin of the PDB DJC10_MOUSE_130_232_3APQ_B_superimposed.pdb.gz 
+2017-05-19 17:36:29,976 - INFO - run_family.py - family_evol - End of the PDB DJC10_MOUSE_130_232_3APQ_B_superimposed.pdb.gz 
+2017-05-19 17:36:29,980 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1W4V_D_superimposed.pdb.gz 
+2017-05-19 17:37:10,413 - INFO - run_family.py - family_evol - End of the PDB THIOM_HUMAN_61_164_1W4V_D_superimposed.pdb.gz 
+2017-05-19 17:37:10,417 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2TRX_A_superimposed.pdb.gz 
