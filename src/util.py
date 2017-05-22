@@ -169,7 +169,7 @@ def synchronize_evol_with_cutted_pdb_singular(pdb_complete_path, pdb_cutted_path
                     count=count+1
                 else:
                     line_array=np.array(list(line))
-                    new_line = line_array[df_columnas[5]]
+                    new_line = line_array[df_columnas[5].tolist()]
                     new_file.write(new_line.tostring()+'\n')
     old_file.close()
     new_file.close()

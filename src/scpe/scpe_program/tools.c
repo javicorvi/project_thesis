@@ -9,7 +9,7 @@ int ReadAlignment(FILE *ali_input)
 {
 
 int i,j,num;
-char line[MAXSTR],str[MAXSTR];
+char line[MAXSTR],str[MAXSTR]; 
 int posit;
                 i=0;
                 while (fgets(line, MAXSTR, ali_input) != NULL ) {

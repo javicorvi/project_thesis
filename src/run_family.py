@@ -38,13 +38,13 @@ execute_family_evol=True
 '''
 Calculate the MI for the natural MSA putting the protein as the reference
 '''
-execute_natural_mi_msa=False
+execute_natural_mi_msa=True
 '''
 Calculate the Conservation of the families natural MSA
 '''
-execute_msa_natural_information=False
+execute_msa_natural_information=True
 
-execute_download_pdbs=False
+execute_download_pdbs=True
 
 '''
 Execute the evolution of the protein with SCPE.
@@ -90,7 +90,7 @@ pattern=["sequences"]
 '''
 Iterates over the structures, pdbs and execute the scpe and the clusterization 
 '''        
-input_families_folder="../FAMILIES_3/"
+input_families_folder="../FAMILIES_TO_EVOL/"
 def run_families_evol():
     logging.info('Begin of the execution process')
     start_time = time.time()
@@ -281,6 +281,20 @@ def family_evol(input_families_folder, family_folder, pdb_to_evol_df, family_pdb
                     
                 util.clean_pdb(pdb_file_complete,pdb_file_complete_filename_to_evolve, chain_name)        
                 
+                if(index==1):
+                    return_variables_optimizated = run_methaherustic_for_optimization_parameters(pdb_name,optimization_folder, pdb_file_complete_filename_to_evolve, cutted_pdb_path, chain_name)
+                    beta=return_variables_optimizated[0]
+                    nsus=return_variables_optimizated[1]
+                    runs=return_variables_optimizated[2]
+                
+                  
+                    #pdb_to_evol_df.set_value(index,"beta",beta)
+                    #pdb_to_evol_df.set_value(index,"nsus",nsus)
+                    #pdb_to_evol_df.set_value(index,"runs",runs)
+                    #pdb_to_evol_df.to_csv(family_pdb_evol_info_path)
+                
+                #TODO 
+                #Levantar maximo de optimizacion
                 if(pdb_protein_to_evolve['status']!='okey'):
                     pdb_to_evol_df.set_value(index,"beta",beta)
                     pdb_to_evol_df.set_value(index,"nsus",nsus)
@@ -359,9 +373,9 @@ def run_methaherustic_for_optimization_parameters(pdb_name,optimization_folder,p
         os.makedirs(sincronized_evol_path)
     if not os.path.exists(mi_data_path):
         os.makedirs(mi_data_path)    
-    beta = ["1.00","2.00"]
-    runs = ["1000","1100","1300"]
-    nsus = ["1.0","2.0"]
+    beta = ["0.5","1.00","1.5","2.00","2.5","3.00","3.5","4.0"]
+    runs = ["1000","2000","5000","10000","20000","30000"]
+    nsus = ["1.0","2.0","3.0","4.0","5.0"]
     auc_max = 0
     index=1
     for b in beta:
