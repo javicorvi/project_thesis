@@ -4853,3 +4853,503 @@ WARNING:root:And this, too
 2017-05-19 17:36:29,980 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1W4V_D_superimposed.pdb.gz 
 2017-05-19 17:37:10,413 - INFO - run_family.py - family_evol - End of the PDB THIOM_HUMAN_61_164_1W4V_D_superimposed.pdb.gz 
 2017-05-19 17:37:10,417 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2TRX_A_superimposed.pdb.gz 
+2017-05-19 17:37:50,093 - INFO - run_family.py - family_evol - End of the PDB THIO_ECOLI_4_107_2TRX_A_superimposed.pdb.gz 
+2017-05-19 17:37:50,097 - INFO - run_family.py - family_evol - Begin of the PDB GLRX3_HUMAN_14_115_2WZ9_A_superimposed.pdb.gz 
+2017-05-19 17:38:29,890 - INFO - run_family.py - family_evol - End of the PDB GLRX3_HUMAN_14_115_2WZ9_A_superimposed.pdb.gz 
+2017-05-19 17:38:29,894 - INFO - run_family.py - family_evol - Begin of the PDB B1MMM4_MYCA9_5_107_4POB_A_superimposed.pdb.gz 
+2017-05-19 17:39:04,479 - INFO - run_family.py - family_evol - End of the PDB B1MMM4_MYCA9_5_107_4POB_A_superimposed.pdb.gz 
+2017-05-19 17:39:04,483 - INFO - run_family.py - family_evol - Begin of the PDB B1MMM4_MYCA9_5_107_4POB_B_superimposed.pdb.gz 
+2017-05-19 17:39:39,666 - INFO - run_family.py - family_evol - End of the PDB B1MMM4_MYCA9_5_107_4POB_B_superimposed.pdb.gz 
+2017-05-19 17:39:39,670 - INFO - run_family.py - family_evol - Begin of the PDB PDIA4_HUMAN_178_282_3IDV_A_superimposed.pdb.gz 
+2017-05-19 17:40:24,645 - INFO - run_family.py - family_evol - End of the PDB PDIA4_HUMAN_178_282_3IDV_A_superimposed.pdb.gz 
+2017-05-19 17:40:24,649 - INFO - run_family.py - family_evol - Begin of the PDB Q4DV70_TRYCC_42_151_3H79_A_superimposed.pdb.gz 
+2017-05-19 17:41:00,223 - INFO - run_family.py - family_evol - End of the PDB Q4DV70_TRYCC_42_151_3H79_A_superimposed.pdb.gz 
+2017-05-19 17:41:00,227 - INFO - run_family.py - family_evol - Begin of the PDB TXND5_HUMAN_323_427_3UVT_C_superimposed.pdb.gz 
+2017-05-19 17:41:35,360 - INFO - run_family.py - family_evol - End of the PDB TXND5_HUMAN_323_427_3UVT_C_superimposed.pdb.gz 
+2017-05-19 17:41:35,364 - INFO - run_family.py - family_evol - Begin of the PDB TXND5_HUMAN_323_427_3UVT_D_superimposed.pdb.gz 
+2017-05-19 17:42:11,706 - INFO - run_family.py - family_evol - End of the PDB TXND5_HUMAN_323_427_3UVT_D_superimposed.pdb.gz 
+2017-05-19 17:42:11,710 - INFO - run_family.py - family_evol - Begin of the PDB G0W5T0_NAUDC_35_141_4TVE_A_superimposed.pdb.gz 
+2017-05-19 17:43:15,743 - INFO - run_family.py - family_evol - End of the PDB G0W5T0_NAUDC_35_141_4TVE_A_superimposed.pdb.gz 
+2017-05-19 17:43:15,748 - INFO - run_family.py - family_evol - Begin of the PDB Q2G000_STAA8_2_104_4RUV_A_superimposed.pdb.gz 
+2017-05-19 17:44:02,358 - INFO - run_family.py - family_evol - End of the PDB Q2G000_STAA8_2_104_4RUV_A_superimposed.pdb.gz 
+2017-05-19 17:44:02,362 - INFO - run_family.py - family_evol - Begin of the PDB THIO1_STRCO_4_106_1T00_A_superimposed.pdb.gz 
+2017-05-19 17:44:45,839 - INFO - run_family.py - family_evol - End of the PDB THIO1_STRCO_4_106_1T00_A_superimposed.pdb.gz 
+2017-05-19 17:44:45,844 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2BTO_T_superimposed.pdb.gz 
+2017-05-19 17:45:32,937 - INFO - run_family.py - family_evol - End of the PDB THIO_ECOLI_4_107_2BTO_T_superimposed.pdb.gz 
+2017-05-19 17:45:32,941 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2AJQ_I_superimposed.pdb.gz 
+2017-05-19 17:45:38,320 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO_ECOLI_4_107_2AJQ_I_superimposed.pdb.gz 
+2017-05-19 17:45:38,329 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2AJQ_B_superimposed.pdb.gz 
+2017-05-19 17:45:44,901 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO_ECOLI_4_107_2AJQ_B_superimposed.pdb.gz 
+2017-05-19 17:45:44,910 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_1THO_A_superimposed.pdb.gz 
+2017-05-19 17:45:51,700 - ERROR - run_family.py - family_evol - The PDB was not evolutionated THIO_ECOLI_4_107_1THO_A_superimposed.pdb.gz 
+2017-05-19 17:45:51,714 - INFO - run_family.py - family_evol - Begin of the PDB TRX1_YEAST_2_102_3F3Q_A_superimposed.pdb.gz 
+2017-05-19 17:46:38,945 - INFO - run_family.py - family_evol - End of the PDB TRX1_YEAST_2_102_3F3Q_A_superimposed.pdb.gz 
+2017-05-19 17:46:38,969 - INFO - run_family.py - family_evol - Begin of the PDB PDIA1_HUMAN_25_132_4EKZ_A_superimposed.pdb.gz 
+2017-05-19 17:48:29,295 - INFO - run_family.py - family_evol - End of the PDB PDIA1_HUMAN_25_132_4EKZ_A_superimposed.pdb.gz 
+2017-05-19 17:48:29,300 - INFO - run_family.py - family_evol - Begin of the PDB Q97WI4_SULSO_32_133_3HHV_A_superimposed.pdb.gz 
+2017-05-19 17:49:24,372 - INFO - run_family.py - family_evol - End of the PDB Q97WI4_SULSO_32_133_3HHV_A_superimposed.pdb.gz 
+2017-05-19 17:49:24,376 - INFO - run_family.py - family_evol - Begin of the PDB PDIA6_HUMAN_161_267_4GWR_A_superimposed.pdb.gz 
+2017-05-19 17:50:13,678 - INFO - run_family.py - family_evol - End of the PDB PDIA6_HUMAN_161_267_4GWR_A_superimposed.pdb.gz 
+2017-05-19 17:50:13,682 - INFO - run_family.py - family_evol - Begin of the PDB YBBN_ECOLI_5_109_3QOU_A_superimposed.pdb.gz 
+2017-05-19 17:51:12,698 - INFO - run_family.py - family_evol - End of the PDB YBBN_ECOLI_5_109_3QOU_A_superimposed.pdb.gz 
+2017-05-19 17:51:12,702 - INFO - run_family.py - family_evol - Begin of the PDB Q8IDP4_PLAF7_55_156_3UL3_B_superimposed.pdb.gz 
+2017-05-19 17:51:16,824 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q8IDP4_PLAF7_55_156_3UL3_B_superimposed.pdb.gz 
+2017-05-19 17:51:16,841 - INFO - run_family.py - family_evol - Begin of the PDB Q8IDP4_PLAF7_55_156_3UL3_A_superimposed.pdb.gz 
+2017-05-19 17:52:03,775 - INFO - run_family.py - family_evol - End of the PDB Q8IDP4_PLAF7_55_156_3UL3_A_superimposed.pdb.gz 
+2017-05-19 17:52:03,780 - INFO - run_family.py - family_evol - Begin of the PDB Q8ZR92_SALTY_5_109_3QDN_A_superimposed.pdb.gz 
+2017-05-19 17:53:13,689 - INFO - run_family.py - family_evol - End of the PDB Q8ZR92_SALTY_5_109_3QDN_A_superimposed.pdb.gz 
+2017-05-19 17:53:13,694 - INFO - run_family.py - family_evol - Begin of the PDB PDI_YEAST_377_483_2B5E_A_superimposed.pdb.gz 
+2017-05-19 17:54:47,403 - INFO - run_family.py - family_evol - End of the PDB PDI_YEAST_377_483_2B5E_A_superimposed.pdb.gz 
+2017-05-19 17:54:47,407 - INFO - run_family.py - family_evol - Begin of the PDB Q8T9N5_SCHMA_5_106_2XBI_A_superimposed.pdb.gz 
+2017-05-19 17:55:25,972 - INFO - run_family.py - family_evol - End of the PDB Q8T9N5_SCHMA_5_106_2XBI_A_superimposed.pdb.gz 
+2017-05-19 17:55:25,976 - INFO - run_family.py - family_evol - Begin of the PDB TRX3_YEAST_27_127_2OE3_A_superimposed.pdb.gz 
+2017-05-19 17:56:00,304 - INFO - run_family.py - family_evol - End of the PDB TRX3_YEAST_27_127_2OE3_A_superimposed.pdb.gz 
+2017-05-19 17:56:00,308 - INFO - run_family.py - family_evol - Begin of the PDB TRX3_YEAST_27_127_2OE3_B_superimposed.pdb.gz 
+2017-05-19 17:56:36,245 - INFO - run_family.py - family_evol - End of the PDB TRX3_YEAST_27_127_2OE3_B_superimposed.pdb.gz 
+2017-05-19 17:56:36,249 - INFO - run_family.py - family_evol - Begin of the PDB THIO2_DROME_11_113_1XWC_A_superimposed.pdb.gz 
+2017-05-19 17:57:11,835 - INFO - run_family.py - family_evol - End of the PDB THIO2_DROME_11_113_1XWC_A_superimposed.pdb.gz 
+2017-05-19 17:57:11,839 - INFO - run_family.py - family_evol - Begin of the PDB THIO2_DROME_11_113_1XWA_A_superimposed.pdb.gz 
+2017-05-19 17:57:49,682 - INFO - run_family.py - family_evol - End of the PDB THIO2_DROME_11_113_1XWA_A_superimposed.pdb.gz 
+2017-05-19 17:57:49,694 - INFO - run_family.py - family_evol - Begin of the PDB THIO2_DROME_11_113_1XWB_B_superimposed.pdb.gz 
+2017-05-19 17:58:39,080 - INFO - run_family.py - family_evol - End of the PDB THIO2_DROME_11_113_1XWB_B_superimposed.pdb.gz 
+2017-05-19 17:58:39,084 - INFO - run_family.py - family_evol - Begin of the PDB THIO_MYCTU_8_111_2I1U_A_superimposed.pdb.gz 
+2017-05-19 17:59:32,630 - INFO - run_family.py - family_evol - End of the PDB THIO_MYCTU_8_111_2I1U_A_superimposed.pdb.gz 
+2017-05-19 17:59:32,635 - INFO - run_family.py - family_evol - Begin of the PDB PDI_YEAST_33_138_2B5E_A_superimposed.pdb.gz 
+2017-05-19 18:00:52,396 - INFO - run_family.py - family_evol - End of the PDB PDI_YEAST_33_138_2B5E_A_superimposed.pdb.gz 
+2017-05-19 18:00:52,400 - INFO - run_family.py - family_evol - Begin of the PDB TXND5_HUMAN_190_293_3WGE_A_superimposed.pdb.gz 
+2017-05-19 18:01:42,760 - INFO - run_family.py - family_evol - End of the PDB TXND5_HUMAN_190_293_3WGE_A_superimposed.pdb.gz 
+2017-05-19 18:01:42,778 - INFO - run_family.py - family_evol - Begin of the PDB PDIA4_HUMAN_63_167_3IDV_A_superimposed.pdb.gz 
+2017-05-19 18:02:50,464 - INFO - run_family.py - family_evol - End of the PDB PDIA4_HUMAN_63_167_3IDV_A_superimposed.pdb.gz 
+2017-05-19 18:02:50,468 - INFO - run_family.py - family_evol - Begin of the PDB Q980E5_SULSO_29_131_3TCO_A_superimposed.pdb.gz 
+2017-05-19 18:03:29,021 - INFO - run_family.py - family_evol - End of the PDB Q980E5_SULSO_29_131_3TCO_A_superimposed.pdb.gz 
+2017-05-19 18:03:29,025 - INFO - run_family.py - family_evol - Begin of the PDB Q980E5_SULSO_29_131_3TCO_B_superimposed.pdb.gz 
+2017-05-19 18:04:04,358 - INFO - run_family.py - family_evol - End of the PDB Q980E5_SULSO_29_131_3TCO_B_superimposed.pdb.gz 
+2017-05-19 18:04:04,362 - INFO - run_family.py - family_evol - Begin of the PDB Q980E5_SULSO_29_131_3TCO_C_superimposed.pdb.gz 
+2017-05-19 18:04:44,915 - INFO - run_family.py - family_evol - End of the PDB Q980E5_SULSO_29_131_3TCO_C_superimposed.pdb.gz 
+2017-05-19 18:04:44,919 - INFO - run_family.py - family_evol - Begin of the PDB PDIA1_HUMAN_368_473_4EKZ_A_superimposed.pdb.gz 
+2017-05-19 18:05:38,767 - ERROR - run_family.py - family_evol - The PDB was not evolutionated PDIA1_HUMAN_368_473_4EKZ_A_superimposed.pdb.gz 
+2017-05-19 18:05:38,771 - INFO - run_family.py - family_evol - Begin of the PDB PDIA1_HUMAN_368_473_3UEM_A_superimposed.pdb.gz 
+2017-05-19 18:06:43,255 - INFO - run_family.py - family_evol - End of the PDB PDIA1_HUMAN_368_473_3UEM_A_superimposed.pdb.gz 
+2017-05-19 18:06:43,259 - INFO - run_family.py - family_evol - Begin of the PDB THIO_HUMAN_2_104_5DQY_A_superimposed.pdb.gz 
+2017-05-19 18:07:30,797 - INFO - run_family.py - family_evol - End of the PDB THIO_HUMAN_2_104_5DQY_A_superimposed.pdb.gz 
+2017-05-19 18:07:30,801 - INFO - run_family.py - family_evol - Begin of the PDB THIO2_NOSS1_4_107_1THX_A_superimposed.pdb.gz 
+2017-05-19 18:08:17,563 - INFO - run_family.py - family_evol - End of the PDB THIO2_NOSS1_4_107_1THX_A_superimposed.pdb.gz 
+2017-05-19 18:08:17,567 - INFO - run_family.py - family_evol - Begin of the PDB Q8IEV4_TRIVA_6_111_2F51_B_superimposed.pdb.gz 
+2017-05-19 18:08:54,254 - INFO - run_family.py - family_evol - End of the PDB Q8IEV4_TRIVA_6_111_2F51_B_superimposed.pdb.gz 
+2017-05-19 18:08:54,258 - INFO - run_family.py - family_evol - Begin of the PDB Q8IEV4_TRIVA_6_111_2F51_A_superimposed.pdb.gz 
+2017-05-19 18:09:36,981 - INFO - run_family.py - family_evol - End of the PDB Q8IEV4_TRIVA_6_111_2F51_A_superimposed.pdb.gz 
+2017-05-19 18:09:43,151 - INFO - run_family.py - family_evol - End family Evol  PF00085 
+2017-05-19 18:09:43,159 - INFO - run_family.py - family_evol - --- 4581.74253798 seconds --- 
+2017-05-22 15:39:23,147 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-22 15:39:23,158 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-22 15:40:14,846 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-22 15:40:14,846 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-22 15:40:36,564 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-22 15:40:36,570 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-22 15:40:36,627 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2TRX_A_superimposed.pdb.gz 
+2017-05-22 15:40:36,642 - ERROR - run_family.py - family_evol - The family was not evolutionated  PF00085 
+2017-05-22 15:40:43,625 - INFO - run_family.py - family_evol - End family Evol  PF00085 
+2017-05-22 15:41:04,942 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-22 15:41:04,943 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-22 15:41:23,789 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-22 15:41:34,689 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-22 15:41:41,455 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2TRX_A_superimposed.pdb.gz 
+2017-05-22 15:44:58,124 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-22 15:44:58,124 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-22 15:45:01,084 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-22 15:45:01,323 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-22 15:45:17,987 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-22 15:45:28,377 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-22 15:45:30,386 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-22 15:54:38,253 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-22 15:54:38,265 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-22 15:54:38,349 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-22 15:54:38,512 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-22 15:54:45,025 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-22 15:54:50,098 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-22 15:54:51,321 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-22 15:56:07,737 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-22 15:56:07,738 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-22 15:56:07,746 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-22 15:56:07,789 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-22 15:56:13,643 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-22 15:56:16,474 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-22 15:56:16,490 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-22 15:57:49,721 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-22 15:57:49,722 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-22 15:57:49,730 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-22 15:57:49,770 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-22 15:57:56,482 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-22 15:57:56,485 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-22 15:57:56,500 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-22 16:11:31,611 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-22 16:11:31,612 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-22 16:11:31,620 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-22 16:11:31,660 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-22 16:11:57,927 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-22 16:12:06,998 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-22 16:12:07,028 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-22 16:12:07,093 - INFO - run_family.py - family_evol - End of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-22 16:12:07,102 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_F_superimposed.pdb.gz 
+2017-05-22 16:12:07,178 - INFO - run_family.py - family_evol - End of the PDB THIOM_HUMAN_61_164_1UVZ_F_superimposed.pdb.gz 
+2017-05-22 16:12:07,190 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2H6X_B_superimposed.pdb.gz 
+2017-05-22 16:12:07,216 - INFO - run_family.py - family_evol - End of the PDB THIO_ECOLI_4_107_2H6X_B_superimposed.pdb.gz 
+2017-05-22 16:12:07,225 - INFO - run_family.py - family_evol - Begin of the PDB THIO_PLAF7_2_102_1SYR_B_superimposed.pdb.gz 
+2017-05-22 16:12:07,273 - INFO - run_family.py - family_evol - End of the PDB THIO_PLAF7_2_102_1SYR_B_superimposed.pdb.gz 
+2017-05-22 16:12:07,279 - INFO - run_family.py - family_evol - Begin of the PDB DJC10_MOUSE_672_776_3APS_B_superimposed.pdb.gz 
+2017-05-22 16:12:07,313 - INFO - run_family.py - family_evol - End of the PDB DJC10_MOUSE_672_776_3APS_B_superimposed.pdb.gz 
+2017-05-22 16:12:07,324 - INFO - run_family.py - family_evol - Begin of the PDB Q7XZK2_HORVD_14_118_2VLT_A_superimposed.pdb.gz 
+2017-05-22 16:12:07,365 - INFO - run_family.py - family_evol - End of the PDB Q7XZK2_HORVD_14_118_2VLT_A_superimposed.pdb.gz 
+2017-05-22 16:12:07,369 - INFO - run_family.py - family_evol - Begin of the PDB Q9YED4_AERPE_239_342_3EMX_A_superimposed.pdb.gz 
+2017-05-22 16:12:07,406 - INFO - run_family.py - family_evol - End of the PDB Q9YED4_AERPE_239_342_3EMX_A_superimposed.pdb.gz 
+2017-05-22 16:12:07,413 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2H6X_A_superimposed.pdb.gz 
+2017-05-22 16:12:07,446 - INFO - run_family.py - family_evol - End of the PDB THIO_ECOLI_4_107_2H6X_A_superimposed.pdb.gz 
+2017-05-22 16:12:07,453 - INFO - run_family.py - family_evol - Begin of the PDB PDIA1_HUMAN_368_473_4EL1_A_superimposed.pdb.gz 
+2017-05-22 16:12:07,492 - INFO - run_family.py - family_evol - End of the PDB PDIA1_HUMAN_368_473_4EL1_A_superimposed.pdb.gz 
+2017-05-22 16:12:07,496 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_B_superimposed.pdb.gz 
+2017-05-22 16:12:07,520 - INFO - run_family.py - family_evol - End of the PDB THIOM_HUMAN_61_164_1UVZ_B_superimposed.pdb.gz 
+2017-05-22 16:12:07,526 - INFO - run_family.py - family_evol - Begin of the PDB PDIA1_HUMAN_25_132_4EL1_A_superimposed.pdb.gz 
+2017-05-22 16:12:07,580 - INFO - run_family.py - family_evol - End of the PDB PDIA1_HUMAN_25_132_4EL1_A_superimposed.pdb.gz 
+2017-05-22 16:12:07,585 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_C_superimposed.pdb.gz 
+2017-05-22 16:12:07,661 - INFO - run_family.py - family_evol - End of the PDB THIOM_HUMAN_61_164_1UVZ_C_superimposed.pdb.gz 
+2017-05-22 16:12:07,683 - INFO - run_family.py - family_evol - Begin of the PDB TRX2_YEAST_2_103_2FA4_B_superimposed.pdb.gz 
+2017-05-22 16:12:07,717 - INFO - run_family.py - family_evol - End of the PDB TRX2_YEAST_2_103_2FA4_B_superimposed.pdb.gz 
+2017-05-22 16:12:07,724 - INFO - run_family.py - family_evol - Begin of the PDB Q8T9N5_SCHMA_5_106_2XBQ_B_superimposed.pdb.gz 
+2017-05-22 16:12:07,750 - INFO - run_family.py - family_evol - End of the PDB Q8T9N5_SCHMA_5_106_2XBQ_B_superimposed.pdb.gz 
+2017-05-22 16:12:07,754 - INFO - run_family.py - family_evol - Begin of the PDB PDIA6_HUMAN_26_129_4EF0_A_superimposed.pdb.gz 
+2017-05-22 16:12:07,787 - INFO - run_family.py - family_evol - End of the PDB PDIA6_HUMAN_26_129_4EF0_A_superimposed.pdb.gz 
+2017-05-22 16:12:07,795 - INFO - run_family.py - family_evol - Begin of the PDB TXND5_HUMAN_323_427_3UVT_A_superimposed.pdb.gz 
+2017-05-22 16:12:07,824 - INFO - run_family.py - family_evol - End of the PDB TXND5_HUMAN_323_427_3UVT_A_superimposed.pdb.gz 
+2017-05-22 16:12:07,832 - INFO - run_family.py - family_evol - Begin of the PDB TRX3_YEAST_27_127_2OE0_B_superimposed.pdb.gz 
+2017-05-22 16:12:07,880 - INFO - run_family.py - family_evol - End of the PDB TRX3_YEAST_27_127_2OE0_B_superimposed.pdb.gz 
+2017-05-22 16:12:07,883 - INFO - run_family.py - family_evol - Begin of the PDB THIO2_DROME_11_113_1XWB_D_superimposed.pdb.gz 
+2017-05-22 16:12:07,924 - INFO - run_family.py - family_evol - End of the PDB THIO2_DROME_11_113_1XWB_D_superimposed.pdb.gz 
+2017-05-22 16:12:07,928 - INFO - run_family.py - family_evol - Begin of the PDB TXND5_HUMAN_63_167_3WGD_E_superimposed.pdb.gz 
+2017-05-22 16:12:07,993 - INFO - run_family.py - family_evol - End of the PDB TXND5_HUMAN_63_167_3WGD_E_superimposed.pdb.gz 
+2017-05-22 16:12:08,005 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_E_superimposed.pdb.gz 
+2017-05-22 16:12:08,040 - INFO - run_family.py - family_evol - End of the PDB THIOM_HUMAN_61_164_1UVZ_E_superimposed.pdb.gz 
+2017-05-22 16:12:08,048 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_1SKR_B_superimposed.pdb.gz 
+2017-05-22 16:12:08,113 - INFO - run_family.py - family_evol - End of the PDB THIO_ECOLI_4_107_1SKR_B_superimposed.pdb.gz 
+2017-05-22 16:12:08,117 - INFO - run_family.py - family_evol - Begin of the PDB THIO2_DROME_11_113_1XW9_C_superimposed.pdb.gz 
+2017-05-22 16:12:08,180 - INFO - run_family.py - family_evol - End of the PDB THIO2_DROME_11_113_1XW9_C_superimposed.pdb.gz 
+2017-05-22 16:12:08,187 - INFO - run_family.py - family_evol - Begin of the PDB THIO_HUMAN_2_104_1AUC_A_superimposed.pdb.gz 
+2017-05-22 16:12:08,267 - INFO - run_family.py - family_evol - End of the PDB THIO_HUMAN_2_104_1AUC_A_superimposed.pdb.gz 
+2017-05-22 16:12:08,284 - INFO - run_family.py - family_evol - Begin of the PDB DJC10_MOUSE_130_232_3APQ_B_superimposed.pdb.gz 
+2017-05-22 16:12:08,350 - INFO - run_family.py - family_evol - End of the PDB DJC10_MOUSE_130_232_3APQ_B_superimposed.pdb.gz 
+2017-05-22 16:12:08,360 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1W4V_D_superimposed.pdb.gz 
+2017-05-22 16:12:08,420 - INFO - run_family.py - family_evol - End of the PDB THIOM_HUMAN_61_164_1W4V_D_superimposed.pdb.gz 
+2017-05-22 16:12:08,424 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2TRX_A_superimposed.pdb.gz 
+2017-05-22 16:12:08,469 - INFO - run_family.py - family_evol - End of the PDB THIO_ECOLI_4_107_2TRX_A_superimposed.pdb.gz 
+2017-05-22 16:12:08,474 - INFO - run_family.py - family_evol - Begin of the PDB GLRX3_HUMAN_14_115_2WZ9_A_superimposed.pdb.gz 
+2017-05-22 16:12:08,526 - INFO - run_family.py - family_evol - End of the PDB GLRX3_HUMAN_14_115_2WZ9_A_superimposed.pdb.gz 
+2017-05-22 16:12:08,544 - INFO - run_family.py - family_evol - Begin of the PDB B1MMM4_MYCA9_5_107_4POB_A_superimposed.pdb.gz 
+2017-05-22 16:12:08,578 - INFO - run_family.py - family_evol - End of the PDB B1MMM4_MYCA9_5_107_4POB_A_superimposed.pdb.gz 
+2017-05-22 16:12:08,586 - INFO - run_family.py - family_evol - Begin of the PDB B1MMM4_MYCA9_5_107_4POB_B_superimposed.pdb.gz 
+2017-05-22 16:12:08,624 - INFO - run_family.py - family_evol - End of the PDB B1MMM4_MYCA9_5_107_4POB_B_superimposed.pdb.gz 
+2017-05-22 16:12:08,635 - INFO - run_family.py - family_evol - Begin of the PDB PDIA4_HUMAN_178_282_3IDV_A_superimposed.pdb.gz 
+2017-05-22 16:12:08,705 - INFO - run_family.py - family_evol - End of the PDB PDIA4_HUMAN_178_282_3IDV_A_superimposed.pdb.gz 
+2017-05-22 16:12:08,710 - INFO - run_family.py - family_evol - Begin of the PDB Q4DV70_TRYCC_42_151_3H79_A_superimposed.pdb.gz 
+2017-05-22 16:12:08,748 - INFO - run_family.py - family_evol - End of the PDB Q4DV70_TRYCC_42_151_3H79_A_superimposed.pdb.gz 
+2017-05-22 16:12:08,752 - INFO - run_family.py - family_evol - Begin of the PDB TXND5_HUMAN_323_427_3UVT_C_superimposed.pdb.gz 
+2017-05-22 16:12:08,780 - INFO - run_family.py - family_evol - End of the PDB TXND5_HUMAN_323_427_3UVT_C_superimposed.pdb.gz 
+2017-05-22 16:12:08,784 - INFO - run_family.py - family_evol - Begin of the PDB TXND5_HUMAN_323_427_3UVT_D_superimposed.pdb.gz 
+2017-05-22 16:12:08,814 - INFO - run_family.py - family_evol - End of the PDB TXND5_HUMAN_323_427_3UVT_D_superimposed.pdb.gz 
+2017-05-22 16:12:08,823 - INFO - run_family.py - family_evol - Begin of the PDB G0W5T0_NAUDC_35_141_4TVE_A_superimposed.pdb.gz 
+2017-05-22 16:12:08,851 - INFO - run_family.py - family_evol - End of the PDB G0W5T0_NAUDC_35_141_4TVE_A_superimposed.pdb.gz 
+2017-05-22 16:12:08,863 - INFO - run_family.py - family_evol - Begin of the PDB Q2G000_STAA8_2_104_4RUV_A_superimposed.pdb.gz 
+2017-05-22 16:12:08,901 - INFO - run_family.py - family_evol - End of the PDB Q2G000_STAA8_2_104_4RUV_A_superimposed.pdb.gz 
+2017-05-22 16:12:08,916 - INFO - run_family.py - family_evol - Begin of the PDB THIO1_STRCO_4_106_1T00_A_superimposed.pdb.gz 
+2017-05-22 16:12:08,988 - INFO - run_family.py - family_evol - End of the PDB THIO1_STRCO_4_106_1T00_A_superimposed.pdb.gz 
+2017-05-22 16:12:08,996 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2BTO_T_superimposed.pdb.gz 
+2017-05-22 16:12:09,054 - INFO - run_family.py - family_evol - End of the PDB THIO_ECOLI_4_107_2BTO_T_superimposed.pdb.gz 
+2017-05-22 16:12:09,058 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2AJQ_I_superimposed.pdb.gz 
+2017-05-22 16:16:10,256 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-22 16:16:10,257 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-22 16:16:10,265 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-22 16:16:10,305 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-22 16:16:17,393 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-22 16:16:17,394 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-22 16:16:17,402 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-22 16:16:17,478 - INFO - run_family.py - family_evol - End of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-22 16:16:17,524 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_F_superimposed.pdb.gz 
+2017-05-22 16:16:17,560 - INFO - run_family.py - family_evol - End of the PDB THIOM_HUMAN_61_164_1UVZ_F_superimposed.pdb.gz 
+2017-05-22 16:16:17,576 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2H6X_B_superimposed.pdb.gz 
+2017-05-22 16:16:17,597 - INFO - run_family.py - family_evol - End of the PDB THIO_ECOLI_4_107_2H6X_B_superimposed.pdb.gz 
+2017-05-22 16:16:17,617 - INFO - run_family.py - family_evol - Begin of the PDB THIO_PLAF7_2_102_1SYR_B_superimposed.pdb.gz 
+2017-05-22 16:16:17,652 - INFO - run_family.py - family_evol - End of the PDB THIO_PLAF7_2_102_1SYR_B_superimposed.pdb.gz 
+2017-05-22 16:16:17,660 - INFO - run_family.py - family_evol - Begin of the PDB DJC10_MOUSE_672_776_3APS_B_superimposed.pdb.gz 
+2017-05-22 16:16:17,669 - INFO - run_family.py - family_evol - End of the PDB DJC10_MOUSE_672_776_3APS_B_superimposed.pdb.gz 
+2017-05-22 16:16:17,674 - INFO - run_family.py - family_evol - Begin of the PDB Q7XZK2_HORVD_14_118_2VLT_A_superimposed.pdb.gz 
+2017-05-22 16:16:17,699 - INFO - run_family.py - family_evol - End of the PDB Q7XZK2_HORVD_14_118_2VLT_A_superimposed.pdb.gz 
+2017-05-22 16:16:17,712 - INFO - run_family.py - family_evol - Begin of the PDB Q9YED4_AERPE_239_342_3EMX_A_superimposed.pdb.gz 
+2017-05-22 16:16:17,724 - INFO - run_family.py - family_evol - End of the PDB Q9YED4_AERPE_239_342_3EMX_A_superimposed.pdb.gz 
+2017-05-22 16:16:17,731 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2H6X_A_superimposed.pdb.gz 
+2017-05-22 16:16:17,740 - INFO - run_family.py - family_evol - End of the PDB THIO_ECOLI_4_107_2H6X_A_superimposed.pdb.gz 
+2017-05-22 16:16:17,769 - INFO - run_family.py - family_evol - Begin of the PDB PDIA1_HUMAN_368_473_4EL1_A_superimposed.pdb.gz 
+2017-05-22 16:16:17,846 - INFO - run_family.py - family_evol - End of the PDB PDIA1_HUMAN_368_473_4EL1_A_superimposed.pdb.gz 
+2017-05-22 16:16:17,870 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_B_superimposed.pdb.gz 
+2017-05-22 16:16:17,891 - INFO - run_family.py - family_evol - End of the PDB THIOM_HUMAN_61_164_1UVZ_B_superimposed.pdb.gz 
+2017-05-22 16:16:17,900 - INFO - run_family.py - family_evol - Begin of the PDB PDIA1_HUMAN_25_132_4EL1_A_superimposed.pdb.gz 
+2017-05-22 16:16:17,925 - INFO - run_family.py - family_evol - End of the PDB PDIA1_HUMAN_25_132_4EL1_A_superimposed.pdb.gz 
+2017-05-22 16:16:17,932 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_C_superimposed.pdb.gz 
+2017-05-22 16:16:17,948 - INFO - run_family.py - family_evol - End of the PDB THIOM_HUMAN_61_164_1UVZ_C_superimposed.pdb.gz 
+2017-05-22 16:16:17,966 - INFO - run_family.py - family_evol - Begin of the PDB TRX2_YEAST_2_103_2FA4_B_superimposed.pdb.gz 
+2017-05-22 16:16:17,985 - INFO - run_family.py - family_evol - End of the PDB TRX2_YEAST_2_103_2FA4_B_superimposed.pdb.gz 
+2017-05-22 16:16:17,992 - INFO - run_family.py - family_evol - Begin of the PDB Q8T9N5_SCHMA_5_106_2XBQ_B_superimposed.pdb.gz 
+2017-05-22 16:16:18,002 - INFO - run_family.py - family_evol - End of the PDB Q8T9N5_SCHMA_5_106_2XBQ_B_superimposed.pdb.gz 
+2017-05-22 16:16:18,017 - INFO - run_family.py - family_evol - Begin of the PDB PDIA6_HUMAN_26_129_4EF0_A_superimposed.pdb.gz 
+2017-05-22 16:16:18,033 - INFO - run_family.py - family_evol - End of the PDB PDIA6_HUMAN_26_129_4EF0_A_superimposed.pdb.gz 
+2017-05-22 16:16:18,048 - INFO - run_family.py - family_evol - Begin of the PDB TXND5_HUMAN_323_427_3UVT_A_superimposed.pdb.gz 
+2017-05-22 16:16:18,069 - INFO - run_family.py - family_evol - End of the PDB TXND5_HUMAN_323_427_3UVT_A_superimposed.pdb.gz 
+2017-05-22 16:16:18,077 - INFO - run_family.py - family_evol - Begin of the PDB TRX3_YEAST_27_127_2OE0_B_superimposed.pdb.gz 
+2017-05-22 16:16:18,089 - INFO - run_family.py - family_evol - End of the PDB TRX3_YEAST_27_127_2OE0_B_superimposed.pdb.gz 
+2017-05-22 16:16:18,097 - INFO - run_family.py - family_evol - Begin of the PDB THIO2_DROME_11_113_1XWB_D_superimposed.pdb.gz 
+2017-05-22 16:16:18,108 - INFO - run_family.py - family_evol - End of the PDB THIO2_DROME_11_113_1XWB_D_superimposed.pdb.gz 
+2017-05-22 16:16:18,111 - INFO - run_family.py - family_evol - Begin of the PDB TXND5_HUMAN_63_167_3WGD_E_superimposed.pdb.gz 
+2017-05-22 16:16:18,123 - INFO - run_family.py - family_evol - End of the PDB TXND5_HUMAN_63_167_3WGD_E_superimposed.pdb.gz 
+2017-05-22 16:16:18,140 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_E_superimposed.pdb.gz 
+2017-05-22 16:16:18,150 - INFO - run_family.py - family_evol - End of the PDB THIOM_HUMAN_61_164_1UVZ_E_superimposed.pdb.gz 
+2017-05-22 16:16:18,158 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_1SKR_B_superimposed.pdb.gz 
+2017-05-22 16:16:18,170 - INFO - run_family.py - family_evol - End of the PDB THIO_ECOLI_4_107_1SKR_B_superimposed.pdb.gz 
+2017-05-22 16:16:18,191 - INFO - run_family.py - family_evol - Begin of the PDB THIO2_DROME_11_113_1XW9_C_superimposed.pdb.gz 
+2017-05-22 16:16:18,203 - INFO - run_family.py - family_evol - End of the PDB THIO2_DROME_11_113_1XW9_C_superimposed.pdb.gz 
+2017-05-22 16:16:18,208 - INFO - run_family.py - family_evol - Begin of the PDB THIO_HUMAN_2_104_1AUC_A_superimposed.pdb.gz 
+2017-05-22 16:16:18,217 - INFO - run_family.py - family_evol - End of the PDB THIO_HUMAN_2_104_1AUC_A_superimposed.pdb.gz 
+2017-05-22 16:16:18,230 - INFO - run_family.py - family_evol - Begin of the PDB DJC10_MOUSE_130_232_3APQ_B_superimposed.pdb.gz 
+2017-05-22 16:16:18,251 - INFO - run_family.py - family_evol - End of the PDB DJC10_MOUSE_130_232_3APQ_B_superimposed.pdb.gz 
+2017-05-22 16:16:18,265 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1W4V_D_superimposed.pdb.gz 
+2017-05-22 16:16:18,280 - INFO - run_family.py - family_evol - End of the PDB THIOM_HUMAN_61_164_1W4V_D_superimposed.pdb.gz 
+2017-05-22 16:16:18,290 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2TRX_A_superimposed.pdb.gz 
+2017-05-22 16:16:18,311 - INFO - run_family.py - family_evol - End of the PDB THIO_ECOLI_4_107_2TRX_A_superimposed.pdb.gz 
+2017-05-22 16:16:18,337 - INFO - run_family.py - family_evol - Begin of the PDB GLRX3_HUMAN_14_115_2WZ9_A_superimposed.pdb.gz 
+2017-05-22 16:16:18,344 - INFO - run_family.py - family_evol - End of the PDB GLRX3_HUMAN_14_115_2WZ9_A_superimposed.pdb.gz 
+2017-05-22 16:16:18,352 - INFO - run_family.py - family_evol - Begin of the PDB B1MMM4_MYCA9_5_107_4POB_A_superimposed.pdb.gz 
+2017-05-22 16:16:18,364 - INFO - run_family.py - family_evol - End of the PDB B1MMM4_MYCA9_5_107_4POB_A_superimposed.pdb.gz 
+2017-05-22 16:16:18,390 - INFO - run_family.py - family_evol - Begin of the PDB B1MMM4_MYCA9_5_107_4POB_B_superimposed.pdb.gz 
+2017-05-22 16:16:18,399 - INFO - run_family.py - family_evol - End of the PDB B1MMM4_MYCA9_5_107_4POB_B_superimposed.pdb.gz 
+2017-05-22 16:16:18,412 - INFO - run_family.py - family_evol - Begin of the PDB PDIA4_HUMAN_178_282_3IDV_A_superimposed.pdb.gz 
+2017-05-22 16:16:18,426 - INFO - run_family.py - family_evol - End of the PDB PDIA4_HUMAN_178_282_3IDV_A_superimposed.pdb.gz 
+2017-05-22 16:16:18,434 - INFO - run_family.py - family_evol - Begin of the PDB Q4DV70_TRYCC_42_151_3H79_A_superimposed.pdb.gz 
+2017-05-22 16:16:18,446 - INFO - run_family.py - family_evol - End of the PDB Q4DV70_TRYCC_42_151_3H79_A_superimposed.pdb.gz 
+2017-05-22 16:16:18,454 - INFO - run_family.py - family_evol - Begin of the PDB TXND5_HUMAN_323_427_3UVT_C_superimposed.pdb.gz 
+2017-05-22 16:16:18,471 - INFO - run_family.py - family_evol - End of the PDB TXND5_HUMAN_323_427_3UVT_C_superimposed.pdb.gz 
+2017-05-22 16:16:18,475 - INFO - run_family.py - family_evol - Begin of the PDB TXND5_HUMAN_323_427_3UVT_D_superimposed.pdb.gz 
+2017-05-22 16:16:18,483 - INFO - run_family.py - family_evol - End of the PDB TXND5_HUMAN_323_427_3UVT_D_superimposed.pdb.gz 
+2017-05-22 16:16:18,487 - INFO - run_family.py - family_evol - Begin of the PDB G0W5T0_NAUDC_35_141_4TVE_A_superimposed.pdb.gz 
+2017-05-22 16:16:18,492 - INFO - run_family.py - family_evol - End of the PDB G0W5T0_NAUDC_35_141_4TVE_A_superimposed.pdb.gz 
+2017-05-22 16:16:18,506 - INFO - run_family.py - family_evol - Begin of the PDB Q2G000_STAA8_2_104_4RUV_A_superimposed.pdb.gz 
+2017-05-22 16:16:18,515 - INFO - run_family.py - family_evol - End of the PDB Q2G000_STAA8_2_104_4RUV_A_superimposed.pdb.gz 
+2017-05-22 16:16:18,523 - INFO - run_family.py - family_evol - Begin of the PDB THIO1_STRCO_4_106_1T00_A_superimposed.pdb.gz 
+2017-05-22 16:16:18,535 - INFO - run_family.py - family_evol - End of the PDB THIO1_STRCO_4_106_1T00_A_superimposed.pdb.gz 
+2017-05-22 16:16:18,539 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2BTO_T_superimposed.pdb.gz 
+2017-05-22 16:16:18,550 - INFO - run_family.py - family_evol - End of the PDB THIO_ECOLI_4_107_2BTO_T_superimposed.pdb.gz 
+2017-05-22 16:16:18,553 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2AJQ_I_superimposed.pdb.gz 
+2017-05-22 16:18:09,030 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-22 16:18:09,031 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-22 16:18:09,039 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-22 16:18:09,080 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-22 16:18:09,090 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-22 16:18:09,095 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-22 16:18:09,101 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-22 16:18:09,136 - INFO - run_family.py - family_evol - End of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-22 16:18:09,147 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_F_superimposed.pdb.gz 
+2017-05-22 16:18:09,160 - INFO - run_family.py - family_evol - End of the PDB THIOM_HUMAN_61_164_1UVZ_F_superimposed.pdb.gz 
+2017-05-22 16:18:09,169 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2H6X_B_superimposed.pdb.gz 
+2017-05-22 16:18:09,178 - INFO - run_family.py - family_evol - End of the PDB THIO_ECOLI_4_107_2H6X_B_superimposed.pdb.gz 
+2017-05-22 16:18:09,181 - INFO - run_family.py - family_evol - Begin of the PDB THIO_PLAF7_2_102_1SYR_B_superimposed.pdb.gz 
+2017-05-22 16:18:09,202 - INFO - run_family.py - family_evol - End of the PDB THIO_PLAF7_2_102_1SYR_B_superimposed.pdb.gz 
+2017-05-22 16:18:09,210 - INFO - run_family.py - family_evol - Begin of the PDB DJC10_MOUSE_672_776_3APS_B_superimposed.pdb.gz 
+2017-05-22 16:18:09,221 - INFO - run_family.py - family_evol - End of the PDB DJC10_MOUSE_672_776_3APS_B_superimposed.pdb.gz 
+2017-05-22 16:18:09,230 - INFO - run_family.py - family_evol - Begin of the PDB Q7XZK2_HORVD_14_118_2VLT_A_superimposed.pdb.gz 
+2017-05-22 16:18:09,257 - INFO - run_family.py - family_evol - End of the PDB Q7XZK2_HORVD_14_118_2VLT_A_superimposed.pdb.gz 
+2017-05-22 16:18:09,271 - INFO - run_family.py - family_evol - Begin of the PDB Q9YED4_AERPE_239_342_3EMX_A_superimposed.pdb.gz 
+2017-05-22 16:18:09,281 - INFO - run_family.py - family_evol - End of the PDB Q9YED4_AERPE_239_342_3EMX_A_superimposed.pdb.gz 
+2017-05-22 16:18:09,296 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2H6X_A_superimposed.pdb.gz 
+2017-05-22 16:18:09,305 - INFO - run_family.py - family_evol - End of the PDB THIO_ECOLI_4_107_2H6X_A_superimposed.pdb.gz 
+2017-05-22 16:18:09,323 - INFO - run_family.py - family_evol - Begin of the PDB PDIA1_HUMAN_368_473_4EL1_A_superimposed.pdb.gz 
+2017-05-22 16:18:09,352 - INFO - run_family.py - family_evol - End of the PDB PDIA1_HUMAN_368_473_4EL1_A_superimposed.pdb.gz 
+2017-05-22 16:18:09,374 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_B_superimposed.pdb.gz 
+2017-05-22 16:18:09,388 - INFO - run_family.py - family_evol - End of the PDB THIOM_HUMAN_61_164_1UVZ_B_superimposed.pdb.gz 
+2017-05-22 16:18:09,399 - INFO - run_family.py - family_evol - Begin of the PDB PDIA1_HUMAN_25_132_4EL1_A_superimposed.pdb.gz 
+2017-05-22 16:18:09,425 - INFO - run_family.py - family_evol - End of the PDB PDIA1_HUMAN_25_132_4EL1_A_superimposed.pdb.gz 
+2017-05-22 16:18:09,435 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_C_superimposed.pdb.gz 
+2017-05-22 16:18:09,442 - INFO - run_family.py - family_evol - End of the PDB THIOM_HUMAN_61_164_1UVZ_C_superimposed.pdb.gz 
+2017-05-22 16:18:09,446 - INFO - run_family.py - family_evol - Begin of the PDB TRX2_YEAST_2_103_2FA4_B_superimposed.pdb.gz 
+2017-05-22 16:18:09,450 - INFO - run_family.py - family_evol - End of the PDB TRX2_YEAST_2_103_2FA4_B_superimposed.pdb.gz 
+2017-05-22 16:18:09,454 - INFO - run_family.py - family_evol - Begin of the PDB Q8T9N5_SCHMA_5_106_2XBQ_B_superimposed.pdb.gz 
+2017-05-22 16:18:09,458 - INFO - run_family.py - family_evol - End of the PDB Q8T9N5_SCHMA_5_106_2XBQ_B_superimposed.pdb.gz 
+2017-05-22 16:18:09,474 - INFO - run_family.py - family_evol - Begin of the PDB PDIA6_HUMAN_26_129_4EF0_A_superimposed.pdb.gz 
+2017-05-22 16:18:09,497 - INFO - run_family.py - family_evol - End of the PDB PDIA6_HUMAN_26_129_4EF0_A_superimposed.pdb.gz 
+2017-05-22 16:18:09,503 - INFO - run_family.py - family_evol - Begin of the PDB TXND5_HUMAN_323_427_3UVT_A_superimposed.pdb.gz 
+2017-05-22 16:18:09,527 - INFO - run_family.py - family_evol - End of the PDB TXND5_HUMAN_323_427_3UVT_A_superimposed.pdb.gz 
+2017-05-22 16:18:09,535 - INFO - run_family.py - family_evol - Begin of the PDB TRX3_YEAST_27_127_2OE0_B_superimposed.pdb.gz 
+2017-05-22 16:18:09,544 - INFO - run_family.py - family_evol - End of the PDB TRX3_YEAST_27_127_2OE0_B_superimposed.pdb.gz 
+2017-05-22 16:18:09,552 - INFO - run_family.py - family_evol - Begin of the PDB THIO2_DROME_11_113_1XWB_D_superimposed.pdb.gz 
+2017-05-22 16:18:09,562 - INFO - run_family.py - family_evol - End of the PDB THIO2_DROME_11_113_1XWB_D_superimposed.pdb.gz 
+2017-05-22 16:18:09,568 - INFO - run_family.py - family_evol - Begin of the PDB TXND5_HUMAN_63_167_3WGD_E_superimposed.pdb.gz 
+2017-05-22 16:18:09,622 - INFO - run_family.py - family_evol - End of the PDB TXND5_HUMAN_63_167_3WGD_E_superimposed.pdb.gz 
+2017-05-22 16:18:09,627 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_E_superimposed.pdb.gz 
+2017-05-22 16:18:09,649 - INFO - run_family.py - family_evol - End of the PDB THIOM_HUMAN_61_164_1UVZ_E_superimposed.pdb.gz 
+2017-05-22 16:18:09,659 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_1SKR_B_superimposed.pdb.gz 
+2017-05-22 16:18:09,679 - INFO - run_family.py - family_evol - End of the PDB THIO_ECOLI_4_107_1SKR_B_superimposed.pdb.gz 
+2017-05-22 16:18:09,683 - INFO - run_family.py - family_evol - Begin of the PDB THIO2_DROME_11_113_1XW9_C_superimposed.pdb.gz 
+2017-05-22 16:18:09,695 - INFO - run_family.py - family_evol - End of the PDB THIO2_DROME_11_113_1XW9_C_superimposed.pdb.gz 
+2017-05-22 16:18:09,698 - INFO - run_family.py - family_evol - Begin of the PDB THIO_HUMAN_2_104_1AUC_A_superimposed.pdb.gz 
+2017-05-22 16:18:09,702 - INFO - run_family.py - family_evol - End of the PDB THIO_HUMAN_2_104_1AUC_A_superimposed.pdb.gz 
+2017-05-22 16:18:09,707 - INFO - run_family.py - family_evol - Begin of the PDB DJC10_MOUSE_130_232_3APQ_B_superimposed.pdb.gz 
+2017-05-22 16:18:09,736 - INFO - run_family.py - family_evol - End of the PDB DJC10_MOUSE_130_232_3APQ_B_superimposed.pdb.gz 
+2017-05-22 16:18:09,747 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1W4V_D_superimposed.pdb.gz 
+2017-05-22 16:18:09,758 - INFO - run_family.py - family_evol - End of the PDB THIOM_HUMAN_61_164_1W4V_D_superimposed.pdb.gz 
+2017-05-22 16:18:09,775 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2TRX_A_superimposed.pdb.gz 
+2017-05-22 16:18:09,784 - INFO - run_family.py - family_evol - End of the PDB THIO_ECOLI_4_107_2TRX_A_superimposed.pdb.gz 
+2017-05-22 16:18:09,793 - INFO - run_family.py - family_evol - Begin of the PDB GLRX3_HUMAN_14_115_2WZ9_A_superimposed.pdb.gz 
+2017-05-22 16:18:09,801 - INFO - run_family.py - family_evol - End of the PDB GLRX3_HUMAN_14_115_2WZ9_A_superimposed.pdb.gz 
+2017-05-22 16:18:09,811 - INFO - run_family.py - family_evol - Begin of the PDB B1MMM4_MYCA9_5_107_4POB_A_superimposed.pdb.gz 
+2017-05-22 16:18:09,817 - INFO - run_family.py - family_evol - End of the PDB B1MMM4_MYCA9_5_107_4POB_A_superimposed.pdb.gz 
+2017-05-22 16:18:09,822 - INFO - run_family.py - family_evol - Begin of the PDB B1MMM4_MYCA9_5_107_4POB_B_superimposed.pdb.gz 
+2017-05-22 16:18:09,827 - INFO - run_family.py - family_evol - End of the PDB B1MMM4_MYCA9_5_107_4POB_B_superimposed.pdb.gz 
+2017-05-22 16:18:09,830 - INFO - run_family.py - family_evol - Begin of the PDB PDIA4_HUMAN_178_282_3IDV_A_superimposed.pdb.gz 
+2017-05-22 16:18:09,848 - INFO - run_family.py - family_evol - End of the PDB PDIA4_HUMAN_178_282_3IDV_A_superimposed.pdb.gz 
+2017-05-22 16:18:09,872 - INFO - run_family.py - family_evol - Begin of the PDB Q4DV70_TRYCC_42_151_3H79_A_superimposed.pdb.gz 
+2017-05-22 16:18:09,881 - INFO - run_family.py - family_evol - End of the PDB Q4DV70_TRYCC_42_151_3H79_A_superimposed.pdb.gz 
+2017-05-22 16:18:09,897 - INFO - run_family.py - family_evol - Begin of the PDB TXND5_HUMAN_323_427_3UVT_C_superimposed.pdb.gz 
+2017-05-22 16:18:09,926 - INFO - run_family.py - family_evol - End of the PDB TXND5_HUMAN_323_427_3UVT_C_superimposed.pdb.gz 
+2017-05-22 16:18:09,943 - INFO - run_family.py - family_evol - Begin of the PDB TXND5_HUMAN_323_427_3UVT_D_superimposed.pdb.gz 
+2017-05-22 16:18:09,961 - INFO - run_family.py - family_evol - End of the PDB TXND5_HUMAN_323_427_3UVT_D_superimposed.pdb.gz 
+2017-05-22 16:18:09,970 - INFO - run_family.py - family_evol - Begin of the PDB G0W5T0_NAUDC_35_141_4TVE_A_superimposed.pdb.gz 
+2017-05-22 16:18:09,996 - INFO - run_family.py - family_evol - End of the PDB G0W5T0_NAUDC_35_141_4TVE_A_superimposed.pdb.gz 
+2017-05-22 16:18:10,007 - INFO - run_family.py - family_evol - Begin of the PDB Q2G000_STAA8_2_104_4RUV_A_superimposed.pdb.gz 
+2017-05-22 16:18:10,016 - INFO - run_family.py - family_evol - End of the PDB Q2G000_STAA8_2_104_4RUV_A_superimposed.pdb.gz 
+2017-05-22 16:18:10,025 - INFO - run_family.py - family_evol - Begin of the PDB THIO1_STRCO_4_106_1T00_A_superimposed.pdb.gz 
+2017-05-22 16:18:10,031 - INFO - run_family.py - family_evol - End of the PDB THIO1_STRCO_4_106_1T00_A_superimposed.pdb.gz 
+2017-05-22 16:18:10,056 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2BTO_T_superimposed.pdb.gz 
+2017-05-22 16:18:10,075 - INFO - run_family.py - family_evol - End of the PDB THIO_ECOLI_4_107_2BTO_T_superimposed.pdb.gz 
+2017-05-22 16:18:10,079 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2AJQ_I_superimposed.pdb.gz 
+2017-05-22 16:26:49,196 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-22 16:26:49,197 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-22 16:26:49,205 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-22 16:26:49,245 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-22 16:26:49,246 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-22 16:26:49,257 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-22 16:26:49,266 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-22 16:26:49,304 - INFO - run_family.py - family_evol - End of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-22 16:26:49,314 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_F_superimposed.pdb.gz 
+2017-05-22 16:26:49,331 - INFO - run_family.py - family_evol - End of the PDB THIOM_HUMAN_61_164_1UVZ_F_superimposed.pdb.gz 
+2017-05-22 16:26:49,337 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2H6X_B_superimposed.pdb.gz 
+2017-05-22 16:26:49,349 - INFO - run_family.py - family_evol - End of the PDB THIO_ECOLI_4_107_2H6X_B_superimposed.pdb.gz 
+2017-05-22 16:26:49,361 - INFO - run_family.py - family_evol - Begin of the PDB THIO_PLAF7_2_102_1SYR_B_superimposed.pdb.gz 
+2017-05-22 16:26:49,387 - INFO - run_family.py - family_evol - End of the PDB THIO_PLAF7_2_102_1SYR_B_superimposed.pdb.gz 
+2017-05-22 16:26:49,407 - INFO - run_family.py - family_evol - Begin of the PDB DJC10_MOUSE_672_776_3APS_B_superimposed.pdb.gz 
+2017-05-22 16:26:49,417 - INFO - run_family.py - family_evol - End of the PDB DJC10_MOUSE_672_776_3APS_B_superimposed.pdb.gz 
+2017-05-22 16:26:49,429 - INFO - run_family.py - family_evol - Begin of the PDB Q7XZK2_HORVD_14_118_2VLT_A_superimposed.pdb.gz 
+2017-05-22 16:26:49,438 - INFO - run_family.py - family_evol - End of the PDB Q7XZK2_HORVD_14_118_2VLT_A_superimposed.pdb.gz 
+2017-05-22 16:26:49,446 - INFO - run_family.py - family_evol - Begin of the PDB Q9YED4_AERPE_239_342_3EMX_A_superimposed.pdb.gz 
+2017-05-22 16:26:49,450 - INFO - run_family.py - family_evol - End of the PDB Q9YED4_AERPE_239_342_3EMX_A_superimposed.pdb.gz 
+2017-05-22 16:26:49,454 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2H6X_A_superimposed.pdb.gz 
+2017-05-22 16:26:49,484 - INFO - run_family.py - family_evol - End of the PDB THIO_ECOLI_4_107_2H6X_A_superimposed.pdb.gz 
+2017-05-22 16:26:49,490 - INFO - run_family.py - family_evol - Begin of the PDB PDIA1_HUMAN_368_473_4EL1_A_superimposed.pdb.gz 
+2017-05-22 16:26:49,524 - INFO - run_family.py - family_evol - End of the PDB PDIA1_HUMAN_368_473_4EL1_A_superimposed.pdb.gz 
+2017-05-22 16:26:49,532 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_B_superimposed.pdb.gz 
+2017-05-22 16:26:49,545 - INFO - run_family.py - family_evol - End of the PDB THIOM_HUMAN_61_164_1UVZ_B_superimposed.pdb.gz 
+2017-05-22 16:26:49,553 - INFO - run_family.py - family_evol - Begin of the PDB PDIA1_HUMAN_25_132_4EL1_A_superimposed.pdb.gz 
+2017-05-22 16:26:49,566 - INFO - run_family.py - family_evol - End of the PDB PDIA1_HUMAN_25_132_4EL1_A_superimposed.pdb.gz 
+2017-05-22 16:26:49,570 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_C_superimposed.pdb.gz 
+2017-05-22 16:26:49,577 - INFO - run_family.py - family_evol - End of the PDB THIOM_HUMAN_61_164_1UVZ_C_superimposed.pdb.gz 
+2017-05-22 16:26:49,580 - INFO - run_family.py - family_evol - Begin of the PDB TRX2_YEAST_2_103_2FA4_B_superimposed.pdb.gz 
+2017-05-22 16:26:49,594 - INFO - run_family.py - family_evol - End of the PDB TRX2_YEAST_2_103_2FA4_B_superimposed.pdb.gz 
+2017-05-22 16:26:49,607 - INFO - run_family.py - family_evol - Begin of the PDB Q8T9N5_SCHMA_5_106_2XBQ_B_superimposed.pdb.gz 
+2017-05-22 16:26:49,616 - INFO - run_family.py - family_evol - End of the PDB Q8T9N5_SCHMA_5_106_2XBQ_B_superimposed.pdb.gz 
+2017-05-22 16:26:49,624 - INFO - run_family.py - family_evol - Begin of the PDB PDIA6_HUMAN_26_129_4EF0_A_superimposed.pdb.gz 
+2017-05-22 16:26:49,634 - INFO - run_family.py - family_evol - End of the PDB PDIA6_HUMAN_26_129_4EF0_A_superimposed.pdb.gz 
+2017-05-22 16:26:49,638 - INFO - run_family.py - family_evol - Begin of the PDB TXND5_HUMAN_323_427_3UVT_A_superimposed.pdb.gz 
+2017-05-22 16:26:49,646 - INFO - run_family.py - family_evol - End of the PDB TXND5_HUMAN_323_427_3UVT_A_superimposed.pdb.gz 
+2017-05-22 16:26:49,649 - INFO - run_family.py - family_evol - Begin of the PDB TRX3_YEAST_27_127_2OE0_B_superimposed.pdb.gz 
+2017-05-22 16:26:49,654 - INFO - run_family.py - family_evol - End of the PDB TRX3_YEAST_27_127_2OE0_B_superimposed.pdb.gz 
+2017-05-22 16:26:49,658 - INFO - run_family.py - family_evol - Begin of the PDB THIO2_DROME_11_113_1XWB_D_superimposed.pdb.gz 
+2017-05-22 16:26:49,663 - INFO - run_family.py - family_evol - End of the PDB THIO2_DROME_11_113_1XWB_D_superimposed.pdb.gz 
+2017-05-22 16:26:49,666 - INFO - run_family.py - family_evol - Begin of the PDB TXND5_HUMAN_63_167_3WGD_E_superimposed.pdb.gz 
+2017-05-22 16:26:49,695 - INFO - run_family.py - family_evol - End of the PDB TXND5_HUMAN_63_167_3WGD_E_superimposed.pdb.gz 
+2017-05-22 16:26:49,712 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_E_superimposed.pdb.gz 
+2017-05-22 16:26:49,724 - INFO - run_family.py - family_evol - End of the PDB THIOM_HUMAN_61_164_1UVZ_E_superimposed.pdb.gz 
+2017-05-22 16:26:49,737 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_1SKR_B_superimposed.pdb.gz 
+2017-05-22 16:26:49,753 - INFO - run_family.py - family_evol - End of the PDB THIO_ECOLI_4_107_1SKR_B_superimposed.pdb.gz 
+2017-05-22 16:26:49,765 - INFO - run_family.py - family_evol - Begin of the PDB THIO2_DROME_11_113_1XW9_C_superimposed.pdb.gz 
+2017-05-22 16:26:49,793 - INFO - run_family.py - family_evol - End of the PDB THIO2_DROME_11_113_1XW9_C_superimposed.pdb.gz 
+2017-05-22 16:26:49,799 - INFO - run_family.py - family_evol - Begin of the PDB THIO_HUMAN_2_104_1AUC_A_superimposed.pdb.gz 
+2017-05-22 16:26:49,807 - INFO - run_family.py - family_evol - End of the PDB THIO_HUMAN_2_104_1AUC_A_superimposed.pdb.gz 
+2017-05-22 16:26:49,815 - INFO - run_family.py - family_evol - Begin of the PDB DJC10_MOUSE_130_232_3APQ_B_superimposed.pdb.gz 
+2017-05-22 16:26:49,827 - INFO - run_family.py - family_evol - End of the PDB DJC10_MOUSE_130_232_3APQ_B_superimposed.pdb.gz 
+2017-05-22 16:26:49,832 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1W4V_D_superimposed.pdb.gz 
+2017-05-22 16:26:49,838 - INFO - run_family.py - family_evol - End of the PDB THIOM_HUMAN_61_164_1W4V_D_superimposed.pdb.gz 
+2017-05-22 16:26:49,842 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2TRX_A_superimposed.pdb.gz 
+2017-05-22 16:26:49,846 - INFO - run_family.py - family_evol - End of the PDB THIO_ECOLI_4_107_2TRX_A_superimposed.pdb.gz 
+2017-05-22 16:26:49,852 - INFO - run_family.py - family_evol - Begin of the PDB GLRX3_HUMAN_14_115_2WZ9_A_superimposed.pdb.gz 
+2017-05-22 16:26:49,877 - INFO - run_family.py - family_evol - End of the PDB GLRX3_HUMAN_14_115_2WZ9_A_superimposed.pdb.gz 
+2017-05-22 16:26:49,887 - INFO - run_family.py - family_evol - Begin of the PDB B1MMM4_MYCA9_5_107_4POB_A_superimposed.pdb.gz 
+2017-05-22 16:26:49,896 - INFO - run_family.py - family_evol - End of the PDB B1MMM4_MYCA9_5_107_4POB_A_superimposed.pdb.gz 
+2017-05-22 16:26:49,911 - INFO - run_family.py - family_evol - Begin of the PDB B1MMM4_MYCA9_5_107_4POB_B_superimposed.pdb.gz 
+2017-05-22 16:26:49,921 - INFO - run_family.py - family_evol - End of the PDB B1MMM4_MYCA9_5_107_4POB_B_superimposed.pdb.gz 
+2017-05-22 16:26:49,931 - INFO - run_family.py - family_evol - Begin of the PDB PDIA4_HUMAN_178_282_3IDV_A_superimposed.pdb.gz 
+2017-05-22 16:26:49,954 - INFO - run_family.py - family_evol - End of the PDB PDIA4_HUMAN_178_282_3IDV_A_superimposed.pdb.gz 
+2017-05-22 16:26:49,966 - INFO - run_family.py - family_evol - Begin of the PDB Q4DV70_TRYCC_42_151_3H79_A_superimposed.pdb.gz 
+2017-05-22 16:26:49,976 - INFO - run_family.py - family_evol - End of the PDB Q4DV70_TRYCC_42_151_3H79_A_superimposed.pdb.gz 
+2017-05-22 16:26:49,985 - INFO - run_family.py - family_evol - Begin of the PDB TXND5_HUMAN_323_427_3UVT_C_superimposed.pdb.gz 
+2017-05-22 16:26:50,004 - INFO - run_family.py - family_evol - End of the PDB TXND5_HUMAN_323_427_3UVT_C_superimposed.pdb.gz 
+2017-05-22 16:26:50,008 - INFO - run_family.py - family_evol - Begin of the PDB TXND5_HUMAN_323_427_3UVT_D_superimposed.pdb.gz 
+2017-05-22 16:26:50,017 - INFO - run_family.py - family_evol - End of the PDB TXND5_HUMAN_323_427_3UVT_D_superimposed.pdb.gz 
+2017-05-22 16:26:50,021 - INFO - run_family.py - family_evol - Begin of the PDB G0W5T0_NAUDC_35_141_4TVE_A_superimposed.pdb.gz 
+2017-05-22 16:26:50,027 - INFO - run_family.py - family_evol - End of the PDB G0W5T0_NAUDC_35_141_4TVE_A_superimposed.pdb.gz 
+2017-05-22 16:26:50,031 - INFO - run_family.py - family_evol - Begin of the PDB Q2G000_STAA8_2_104_4RUV_A_superimposed.pdb.gz 
+2017-05-22 16:26:50,035 - INFO - run_family.py - family_evol - End of the PDB Q2G000_STAA8_2_104_4RUV_A_superimposed.pdb.gz 
+2017-05-22 16:26:50,039 - INFO - run_family.py - family_evol - Begin of the PDB THIO1_STRCO_4_106_1T00_A_superimposed.pdb.gz 
+2017-05-22 16:26:50,043 - INFO - run_family.py - family_evol - End of the PDB THIO1_STRCO_4_106_1T00_A_superimposed.pdb.gz 
+2017-05-22 16:26:50,046 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2BTO_T_superimposed.pdb.gz 
+2017-05-22 16:26:50,054 - INFO - run_family.py - family_evol - End of the PDB THIO_ECOLI_4_107_2BTO_T_superimposed.pdb.gz 
+2017-05-22 16:26:50,069 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2AJQ_I_superimposed.pdb.gz 
+2017-05-22 16:28:53,768 - INFO - run_family.py - family_evol - End of the PDB THIO_ECOLI_4_107_2AJQ_I_superimposed.pdb.gz 
+2017-05-22 16:34:58,669 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-22 16:34:58,670 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-22 16:35:06,913 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-22 16:35:07,000 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-22 16:36:11,298 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-22 16:36:11,299 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-22 16:36:29,315 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-22 16:36:29,325 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-22 16:36:29,350 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2TRX_A_superimposed.pdb.gz 
+2017-05-22 16:36:29,371 - ERROR - run_family.py - family_evol - The family was not evolutionated  PF00085 
+2017-05-22 16:45:14,805 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-22 16:45:14,806 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-22 16:45:27,309 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-22 16:45:27,330 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-22 16:45:27,352 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2TRX_A_superimposed.pdb.gz 
+2017-05-22 16:45:27,367 - ERROR - run_family.py - family_evol - The family was not evolutionated  PF00085 
+2017-05-22 16:45:27,375 - INFO - run_family.py - family_evol - End family Evol  PF00085 
+2017-05-22 16:45:27,376 - INFO - run_family.py - family_evol - --- 0.0667541027069 seconds --- 
+2017-05-22 16:45:30,942 - INFO - run_family.py - run_families_evol - End of the execution process 
+2017-05-22 16:45:34,942 - INFO - run_family.py - run_families_evol - Time of Execution --- 20.1358280182 seconds --- 
+2017-05-22 16:47:49,428 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-22 16:47:49,428 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-22 16:47:58,278 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-22 16:47:58,283 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-22 16:47:58,293 - INFO - run_family.py - family_evol - Begin of the PDB THIO_ECOLI_4_107_2TRX_A_superimposed.pdb.gz 
+2017-05-22 16:47:58,323 - ERROR - run_family.py - family_evol - The family was not evolutionated  PF00085 
+2017-05-22 16:47:58,325 - INFO - run_family.py - family_evol - End family Evol  PF00085 
+2017-05-22 16:47:58,327 - INFO - run_family.py - family_evol - --- 0.0494499206543 seconds --- 
+2017-05-22 16:49:31,718 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-22 16:49:31,719 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-22 16:49:39,314 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 145 
+2017-05-22 16:49:39,414 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):68 
+2017-05-22 16:51:26,822 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-22 16:51:26,823 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-22 16:51:41,655 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-22 16:51:41,659 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-22 16:51:41,668 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-22 16:54:12,732 - INFO - run_family.py - family_evol - End of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-22 16:54:22,986 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_F_superimposed.pdb.gz 
+2017-05-22 16:54:33,330 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-05-22 16:54:33,330 - INFO - run_family.py - run_families_evol - PF00085 
+2017-05-22 16:54:45,888 - INFO - run_family.py - family_evol - Family Evol PF00085 
+2017-05-22 16:54:45,889 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-05-22 16:54:45,892 - INFO - run_family.py - family_evol - Begin of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-22 16:54:54,628 - INFO - run_family.py - family_evol - End of the PDB PDIA3_HUMAN_377_483_3F8U_A_superimposed.pdb.gz 
+2017-05-22 16:55:02,457 - INFO - run_family.py - family_evol - Begin of the PDB THIOM_HUMAN_61_164_1UVZ_F_superimposed.pdb.gz 
