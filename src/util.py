@@ -148,7 +148,7 @@ Recibe el pdf recortado con las posiciones que deben mantenerse luego elimina la
 def synchronize_evol_with_cutted_pdb_singular(pdb_complete_path, pdb_cutted_path, clustered_sequences_path, sincronized_evol_path, contact_map_path, sincronized_contact_map):
     start_time = time.time()
     print "sincronize_natural_evol_alignments"  
-    df = pandas.read_csv(pdb_complete_path, delim_whitespace=True,header=None)
+    df = pandas.read_csv(pdb_complete_path, delim_whitespace=True,header=None,usecols=[5])
     df=df.dropna()
     df[5] = df[5].astype('int32')
     df=df.groupby(5).first().reset_index()
@@ -298,9 +298,9 @@ def find_pdb_to_evolve(family_pdb_information):
     df['auc_nat_01']= np.NaN
     df['spearman_zmip_evol_nat']= np.NaN
     df['par_positions_count']= np.NaN
+    df['execution_time']= np.NaN
     #print df
     logging.info("Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):" + str(len(df.index)))
-    print df
     return df
 
 '''
