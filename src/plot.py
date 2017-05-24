@@ -63,7 +63,7 @@ def roc_curve_dep(y_true,scores_nat,scores_evol):
     plt.ylabel('True Positive Rate')
     plt.title('Receiver operating characteristic example')
     plt.legend(loc="lower right")
-    plt.show()
+    #plt.show()
     plt.gcf().clear()
     
 def roc_curve(df,index,y_true,scores,labels,colors,output_file):
@@ -251,7 +251,7 @@ def contacts_with_mi_desarrollo(x_nat_t,y_evol_t,y_evol2_t,x_nat_f,y_evol_f,y_ev
     #x=[[1.0,2.4]]
     #plt.scatter(x,color="r")
     plt.savefig(output_path)
-    plt.show()
+    #plt.show()
     plt.gcf().clear()
 '''
 Plot the conservation of the MSA evolutionated and the Natural MSA
@@ -266,6 +266,6 @@ def conservation_between_msas(msas_entropy, output_file,natural_line_style='-'):
     plt.xlabel('Position')
     plt.legend(loc=1,prop={'size':10},title="PDB")
     plt.savefig(output_file)
-    plt.show()  
+    #plt.show()  
     plt.gcf().clear()
 

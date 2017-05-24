@@ -357,6 +357,8 @@ def family_evol(input_families_folder, family_folder, pdb_to_evol_df, family_pdb
     logging.info('--- %s seconds ---' % (time.time() - start_time))   
 
 def run_methaherustic_for_optimization_parameters(pdb_name,optimization_folder,pdb_file_complete_filename_to_evolve, cutted_pdb_path, chain_name):
+    logging.info('Run Optimization For ' + pdb_name)
+    start_time_total = time.time()
     columns=["pdb","beta","nsus","run","auc","auc_01","execution_time"]
     df = pandas.DataFrame(columns=columns)
     scpe_sequences = optimization_folder + "scpe_sequences/"
@@ -373,27 +375,45 @@ def run_methaherustic_for_optimization_parameters(pdb_name,optimization_folder,p
         os.makedirs(sincronized_evol_path)
     if not os.path.exists(mi_data_path):
         os.makedirs(mi_data_path)    
-    beta = ["0.5","1.00","1.5","2.00","2.5","3.00","3.5","4.0"]
-    runs = ["1000","2000","5000","10000","20000","30000"]
+    
+    '''beta = ["0.5","1.00","1.5","2.00","2.5","3.00","3.5","4.0"]
+    runs = ["1000","20000","30000"]
     nsus = ["1.0","2.0","3.0","4.0","5.0"]
+    '''
+    beta = ["0.5","1.00","1.5","2.00","2.5","3.00"]
+    runs = ["20000"]
+    #runs = ["1000","20000","30000"]
+    nsus = ["1.0","2.0","3.0","4.0","5.0"]
+    
     auc_max = 0
     index=1
     for b in beta:
         for sus in nsus:
             for r in runs:
-                start_time = time.time() 
-                auc,auc01 = run(pdb_file_complete_filename_to_evolve, cutted_pdb_path, b,r,sus,chain_name, scpe_sequences, clustered_sequences_path,sincronized_evol_path, mi_data_path,contact_map,contact_map_sync )
+                start_time = time.time()
+                logging.info('Calculation of beta ' + b + ' nsus ' + sus + ' run ' + r)
                 df.set_value(index, 'pdb', pdb_name)
                 df.set_value(index, 'beta', b)
                 df.set_value(index, 'nsus', sus)
                 df.set_value(index, 'run', r)
-                df.set_value(index, 'auc', auc)
-                df.set_value(index, 'auc_01', auc01)
+                try: 
+                    auc,auc01 = run(pdb_file_complete_filename_to_evolve, cutted_pdb_path, b,r,sus,chain_name, scpe_sequences, clustered_sequences_path,sincronized_evol_path, mi_data_path,contact_map,contact_map_sync )
+                    df.set_value(index, 'auc', auc)
+                    df.set_value(index, 'auc_01', auc01)
+                    if(auc>auc_max):
+                        parameters = (b,sus,r) 
+                except Exception as inst:
+                    print inst
+                    x = inst.args
+                    print x
+                    df.set_value(index, 'auc', 'error')
+                    df.set_value(index, 'auc_01', 'error')
+                    logging.error('Error with beta ' + b + ' nsus ' + sus + ' run ' + r)        
                 df.set_value(index, 'execution_time', time.time() - start_time)
-                if(auc>auc_max):
-                    parameters = (b,sus,r) 
-                index=index+1    
-    df.to_csv(optimization_folder+"optimization.csv")                
+                index=index+1
+                df.to_csv(optimization_folder+"optimization.csv")    
+    df.set_value(index, 'execution_time_optimization_total', time.time() - start_time_total)            
+    df.to_csv(optimization_folder+"optimization2.csv")                
     return parameters
 
 def evol_protein(data_frame_evol, index,pdb_file_complete_filename_to_evolve,cutted_pdb_path, beta,runs,nsus,chain,scpe_sequences,clustered_sequences_folder_path,sincronized_evol_path,zmip_natural_result_path,mi_data_path, mi_data_analisys,msa_conservation_path,contact_map_path, contact_map_sync):    
@@ -439,17 +459,19 @@ def run(pdb_file_complete_filename_to_evolve,cutted_pdb_path, beta,runs,nsus,cha
     return auc,auc01
     
 def download_pdbs(input_families_folder, family_folder, pdb_to_evol_df):
+    logging.info('download_pdbs inicio ' + family_folder)
     pdb_paths_files = input_families_folder +  family_folder  +"/PDB/"
     for index,pdb_protein_to_evolve in pdb_to_evol_df.iterrows():
         pdb_folder = pdb_paths_files + pdb_protein_to_evolve["pdb_folder_name"]
         if not os.path.exists(pdb_folder):
             os.makedirs(pdb_folder)
+        logging.info('download_pdbs ' + pdb_protein_to_evolve["pdb"])    
         pdb_data = urllib.urlopen('http://files.rcsb.org/download/'+pdb_protein_to_evolve["pdb"]+'.pdb').read()
         pdb_complete_path=pdb_folder +"/"+pdb_protein_to_evolve["pdb_folder_name"]+"_complete.pdb"
         pdb_file = open(pdb_complete_path, "w")
         pdb_file.write(pdb_data)
         pdb_file.close()
-
+    logging.info('download_pdbs fin ' + family_folder)    
 
     
     
