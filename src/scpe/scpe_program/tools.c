@@ -859,7 +859,7 @@ double Calculate_score( int *seqnumT, int *seqnumA)
 
 
   if(Options.multimer){
-    cont=0;
+    cont=0; 
     while(cmatQvector[position][cont]) {
       energyAh =  eijmat[*(seqnumA+position)][*(numprot_totalA+cmatQvector[position][cont])];
       energyTh =  eijmat[*(seqnumT+position)][*(numprot_totalT+cmatQvector[position][cont])];
@@ -908,16 +908,17 @@ double Calculate_score( int *seqnumT, int *seqnumA)
 int Accept_trial(double score,float beta)
 {
   double prob,r;
-
+  
   if(score==0) return(1);
 
 
   if(Options.acceptmodel) {       /*hard evaluation*/
-
+	
 #if defined(DEBUG)
+     fprintf(logfile,"score=%f beta=%f ",score, beta);
      printf("score=%f beta=%f ",score, beta);
 #endif
-                        if(score<beta) return(1);
+                        if(score<beta) return(1); 
                         else return(0);
   }
   else{
@@ -927,7 +928,7 @@ int Accept_trial(double score,float beta)
      /*Evaluate if trial is accepted or not*/
 
      r=rndu();
-
+     
 #if defined(DEBUG)
      printf("prob=%f r=%f score=%f beta=%f ",prob, r, score,beta);
 #endif
@@ -973,9 +974,11 @@ char run(int *Aj,int *Tj,int *mut)
       if(Accept_trial(score,beta)){
         Accumul_sust(A,T,Nsus_pos);   
         memcpy(A,T,protsize*(sizeof(int)));    /*if trial is Accepted copy T -> A*/
+	printf("score=%f beta=%f ACEPTADO \n",score, beta);
         return('A');
       }	
       else{
+	   printf("score=%f beta=%f NO ACEPTADO \n",score, beta);	
            Accumul_sust(A,A,Nsus_pos);  /* trial Not accepted */
            return('N');
       }

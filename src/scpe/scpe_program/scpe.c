@@ -23,7 +23,7 @@ SCPEv1.1 allows the use of hete-oligomers
  
   
 #include "stdio.h"
-#include "stdlib.h"
+#include "stdlib.h" 
 #include "string.h"
 #include "math.h"
 #include "time.h"
@@ -73,7 +73,7 @@ struct info {
 struct {
         char seq[MAXPROTLEN];
         char name[MAXNAME];
-   }ali[MAXSEQS];
+   }ali[MAXSEQS]; 
 
 int *Nsus_pos,initial;
 char seqprot[MAXPROTLEN];
@@ -360,7 +360,7 @@ main (int argc, char * argv[])
       }
      i=fscanf(betalist,"%lf\n",&beta);
    }
-   else beta=Options.initial_beta;
+   else beta=Options.initial_beta; 
 
   /*Screening different beta*/
   int id_seq = 0;
@@ -370,7 +370,7 @@ main (int argc, char * argv[])
     printf("Evaluating cutoff %f\n ",beta);
     SetSeed(time(NULL));
     /*File For Print*/
-    printf("file to print \n ");
+    printf("file to print \n "); 
 
 
 	//sprintf(mutated_secuence_file_name,"%s-beta%2.2f-nsus%2.2f-runs%d.fasta",
@@ -440,7 +440,7 @@ main (int argc, char * argv[])
       }
       print_step++;
        /*loop over different runs*/
-      for(j=0;j<Options.runs;j++){             
+      for(j=0;j<Options.runs;j++){              
 
        /* sust_type indicates type of sustitution as follow:
           0 = no mutation 
@@ -452,13 +452,13 @@ main (int argc, char * argv[])
     sust_type= run((A+(j*protsize)),(T+(j*protsize)),&mut);
 
     //Has to print sequences
-    if(Options.print_sequences==1 && print_step==Options.print_sequences_screening){
-    		memcpy(seq_num_print,(A+(j*protsize)),protsize*(sizeof(int)));
+    if(Options.print_sequences==1 && print_step==Options.print_sequences_screening && sust_type=='A'){
+    		memcpy(seq_num_print,(A+(j*protsize)),protsize*(sizeof(int))); 
     	    Number_to_seq(seq_num_print,seq_aa_print);
     	    id_seq++;
-    	    iden=0;
+    	    iden=0; 
     	    for(m=0;m<protsize;m++) if(numprot[m]==seq_num_print[m]) iden++;
-    	    if((iden/protsize)*100 > Options.print_sequences_identity){
+    	    if((iden/protsize)*100 > Options.print_sequences_identity && (iden/protsize)*100 < 62){
     		   /*imprimo secuencias*/
     		   if(file_flush_flag==0){
     			   if((seqprint=fopen(mutated_secuence_file_name,"a+"))==NULL) {
@@ -471,7 +471,7 @@ main (int argc, char * argv[])
     		    if(file_flush_flag==10){
     		    	fflush(seqprint);
     		       	fclose(seqprint);
-    		       	file_flush_flag=0;
+    		       	file_flush_flag=0; 
     		    }
     	   }
 
@@ -480,7 +480,7 @@ main (int argc, char * argv[])
     #if defined(DEBUG)
              printf(" run=%d %c \n",j,sust_type);
         #endif
-
+ 
 	Count(sust_type,&nonaccepted,&accepted,&nothing,&mut,&nsyn,&N_nsyn,&N_syn);
 	mutrecord=accepted+nonaccepted;
 
@@ -489,7 +489,7 @@ main (int argc, char * argv[])
 
    if(print_step==Options.print_sequences_screening){
 	   print_step=0;
-   }
+   } 
 
 
 

@@ -38,13 +38,13 @@ execute_family_evol=True
 '''
 Calculate the MI for the natural MSA putting the protein as the reference
 '''
-execute_natural_mi_msa=True
+execute_natural_mi_msa=False
 '''
 Calculate the Conservation of the families natural MSA
 '''
-execute_msa_natural_information=True
+execute_msa_natural_information=False
 
-execute_download_pdbs=True
+execute_download_pdbs=False
 
 '''
 Execute the evolution of the protein with SCPE.
@@ -117,7 +117,8 @@ def run_families_evol():
             pdb_to_evol_df.to_csv(family_pdb_evol_info_path)
         else:
             pdb_to_evol_df = pandas.read_csv(family_pdb_evol_info_path,header=0)    
-            
+        
+        print pdb_to_evol_df    
             
         if(execute_download_pdbs):
             download_pdbs(input_families_folder,family_folder,pdb_to_evol_df)
@@ -280,8 +281,8 @@ def family_evol(input_families_folder, family_folder, pdb_to_evol_df, family_pdb
                     os.makedirs(optimization_folder)
                     
                 util.clean_pdb(pdb_file_complete,pdb_file_complete_filename_to_evolve, chain_name)        
-                
-                if(index==1):
+                #TODO FIX Cuando lo levanta es 0 cuando es nuevo es 1 
+                if(index==0):
                     return_variables_optimizated = run_methaherustic_for_optimization_parameters(pdb_name,optimization_folder, pdb_file_complete_filename_to_evolve, cutted_pdb_path, chain_name)
                     beta=return_variables_optimizated[0]
                     nsus=return_variables_optimizated[1]
@@ -359,6 +360,8 @@ def family_evol(input_families_folder, family_folder, pdb_to_evol_df, family_pdb
 def run_methaherustic_for_optimization_parameters(pdb_name,optimization_folder,pdb_file_complete_filename_to_evolve, cutted_pdb_path, chain_name):
     logging.info('Run Optimization For ' + pdb_name)
     start_time_total = time.time()
+    
+    
     columns=["pdb","beta","nsus","run","auc","auc_01","execution_time"]
     df = pandas.DataFrame(columns=columns)
     scpe_sequences = optimization_folder + "scpe_sequences/"
@@ -381,9 +384,12 @@ def run_methaherustic_for_optimization_parameters(pdb_name,optimization_folder,p
     nsus = ["1.0","2.0","3.0","4.0","5.0"]
     '''
     beta = ["0.5","1.00","1.5","2.00","2.5","3.00"]
-    runs = ["20000"]
+    runs = ["1000"]
     #runs = ["1000","20000","30000"]
     nsus = ["1.0","2.0","3.0","4.0","5.0"]
+    
+    nsus = ["3.0"]
+    beta = ["0.6"]
     
     auc_max = 0
     index=1
@@ -411,9 +417,9 @@ def run_methaherustic_for_optimization_parameters(pdb_name,optimization_folder,p
                     logging.error('Error with beta ' + b + ' nsus ' + sus + ' run ' + r)        
                 df.set_value(index, 'execution_time', time.time() - start_time)
                 index=index+1
-                df.to_csv(optimization_folder+"optimization.csv")    
+                df.to_csv(optimization_folder+"optimization_test.csv")    
     df.set_value(index, 'execution_time_optimization_total', time.time() - start_time_total)            
-    df.to_csv(optimization_folder+"optimization2.csv")                
+    df.to_csv(optimization_folder+"optimization_test2.csv")                
     return parameters
 
 def evol_protein(data_frame_evol, index,pdb_file_complete_filename_to_evolve,cutted_pdb_path, beta,runs,nsus,chain,scpe_sequences,clustered_sequences_folder_path,sincronized_evol_path,zmip_natural_result_path,mi_data_path, mi_data_analisys,msa_conservation_path,contact_map_path, contact_map_sync):    
@@ -446,7 +452,7 @@ def run(pdb_file_complete_filename_to_evolve,cutted_pdb_path, beta,runs,nsus,cha
     mi_data_path = mi_data_path + "zmip_"+sufix+".csv"
     scpe.run_singular(pdb_file_complete_filename_to_evolve, beta, runs,nsus,chain,output_msa_path,contact_map_path)
     msa.clustering_singular("0.62",output_msa_path, clustered_sequences_path)
-    util.delete_files(output_msa_path)
+    #util.delete_files(output_msa_path)
     util.delete_files(clustered_tmp_sequences_path)
     #se realiza la optimizacion sobre el msa ya recortado
     #util.synchronize_evol_with_cutted_pdb_singular(pdb_file_complete_filename_to_evolve, cutted_pdb_path, clustered_sequences_path, sincronized_evol_path, contact_map_path, contact_map_sync)
