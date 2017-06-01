@@ -974,11 +974,11 @@ char run(int *Aj,int *Tj,int *mut)
       if(Accept_trial(score,beta)){
         Accumul_sust(A,T,Nsus_pos);   
         memcpy(A,T,protsize*(sizeof(int)));    /*if trial is Accepted copy T -> A*/
-	printf("score=%f beta=%f ACEPTADO \n",score, beta);
+        //printf("score=%f beta=%f ACEPTADO \n",score, beta);
         return('A');
       }	
       else{
-	   printf("score=%f beta=%f NO ACEPTADO \n",score, beta);	
+    	   //printf("score=%f beta=%f NO ACEPTADO \n",score, beta);
            Accumul_sust(A,A,Nsus_pos);  /* trial Not accepted */
            return('N');
       }

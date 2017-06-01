@@ -76,6 +76,7 @@ struct {
    }ali[MAXSEQS]; 
 
 int *Nsus_pos,initial;
+int *print_run_screen;
 char seqprot[MAXPROTLEN];
 char seqprot_total[MAXPROTLEN];
 float eijmat[AA][AA];
@@ -129,6 +130,8 @@ main (int argc, char * argv[])
   int nseq,newruns;
   int num=0,r;
   int cont; 
+
+
 
   time_start=time(NULL);
   SetSeed(time(NULL));
@@ -423,6 +426,24 @@ main (int argc, char * argv[])
 
     Init_vector(Nsus_pos,(protsize*AA*AA)); /*Nsus is accumulative for N indep. runs for a given beta*/
 
+	//inicializo vector de runs
+    printf("Inicializacion de Vector con  %i posiciones \n ",Options.runs-1);
+    fflush(stdout);
+    print_run_screen=(int*)malloc(Options.runs*sizeof(int));
+    Init_vector(print_run_screen,Options.runs);
+    printf("Inicializacion de Vector con  %i posiciones \n ",Options.runs-1);
+    fflush(stdout);
+    /*for(int i=0;i<Options.runs;i++){
+        	//printf(" run=%d %i \n",i,*(print_run_screen+i));
+        	print_run_screen[i]=i;
+    }*/
+    /*for(int i=0;i<Options.runs;i++){
+    	//printf(" run=%d %i \n",i,*(print_run_screen+i));
+    	printf(" run=%d print_screen=%d \n",i,print_run_screen[i]);
+
+    }*/
+    fflush(stdout);
+
     int print_step = 0;
 
     while(average<1){ 
@@ -442,49 +463,60 @@ main (int argc, char * argv[])
        /*loop over different runs*/
       for(j=0;j<Options.runs;j++){              
 
-       /* sust_type indicates type of sustitution as follow:
-          0 = no mutation 
-          N = not accepted  mutation 
-          A = accepted mutation
+			/* sust_type indicates type of sustitution as follow:
+			0 = no mutation
+			N = not accepted  mutation
+			A = accepted mutation
+			*/
 
-       */
+			sust_type= run((A+(j*protsize)),(T+(j*protsize)),&mut);
 
-    sust_type= run((A+(j*protsize)),(T+(j*protsize)),&mut);
+			//Has to print sequences
 
-    //Has to print sequences
-    if(Options.print_sequences==1 && print_step==Options.print_sequences_screening && sust_type=='A'){
-    		memcpy(seq_num_print,(A+(j*protsize)),protsize*(sizeof(int))); 
-    	    Number_to_seq(seq_num_print,seq_aa_print);
-    	    id_seq++;
-    	    iden=0; 
-    	    for(m=0;m<protsize;m++) if(numprot[m]==seq_num_print[m]) iden++;
-    	    if((iden/protsize)*100 > Options.print_sequences_identity && (iden/protsize)*100 < 62){
-    		   /*imprimo secuencias*/
-    		   if(file_flush_flag==0){
-    			   if((seqprint=fopen(mutated_secuence_file_name,"a+"))==NULL) {
-    				   fprintf(stderr,"Can not write to log file\n");
-    				   exit(1);
-    		       	}
-    		    }
-    		    fprintf(seqprint,">SEQUENCE_run%d_%f_%d\n%s\n",j,(iden/protsize)*100,id_seq,seq_aa_print);
-    		    file_flush_flag++;
-    		    if(file_flush_flag==10){
-    		    	fflush(seqprint);
-    		       	fclose(seqprint);
-    		       	file_flush_flag=0; 
-    		    }
-    	   }
+			if(sust_type=='A'){
+				print_run_screen[j]++;
+				//if(Options.print_sequences==1 && print_step==Options.print_sequences_screening && sust_type=='A'){
+				if(Options.print_sequences==1 && print_run_screen[j]==Options.print_sequences_screening){
+						memcpy(seq_num_print,(A+(j*protsize)),protsize*(sizeof(int)));
+						Number_to_seq(seq_num_print,seq_aa_print);
+						id_seq++;
+						iden=0;
+						for(m=0;m<protsize;m++) if(numprot[m]==seq_num_print[m]) iden++;
+						if((iden/protsize)*100 > Options.print_sequences_identity && (iden/protsize)*100 < 62){
+						   /*imprimo secuencias*/
+						   if(file_flush_flag==0){
+							   if((seqprint=fopen(mutated_secuence_file_name,"a+"))==NULL) {
+								   fprintf(stderr,"Can not write to log file\n");
+								   exit(1);
+								}
+							}
+							fprintf(seqprint,">SEQUENCE_run%d_c%d_%f_%d\n%s\n",j,print_run_screen[j],(iden/protsize)*100,id_seq,seq_aa_print);
+							printf(" run=%d print_screen=%d \n",j,print_run_screen[j]);
+							print_run_screen[j]++;
+							printf("desp run=%d print_screen=%d \n",j,print_run_screen[j]);
+							file_flush_flag++;
+							if(file_flush_flag==10){
+								fflush(seqprint);
+								fclose(seqprint);
+								file_flush_flag=0;
+								//TODO SACAR
+								fflush(stdout);
+							}
+					   }
+						printf(" run=%d print_screen=%d seteo en 0 \n",j,print_run_screen[j]);
+					   print_run_screen[j]=0;
+				}
+			}
 
-    }
 
-    #if defined(DEBUG)
-             printf(" run=%d %c \n",j,sust_type);
-        #endif
- 
-	Count(sust_type,&nonaccepted,&accepted,&nothing,&mut,&nsyn,&N_nsyn,&N_syn);
-	mutrecord=accepted+nonaccepted;
+			#if defined(DEBUG)
+					 printf(" run=%d %c \n",j,sust_type);
+				#endif
 
-        if(average ==1.) break;
+			Count(sust_type,&nonaccepted,&accepted,&nothing,&mut,&nsyn,&N_nsyn,&N_syn);
+			mutrecord=accepted+nonaccepted;
+
+				if(average ==1.) break;
       }
 
    if(print_step==Options.print_sequences_screening){

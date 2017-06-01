@@ -90,7 +90,7 @@ pattern=["sequences"]
 '''
 Iterates over the structures, pdbs and execute the scpe and the clusterization 
 '''        
-input_families_folder="../FAMILIES_TO_EVOL/"
+input_families_folder="../FAMILIES_3/"
 def run_families_evol():
     logging.info('Begin of the execution process')
     start_time = time.time()
@@ -384,7 +384,7 @@ def run_methaherustic_for_optimization_parameters(pdb_name,optimization_folder,p
     nsus = ["1.0","2.0","3.0","4.0","5.0"]
     '''
     beta = ["0.5","1.00","1.5","2.00","2.5","3.00"]
-    runs = ["1000"]
+    runs = ["100"]
     #runs = ["1000","20000","30000"]
     nsus = ["1.0","2.0","3.0","4.0","5.0"]
     
