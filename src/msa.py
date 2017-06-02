@@ -22,6 +22,25 @@ exten=".fasta"
 letters = {'A':0,'R':0,'N':0,'D':0,'B':0,'C':0,'E':0,'Q':0,'Z':0,'G':0,'H':0,'I':0,'L':0,'K':0,'M':0,'F':0,'P':0,'S':0,'T':0,'W':0,'Y':0,'V':0}
 
 
+def count_sequences(msa_path):
+    count = 0
+    with open(msa_path,'r') as msa:
+        for line in msa:
+            if('>' in line):
+                count=count+1
+    msa.close()
+    return count
+def count_aminoacids(msa_path):
+    count = 0
+    with open(msa_path,'r') as msa:
+        for line in msa:
+            if('>' not in line):
+                for aminoacid in line:
+                    count=count+1
+                break    
+    msa.close()
+    return count
+    
 '''
 Set the protein as reference in the msa.
 This process called MIToS script to acomplish this function 

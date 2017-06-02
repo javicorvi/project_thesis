@@ -387,6 +387,10 @@ main (int argc, char * argv[])
 	printf("Print Sequences Screening %d\n ",Options.print_sequences_screening);
 	printf("Print Sequences Contact Map Output File %s\n ",Options.print_sequences_contact_map_outputfile);
 	printf("Chain  %c\n ",Options.chain); 
+	if(Options.print_sequences_screening==0){
+		Options.print_sequences_screening = (protsize*0.40)/3;
+		printf("Screening parameter is 0 so (protsize*0.40)/4 %d\n ", Options.print_sequences_screening);
+	}
 	fflush(stdout);
 	
 	if(Options.print_sequences==1){
@@ -427,12 +431,12 @@ main (int argc, char * argv[])
     Init_vector(Nsus_pos,(protsize*AA*AA)); /*Nsus is accumulative for N indep. runs for a given beta*/
 
 	//inicializo vector de runs
-    printf("Inicializacion de Vector con  %i posiciones \n ",Options.runs-1);
-    fflush(stdout);
+    //printf("Inicializacion de Vector con  %i posiciones \n ",Options.runs-1);
+    //fflush(stdout);
     print_run_screen=(int*)malloc(Options.runs*sizeof(int));
     Init_vector(print_run_screen,Options.runs);
-    printf("Inicializacion de Vector con  %i posiciones \n ",Options.runs-1);
-    fflush(stdout);
+    //printf("Inicializacion de Vector con  %i posiciones \n ",Options.runs-1);
+    //fflush(stdout);
     /*for(int i=0;i<Options.runs;i++){
         	//printf(" run=%d %i \n",i,*(print_run_screen+i));
         	print_run_screen[i]=i;
@@ -442,7 +446,7 @@ main (int argc, char * argv[])
     	printf(" run=%d print_screen=%d \n",i,print_run_screen[i]);
 
     }*/
-    fflush(stdout);
+    //fflush(stdout);
 
     int print_step = 0;
 
@@ -471,42 +475,43 @@ main (int argc, char * argv[])
 
 			sust_type= run((A+(j*protsize)),(T+(j*protsize)),&mut);
 
-			//Has to print sequences
+			//Si hubo mutacion
 
-			if(sust_type=='A'){
-				print_run_screen[j]++;
-				//if(Options.print_sequences==1 && print_step==Options.print_sequences_screening && sust_type=='A'){
-				if(Options.print_sequences==1 && print_run_screen[j]==Options.print_sequences_screening){
-						memcpy(seq_num_print,(A+(j*protsize)),protsize*(sizeof(int)));
-						Number_to_seq(seq_num_print,seq_aa_print);
-						id_seq++;
-						iden=0;
-						for(m=0;m<protsize;m++) if(numprot[m]==seq_num_print[m]) iden++;
-						if((iden/protsize)*100 > Options.print_sequences_identity && (iden/protsize)*100 < 62){
-						   /*imprimo secuencias*/
-						   if(file_flush_flag==0){
-							   if((seqprint=fopen(mutated_secuence_file_name,"a+"))==NULL) {
-								   fprintf(stderr,"Can not write to log file\n");
-								   exit(1);
-								}
-							}
-							fprintf(seqprint,">SEQUENCE_run%d_c%d_%f_%d\n%s\n",j,print_run_screen[j],(iden/protsize)*100,id_seq,seq_aa_print);
-							printf(" run=%d print_screen=%d \n",j,print_run_screen[j]);
+						if(sust_type=='A' && Options.print_sequences==1){
 							print_run_screen[j]++;
-							printf("desp run=%d print_screen=%d \n",j,print_run_screen[j]);
-							file_flush_flag++;
-							if(file_flush_flag==10){
-								fflush(seqprint);
-								fclose(seqprint);
-								file_flush_flag=0;
-								//TODO SACAR
-								fflush(stdout);
-							}
-					   }
-						printf(" run=%d print_screen=%d seteo en 0 \n",j,print_run_screen[j]);
-					   print_run_screen[j]=0;
-				}
-			}
+							//Si hay que imprimir secuencias y el run actual debe imprimirse:
+							//el print_run_screen es 0 significa la primera vez y en ese caso el contro lo haria la identidad,
+							//si el print_run_screen !=0 debe ser igual al screenin
+							if(print_run_screen[j]>=Options.print_sequences_screening){
+									memcpy(seq_num_print,(A+(j*protsize)),protsize*(sizeof(int)));
+									Number_to_seq(seq_num_print,seq_aa_print);
+									id_seq++;
+									iden=0;
+									for(m=0;m<protsize;m++) if(numprot[m]==seq_num_print[m]) iden++;
+									//Si la identidad es mayor a 25% segun parametro print_sequences_identity y la identidad es menor al 62
+									//imprimo la secuencia
+									if((iden/protsize)*100 > Options.print_sequences_identity && (iden/protsize)*100 < 62){
+										/*imprimo secuencias*/
+										if(file_flush_flag==0){
+										   if((seqprint=fopen(mutated_secuence_file_name,"a+"))==NULL) {
+											   fprintf(stderr,"Can not write to log file\n");
+											   exit(1);
+										   }
+									   }
+									   fprintf(seqprint,">SEQUENCE_run%d_c%d_%f_%d\n%s\n",j,print_run_screen[j],(iden/protsize)*100,id_seq,seq_aa_print);
+									   print_run_screen[j]=0;
+										file_flush_flag++;
+										if(file_flush_flag==10){
+											fflush(seqprint);
+											fclose(seqprint);
+											file_flush_flag=0;
+										}
+									}
+
+								}//fin printrun >= que print
+
+							}//fin resutl A
+
 
 
 			#if defined(DEBUG)
