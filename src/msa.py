@@ -36,8 +36,7 @@ def count_aminoacids(msa_path):
     with open(msa_path,'r') as msa:
         for line in msa:
             if('>' not in line):
-                for aminoacid in line:
-                    count=count+1
+                count = len(line.strip())
                 break    
     msa.close()
     return count
