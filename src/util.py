@@ -141,6 +141,12 @@ def synchronize_evol_with_cutted_pdb(pdb_complete_path, pdb_cutted_path, cluster
     print "sincronize_natural_evol_alignments"
     print("--- %s seconds ---" % (time.time() - start_time))
 
+def find_first_residue(pdb_complete_path):
+    with open(pdb_complete_path,'r') as pdb:
+        first_line = pdb.readline()
+        return int(first_line[23:26])
+    
+
 '''
 Sincroniza y corta los msa evolucionados teniendo en cuenta solo la escructura en comun que existe entre los pdb de la familia
 Recibe el pdf recortado con las posiciones que deben mantenerse luego elimina las posiciones del msa evolucionado.
@@ -148,12 +154,7 @@ Recibe el pdf recortado con las posiciones que deben mantenerse luego elimina la
 def synchronize_evol_with_cutted_pdb_singular(pdb_complete_path, pdb_cutted_path, clustered_sequences_path, sincronized_evol_path, contact_map_path, sincronized_contact_map):
     start_time = time.time()
     print "sincronize_natural_evol_alignments"  
-    df = pandas.read_csv(pdb_complete_path, delim_whitespace=True,header=None,usecols=[5])
-    df=df.dropna()
-    df[5] = df[5].astype('int32')
-    df=df.groupby(5).first().reset_index()
-    start = df[5].min()
-    end = df[5].max()
+    start = find_first_residue(pdb_complete_path)
     df_columnas = pandas.read_csv(pdb_cutted_path, delim_whitespace=True,header=None,usecols=[5])
     df_columnas=df_columnas.dropna()
     df_columnas[5] = df_columnas[5].astype('int32')
@@ -189,7 +190,7 @@ def random_char(y):
 
 def load_contact_map(contact_map_path, dtype='i4'):
     cmap = np.loadtxt(contact_map_path, dtype=dtype)
-    #np.set_printoptions(threshold='nan')
+    np.set_printoptions(threshold='nan')
     return cmap
 def load_contact_map_deprecated(contact_map_path):
     with open(contact_map_path) as file:

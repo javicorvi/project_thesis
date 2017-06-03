@@ -31,6 +31,7 @@ def count_sequences(msa_path):
     msa.close()
     return count
 def count_aminoacids(msa_path):
+    #TO OJO COUNT 
     count = 0
     with open(msa_path,'r') as msa:
         for line in msa:
