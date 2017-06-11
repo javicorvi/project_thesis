@@ -82,7 +82,7 @@ execute_dataanalisys = False
 '''
 Execute the analisys of the information between all the PDBS and MSA generated. All together
 '''
-execute_joined_pdb_analisys = False
+execute_joined_pdb_analisys = True
 
 '''
 Pattern to execute process
@@ -218,7 +218,7 @@ def family_evol(input_families_folder, family_folder, pdb_to_evol_df, family_pdb
         #optimizacion
         optimized_family = False
         optimization_folder=input_families_folder +  family_folder + "/optimization_folder/"
-        optimization_file_path = optimization_folder+"optimization.csv"
+        optimization_file_path = optimization_folder+"optimization_10000.csv"
         #si existe el arhivo de optimizacion entonces no hay que optimizar
         if(os.path.isfile(optimization_file_path)):
             optimized_family = True
@@ -322,6 +322,30 @@ def family_evol(input_families_folder, family_folder, pdb_to_evol_df, family_pdb
     logging.info('End family Evol  ' + family_folder)
     logging.info('--- %s seconds ---' % (time.time() - start_time))   
 
+
+def evol_2trx():
+    chain_name = "A"
+    #the contact map will be created by scpe 
+    pdb_folder = "../THIO_ECOLI_4_107_2TRX_A"
+    
+    pdb_file_complete = pdb_folder + "/THIO_ECOLI_4_107_2TRX_A_complete.pdb"
+    pdb_file_complete_filename_to_evolve = pdb_folder + "/THIO_ECOLI_4_107_2TRX_A_clean.pdb" 
+    optimization_folder= pdb_folder + "/optimization_folder/"
+    optimization_file_path = optimization_folder+"optimization.csv"
+    
+    zmip_natural_result_path = pdb_folder+"/natural/"
+    if not os.path.exists(zmip_natural_result_path):
+        os.makedirs(zmip_natural_result_path)
+    
+    cutted_pdb_path = "/cutted_pdb_path/"
+    zmip_natural_result_file = zmip_natural_result_path + "zmip_PF00085_THIO_ECOLI_reference.csv"
+    msa_file_name_fasta = pdb_folder +  "/PF00085_THIO_ECOLI_reference.fasta"
+    #setea como referencia la 2trx a la familia
+    #dataanalisys.buslje09(msa_file_name_fasta, zmip_natural_result_file)
+    #msa.msa_information(msa_file_name_fasta, msa_file_name_fasta, "PF00085")
+    util.clean_pdb(pdb_file_complete,pdb_file_complete_filename_to_evolve, chain_name)   
+    run_methaherustic_for_optimization_parameters("2TRX",optimization_folder,optimization_file_path, pdb_file_complete_filename_to_evolve, cutted_pdb_path, chain_name)
+
 def run_methaherustic_for_optimization_parameters(pdb_name,optimization_folder, optimization_file_path,pdb_file_complete_filename_to_evolve, cutted_pdb_path, chain_name):
     logging.info('Run Optimization For ' + pdb_name)
     start_time_total = time.time()
@@ -346,13 +370,9 @@ def run_methaherustic_for_optimization_parameters(pdb_name,optimization_folder, 
     runs = ["1000","20000","30000"]
     nsus = ["1.0","2.0","3.0","4.0","5.0"]
     '''
-    beta = ["0.5","1.00","1.5","2.00","2.5","3.00"]
-    runs = ["100"]
-    #runs = ["1000","20000","30000"]
-    nsus = ["1.0","2.0","3.0","4.0","5.0"]
-    
-    nsus = ["3.0"]
-    beta = ["0.6"]
+    beta = ["0.5","1.00","2.0","3.0","5.0", "7.0", "10.0","15.0","20.0"]
+    runs = ["1000","5000","10000","20000"]
+    nsus = ["1.0","2.0","3.0","5.0","7.0","10.0","15.0"]
     
     auc_max = 0
     index=1
@@ -414,7 +434,7 @@ def evol_protein(data_frame_evol, index,pdb_file_complete_filename_to_evolve,cut
     util.synchronize_evol_with_cutted_pdb_singular(pdb_file_complete_filename_to_evolve, cutted_pdb_path, clustered_sequences_path, sincronized_evol_file_path, contact_map_path, contact_map_sync)
     seq_cutted_lenght = msa.count_aminoacids(sincronized_evol_file_path)
     data_frame_evol.set_value(index, 'seq_cutted_lenght', seq_cutted_lenght)
-    util.delete_files(clustered_sequences_path)
+    #util.delete_files(clustered_sequences_path)
     dataanalisys.evol_analisys(sincronized_evol_file_path, mi_data_path, msa_conservation_path + sufix, file_name)
     dataanalisys.run_analisys_singular(data_frame_evol, index, zmip_natural_result_path, mi_data_path, contact_map_sync, mi_data_analisys, window)
     data_frame_evol.set_value(index, 'execution_time', time.time() - start_time)
@@ -432,7 +452,7 @@ def evol_optimization(pdb_file_complete_filename_to_evolve,cutted_pdb_path, beta
     msa.clustering_singular("0.62",output_msa_path, clustered_sequences_path)
     count_seq_cluster = msa.count_sequences(clustered_sequences_path)
     seq_lenght = msa.count_aminoacids(clustered_sequences_path)
-    #util.delete_files(output_msa_path)
+    util.delete_files(output_msa_path)
     util.delete_files(clustered_tmp_sequences_path)
     #se realiza la optimizacion sobre el msa ya recortado
     #util.synchronize_evol_with_cutted_pdb_singular(pdb_file_complete_filename_to_evolve, cutted_pdb_path, clustered_sequences_path, sincronized_evol_path, contact_map_path, contact_map_sync)
@@ -498,4 +518,4 @@ def download_pdbs(input_families_folder, family_folder, pdb_to_evol_df):
 '''      
 
 
-run_families_evol()                                   
+evol_2trx()                                   
