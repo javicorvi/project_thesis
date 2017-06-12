@@ -341,10 +341,37 @@ def evol_2trx():
     zmip_natural_result_file = zmip_natural_result_path + "zmip_PF00085_THIO_ECOLI_reference.csv"
     msa_file_name_fasta = pdb_folder +  "/PF00085_THIO_ECOLI_reference.fasta"
     #setea como referencia la 2trx a la familia
-    #dataanalisys.buslje09(msa_file_name_fasta, zmip_natural_result_file)
-    #msa.msa_information(msa_file_name_fasta, msa_file_name_fasta, "PF00085")
+    dataanalisys.buslje09(msa_file_name_fasta, zmip_natural_result_file)
+    msa.msa_information(msa_file_name_fasta, msa_file_name_fasta, "PF00085")
     util.clean_pdb(pdb_file_complete,pdb_file_complete_filename_to_evolve, chain_name)   
-    run_methaherustic_for_optimization_parameters("2TRX",optimization_folder,optimization_file_path, pdb_file_complete_filename_to_evolve, cutted_pdb_path, chain_name)
+    #run_methaherustic_for_optimization_parameters("2TRX",optimization_folder,optimization_file_path, pdb_file_complete_filename_to_evolve, cutted_pdb_path, chain_name)
+
+def analisys_2trx_evol():
+    chain_name = "A"
+    #the contact map will be created by scpe 
+    pdb_folder = "../THIO_ECOLI_4_107_2TRX_A"
+    pdb_file_complete = pdb_folder + "/THIO_ECOLI_4_107_2TRX_A_complete.pdb"
+    pdb_file_complete_filename_to_evolve = pdb_folder + "/THIO_ECOLI_4_107_2TRX_A_clean.pdb" 
+    optimization_folder= pdb_folder + "/optimization_folder/"
+    optimization_file_path = optimization_folder+"optimization.csv"
+    
+    zmip_natural_result_path = pdb_folder+"/natural/"
+    if not os.path.exists(zmip_natural_result_path):
+        os.makedirs(zmip_natural_result_path)
+    
+    cutted_pdb_path = "/cutted_pdb_path/"
+    zmip_natural_result_file = zmip_natural_result_path + "zmip_PF00085_THIO_ECOLI_reference.csv"
+    msa_file_name_fasta = pdb_folder +  "/PF00085_THIO_ECOLI_reference.fasta"
+    #setea como referencia la 2trx a la familia
+    dataanalisys.buslje09(msa_file_name_fasta, zmip_natural_result_file)
+    clustered_sequences_path = optimization_folder + "clustered_sequences_path/"
+    curated_sequences_path = optimization_folder + "curated_sequences_path/"
+    if not os.path.exists(curated_sequences_path):
+        os.makedirs(curated_sequences_path) 
+    util.sincronize_natural_evol_msas(clustered_sequences_path, curated_sequences_path,pattern,2,-3)
+    
+    #msa.msa_information(msa_file, msa_conservation_path,msa_name)
+    #dataanalisys.run_analisys_singular(data_frame_evol, index, zmip_natural_result_path, mi_data_path, contact_map_sync, mi_data_analisys, window)
 
 def run_methaherustic_for_optimization_parameters(pdb_name,optimization_folder, optimization_file_path,pdb_file_complete_filename_to_evolve, cutted_pdb_path, chain_name):
     logging.info('Run Optimization For ' + pdb_name)
@@ -518,4 +545,4 @@ def download_pdbs(input_families_folder, family_folder, pdb_to_evol_df):
 '''      
 
 
-evol_2trx()                                   
+analisys_2trx_evol()                                   

@@ -143,7 +143,7 @@ main (int argc, char * argv[])
    Options.step=10.0;
    Options.mut=100000.0;
    Options.runs=14000;
-   Options.maxbeta=10.0;
+   Options.maxbeta=40.0;
    Options.accept=20.0;
    Options.maxaccept=21.0;
    Options.stepaccept=5.0;
@@ -389,7 +389,7 @@ main (int argc, char * argv[])
 	printf("Chain  %c\n ",Options.chain); 
 	if(Options.print_sequences_screening==0){
 		Options.print_sequences_screening = (protsize*0.40)/3;
-		printf("Screening parameter is 0 so (protsize*0.40)/4 %d\n ", Options.print_sequences_screening);
+		printf("Screening parameter is 0 so (protsize*0.40)/3 %d\n ", Options.print_sequences_screening);
 	}
 	fflush(stdout);
 	
