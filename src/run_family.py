@@ -114,6 +114,8 @@ def run_families_evol():
         family_pdb_evol_info_path = aux_path[0]+"/"+aux_path[1]+"/"+aux_path[2] +"/"+aux_path[2]+"_evol_info.csv"
         
         
+        
+        
         if(not os.path.isfile(family_pdb_evol_info_path)):
             pdb_to_evol_df = util.find_pdb_to_evolve(family_pdb_information)
             pdb_to_evol_df.to_csv(family_pdb_evol_info_path)
@@ -194,6 +196,8 @@ def family_evol(input_families_folder, family_folder, pdb_to_evol_df, family_pdb
             logging.error('Existe mas de un alineamiento de la familia ' + family_folder)
             return
         
+        
+        
         msa_gz_path=msa_gz_path[0]
         aux_path=msa_gz_path.split('/')
         msa_file_name_fasta = aux_path[0]+"/"+aux_path[1]+"/"+aux_path[2] +"/"+aux_path[2]+".fasta"    
@@ -201,12 +205,33 @@ def family_evol(input_families_folder, family_folder, pdb_to_evol_df, family_pdb
         
         family_pdb_information = aux_path[0]+"/"+aux_path[1]+"/"+aux_path[2] +"/"+aux_path[2]+"_pdb_level.csv"    
         
-        if(execute_natural_mi_msa):
-            msa.natural_msa_mi(msa_gz_path, msa_file_name_fasta, zmip_natural_path)
         
+        
+        with gzip.open(msa_gz_path, 'rb') as f:
+            aux_path=f.filename.split('/')
+            msa_filename=os.path.basename(f.filename)
+            msa_complete_filename_stock=aux_path[0]+"/"+aux_path[1]+"/"+aux_path[2]+"/"+msa_filename[:-3]
+            msa_file = open(msa_file_name_fasta ,"w")
+            file_content = f.read()
+            msa_file.write(file_content)
+            msa_file.flush()
+            msa_file.close()
+        
+        start, end = util.find_pdb_start_end_for_protein(msa_complete_filename_stock)
+        
+        msa.convertMSAToFasta(msa_complete_filename_stock, msa_file_name_fasta)
+        
+        
+        
+        
+        if(execute_natural_mi_msa):
+            msa.natural_msa_mi(msa_complete_filename, msa_file_name_fasta, zmip_natural_path)
         #Natural Conservation Information
         if(execute_msa_natural_information):
             msa.msa_information(msa_file_name_fasta, msa_file_name_fasta, aux_path[2])
+            
+        
+        
         
         #web_logo.create_web_logo(msa_file_name_fasta, msa_file_name_fasta + "_logo_sh.png",msa_file_name_fasta + "_data_sh.csv", 'png', aux_path[2], logo_type='SHANNON')
         #web_logo.create_web_logo(msa_file_name_fasta, msa_file_name_fasta + "_logo_kl.png",msa_file_name_fasta + "_data_kl.csv", 'png', aux_path[2], logo_type='KL')
@@ -218,7 +243,7 @@ def family_evol(input_families_folder, family_folder, pdb_to_evol_df, family_pdb
         #optimizacion
         optimized_family = False
         optimization_folder=input_families_folder +  family_folder + "/optimization_folder/"
-        optimization_file_path = optimization_folder+"optimization_10000.csv"
+        optimization_file_path = optimization_folder+"optimization_test.csv"
         #si existe el arhivo de optimizacion entonces no hay que optimizar
         if(os.path.isfile(optimization_file_path)):
             optimized_family = True
@@ -237,6 +262,8 @@ def family_evol(input_families_folder, family_folder, pdb_to_evol_df, family_pdb
             pdb_file_complete =  pdb_paths_files + pdb_protein_to_evolve['pdb_folder_name'] + "/"+pdb_protein_to_evolve['pdb_folder_name']+"_complete.pdb"
             pdb_file_complete_filename_to_evolve = pdb_paths_files + pdb_protein_to_evolve['pdb_folder_name'] + "/"+pdb_protein_to_evolve['pdb_folder_name']+"_clean.pdb"
             #util.remove_header(pdb_file_complete_filename_to_evolve)
+            
+
             
             #for pdb_gz in glob.glob(pdb_paths_files):
             #aca arrancar otro try
@@ -284,8 +311,15 @@ def family_evol(input_families_folder, family_folder, pdb_to_evol_df, family_pdb
                     os.makedirs(mi_data_analisys)
                 if not os.path.exists(optimization_folder):
                     os.makedirs(optimization_folder)
+                
+                
+                #start_residue = int(pdb_protein_to_evolve['seq'][pdb_protein_to_evolve['seq'].index("/")+1:pdb_protein_to_evolve['seq'].index("-")]) 
+                #end_residue = int(pdb_protein_to_evolve['seq'][pdb_protein_to_evolve['seq'].index("-")+1:]) 
+                find_pdb_data()
+                #pdb_to_evol_df.set_value(index,"start_residue",start_residue)
+                #pdb_to_evol_df.set_value(index,"end_residue",end_residue)
                     
-                util.clean_pdb(pdb_file_complete,pdb_file_complete_filename_to_evolve, chain_name)   
+                util.clean_pdb(pdb_file_complete,pdb_file_complete_filename_to_evolve, chain_name, start_residue, end_residue)   
                 
                 if(optimized_scpe_variables and not optimized_family):
                     run_methaherustic_for_optimization_parameters(pdb_name,optimization_folder,optimization_file_path, pdb_file_complete_filename_to_evolve, cutted_pdb_path, chain_name)
@@ -393,16 +427,17 @@ def analisys_2trx_evol():
         curated_seq = curated_sequences_path +sufix+".fasta.cluster"
         conservation_file = conservation_path +sufix+".fasta.cluster" 
         mi_data_file = mi_data_path_curated + "zmip_"+sufix+".csv" 
-        if(row_optimization['analysis']!='okey'):
+        #if(row_optimization['analysis']!='okey' and row_optimization['auc_']>=0.80):
+        if(row_optimization['auc_']>=0.80):
             try: 
                 dataanalisys.evol_analisys(curated_seq, mi_data_file, conservation_file, sufix)
                 dataanalisys.run_analisys_singular(optimization_df, index, zmip_natural_result_file, mi_data_file, contact_map_sync, mi_data_path_curated, window)
+                optimization_df.set_value(index, 'analysis', 'okey')
             except Exception as inst:
                 print inst
                 x = inst.args
                 print x
                 optimization_df.set_value(index, 'analysis', 'error')
-        optimization_df.set_value(index, 'analysis', 'okey')    
         optimization_df.to_csv(optimization_file_path)    
 def run_methaherustic_for_optimization_parameters(pdb_name,optimization_folder, optimization_file_path,pdb_file_complete_filename_to_evolve, cutted_pdb_path, chain_name):
     logging.info('Run Optimization For ' + pdb_name)
@@ -431,6 +466,11 @@ def run_methaherustic_for_optimization_parameters(pdb_name,optimization_folder, 
     beta = ["0.5","1.0","2.0","3.0","5.0", "7.0", "10.0","15.0","20.0"]
     runs = ["1000","5000","10000","20000"]
     nsus = ["1.0","2.0","3.0","5.0","7.0","10.0","15.0"]
+    
+    beta = ["0.5"]
+    runs = ["1000"]
+    nsus = ["1.0"]
+    
     
     auc_max = 0
     index=1
@@ -576,4 +616,4 @@ def download_pdbs(input_families_folder, family_folder, pdb_to_evol_df):
 '''      
 
 
-analisys_2trx_evol()                                   
+run_families_evol()                                   
