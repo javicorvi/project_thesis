@@ -198,20 +198,10 @@ def convertMSAToFasta(msa_, new_msa):
     new_file.close()
 
 # Unzip file and the convert file to fasta format and save it.  Return the path of de msa fasta format 
-def natural_msa_mi(msa_gz, msa_file_name_fasta, result_zmip_path):
+def natural_msa_mi(msa_file_name_fasta, result_zmip_path):
     try:
-        with gzip.open(msa_gz, 'rb') as f:
-            aux_path=f.filename.split('/')
-            msa_filename=os.path.basename(f.filename)
-            msa_complete_filename=aux_path[0]+"/"+aux_path[1]+"/"+aux_path[2]+"/"+msa_filename[:-3]
-            msa_file = open(msa_complete_filename ,"w")
-            file_content = f.read()
-            msa_file.write(file_content)
-            msa_file.flush()
-            msa_file.close()
-        #convierto el msa a formato fasta
-        convertMSAToFasta(msa_complete_filename, msa_file_name_fasta)
         dataanalisys.buslje09(msa_file_name_fasta, result_zmip_path)
+        return msa_complete_filename
     except BaseException as inst:
         logging.error('Error execution MI form the natural MSA ' )
         raise Exception('Error execution MI form the natural MSA')

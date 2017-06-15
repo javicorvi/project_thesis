@@ -354,6 +354,7 @@ def analisys_2trx_evol():
     pdb_file_complete_filename_to_evolve = pdb_folder + "/THIO_ECOLI_4_107_2TRX_A_clean.pdb" 
     optimization_folder= pdb_folder + "/optimization_folder/"
     optimization_file_path = optimization_folder+"optimization.csv"
+   
     
     zmip_natural_result_path = pdb_folder+"/natural/"
     if not os.path.exists(zmip_natural_result_path):
@@ -363,16 +364,46 @@ def analisys_2trx_evol():
     zmip_natural_result_file = zmip_natural_result_path + "zmip_PF00085_THIO_ECOLI_reference.csv"
     msa_file_name_fasta = pdb_folder +  "/PF00085_THIO_ECOLI_reference.fasta"
     #setea como referencia la 2trx a la familia
-    dataanalisys.buslje09(msa_file_name_fasta, zmip_natural_result_file)
+    
+    #dataanalisys.buslje09(msa_file_name_fasta, zmip_natural_result_file)
     clustered_sequences_path = optimization_folder + "clustered_sequences_path/"
     curated_sequences_path = optimization_folder + "curated_sequences_path/"
+    contact_map = optimization_folder + "contact_map.dat"
+    contact_map_sync = optimization_folder + "contact_map_sync.dat" 
+    mi_data_path_curated = curated_sequences_path + "mi_data_path/"
     if not os.path.exists(curated_sequences_path):
         os.makedirs(curated_sequences_path) 
-    util.sincronize_natural_evol_msas(clustered_sequences_path, curated_sequences_path,pattern,2,-3)
+    conservation_path = curated_sequences_path + "conservation/"
+    if not os.path.exists(conservation_path):
+        os.makedirs(conservation_path) 
+    if not os.path.exists(conservation_path):
+        os.makedirs(conservation_path)  
+    if not os.path.exists(mi_data_path_curated):
+        os.makedirs(mi_data_path_curated)  
     
-    #msa.msa_information(msa_file, msa_conservation_path,msa_name)
-    #dataanalisys.run_analisys_singular(data_frame_evol, index, zmip_natural_result_path, mi_data_path, contact_map_sync, mi_data_analisys, window)
-
+    util.sincronize_natural_evol_msas(clustered_sequences_path, curated_sequences_path,pattern,2,-3)
+    util.sincronize_contact_map(contact_map,contact_map_sync,2,106)    
+    optimization_df = pandas.read_csv(optimization_file_path,header=0,index_col=0 )
+    
+    for index,row_optimization in optimization_df.iterrows():
+        beta=str(row_optimization['beta'])
+        nsus=str(row_optimization['nsus'])
+        runs=str(int(row_optimization['run']))
+        sufix = "sequences-beta"+beta+"-nsus"+nsus+"-runs"+runs
+        curated_seq = curated_sequences_path +sufix+".fasta.cluster"
+        conservation_file = conservation_path +sufix+".fasta.cluster" 
+        mi_data_file = mi_data_path_curated + "zmip_"+sufix+".csv" 
+        if(row_optimization['analysis']!='okey'):
+            try: 
+                dataanalisys.evol_analisys(curated_seq, mi_data_file, conservation_file, sufix)
+                dataanalisys.run_analisys_singular(optimization_df, index, zmip_natural_result_file, mi_data_file, contact_map_sync, mi_data_path_curated, window)
+            except Exception as inst:
+                print inst
+                x = inst.args
+                print x
+                optimization_df.set_value(index, 'analysis', 'error')
+        optimization_df.set_value(index, 'analysis', 'okey')    
+        optimization_df.to_csv(optimization_file_path)    
 def run_methaherustic_for_optimization_parameters(pdb_name,optimization_folder, optimization_file_path,pdb_file_complete_filename_to_evolve, cutted_pdb_path, chain_name):
     logging.info('Run Optimization For ' + pdb_name)
     start_time_total = time.time()
@@ -397,7 +428,7 @@ def run_methaherustic_for_optimization_parameters(pdb_name,optimization_folder, 
     runs = ["1000","20000","30000"]
     nsus = ["1.0","2.0","3.0","4.0","5.0"]
     '''
-    beta = ["0.5","1.00","2.0","3.0","5.0", "7.0", "10.0","15.0","20.0"]
+    beta = ["0.5","1.0","2.0","3.0","5.0", "7.0", "10.0","15.0","20.0"]
     runs = ["1000","5000","10000","20000"]
     nsus = ["1.0","2.0","3.0","5.0","7.0","10.0","15.0"]
     

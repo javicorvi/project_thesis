@@ -307,16 +307,23 @@ def find_pdb_to_evolve(family_pdb_information):
 '''
 Elimina informacion innecesaria
 '''    
-def clean_pdb(pdb_path, new_pdb , chain):    
+def clean_pdb(pdb_path, new_pdb , chain,start_residue, end_residue):    
     with open(new_pdb,'w') as new_file:
         with open(pdb_path) as old_file:
             for line in old_file:
-                if(line.startswith("ATOM") and line[21]==chain):  
+                if(line.startswith("ATOM") and line[21]==chain and int(line[23:26])>=start_residue and int(line[23:26])<=end_residue):  
                     new_file.write(line)  
     old_file.close()
     new_file.close()
     #os.remove(pdb_path)
     #os.rename(pdb_temp_path, pdb_path)
+
+def find_pdb_start_end_for_protein(stockholm_msa_file):
+    with open(stockholm_msa_file,'r') as file:
+        for line in file:
+            if(line.startswith("#=GS") and  "PDIA3_HUMAN/377-483" in line and "PDB; 1SYR" in line):  
+                print line
+    file.close()
     
 '''    
 import math, string, sys, fileinput
