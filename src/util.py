@@ -318,13 +318,24 @@ def clean_pdb(pdb_path, new_pdb , chain,start_residue, end_residue):
     #os.remove(pdb_path)
     #os.rename(pdb_temp_path, pdb_path)
 
-def find_pdb_start_end_for_protein(stockholm_msa_file):
-    with open(stockholm_msa_file,'r') as file:
-        for line in file:
-            if(line.startswith("#=GS") and  "PDIA3_HUMAN/377-483" in line and "PDB; 1SYR" in line):  
-                print line
-    file.close()
-    
+def find_pdb_start_end_for_protein(stockholm_msa_file, protein, pdb_name, chain):
+    try:
+        with open(stockholm_msa_file,'r') as file:
+            for line in file:
+                if(protein in line and "PDB; "+ pdb_name + " " + chain in line):  
+                    spl = line.split(';')
+                    sub = spl[2]
+                    range=sub.split('-')
+                    start= int(range[0])
+                    end = int(range[1])
+                    file.close()
+                    return start,end
+               
+        file.close()
+        raise Exception ("Error: no existe la informacion para leer el rango de residuos de la proteina " + protein  +" pdb " + pdb_name + " cadena " + chain)    
+    except Exception as inst:
+        print inst
+        logging.error("Error no controlado intentando leer el rango de residuos de la proteina " + protein  +" pdb " + pdb_name + " cadena " + chain)
 '''    
 import math, string, sys, fileinput
 

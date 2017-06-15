@@ -217,7 +217,7 @@ def family_evol(input_families_folder, family_folder, pdb_to_evol_df, family_pdb
             msa_file.flush()
             msa_file.close()
         
-        start, end = util.find_pdb_start_end_for_protein(msa_complete_filename_stock)
+        
         
         msa.convertMSAToFasta(msa_complete_filename_stock, msa_file_name_fasta)
         
@@ -243,7 +243,7 @@ def family_evol(input_families_folder, family_folder, pdb_to_evol_df, family_pdb
         #optimizacion
         optimized_family = False
         optimization_folder=input_families_folder +  family_folder + "/optimization_folder/"
-        optimization_file_path = optimization_folder+"optimization_test.csv"
+        optimization_file_path = optimization_folder+"optimization.csv"
         #si existe el arhivo de optimizacion entonces no hay que optimizar
         if(os.path.isfile(optimization_file_path)):
             optimized_family = True
@@ -262,8 +262,8 @@ def family_evol(input_families_folder, family_folder, pdb_to_evol_df, family_pdb
             pdb_file_complete =  pdb_paths_files + pdb_protein_to_evolve['pdb_folder_name'] + "/"+pdb_protein_to_evolve['pdb_folder_name']+"_complete.pdb"
             pdb_file_complete_filename_to_evolve = pdb_paths_files + pdb_protein_to_evolve['pdb_folder_name'] + "/"+pdb_protein_to_evolve['pdb_folder_name']+"_clean.pdb"
             #util.remove_header(pdb_file_complete_filename_to_evolve)
-            
-
+            protein = pdb_protein_to_evolve['seq']
+           
             
             #for pdb_gz in glob.glob(pdb_paths_files):
             #aca arrancar otro try
@@ -315,14 +315,14 @@ def family_evol(input_families_folder, family_folder, pdb_to_evol_df, family_pdb
                 
                 #start_residue = int(pdb_protein_to_evolve['seq'][pdb_protein_to_evolve['seq'].index("/")+1:pdb_protein_to_evolve['seq'].index("-")]) 
                 #end_residue = int(pdb_protein_to_evolve['seq'][pdb_protein_to_evolve['seq'].index("-")+1:]) 
-                find_pdb_data()
+                start_residue, end_residue = util.find_pdb_start_end_for_protein(msa_complete_filename_stock, pdb_protein_to_evolve['seq'], pdb_name, chain_name)
                 #pdb_to_evol_df.set_value(index,"start_residue",start_residue)
                 #pdb_to_evol_df.set_value(index,"end_residue",end_residue)
                     
                 util.clean_pdb(pdb_file_complete,pdb_file_complete_filename_to_evolve, chain_name, start_residue, end_residue)   
                 
                 if(optimized_scpe_variables and not optimized_family):
-                    run_methaherustic_for_optimization_parameters(pdb_name,optimization_folder,optimization_file_path, pdb_file_complete_filename_to_evolve, cutted_pdb_path, chain_name)
+                    run_optimization_parameters(protein, pdb_name,optimization_folder,optimization_file_path, pdb_file_complete_filename_to_evolve, cutted_pdb_path, chain_name, start_residue, end_residue)
                     optimized_family=True
                     
                     
@@ -337,6 +337,8 @@ def family_evol(input_families_folder, family_folder, pdb_to_evol_df, family_pdb
                     pdb_to_evol_df.set_value(index,"beta",beta)
                     pdb_to_evol_df.set_value(index,"nsus",nsus)
                     pdb_to_evol_df.set_value(index,"runs",runs)
+                    pdb_to_evol_df.set_value(index,"start_pdb_residue",start_residue)
+                    pdb_to_evol_df.set_value(index,"end_pdb_residue",end_residue)
                     evol_protein(pdb_to_evol_df, index,pdb_file_complete_filename_to_evolve, cutted_pdb_path, beta, runs, nsus, chain_name, scpe_sequences, clustered_sequences_path, sincronized_evol_path, zmip_natural_path, mi_data, mi_data_analisys ,msa_information_path, contact_map, contact_map_syncronized)
                 
                 pdb_to_evol_df.set_value(index, "status","okey")
@@ -346,6 +348,7 @@ def family_evol(input_families_folder, family_folder, pdb_to_evol_df, family_pdb
                 x = inst.args
                 print x
                 logging.error('The PDB was not evolutionated ' + file_name_pdb)
+                logging.error(inst)
                 pdb_to_evol_df.set_value(index, "status","error")
             pdb_to_evol_df.to_csv(family_pdb_evol_info_path)    
     except Exception as inst:
@@ -378,7 +381,7 @@ def evol_2trx():
     dataanalisys.buslje09(msa_file_name_fasta, zmip_natural_result_file)
     msa.msa_information(msa_file_name_fasta, msa_file_name_fasta, "PF00085")
     util.clean_pdb(pdb_file_complete,pdb_file_complete_filename_to_evolve, chain_name)   
-    #run_methaherustic_for_optimization_parameters("2TRX",optimization_folder,optimization_file_path, pdb_file_complete_filename_to_evolve, cutted_pdb_path, chain_name)
+    #run_optimization_parameters("THIO_ECOLI/4-107", "2TRX",optimization_folder,optimization_file_path, pdb_file_complete_filename_to_evolve, cutted_pdb_path, chain_name)
 
 def analisys_2trx_evol():
     chain_name = "A"
@@ -438,11 +441,88 @@ def analisys_2trx_evol():
                 x = inst.args
                 print x
                 optimization_df.set_value(index, 'analysis', 'error')
-        optimization_df.to_csv(optimization_file_path)    
-def run_methaherustic_for_optimization_parameters(pdb_name,optimization_folder, optimization_file_path,pdb_file_complete_filename_to_evolve, cutted_pdb_path, chain_name):
+        optimization_df.to_csv(optimization_file_path)  
+        
+          
+def run_optimization_parameters(protein, pdb_name,optimization_folder, optimization_file_path,pdb_file_complete_filename_to_evolve, cutted_pdb_path, chain, start_residue, end_residue ):
     logging.info('Run Optimization For ' + pdb_name)
     start_time_total = time.time()
-    columns=["pdb","beta","nsus","run","auc","auc_01","execution_time"]
+    columns=["protein","pdb","chain","beta","nsus","run","auc","auc_01","execution_time", "start_residue","end_residue"]
+    df = pandas.DataFrame(columns=columns)
+    scpe_sequences = optimization_folder + "scpe_sequences/"
+    clustered_sequences_path = optimization_folder + "clustered_sequences_path/"
+    sincronized_evol_path = optimization_folder + "sincronized_evol_path/"
+    mi_data_path = optimization_folder + "mi_data_path/"
+    contact_map = optimization_folder + "contact_map.dat"
+    contact_map_sync = optimization_folder + "contact_map_sync.dat" 
+    if not os.path.exists(scpe_sequences):
+        os.makedirs(scpe_sequences)
+    if not os.path.exists(clustered_sequences_path):
+        os.makedirs(clustered_sequences_path)
+    if not os.path.exists(sincronized_evol_path):
+        os.makedirs(sincronized_evol_path)
+    if not os.path.exists(mi_data_path):
+        os.makedirs(mi_data_path)    
+    
+    
+    
+     
+    '''beta = ["0.5","1.00","1.5","2.00","2.5","3.00","3.5","4.0"]
+    runs = ["1000","20000","30000"]
+    nsus = ["1.0","2.0","3.0","4.0","5.0"]
+    '''
+    beta = ["0.5","1.0","2.0","3.0","5.0", "7.0", "10.0","15.0","20.0"]
+    runs = ["1000","5000","10000","20000"]
+    nsus = ["1.0","2.0","3.0","5.0","7.0","10.0","15.0"]
+    
+    beta = ["5.0"]
+    runs = ["20000"]
+    nsus = ["15.0"]
+    
+    
+     
+    auc_max = 0
+    index=1
+    for b in beta:
+        for sus in nsus:
+            for r in runs:
+                start_time = time.time()
+                logging.info('Calculation of beta ' + b + ' nsus ' + sus + ' run ' + r)
+                df.set_value(index, 'protein', protein)
+                df.set_value(index, 'pdb', pdb_name)
+                df.set_value(index, 'chain', chain)
+                df.set_value(index, 'start_residue', start_residue)
+                df.set_value(index, 'end_residue', end_residue)
+                df.set_value(index, 'beta', b)
+                df.set_value(index, 'nsus', sus)
+                df.set_value(index, 'run', r)
+                try: 
+                    auc,auc01,count_seq_scpe,count_seq_cluster,seq_lenght = evol_optimization(pdb_file_complete_filename_to_evolve, cutted_pdb_path, b,r,sus,chain, scpe_sequences, clustered_sequences_path,sincronized_evol_path, mi_data_path,contact_map,contact_map_sync )
+                    df.set_value(index, 'auc', auc)
+                    df.set_value(index, 'auc_01', auc01)
+                    df.set_value(index, 'count_seq_scpe', count_seq_scpe)
+                    df.set_value(index, 'count_seq_cluster', count_seq_cluster)
+                    df.set_value(index, 'seq_lenght', seq_lenght)
+                    if(auc>auc_max):
+                        parameters = (b,sus,r) 
+                except Exception as inst:
+                    print inst
+                    x = inst.args
+                    print x
+                    df.set_value(index, 'auc', 'error')
+                    df.set_value(index, 'auc_01', 'error')
+                    logging.error('Error with beta ' + b + ' nsus ' + sus + ' run ' + r)        
+                df.set_value(index, 'execution_time', time.time() - start_time)
+                index=index+1
+                df.to_csv(optimization_file_path)    
+    df['execution_time_optimization_total']=time.time() - start_time_total            
+    df.to_csv(optimization_file_path)                
+    return parameters
+
+def run_metaheuristic_optimization_parameters(protein, pdb_name,optimization_folder, optimization_file_path,pdb_file_complete_filename_to_evolve, cutted_pdb_path, chain, start_residue, end_residue ):
+    logging.info('Run Meta Heuristic Optimization For ' + pdb_name)
+    start_time_total = time.time()
+    columns=["protein","pdb","chain","beta","nsus","run","auc","auc_01","execution_time", "start_residue","end_residue"]
     df = pandas.DataFrame(columns=columns)
     scpe_sequences = optimization_folder + "scpe_sequences/"
     clustered_sequences_path = optimization_folder + "clustered_sequences_path/"
@@ -464,47 +544,58 @@ def run_methaherustic_for_optimization_parameters(pdb_name,optimization_folder, 
     nsus = ["1.0","2.0","3.0","4.0","5.0"]
     '''
     beta = ["0.5","1.0","2.0","3.0","5.0", "7.0", "10.0","15.0","20.0"]
-    runs = ["1000","5000","10000","20000"]
+    
     nsus = ["1.0","2.0","3.0","5.0","7.0","10.0","15.0"]
     
-    beta = ["0.5"]
-    runs = ["1000"]
-    nsus = ["1.0"]
+    runs = ["20000"]
     
+    max_executions = 50
     
+    initial_sol = {'beta': '5.0', 'nsus': '7.0', 'runs': '20000'}
+    auc,auc01,count_seq_scpe,count_seq_cluster,seq_lenght = evol_optimization(pdb_file_complete_filename_to_evolve, cutted_pdb_path, initial_sol.beta,initial_sol.runs,initial_sol.nsus,chain, scpe_sequences, clustered_sequences_path,sincronized_evol_path, mi_data_path,contact_map,contact_map_sync )
+    initial_sol_value=auc01
+     
     auc_max = 0
     index=1
-    for b in beta:
-        for sus in nsus:
-            for r in runs:
-                start_time = time.time()
-                logging.info('Calculation of beta ' + b + ' nsus ' + sus + ' run ' + r)
-                df.set_value(index, 'pdb', pdb_name)
-                df.set_value(index, 'beta', b)
-                df.set_value(index, 'nsus', sus)
-                df.set_value(index, 'run', r)
-                try: 
-                    auc,auc01,count_seq_scpe,count_seq_cluster,seq_lenght = evol_optimization(pdb_file_complete_filename_to_evolve, cutted_pdb_path, b,r,sus,chain_name, scpe_sequences, clustered_sequences_path,sincronized_evol_path, mi_data_path,contact_map,contact_map_sync )
-                    df.set_value(index, 'auc', auc)
-                    df.set_value(index, 'auc_01', auc01)
-                    df.set_value(index, 'count_seq_scpe', count_seq_scpe)
-                    df.set_value(index, 'count_seq_cluster', count_seq_cluster)
-                    df.set_value(index, 'seq_lenght', seq_lenght)
-                    if(auc>auc_max):
-                        parameters = (b,sus,r) 
-                except Exception as inst:
-                    print inst
-                    x = inst.args
-                    print x
-                    df.set_value(index, 'auc', 'error')
-                    df.set_value(index, 'auc_01', 'error')
-                    logging.error('Error with beta ' + b + ' nsus ' + sus + ' run ' + r)        
-                df.set_value(index, 'execution_time', time.time() - start_time)
-                index=index+1
-                df.to_csv(optimization_file_path)    
+    for s in max_executions:
+        start_time = time.time()
+        logging.info('Calculation of beta ' + b + ' nsus ' + sus + ' run ' + r)
+        df.set_value(index, 'protein', protein)
+        df.set_value(index, 'pdb', pdb_name)
+        df.set_value(index, 'chain', chain)
+        df.set_value(index, 'start_residue', start_residue)
+        df.set_value(index, 'end_residue', end_residue)
+        df.set_value(index, 'beta', initial_sol.beta)
+        df.set_value(index, 'nsus', initial_sol.nsus)
+        df.set_value(index, 'run', initial_sol.runs)
+        try:
+            find_neightbord(initial_sol)  
+            auc,auc01,count_seq_scpe,count_seq_cluster,seq_lenght = evol_optimization(pdb_file_complete_filename_to_evolve, cutted_pdb_path, b,r,sus,chain, scpe_sequences, clustered_sequences_path,sincronized_evol_path, mi_data_path,contact_map,contact_map_sync )
+            df.set_value(index, 'auc', auc)
+            df.set_value(index, 'auc_01', auc01)
+            df.set_value(index, 'count_seq_scpe', count_seq_scpe)
+            df.set_value(index, 'count_seq_cluster', count_seq_cluster)
+            df.set_value(index, 'seq_lenght', seq_lenght)
+            if(auc01>initial_sol_value):
+                parameters = (b,sus,r) 
+        except Exception as inst:
+            print inst
+            x = inst.args
+            print x
+            df.set_value(index, 'auc', 'error')
+            df.set_value(index, 'auc_01', 'error')
+            logging.error('Error with beta ' + b + ' nsus ' + sus + ' run ' + r)        
+            df.set_value(index, 'execution_time', time.time() - start_time)
+            index=index+1
+            df.to_csv(optimization_file_path)    
     df['execution_time_optimization_total']=time.time() - start_time_total            
     df.to_csv(optimization_file_path)                
     return parameters
+
+def find_neightbord(solution):
+    beta = solution.beta + 1
+    nsus = solution.nsus + 1
+    return -1
 
 def evol_protein(data_frame_evol, index,pdb_file_complete_filename_to_evolve,cutted_pdb_path, beta,runs,nsus,chain,scpe_sequences,clustered_sequences_folder_path,sincronized_evol_path,zmip_natural_result_path,mi_data_path, mi_data_analisys,msa_conservation_path,contact_map_path, contact_map_sync):    
     start_time = time.time()
