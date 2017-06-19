@@ -177,7 +177,7 @@ def family_evol(input_families_folder, family_folder, pdb_to_evol_df, family_pdb
             aux_path=f.filename.split('/')
             msa_filename=os.path.basename(f.filename)
             msa_complete_filename_stock=aux_path[0]+"/"+aux_path[1]+"/"+aux_path[2]+"/"+msa_filename[:-3]
-            msa_file = open(msa_file_name_fasta ,"w")
+            msa_file = open(msa_complete_filename_stock ,"w")
             file_content = f.read()
             msa_file.write(file_content)
             msa_file.flush()
@@ -191,7 +191,7 @@ def family_evol(input_families_folder, family_folder, pdb_to_evol_df, family_pdb
         
         
         if(execute_natural_mi_msa):
-            msa.natural_msa_mi(msa_complete_filename, msa_file_name_fasta, zmip_natural_path)
+            msa.natural_msa_mi(msa_file_name_fasta, zmip_natural_path)
         #Natural Conservation Information
         if(execute_msa_natural_information):
             msa.msa_information(msa_file_name_fasta, msa_file_name_fasta, aux_path[2])
