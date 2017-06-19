@@ -264,7 +264,7 @@ def conservation_between_msas(msas_entropy, output_file,natural_line_style='-'):
             plt.plot(msa_entropy[0],color=np.random.rand(3,1), label=msa_entropy[1])
     plt.ylabel('Bits Entropy')
     plt.xlabel('Position')
-    plt.legend(loc=1,prop={'size':10},title="PDB")
+    #plt.legend(loc=1,prop={'size':10},title="PDB")
     plt.savefig(output_file)
     #plt.show()  
     plt.gcf().clear()

@@ -38,13 +38,13 @@ execute_family_evol=True
 '''
 Calculate the MI for the natural MSA putting the protein as the reference
 '''
-execute_natural_mi_msa=False
+execute_natural_mi_msa=True
 '''
 Calculate the Conservation of the families natural MSA
 '''
-execute_msa_natural_information=False
+execute_msa_natural_information=True
 
-execute_download_pdbs=False
+execute_download_pdbs=True
 
 optimized_scpe_variables = True
 
@@ -82,7 +82,7 @@ execute_dataanalisys = False
 '''
 Execute the analisys of the information between all the PDBS and MSA generated. All together
 '''
-execute_joined_pdb_analisys = True
+execute_joined_pdb_analisys = False
 
 '''
 Pattern to execute process
@@ -92,7 +92,7 @@ pattern=["sequences"]
 '''
 Iterates over the structures, pdbs and execute the scpe and the clusterization 
 '''        
-input_families_folder="../FAMILIES_3/"
+input_families_folder="../FAMILIES_FIVE/"
 def run_families_evol():
     logging.info('Begin of the execution process')
     start_time = time.time()
@@ -133,11 +133,14 @@ def run_families_evol():
 
         if(execute_joined_pdb_analisys):
             pdb_to_compare=pdb_to_evol_df.loc[pdb_to_evol_df['status'] == 'okey']
-            dataanalisys.comparative_conservation(input_families_folder + family_folder, family_folder, pdb_to_compare)
-            dataanalisys.sum_contact_map(input_families_folder + family_folder, pdb_to_compare)
-            dataanalisys.comparative_mi_information(input_families_folder + family_folder, family_folder , 2 ,window, pdb_to_compare)  
-        
-        #compute_joined_msas(input_families_folder,family_folder,pdb_to_evol_df)
+            
+            #dataanalisys.comparative_conservation(input_families_folder + family_folder, family_folder, pdb_to_compare)
+            
+            #dataanalisys.sum_contact_map(input_families_folder + family_folder, pdb_to_compare)
+            
+            #dataanalisys.comparative_mi_information(input_families_folder + family_folder, family_folder , 1 ,window, pdb_to_compare)  
+            
+            dataanalisys.compute_joined_msas(input_families_folder + family_folder ,pdb_to_compare)
         
            
             
@@ -145,44 +148,7 @@ def run_families_evol():
     logging.info('End of the execution process')
     logging.info('Time of Execution --- %s seconds ---' % (time.time() - start_time))
 
-'''
-Compute joined msas
-'''
-def compute_joined_msas(input_families_folder,family_folder,pdb_to_evol_df):
-    joined_path = input_families_folder + family_folder + "/joined/"
-    name = "joined_evol_msa"
-    joined_fasta_path = joined_path + name +  ".fasta"
-    if not os.path.exists(joined_path):
-        os.makedirs(joined_path)
-    folder_to_join = "sincronized_evol_path/"
-    fasta_files=glob.glob(input_families_folder + family_folder+"/PDB/*/"+folder_to_join+"*.fasta")
-    count = 0
-    with open(joined_fasta_path, "w") as joined_fasta:
-        for fasta in fasta_files:
-            with open(fasta) as infile:
-                for line in infile:
-                    if('>' in line):
-                        line = line.replace('\n','_'+str(count)+'\n')
-                        count=count+1
-                    joined_fasta.write(line)
-            infile.close() 
-    joined_fasta.close()
-    
-    
-    mi_data_output_path = joined_path + name + ".csv"
-    msa_conservation_path =  joined_path
-    dataanalisys.evol_analisys(joined_fasta_path, mi_data_output_path, msa_conservation_path, name)
-                  
-def validate_pdb_evolution(family_folder, pdb_to_evol_df):
-    family_folder_pdb = family_folder+"/PDB/"
-    for index,pdb_protein_to_evolve in pdb_to_evol_df.iterrows():
-        pdb_folder = family_folder_pdb + pdb_protein_to_evolve['pdb_folder_name']
-        if(os.path.isdir(pdb_folder)):
-            contact_map = pdb_folder + "/contact_map.dat"
-            cmap = util.load_contact_map(contact_map)
-            if(cmap.shape[0]!=69):#fix load natura size
-                pdb_to_evol_df=pdb_to_evol_df.drop(index)
-    return pdb_to_evol_df           
+        
 def family_evol(input_families_folder, family_folder, pdb_to_evol_df, family_pdb_evol_info_path):
     start_time = time.time()
     try:
@@ -475,9 +441,9 @@ def run_optimization_parameters(protein, pdb_name,optimization_folder, optimizat
     runs = ["1000","5000","10000","20000"]
     nsus = ["1.0","2.0","3.0","5.0","7.0","10.0","15.0"]
     
-    beta = ["5.0"]
+    
     runs = ["20000"]
-    nsus = ["15.0"]
+    
     
     
      
