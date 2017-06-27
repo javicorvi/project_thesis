@@ -502,7 +502,8 @@ def sum_contact_map(family_folder,pdb_to_compare):
 """
 Lee la informacion sobre consevacion (KL) por columna de cada una de las proteinas evolucionadas. 
 No se esta aplicando ningun entrecruzamiento de la informacion.
-Solamente se esta ploteando la conservacion por columna para cada una de las proteinas (el grafico no puede apreciar resultados concretos)  
+Solamente se esta ploteando la conservacion por columna para cada una de las proteinas (el grafico no puede apreciar resultados concretos) 
+Luego si se realiza la media de conservacion resultado en conservation_media.png 
 """    
 def comparative_conservation(family_folder, family_name, pdb_to_compare):
     natural_msa_conservation= family_folder + "/"+family_name+".fasta_data_kl.csv"
@@ -543,6 +544,51 @@ def comparative_conservation(family_folder, family_name, pdb_to_compare):
     msas_entropy.append(msa_entropy)
     msas_entropy.append([msa_entropy_media,"MEDIA"])
     plot.conservation_between_msas(msas_entropy,family_folder + "/conservation_media.png") 
+    #TODO persistir conservacion media y natura por posicion en un archivo aparte
+    
+
+'''
+Compute joined msas
+'''
+def compute_joined_msas(family_folder,pdb_to_compare):
+    logging.info('compute_joined_msas :: Begin ')
+    start_time = time.time()
+    joined_path =  family_folder + "/joined/"
+    name = "joined_evol_msa"
+    joined_fasta_path = joined_path + name +  ".fasta"
+    if not os.path.exists(joined_path):
+        os.makedirs(joined_path)
+    folder_to_join = "sincronized_evol_path/"
+    fasta_files = []
+    for index,pdb_protein_to_evolve in pdb_to_compare.iterrows():
+        pdb_folder = family_folder + "/PDB/" +  pdb_protein_to_evolve['pdb_folder_name']
+        if(os.path.isdir(pdb_folder)):
+            beta=str(pdb_protein_to_evolve['beta'])
+            nsus=str(pdb_protein_to_evolve['nsus'])
+            runs=str(int(pdb_protein_to_evolve['runs']))
+            sufix = "sequences-beta"+beta+"-nsus"+nsus+"-runs"+runs+".fasta"
+            msa_file = pdb_folder + "/sincronized_evol_path/"+sufix
+            if(os.path.isfile(msa_file)):
+                fasta_files.append(msa_file)
+    count = 0
+    with open(joined_fasta_path, "w") as joined_fasta:
+        for fasta in fasta_files:
+            logging.info('Attach MSA  ' + fasta )
+            with open(fasta) as infile:
+                for line in infile:
+                    if('>' in line):
+                        line = line.replace('\n','_'+str(count)+'\n')
+                        count=count+1
+                    joined_fasta.write(line)
+            infile.close() 
+    joined_fasta.close()
+    logging.info('End of Attach evolutionated MSAs  ' )
+    
+    mi_data_output_path = joined_path + name + ".csv"
+    msa_conservation_path =  joined_path
+    evol_analisys(joined_fasta_path, mi_data_output_path, msa_conservation_path, name)
+    logging.info('End of the execution process compute_joined_msas')
+
 """
 Esta funcion toma el top de MI de todas las proteinas evolucionadas y luego realiza una agrupacion indicando la cantidad de veces que aparecen los pares.
 Ordena los pares de forma descendente, osea los pares que mas aparecen en el top quedan arriba. 
