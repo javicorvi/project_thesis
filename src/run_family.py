@@ -33,20 +33,20 @@ window = 1
 '''
 Family Evolution
 '''
-execute_family_evol=True
+execute_family_evol=False
 
 '''
 Calculate the MI for the natural MSA putting the protein as the reference
 '''
-execute_natural_mi_msa=True
+execute_natural_mi_msa=False
 '''
 Calculate the Conservation of the families natural MSA
 '''
-execute_msa_natural_information=True
+execute_msa_natural_information=False
 
-execute_download_pdbs=True
+execute_download_pdbs=False
 
-optimized_scpe_variables = True
+optimized_scpe_variables = False
 
 '''
 Execute the evolution of the protein with SCPE.
@@ -82,7 +82,7 @@ execute_dataanalisys = False
 '''
 Execute the analisys of the information between all the PDBS and MSA generated. All together
 '''
-execute_joined_pdb_analisys = False
+execute_joined_pdb_analisys = True
 
 '''
 Pattern to execute process
@@ -92,7 +92,7 @@ pattern=["sequences"]
 '''
 Iterates over the structures, pdbs and execute the scpe and the clusterization 
 '''        
-input_families_folder="../FAMILIES_FIVE/"
+input_families_folder="../FAMILY_PF00085/"
 def run_families_evol():
     logging.info('Begin of the execution process')
     start_time = time.time()

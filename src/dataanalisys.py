@@ -584,9 +584,12 @@ def compute_joined_msas(family_folder,pdb_to_compare):
     joined_fasta.close()
     logging.info('End of Attach evolutionated MSAs  ' )
     
+    joined_fasta_clustering_path = joined_fasta_path + "_cluster_70"
+    msa.clustering_singular("0.70",joined_fasta_path, joined_fasta_clustering_path)
+    
     mi_data_output_path = joined_path + name + ".csv"
     msa_conservation_path =  joined_path
-    evol_analisys(joined_fasta_path, mi_data_output_path, msa_conservation_path, name)
+    evol_analisys(joined_fasta_clustering_path, mi_data_output_path, msa_conservation_path, name)
     logging.info('End of the execution process compute_joined_msas')
 
 """
