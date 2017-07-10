@@ -672,5 +672,39 @@ def download_pdbs(input_families_folder, family_folder, pdb_to_evol_df):
     
 '''      
 
+def plot_roc_natural_2trx():
+    mi_data_path = '../THIO_ECOLI_4_107_2TRX_A/natural/zmip_PF00085_THIO_ECOLI_reference.csv'
+    contact_map_path = '../THIO_ECOLI_4_107_2TRX_A/optimization_folder/contact_map_sync.dat'
+    target,scores=dataanalisys.getTargetScores(mi_data_path,contact_map_path,window)
+    sc=[]
+    sc.append(scores)
+    auc,auc01 = util.getAUC(target,scores)
+    colors = ['blue']
+    labels = ['Natural']
+    output_file = '../THIO_ECOLI_4_107_2TRX_A/natural/natural_roc'
+    plot.roc_curve_(target, sc, labels, colors, output_file)
 
-run_families_evol()                                   
+def plot_rocs():
+    mi_data_path = '../THIO_ECOLI_4_107_2TRX_A/optimization_folder/clustered_sequences_path/mi_data_path/'
+    contact_map_path = '../THIO_ECOLI_4_107_2TRX_A/optimization_folder/contact_map.dat'
+    beta=['2.0']
+    nsus=['3.0']
+    runs=[1000,5000,10000,20000] 
+    labels=['1000','5000','10000','20000']
+    colors=['y','o','g','r']
+    for b in beta:
+        for sus in nsus:
+            for r in runs:
+                sufix = "zmip_sequences-beta"+str(b)+"-nsus"+str(sus)+"-runs"+str(r)
+                file_name = sufix +".csv"
+                target,scores=dataanalisys.getTargetScores(mi_data_path+file_name,contact_map_path,window)
+                sc=[]
+                sc.append(scores)
+                
+                labels.append("beta"+str(b)+"-nsus"+str(sus)+"-runs"+str(r))
+    output_file = '../THIO_ECOLI_4_107_2TRX_A/example_beta2_nsus3_differentruns'
+    plot.roc_curve_(target, sc, labels, colors, output_file)
+
+
+plot_rocs()
+#run_families_evol()                                   

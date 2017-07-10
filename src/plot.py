@@ -96,6 +96,32 @@ def roc_curve(df,index,y_true,scores,labels,colors,output_file):
     #plt.show()
     plt.gcf().clear()
 
+def roc_curve_(y_true,scores,labels,colors,output_file, vertical_at_01=True):
+    fpr = dict()
+    tpr = dict()
+    roc_auc = dict()
+    lw = 2
+    plt.figure()
+    #for i, (a, b) in enumerate(zip(alist, blist)):
+    for i,(label,color) in enumerate(zip(labels, colors)):
+        fpr[i], tpr[i], _ = metrics.roc_curve(y_true, scores[i])
+        partial_auc_value_0_1 = partial_auc(fpr[i], tpr[i], 0.1)
+        auc = metrics.auc(fpr[i], tpr[i])
+        roc_auc[i] = auc
+        plt.plot(fpr[i], tpr[i], color=color, lw=lw,label='ROC curve  {0} (auc = {1:0.2f} | auc 0.1 = {2:0.2f})'''.format(label, roc_auc[i], partial_auc_value_0_1))
+    plt.plot([0, 1], [0, 1], color='black', lw=lw, linestyle='--')
+    if(vertical_at_01):
+        plt.axvline(x=0.1,color='green',linestyle='--')
+    plt.xlim([0.0, 1.0])
+    plt.ylim([0.0, 1.05])
+    plt.xlabel('False Positive Rate')
+    plt.ylabel('True Positive Rate')
+    plt.title('ROC CONTACTS MI')
+    plt.legend(loc="lower right")
+    plt.savefig(output_file)
+    #plt.show()
+    plt.gcf().clear()
+
 def partial_auc(fpr, tpr, max_fpr):
     idx = np.where(fpr <= max_fpr)[0]
     # linearly interpolate the ROC curve until max_fpr
