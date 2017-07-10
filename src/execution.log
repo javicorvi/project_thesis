@@ -9980,4 +9980,149 @@ WARNING:root:And this, too
 2017-06-15 19:06:18,624 - INFO - run_family.py - run_optimization_parameters - Calculation of beta 20.0 nsus 30.0 run 20000 
 2017-06-15 23:13:09,682 - INFO - run_family.py - run_optimization_parameters - Run Optimization For 2TRX 
 2017-06-15 23:13:09,684 - INFO - run_family.py - run_optimization_parameters - Calculation of beta 20.0 nsus 50.0 run 20000 
+<<<<<<< HEAD
 >>>>>>> 3f9954eb215cf622df9c5181f19415829e967b29
+=======
+2017-06-27 17:44:20,681 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-06-27 17:44:20,682 - INFO - run_family.py - run_families_evol - PF00085 
+2017-06-27 17:55:56,098 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-06-27 17:55:56,115 - INFO - run_family.py - run_families_evol - PF00085 
+2017-06-27 18:01:43,096 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-06-27 18:01:43,097 - INFO - run_family.py - run_families_evol - PF00085 
+2017-06-27 18:01:55,718 - INFO - dataanalisys.py - compute_joined_msas - compute_joined_msas :: Begin  
+2017-06-27 18:03:02,211 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/PDIA3_HUMAN_377_483_3F8U_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:03:28,666 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/THIOM_HUMAN_61_164_1UVZ_F/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:03:35,106 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/THIO_ECOLI_4_107_2H6X_B/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:03:40,527 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/THIO_PLAF7_2_102_1SYR_B/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:03:47,385 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/DJC10_MOUSE_672_776_3APS_B/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:03:56,103 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/Q7XZK2_HORVD_14_118_2VLT_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:04:02,178 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/Q9YED4_AERPE_239_342_3EMX_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:04:08,606 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/THIO_ECOLI_4_107_2H6X_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:04:15,676 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/PDIA1_HUMAN_368_473_4EL1_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:04:22,516 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/THIOM_HUMAN_61_164_1UVZ_B/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:04:30,620 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/THIOM_HUMAN_61_164_1UVZ_C/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:04:37,647 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/TRX2_YEAST_2_103_2FA4_B/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:04:44,856 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/Q8T9N5_SCHMA_5_106_2XBQ_B/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:04:51,683 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/PDIA6_HUMAN_26_129_4EF0_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:04:59,069 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/TXND5_HUMAN_323_427_3UVT_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:05:06,564 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/TRX3_YEAST_27_127_2OE0_B/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:05:11,324 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/THIO2_DROME_11_113_1XWB_D/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:05:18,236 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/TXND5_HUMAN_63_167_3WGD_E/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:05:25,405 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/THIOM_HUMAN_61_164_1UVZ_E/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:05:31,634 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/THIO_ECOLI_4_107_1SKR_B/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:05:37,561 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/THIO2_DROME_11_113_1XW9_C/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:05:43,667 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/THIO_HUMAN_2_104_1AUC_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:05:49,392 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/DJC10_MOUSE_130_232_3APQ_B/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:05:56,597 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/THIOM_HUMAN_61_164_1W4V_D/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:06:02,926 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/THIO_ECOLI_4_107_2TRX_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:06:09,233 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/GLRX3_HUMAN_14_115_2WZ9_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:06:15,338 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/B1MMM4_MYCA9_5_107_4POB_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:06:22,617 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/B1MMM4_MYCA9_5_107_4POB_B/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:06:30,749 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/PDIA4_HUMAN_178_282_3IDV_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:06:37,865 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/Q4DV70_TRYCC_42_151_3H79_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:06:43,940 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/TXND5_HUMAN_323_427_3UVT_C/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:06:51,075 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/TXND5_HUMAN_323_427_3UVT_D/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:06:58,520 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/G0W5T0_NAUDC_35_141_4TVE_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:07:05,818 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/Q2G000_STAA8_2_104_4RUV_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:07:12,045 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/THIO1_STRCO_4_106_1T00_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:07:18,159 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/THIO_ECOLI_4_107_2BTO_T/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:07:24,597 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/THIO_ECOLI_4_107_2AJQ_I/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:07:33,196 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/THIO_ECOLI_4_107_2AJQ_B/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:07:40,359 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/THIO_ECOLI_4_107_1THO_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:07:46,001 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/TRX1_YEAST_2_102_3F3Q_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:07:52,041 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/Q97WI4_SULSO_32_133_3HHV_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:07:58,476 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/PDIA6_HUMAN_161_267_4GWR_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:08:05,092 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/YBBN_ECOLI_5_109_3QOU_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:08:12,936 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/Q8IDP4_PLAF7_55_156_3UL3_B/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:08:19,801 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/Q8IDP4_PLAF7_55_156_3UL3_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:08:27,850 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/Q8ZR92_SALTY_5_109_3QDN_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:08:35,404 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/PDI_YEAST_377_483_2B5E_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:08:42,249 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/Q8T9N5_SCHMA_5_106_2XBI_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:08:48,825 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/TRX3_YEAST_27_127_2OE3_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:08:56,688 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/TRX3_YEAST_27_127_2OE3_B/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:09:05,083 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/THIO2_DROME_11_113_1XWC_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:09:14,472 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/THIO2_DROME_11_113_1XWA_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:09:22,559 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/THIO2_DROME_11_113_1XWB_B/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:09:30,000 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/THIO_MYCTU_8_111_2I1U_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:09:36,271 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/TXND5_HUMAN_190_293_3WGE_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:09:41,657 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/PDIA4_HUMAN_63_167_3IDV_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:09:47,334 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/Q980E5_SULSO_29_131_3TCO_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:09:53,484 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/Q980E5_SULSO_29_131_3TCO_B/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:09:59,950 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/Q980E5_SULSO_29_131_3TCO_C/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:10:06,057 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/PDIA1_HUMAN_368_473_4EKZ_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:10:15,412 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/PDIA1_HUMAN_368_473_3UEM_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:10:23,918 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/THIO_HUMAN_2_104_5DQY_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:10:34,067 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/THIO2_NOSS1_4_107_1THX_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:10:40,668 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/Q8IEV4_TRIVA_6_111_2F51_B/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:10:47,961 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/Q8IEV4_TRIVA_6_111_2F51_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-06-27 18:10:55,513 - INFO - dataanalisys.py - compute_joined_msas - End of Attach evolutionated MSAs   
+2017-07-03 14:04:33,729 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-07-03 14:04:33,741 - INFO - run_family.py - run_families_evol - PF00085 
+2017-07-03 14:05:01,833 - INFO - dataanalisys.py - compute_joined_msas - compute_joined_msas :: Begin  
+2017-07-03 14:05:02,283 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/PDIA3_HUMAN_377_483_3F8U_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:05:09,240 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/THIOM_HUMAN_61_164_1UVZ_F/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:05:17,163 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/THIO_ECOLI_4_107_2H6X_B/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:05:25,239 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/THIO_PLAF7_2_102_1SYR_B/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:05:31,625 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/DJC10_MOUSE_672_776_3APS_B/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:05:38,571 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/Q7XZK2_HORVD_14_118_2VLT_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:05:44,544 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/Q9YED4_AERPE_239_342_3EMX_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:06:11,795 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/THIO_ECOLI_4_107_2H6X_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:06:19,539 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/PDIA1_HUMAN_368_473_4EL1_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:06:28,940 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/THIOM_HUMAN_61_164_1UVZ_B/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:06:38,020 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/THIOM_HUMAN_61_164_1UVZ_C/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:06:45,386 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/TRX2_YEAST_2_103_2FA4_B/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:06:52,117 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/Q8T9N5_SCHMA_5_106_2XBQ_B/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:06:57,662 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/PDIA6_HUMAN_26_129_4EF0_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:07:05,468 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/TXND5_HUMAN_323_427_3UVT_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:07:13,206 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/TRX3_YEAST_27_127_2OE0_B/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:07:17,926 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/THIO2_DROME_11_113_1XWB_D/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:07:24,788 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/TXND5_HUMAN_63_167_3WGD_E/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:07:30,545 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/THIOM_HUMAN_61_164_1UVZ_E/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:07:36,776 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/THIO_ECOLI_4_107_1SKR_B/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:07:43,430 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/THIO2_DROME_11_113_1XW9_C/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:07:49,292 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/THIO_HUMAN_2_104_1AUC_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:07:54,789 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/DJC10_MOUSE_130_232_3APQ_B/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:08:01,324 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/THIOM_HUMAN_61_164_1W4V_D/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:08:07,055 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/THIO_ECOLI_4_107_2TRX_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:08:13,573 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/GLRX3_HUMAN_14_115_2WZ9_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:08:19,174 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/B1MMM4_MYCA9_5_107_4POB_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:08:25,889 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/B1MMM4_MYCA9_5_107_4POB_B/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:08:33,022 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/PDIA4_HUMAN_178_282_3IDV_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:08:39,300 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/Q4DV70_TRYCC_42_151_3H79_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:08:44,795 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/TXND5_HUMAN_323_427_3UVT_C/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:08:51,722 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/TXND5_HUMAN_323_427_3UVT_D/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:09:01,373 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/G0W5T0_NAUDC_35_141_4TVE_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:09:17,299 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/Q2G000_STAA8_2_104_4RUV_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:09:23,839 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/THIO1_STRCO_4_106_1T00_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:09:29,895 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/THIO_ECOLI_4_107_2BTO_T/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:09:36,203 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/THIO_ECOLI_4_107_2AJQ_I/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:09:49,714 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/THIO_ECOLI_4_107_2AJQ_B/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:09:56,608 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/THIO_ECOLI_4_107_1THO_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:10:02,254 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/TRX1_YEAST_2_102_3F3Q_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:10:08,240 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/Q97WI4_SULSO_32_133_3HHV_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:10:14,582 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/PDIA6_HUMAN_161_267_4GWR_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:10:21,021 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/YBBN_ECOLI_5_109_3QOU_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:10:28,684 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/Q8IDP4_PLAF7_55_156_3UL3_B/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:10:35,328 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/Q8IDP4_PLAF7_55_156_3UL3_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:10:42,848 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/Q8ZR92_SALTY_5_109_3QDN_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:10:50,120 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/PDI_YEAST_377_483_2B5E_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:10:56,691 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/Q8T9N5_SCHMA_5_106_2XBI_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:11:02,659 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/TRX3_YEAST_27_127_2OE3_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:11:08,666 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/TRX3_YEAST_27_127_2OE3_B/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:11:15,870 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/THIO2_DROME_11_113_1XWC_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:11:23,875 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/THIO2_DROME_11_113_1XWA_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:11:30,763 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/THIO2_DROME_11_113_1XWB_B/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:11:37,193 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/THIO_MYCTU_8_111_2I1U_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:11:46,559 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/TXND5_HUMAN_190_293_3WGE_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:11:55,469 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/PDIA4_HUMAN_63_167_3IDV_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:12:01,700 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/Q980E5_SULSO_29_131_3TCO_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:12:07,913 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/Q980E5_SULSO_29_131_3TCO_B/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:12:16,634 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/Q980E5_SULSO_29_131_3TCO_C/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:12:22,428 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/PDIA1_HUMAN_368_473_4EKZ_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:12:30,533 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/PDIA1_HUMAN_368_473_3UEM_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:12:37,205 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/THIO_HUMAN_2_104_5DQY_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:12:44,419 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/THIO2_NOSS1_4_107_1THX_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:12:50,561 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/Q8IEV4_TRIVA_6_111_2F51_B/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:12:57,720 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/Q8IEV4_TRIVA_6_111_2F51_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
+2017-07-03 14:13:04,890 - INFO - dataanalisys.py - compute_joined_msas - End of Attach evolutionated MSAs   
+>>>>>>> c370fa61f66312943738593f1a98904e29b79bbc
