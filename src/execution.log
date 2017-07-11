@@ -2477,3 +2477,322 @@
 2017-07-03 14:12:50,561 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/Q8IEV4_TRIVA_6_111_2F51_B/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
 2017-07-03 14:12:57,720 - INFO - dataanalisys.py - compute_joined_msas - Attach MSA  ../FAMILY_PF00085/PF00085/PDB/Q8IEV4_TRIVA_6_111_2F51_A/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta 
 2017-07-03 14:13:04,890 - INFO - dataanalisys.py - compute_joined_msas - End of Attach evolutionated MSAs   
+2017-07-10 16:18:46,384 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-07-10 16:18:50,834 - INFO - run_family.py - run_families_evol - PF00030 
+2017-07-10 16:19:07,607 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 64 
+2017-07-10 16:19:07,687 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):23 
+2017-07-10 16:19:18,015 - INFO - run_family.py - download_pdbs - download_pdbs inicio PF00030 
+2017-07-10 16:19:18,020 - INFO - run_family.py - download_pdbs - download_pdbs 1OKI 
+2017-07-10 16:19:20,259 - INFO - run_family.py - download_pdbs - download_pdbs 3HZ2 
+2017-07-10 16:19:22,277 - INFO - run_family.py - download_pdbs - download_pdbs 3QK3 
+2017-07-10 16:19:25,930 - INFO - run_family.py - download_pdbs - download_pdbs 3QK3 
+2017-07-10 16:19:30,459 - INFO - run_family.py - download_pdbs - download_pdbs 2V2U 
+2017-07-10 16:19:33,468 - INFO - run_family.py - download_pdbs - download_pdbs 4FD9 
+2017-07-10 16:19:36,339 - INFO - run_family.py - download_pdbs - download_pdbs 1AMM 
+2017-07-10 16:19:38,697 - INFO - run_family.py - download_pdbs - download_pdbs 1HA4 
+2017-07-10 16:19:41,343 - INFO - run_family.py - download_pdbs - download_pdbs 1A5D 
+2017-07-10 16:19:44,511 - INFO - run_family.py - download_pdbs - download_pdbs 1DSL 
+2017-07-10 16:19:46,024 - INFO - run_family.py - download_pdbs - download_pdbs 1A5D 
+2017-07-10 16:19:49,824 - INFO - run_family.py - download_pdbs - download_pdbs 1H4A 
+2017-07-10 16:19:53,350 - INFO - run_family.py - download_pdbs - download_pdbs 2JDF 
+2017-07-10 16:19:55,425 - INFO - run_family.py - download_pdbs - download_pdbs 1BD7 
+2017-07-10 16:19:58,186 - INFO - run_family.py - download_pdbs - download_pdbs 2G98 
+2017-07-10 16:20:01,476 - INFO - run_family.py - download_pdbs - download_pdbs 4JGF 
+2017-07-10 16:20:04,105 - INFO - run_family.py - download_pdbs - download_pdbs 1A5D 
+2017-07-10 16:20:07,261 - INFO - run_family.py - download_pdbs - download_pdbs 2BB2 
+2017-07-10 16:20:09,071 - INFO - run_family.py - download_pdbs - download_pdbs 1A45 
+2017-07-10 16:20:10,884 - INFO - run_family.py - download_pdbs - download_pdbs 1HK0 
+2017-07-10 16:20:13,703 - INFO - run_family.py - download_pdbs - download_pdbs 1A45 
+2017-07-10 16:20:15,876 - INFO - run_family.py - download_pdbs - download_pdbs 1BD7 
+2017-07-10 16:20:18,126 - INFO - run_family.py - download_pdbs - download_pdbs 1YTQ 
+2017-07-10 16:20:20,188 - INFO - run_family.py - download_pdbs - download_pdbs fin PF00030 
+2017-07-10 16:21:21,043 - INFO - run_family.py - family_evol - Family Evol PF00030 
+2017-07-10 16:22:46,789 - ERROR - msa.py - natural_msa_mi - Error execution MI form the natural MSA  
+2017-07-10 16:24:32,579 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-07-10 16:24:32,582 - INFO - run_family.py - run_families_evol - PF00030 
+2017-07-10 16:24:32,645 - INFO - run_family.py - download_pdbs - download_pdbs inicio PF00030 
+2017-07-10 16:24:32,652 - INFO - run_family.py - download_pdbs - download_pdbs 1OKI 
+2017-07-10 16:25:58,630 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-07-10 16:25:58,635 - INFO - run_family.py - run_families_evol - PF00030 
+2017-07-10 16:25:58,642 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 64 
+2017-07-10 16:25:58,902 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):23 
+2017-07-10 16:25:58,924 - INFO - run_family.py - family_evol - Family Evol PF00030 
+2017-07-10 16:28:16,043 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-07-10 16:28:16,044 - INFO - run_family.py - run_families_evol - PF00030 
+2017-07-10 16:28:16,055 - INFO - run_family.py - family_evol - Family Evol PF00030 
+2017-07-10 16:29:54,016 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-07-10 16:30:00,254 - INFO - run_family.py - family_evol - Begin of the PDB CRBB1_HUMAN_150_232_1OKI_A_superimposed.pdb.gz 
+2017-07-10 16:30:14,221 - INFO - run_family.py - run_optimization_parameters - Run Optimization For 1OKI 
+2017-07-10 16:30:14,277 - INFO - run_family.py - run_optimization_parameters - Calculation of beta 0.5 nsus 1.0 run 20000 
+2017-07-10 16:31:48,684 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-07-10 16:31:48,685 - INFO - run_family.py - run_families_evol - PF00030 
+2017-07-10 16:31:48,696 - INFO - run_family.py - family_evol - Family Evol PF00030 
+2017-07-10 16:32:34,555 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-07-10 16:32:36,074 - INFO - run_family.py - family_evol - Begin of the PDB CRBB1_HUMAN_150_232_1OKI_A_superimposed.pdb.gz 
+2017-07-10 16:32:43,772 - INFO - run_family.py - run_optimization_parameters - Run Optimization For 1OKI 
+2017-07-10 16:32:43,817 - INFO - run_family.py - run_optimization_parameters - Calculation of beta 2.0 nsus 1.0 run 100 
+2017-07-10 16:35:25,550 - INFO - run_family.py - family_evol - End of the PDB CRBB1_HUMAN_150_232_1OKI_A_superimposed.pdb.gz 
+2017-07-10 16:35:39,819 - INFO - run_family.py - family_evol - Begin of the PDB Q8TMX3_METAC_40_120_3HZ2_C_superimposed.pdb.gz 
+2017-07-10 16:36:07,212 - INFO - run_family.py - family_evol - End of the PDB Q8TMX3_METAC_40_120_3HZ2_C_superimposed.pdb.gz 
+2017-07-10 16:36:07,216 - INFO - run_family.py - family_evol - Begin of the PDB CRBB3_HUMAN_115_197_3QK3_A_superimposed.pdb.gz 
+2017-07-10 16:37:19,729 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-07-10 16:37:19,730 - INFO - run_family.py - run_families_evol - PF00030 
+2017-07-10 16:37:19,733 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 64 
+2017-07-10 16:37:19,743 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):23 
+2017-07-10 16:37:19,745 - INFO - run_family.py - download_pdbs - download_pdbs inicio PF00030 
+2017-07-10 16:37:19,746 - INFO - run_family.py - download_pdbs - download_pdbs 1OKI 
+2017-07-10 16:37:22,745 - INFO - run_family.py - download_pdbs - download_pdbs 3HZ2 
+2017-07-10 16:37:25,186 - INFO - run_family.py - download_pdbs - download_pdbs 3QK3 
+2017-07-10 16:37:29,449 - INFO - run_family.py - download_pdbs - download_pdbs 3QK3 
+2017-07-10 16:37:33,806 - INFO - run_family.py - download_pdbs - download_pdbs 2V2U 
+2017-07-10 16:37:36,336 - INFO - run_family.py - download_pdbs - download_pdbs 4FD9 
+2017-07-10 16:37:38,090 - INFO - run_family.py - download_pdbs - download_pdbs 1AMM 
+2017-07-10 16:37:40,008 - INFO - run_family.py - download_pdbs - download_pdbs 1HA4 
+2017-07-10 16:37:41,628 - INFO - run_family.py - download_pdbs - download_pdbs 1A5D 
+2017-07-10 16:37:44,179 - INFO - run_family.py - download_pdbs - download_pdbs 1DSL 
+2017-07-10 16:37:45,595 - INFO - run_family.py - download_pdbs - download_pdbs 1A5D 
+2017-07-10 16:37:47,968 - INFO - run_family.py - download_pdbs - download_pdbs 1H4A 
+2017-07-10 16:37:50,528 - INFO - run_family.py - download_pdbs - download_pdbs 2JDF 
+2017-07-10 16:37:52,505 - INFO - run_family.py - download_pdbs - download_pdbs 1BD7 
+2017-07-10 16:37:54,472 - INFO - run_family.py - download_pdbs - download_pdbs 2G98 
+2017-07-10 16:37:56,835 - INFO - run_family.py - download_pdbs - download_pdbs 4JGF 
+2017-07-10 16:37:58,927 - INFO - run_family.py - download_pdbs - download_pdbs 1A5D 
+2017-07-10 16:38:01,210 - INFO - run_family.py - download_pdbs - download_pdbs 2BB2 
+2017-07-10 16:38:02,912 - INFO - run_family.py - download_pdbs - download_pdbs 1A45 
+2017-07-10 16:38:04,615 - INFO - run_family.py - download_pdbs - download_pdbs 1HK0 
+2017-07-10 16:38:07,069 - INFO - run_family.py - download_pdbs - download_pdbs 1A45 
+2017-07-10 16:38:08,969 - INFO - run_family.py - download_pdbs - download_pdbs 1BD7 
+2017-07-10 16:38:11,085 - INFO - run_family.py - download_pdbs - download_pdbs 1YTQ 
+2017-07-10 16:38:12,911 - INFO - run_family.py - download_pdbs - download_pdbs fin PF00030 
+2017-07-10 16:38:12,911 - INFO - run_family.py - family_evol - Family Evol PF00030 
+2017-07-10 16:38:42,611 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-07-10 16:38:42,612 - INFO - run_family.py - family_evol - Begin of the PDB CRBB1_HUMAN_150_232_1OKI_A_superimposed.pdb.gz 
+2017-07-10 16:38:42,617 - INFO - run_family.py - run_optimization_parameters - Run Optimization For 1OKI 
+2017-07-10 16:38:42,619 - INFO - run_family.py - run_optimization_parameters - Calculation of beta 2.0 nsus 1.0 run 100 
+2017-07-10 16:39:22,412 - INFO - run_family.py - family_evol - End of the PDB CRBB1_HUMAN_150_232_1OKI_A_superimposed.pdb.gz 
+2017-07-10 16:39:22,414 - INFO - run_family.py - family_evol - Begin of the PDB Q8TMX3_METAC_40_120_3HZ2_C_superimposed.pdb.gz 
+2017-07-10 16:39:43,123 - INFO - run_family.py - family_evol - End of the PDB Q8TMX3_METAC_40_120_3HZ2_C_superimposed.pdb.gz 
+2017-07-10 16:39:43,125 - INFO - run_family.py - family_evol - Begin of the PDB CRBB3_HUMAN_115_197_3QK3_A_superimposed.pdb.gz 
+2017-07-10 16:40:04,112 - INFO - run_family.py - family_evol - End of the PDB CRBB3_HUMAN_115_197_3QK3_A_superimposed.pdb.gz 
+2017-07-10 16:40:04,114 - INFO - run_family.py - family_evol - Begin of the PDB CRBB3_HUMAN_25_107_3QK3_B_superimposed.pdb.gz 
+2017-07-10 16:40:04,726 - ERROR - run_family.py - family_evol - The PDB was not evolutionated CRBB3_HUMAN_25_107_3QK3_B_superimposed.pdb.gz 
+2017-07-10 16:40:04,726 - ERROR - run_family.py - family_evol - index -89 is out of bounds for axis 1 with size 84 
+2017-07-10 16:40:04,728 - INFO - run_family.py - family_evol - Begin of the PDB CRGC_MOUSE_89_170_2V2U_B_superimposed.pdb.gz 
+2017-07-10 16:40:24,965 - INFO - run_family.py - family_evol - End of the PDB CRGC_MOUSE_89_170_2V2U_B_superimposed.pdb.gz 
+2017-07-10 16:40:24,967 - INFO - run_family.py - family_evol - Begin of the PDB CRBG3_MOUSE_513_598_4FD9_B_superimposed.pdb.gz 
+2017-07-10 16:40:45,285 - INFO - run_family.py - family_evol - End of the PDB CRBG3_MOUSE_513_598_4FD9_B_superimposed.pdb.gz 
+2017-07-10 16:40:45,287 - INFO - run_family.py - family_evol - Begin of the PDB CRGB_BOVIN_90_171_1AMM_A_superimposed.pdb.gz 
+2017-07-10 16:41:05,252 - INFO - run_family.py - family_evol - End of the PDB CRGB_BOVIN_90_171_1AMM_A_superimposed.pdb.gz 
+2017-07-10 16:41:05,254 - INFO - run_family.py - family_evol - Begin of the PDB CRBS_HUMAN_95_176_1HA4_B_superimposed.pdb.gz 
+2017-07-10 16:41:26,049 - INFO - run_family.py - family_evol - End of the PDB CRBS_HUMAN_95_176_1HA4_B_superimposed.pdb.gz 
+2017-07-10 16:41:26,051 - INFO - run_family.py - family_evol - Begin of the PDB CRGE_RAT_3_82_1A5D_A_superimposed.pdb.gz 
+2017-07-10 16:41:26,628 - ERROR - run_family.py - family_evol - The PDB was not evolutionated CRGE_RAT_3_82_1A5D_A_superimposed.pdb.gz 
+2017-07-10 16:41:26,628 - ERROR - run_family.py - family_evol - index -86 is out of bounds for axis 1 with size 83 
+2017-07-10 16:41:26,630 - INFO - run_family.py - family_evol - Begin of the PDB CRGB_BOVIN_90_171_1DSL_A_superimposed.pdb.gz 
+2017-07-10 16:41:47,195 - INFO - run_family.py - family_evol - End of the PDB CRGB_BOVIN_90_171_1DSL_A_superimposed.pdb.gz 
+2017-07-10 16:41:47,199 - INFO - run_family.py - family_evol - Begin of the PDB CRGE_RAT_89_170_1A5D_A_superimposed.pdb.gz 
+2017-07-10 16:42:08,029 - INFO - run_family.py - family_evol - End of the PDB CRGE_RAT_89_170_1A5D_A_superimposed.pdb.gz 
+2017-07-10 16:42:08,032 - INFO - run_family.py - family_evol - Begin of the PDB CRGD_HUMAN_89_170_1H4A_X_superimposed.pdb.gz 
+2017-07-10 16:42:28,807 - INFO - run_family.py - family_evol - End of the PDB CRGD_HUMAN_89_170_1H4A_X_superimposed.pdb.gz 
+2017-07-10 16:42:28,809 - INFO - run_family.py - family_evol - Begin of the PDB CRGB_HUMAN_3_82_2JDF_A_superimposed.pdb.gz 
+2017-07-10 16:42:29,331 - ERROR - run_family.py - family_evol - The PDB was not evolutionated CRGB_HUMAN_3_82_2JDF_A_superimposed.pdb.gz 
+2017-07-10 16:42:29,332 - ERROR - run_family.py - family_evol - index -86 is out of bounds for axis 1 with size 83 
+2017-07-10 16:42:29,342 - INFO - run_family.py - family_evol - Begin of the PDB CRBB2_RAT_108_190_1BD7_B_superimposed.pdb.gz 
+2017-07-10 16:42:29,704 - ERROR - run_family.py - family_evol - The PDB was not evolutionated CRBB2_RAT_108_190_1BD7_B_superimposed.pdb.gz 
+2017-07-10 16:42:29,704 - ERROR - run_family.py - family_evol - invalid literal for long() with base 10: '118A' 
+2017-07-10 16:42:29,706 - INFO - run_family.py - family_evol - Begin of the PDB CRGD_HUMAN_89_170_2G98_B_superimposed.pdb.gz 
+2017-07-10 16:42:51,024 - INFO - run_family.py - family_evol - End of the PDB CRGD_HUMAN_89_170_2G98_B_superimposed.pdb.gz 
+2017-07-10 16:42:51,026 - INFO - run_family.py - family_evol - Begin of the PDB CRGD_HUMAN_89_170_4JGF_A_superimposed.pdb.gz 
+2017-07-10 16:43:11,659 - INFO - run_family.py - family_evol - End of the PDB CRGD_HUMAN_89_170_4JGF_A_superimposed.pdb.gz 
+2017-07-10 16:43:11,661 - INFO - run_family.py - family_evol - Begin of the PDB CRGE_RAT_89_170_1A5D_B_superimposed.pdb.gz 
+2017-07-10 16:43:31,901 - INFO - run_family.py - family_evol - End of the PDB CRGE_RAT_89_170_1A5D_B_superimposed.pdb.gz 
+2017-07-10 16:43:31,903 - INFO - run_family.py - family_evol - Begin of the PDB CRBB2_BOVIN_18_100_2BB2_A_superimposed.pdb.gz 
+2017-07-10 16:43:32,363 - ERROR - run_family.py - family_evol - The PDB was not evolutionated CRBB2_BOVIN_18_100_2BB2_A_superimposed.pdb.gz 
+2017-07-10 16:43:32,363 - ERROR - run_family.py - family_evol - invalid literal for long() with base 10: '71A' 
+2017-07-10 16:43:32,365 - INFO - run_family.py - family_evol - Begin of the PDB CRGF_BOVIN_89_170_1A45_A_superimposed.pdb.gz 
+2017-07-10 16:43:52,770 - INFO - run_family.py - family_evol - End of the PDB CRGF_BOVIN_89_170_1A45_A_superimposed.pdb.gz 
+2017-07-10 16:43:52,772 - INFO - run_family.py - family_evol - Begin of the PDB CRGD_HUMAN_3_82_1HK0_X_superimposed.pdb.gz 
+2017-07-10 16:43:53,335 - ERROR - run_family.py - family_evol - The PDB was not evolutionated CRGD_HUMAN_3_82_1HK0_X_superimposed.pdb.gz 
+2017-07-10 16:43:53,335 - ERROR - run_family.py - family_evol - index -86 is out of bounds for axis 1 with size 83 
+2017-07-10 16:43:53,337 - INFO - run_family.py - family_evol - Begin of the PDB CRGF_BOVIN_3_82_1A45_A_superimposed.pdb.gz 
+2017-07-10 16:43:53,839 - ERROR - run_family.py - family_evol - The PDB was not evolutionated CRGF_BOVIN_3_82_1A45_A_superimposed.pdb.gz 
+2017-07-10 16:43:53,839 - ERROR - run_family.py - family_evol - index -86 is out of bounds for axis 1 with size 83 
+2017-07-10 16:43:53,841 - INFO - run_family.py - family_evol - Begin of the PDB CRBB2_RAT_18_100_1BD7_A_superimposed.pdb.gz 
+2017-07-10 16:43:54,267 - ERROR - run_family.py - family_evol - The PDB was not evolutionated CRBB2_RAT_18_100_1BD7_A_superimposed.pdb.gz 
+2017-07-10 16:43:54,267 - ERROR - run_family.py - family_evol - invalid literal for long() with base 10: '71A' 
+2017-07-10 16:43:54,269 - INFO - run_family.py - family_evol - Begin of the PDB CRBB2_HUMAN_18_100_1YTQ_A_superimposed.pdb.gz 
+2017-07-10 16:43:54,733 - ERROR - run_family.py - family_evol - The PDB was not evolutionated CRBB2_HUMAN_18_100_1YTQ_A_superimposed.pdb.gz 
+2017-07-10 16:43:54,734 - ERROR - run_family.py - family_evol - index -89 is out of bounds for axis 1 with size 84 
+2017-07-10 16:43:54,743 - INFO - run_family.py - family_evol - End family Evol  PF00030 
+2017-07-10 16:43:54,743 - INFO - run_family.py - family_evol - --- 341.831785917 seconds --- 
+2017-07-10 16:43:54,744 - INFO - run_family.py - run_families_evol - PF10396 
+2017-07-10 16:43:54,771 - INFO - util.py - find_pdb_to_evolve - Cantidad Total Proteinas/PDB: 5 
+2017-07-10 16:43:54,793 - INFO - util.py - find_pdb_to_evolve - Cantidad de Proteinas/PDB a evolucionar (Uno por cluster):5 
+2017-07-10 16:43:54,796 - INFO - run_family.py - download_pdbs - download_pdbs inicio PF10396 
+2017-07-10 16:43:54,797 - INFO - run_family.py - download_pdbs - download_pdbs 1XZQ 
+2017-07-10 16:43:57,801 - INFO - run_family.py - download_pdbs - download_pdbs 3GEE 
+2017-07-10 16:44:00,295 - INFO - run_family.py - download_pdbs - download_pdbs 1XZQ 
+2017-07-10 16:44:02,996 - INFO - run_family.py - download_pdbs - download_pdbs 1XZP 
+2017-07-10 16:44:05,949 - INFO - run_family.py - download_pdbs - download_pdbs 1XZP 
+2017-07-10 16:44:08,971 - INFO - run_family.py - download_pdbs - download_pdbs fin PF10396 
+2017-07-10 16:44:08,971 - INFO - run_family.py - family_evol - Family Evol PF10396 
+2017-07-10 16:44:47,657 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-07-10 16:44:47,658 - INFO - run_family.py - family_evol - Begin of the PDB MNME_THEMA_3_117_1XZQ_B_superimposed.pdb.gz 
+2017-07-10 16:44:47,695 - INFO - run_family.py - run_optimization_parameters - Run Optimization For 1XZQ 
+2017-07-10 16:44:47,697 - INFO - run_family.py - run_optimization_parameters - Calculation of beta 2.0 nsus 1.0 run 100 
+2017-07-10 16:45:40,730 - INFO - run_family.py - family_evol - End of the PDB MNME_THEMA_3_117_1XZQ_B_superimposed.pdb.gz 
+2017-07-10 16:45:40,731 - INFO - run_family.py - family_evol - Begin of the PDB MNME_CHLTE_14_134_3GEE_A_superimposed.pdb.gz 
+2017-07-10 16:46:09,152 - INFO - run_family.py - family_evol - End of the PDB MNME_CHLTE_14_134_3GEE_A_superimposed.pdb.gz 
+2017-07-10 16:46:09,154 - INFO - run_family.py - family_evol - Begin of the PDB MNME_THEMA_3_117_1XZQ_A_superimposed.pdb.gz 
+2017-07-10 16:46:42,040 - INFO - run_family.py - family_evol - End of the PDB MNME_THEMA_3_117_1XZQ_A_superimposed.pdb.gz 
+2017-07-10 16:46:42,041 - INFO - run_family.py - family_evol - Begin of the PDB MNME_THEMA_3_117_1XZP_A_superimposed.pdb.gz 
+2017-07-10 16:47:10,835 - INFO - run_family.py - family_evol - End of the PDB MNME_THEMA_3_117_1XZP_A_superimposed.pdb.gz 
+2017-07-10 16:47:10,837 - INFO - run_family.py - family_evol - Begin of the PDB MNME_THEMA_3_117_1XZP_B_superimposed.pdb.gz 
+2017-07-10 16:47:39,722 - INFO - run_family.py - family_evol - End of the PDB MNME_THEMA_3_117_1XZP_B_superimposed.pdb.gz 
+2017-07-10 16:47:39,723 - INFO - run_family.py - family_evol - End family Evol  PF10396 
+2017-07-10 16:47:39,724 - INFO - run_family.py - family_evol - --- 210.752163887 seconds --- 
+2017-07-10 16:47:39,724 - INFO - run_family.py - run_families_evol - End of the execution process 
+2017-07-10 16:47:39,724 - INFO - run_family.py - run_families_evol - Time of Execution --- 619.994379997 seconds --- 
+2017-07-10 17:09:09,463 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-07-10 17:09:09,464 - INFO - run_family.py - run_families_evol - PF00030 
+2017-07-10 17:09:09,476 - INFO - run_family.py - family_evol - Family Evol PF00030 
+2017-07-10 17:13:25,168 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-07-10 17:13:25,185 - INFO - run_family.py - family_evol - Begin of the PDB CRBB1_HUMAN_150_232_1OKI_A_superimposed.pdb.gz 
+2017-07-10 17:13:25,265 - INFO - run_family.py - family_evol - End of the PDB CRBB1_HUMAN_150_232_1OKI_A_superimposed.pdb.gz 
+2017-07-10 17:13:25,296 - INFO - run_family.py - family_evol - Begin of the PDB Q8TMX3_METAC_40_120_3HZ2_C_superimposed.pdb.gz 
+2017-07-10 17:13:25,353 - INFO - run_family.py - family_evol - End of the PDB Q8TMX3_METAC_40_120_3HZ2_C_superimposed.pdb.gz 
+2017-07-10 17:13:25,364 - INFO - run_family.py - family_evol - Begin of the PDB CRBB3_HUMAN_115_197_3QK3_A_superimposed.pdb.gz 
+2017-07-10 17:13:25,449 - INFO - run_family.py - family_evol - End of the PDB CRBB3_HUMAN_115_197_3QK3_A_superimposed.pdb.gz 
+2017-07-10 17:13:25,490 - INFO - run_family.py - family_evol - Begin of the PDB CRBB3_HUMAN_25_107_3QK3_B_superimposed.pdb.gz 
+2017-07-10 17:17:22,848 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-07-10 17:17:22,848 - INFO - run_family.py - run_families_evol - PF00030 
+2017-07-10 17:17:22,860 - INFO - run_family.py - family_evol - Family Evol PF00030 
+2017-07-10 17:17:22,960 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-07-10 17:17:22,962 - INFO - run_family.py - family_evol - Begin of the PDB CRBB1_HUMAN_150_232_1OKI_A_superimposed.pdb.gz 
+2017-07-10 17:17:23,017 - INFO - run_family.py - family_evol - End of the PDB CRBB1_HUMAN_150_232_1OKI_A_superimposed.pdb.gz 
+2017-07-10 17:17:23,026 - INFO - run_family.py - family_evol - Begin of the PDB Q8TMX3_METAC_40_120_3HZ2_C_superimposed.pdb.gz 
+2017-07-10 17:17:23,065 - INFO - run_family.py - family_evol - End of the PDB Q8TMX3_METAC_40_120_3HZ2_C_superimposed.pdb.gz 
+2017-07-10 17:17:23,074 - INFO - run_family.py - family_evol - Begin of the PDB CRBB3_HUMAN_115_197_3QK3_A_superimposed.pdb.gz 
+2017-07-10 17:17:23,137 - INFO - run_family.py - family_evol - End of the PDB CRBB3_HUMAN_115_197_3QK3_A_superimposed.pdb.gz 
+2017-07-10 17:17:23,144 - INFO - run_family.py - family_evol - Begin of the PDB CRBB3_HUMAN_25_107_3QK3_B_superimposed.pdb.gz 
+2017-07-10 17:26:03,865 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-07-10 17:26:03,866 - INFO - run_family.py - run_families_evol - PF00030 
+2017-07-10 17:26:03,878 - INFO - run_family.py - family_evol - Family Evol PF00030 
+2017-07-10 17:26:03,990 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-07-10 17:26:03,992 - INFO - run_family.py - family_evol - Begin of the PDB CRBB1_HUMAN_150_232_1OKI_A_superimposed.pdb.gz 
+2017-07-10 17:26:53,618 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-07-10 17:26:53,623 - INFO - run_family.py - run_families_evol - PF00030 
+2017-07-10 17:26:53,635 - INFO - run_family.py - family_evol - Family Evol PF00030 
+2017-07-10 17:26:53,783 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-07-10 17:26:53,785 - INFO - run_family.py - family_evol - Begin of the PDB CRBB1_HUMAN_150_232_1OKI_A_superimposed.pdb.gz 
+2017-07-10 17:28:51,235 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-07-10 17:28:51,236 - INFO - run_family.py - run_families_evol - PF00030 
+2017-07-10 17:28:51,248 - INFO - run_family.py - family_evol - Family Evol PF00030 
+2017-07-10 17:28:51,340 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-07-10 17:28:51,357 - INFO - run_family.py - family_evol - Begin of the PDB CRBB1_HUMAN_150_232_1OKI_A_superimposed.pdb.gz 
+2017-07-10 17:28:51,368 - ERROR - run_family.py - family_evol - The PDB was not evolutionated CRBB1_HUMAN_150_232_1OKI_A_superimposed.pdb.gz 
+2017-07-10 17:28:51,368 - ERROR - run_family.py - family_evol - local variable 'start_residue' referenced before assignment 
+2017-07-10 17:28:51,376 - INFO - run_family.py - family_evol - Begin of the PDB Q8TMX3_METAC_40_120_3HZ2_C_superimposed.pdb.gz 
+2017-07-10 17:28:51,381 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q8TMX3_METAC_40_120_3HZ2_C_superimposed.pdb.gz 
+2017-07-10 17:28:51,382 - ERROR - run_family.py - family_evol - local variable 'start_residue' referenced before assignment 
+2017-07-10 17:28:51,403 - INFO - run_family.py - family_evol - Begin of the PDB CRBB3_HUMAN_115_197_3QK3_A_superimposed.pdb.gz 
+2017-07-10 17:28:51,408 - ERROR - run_family.py - family_evol - The PDB was not evolutionated CRBB3_HUMAN_115_197_3QK3_A_superimposed.pdb.gz 
+2017-07-10 17:28:51,410 - ERROR - run_family.py - family_evol - local variable 'start_residue' referenced before assignment 
+2017-07-10 17:28:51,420 - INFO - run_family.py - family_evol - Begin of the PDB CRBB3_HUMAN_25_107_3QK3_B_superimposed.pdb.gz 
+2017-07-10 18:28:51,019 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-07-10 18:28:51,019 - INFO - run_family.py - run_families_evol - PF00030 
+2017-07-10 18:28:51,031 - INFO - run_family.py - family_evol - Family Evol PF00030 
+2017-07-10 18:28:51,178 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-07-10 18:28:51,180 - INFO - run_family.py - family_evol - Begin of the PDB CRBB1_HUMAN_150_232_1OKI_A_superimposed.pdb.gz 
+2017-07-10 18:33:08,768 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-07-10 18:33:08,768 - INFO - run_family.py - run_families_evol - PF00030 
+2017-07-10 18:33:08,781 - INFO - run_family.py - family_evol - Family Evol PF00030 
+2017-07-10 18:33:08,890 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-07-10 18:33:08,895 - INFO - run_family.py - family_evol - Begin of the PDB CRBB1_HUMAN_150_232_1OKI_A_superimposed.pdb.gz 
+2017-07-11 11:08:45,423 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-07-11 11:08:45,447 - INFO - run_family.py - run_families_evol - PF00030 
+2017-07-11 11:08:45,514 - INFO - run_family.py - family_evol - Family Evol PF00030 
+2017-07-11 11:08:46,076 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-07-11 11:08:46,078 - INFO - run_family.py - family_evol - Begin of the PDB CRBB1_HUMAN_150_232_1OKI_A_superimposed.pdb.gz 
+2017-07-11 11:19:25,237 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-07-11 11:19:25,237 - INFO - run_family.py - run_families_evol - PF00030 
+2017-07-11 11:19:25,250 - INFO - run_family.py - family_evol - Family Evol PF00030 
+2017-07-11 11:19:25,404 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-07-11 11:19:25,407 - INFO - run_family.py - family_evol - Begin of the PDB CRBB1_HUMAN_150_232_1OKI_A_superimposed.pdb.gz 
+2017-07-11 11:22:27,930 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-07-11 11:22:27,931 - INFO - run_family.py - run_families_evol - PF00030 
+2017-07-11 11:22:27,944 - INFO - run_family.py - family_evol - Family Evol PF00030 
+2017-07-11 11:22:28,090 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-07-11 11:22:28,094 - INFO - run_family.py - family_evol - Begin of the PDB CRBB1_HUMAN_150_232_1OKI_A_superimposed.pdb.gz 
+2017-07-11 11:26:57,539 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-07-11 11:26:57,539 - INFO - run_family.py - run_families_evol - PF00030 
+2017-07-11 11:26:57,552 - INFO - run_family.py - family_evol - Family Evol PF00030 
+2017-07-11 11:26:57,701 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-07-11 11:26:57,703 - INFO - run_family.py - family_evol - Begin of the PDB CRBB1_HUMAN_150_232_1OKI_A_superimposed.pdb.gz 
+2017-07-11 11:36:19,075 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-07-11 11:36:19,080 - INFO - run_family.py - run_families_evol - PF00030 
+2017-07-11 11:36:19,107 - INFO - run_family.py - family_evol - Family Evol PF00030 
+2017-07-11 11:36:19,259 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-07-11 11:36:19,266 - INFO - run_family.py - family_evol - Begin of the PDB CRBB1_HUMAN_150_232_1OKI_A_superimposed.pdb.gz 
+2017-07-11 11:45:21,217 - INFO - util.py - getPDBSequence - getPDBSequence pdb 1OKI cadena A 
+2017-07-11 11:45:22,691 - ERROR - run_family.py - family_evol - The PDB was not evolutionated CRBB1_HUMAN_150_232_1OKI_A_superimposed.pdb.gz 
+2017-07-11 11:45:22,692 - ERROR - run_family.py - family_evol - cannot concatenate 'str' and 'Chain' objects 
+2017-07-11 11:45:22,696 - INFO - run_family.py - family_evol - Begin of the PDB Q8TMX3_METAC_40_120_3HZ2_C_superimposed.pdb.gz 
+2017-07-11 11:45:31,315 - INFO - util.py - getPDBSequence - getPDBSequence pdb 3HZ2 cadena C 
+2017-07-11 11:45:38,919 - ERROR - run_family.py - family_evol - The PDB was not evolutionated Q8TMX3_METAC_40_120_3HZ2_C_superimposed.pdb.gz 
+2017-07-11 11:45:38,920 - ERROR - run_family.py - family_evol - cannot concatenate 'str' and 'Chain' objects 
+2017-07-11 11:45:38,924 - INFO - run_family.py - family_evol - Begin of the PDB CRBB3_HUMAN_115_197_3QK3_A_superimposed.pdb.gz 
+2017-07-11 11:45:55,232 - INFO - util.py - getPDBSequence - getPDBSequence pdb 3QK3 cadena A 
+2017-07-11 11:46:33,493 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-07-11 11:46:33,493 - INFO - run_family.py - run_families_evol - PF00030 
+2017-07-11 11:46:33,507 - INFO - run_family.py - family_evol - Family Evol PF00030 
+2017-07-11 11:46:33,668 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-07-11 11:46:33,670 - INFO - run_family.py - family_evol - Begin of the PDB CRBB1_HUMAN_150_232_1OKI_A_superimposed.pdb.gz 
+2017-07-11 11:46:35,369 - INFO - util.py - getPDBSequence - getPDBSequence pdb 1OKI cadena A 
+2017-07-11 11:52:03,432 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-07-11 11:52:03,433 - INFO - run_family.py - run_families_evol - PF00030 
+2017-07-11 11:52:03,445 - INFO - run_family.py - family_evol - Family Evol PF00030 
+2017-07-11 11:52:03,543 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-07-11 11:52:03,563 - INFO - run_family.py - family_evol - Begin of the PDB CRBB1_HUMAN_150_232_1OKI_A_superimposed.pdb.gz 
+2017-07-11 11:52:03,573 - INFO - util.py - getPDBSequence - getPDBSequence pdb 1OKI cadena A 
+2017-07-11 11:52:35,374 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-07-11 11:52:35,375 - INFO - run_family.py - run_families_evol - PF00030 
+2017-07-11 11:52:35,388 - INFO - run_family.py - family_evol - Family Evol PF00030 
+2017-07-11 11:52:35,484 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-07-11 11:52:35,504 - INFO - run_family.py - family_evol - Begin of the PDB CRBB1_HUMAN_150_232_1OKI_A_superimposed.pdb.gz 
+2017-07-11 11:52:35,514 - INFO - util.py - getPDBSequence - getPDBSequence pdb 1OKI cadena A 
+2017-07-11 11:52:59,289 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-07-11 11:52:59,290 - INFO - run_family.py - run_families_evol - PF00030 
+2017-07-11 11:52:59,303 - INFO - run_family.py - family_evol - Family Evol PF00030 
+2017-07-11 11:52:59,463 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-07-11 11:52:59,466 - INFO - run_family.py - family_evol - Begin of the PDB CRBB1_HUMAN_150_232_1OKI_A_superimposed.pdb.gz 
+2017-07-11 11:52:59,469 - INFO - util.py - getPDBSequence - getPDBSequence pdb 1OKI cadena A 
+2017-07-11 11:58:29,370 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-07-11 11:58:29,371 - INFO - run_family.py - run_families_evol - PF00030 
+2017-07-11 11:58:29,383 - INFO - run_family.py - family_evol - Family Evol PF00030 
+2017-07-11 11:58:29,507 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-07-11 11:58:29,512 - INFO - run_family.py - family_evol - Begin of the PDB CRBB1_HUMAN_150_232_1OKI_A_superimposed.pdb.gz 
+2017-07-11 11:58:29,519 - INFO - util.py - getPDBSequence - getPDBSequence pdb 1OKI cadena A 
+2017-07-11 12:21:38,100 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-07-11 12:21:38,101 - INFO - run_family.py - run_families_evol - PF00030 
+2017-07-11 12:21:38,114 - INFO - run_family.py - family_evol - Family Evol PF00030 
+2017-07-11 12:21:38,274 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-07-11 12:21:38,277 - INFO - run_family.py - family_evol - Begin of the PDB CRBB1_HUMAN_150_232_1OKI_A_superimposed.pdb.gz 
+2017-07-11 12:21:45,663 - INFO - util.py - getPDBSequence - getPDBSequence pdb 1OKI cadena A 
+2017-07-11 12:23:15,562 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-07-11 12:23:15,563 - INFO - run_family.py - run_families_evol - PF00030 
+2017-07-11 12:23:15,575 - INFO - run_family.py - family_evol - Family Evol PF00030 
+2017-07-11 12:23:15,743 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-07-11 12:23:15,746 - INFO - run_family.py - family_evol - Begin of the PDB CRBB1_HUMAN_150_232_1OKI_A_superimposed.pdb.gz 
+2017-07-11 12:23:18,871 - INFO - util.py - getPDBSequence - getPDBSequence pdb 1OKI cadena A 
+2017-07-11 12:24:44,185 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-07-11 12:24:44,186 - INFO - run_family.py - run_families_evol - PF00030 
+2017-07-11 12:24:44,210 - INFO - run_family.py - family_evol - Family Evol PF00030 
+2017-07-11 12:24:44,375 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-07-11 12:24:44,378 - INFO - run_family.py - family_evol - Begin of the PDB CRBB1_HUMAN_150_232_1OKI_A_superimposed.pdb.gz 
+2017-07-11 12:25:14,387 - INFO - run_family.py - run_families_evol - Begin of the execution process 
+2017-07-11 12:25:14,388 - INFO - run_family.py - run_families_evol - PF00030 
+2017-07-11 12:25:14,401 - INFO - run_family.py - family_evol - Family Evol PF00030 
+2017-07-11 12:25:14,529 - INFO - run_family.py - family_evol - Begin of the PDBs Evolution  
+2017-07-11 12:25:14,532 - INFO - run_family.py - family_evol - Begin of the PDB CRBB1_HUMAN_150_232_1OKI_A_superimposed.pdb.gz 
+2017-07-11 12:25:17,891 - INFO - util.py - getPDBSequence - getPDBSequence pdb 1OKI cadena A 

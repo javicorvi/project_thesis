@@ -96,7 +96,7 @@ def roc_curve(df,index,y_true,scores,labels,colors,output_file):
     #plt.show()
     plt.gcf().clear()
 
-def roc_curve_(y_true,scores,labels,colors,output_file, vertical_at_01=True):
+def roc_curve_(y_true,scores,labels,colors,output_file, vertical_at_01=True,vertical_line_color='grey',xy_line=True,xy_line_color='grey'):
     fpr = dict()
     tpr = dict()
     roc_auc = dict()
@@ -111,9 +111,9 @@ def roc_curve_(y_true,scores,labels,colors,output_file, vertical_at_01=True):
         plt.plot(fpr[i], tpr[i], color=color, lw=lw,label='ROC curve  {0} (auc = {1:0.2f} | auc 0.1 = {2:0.2f})'''.format(label, roc_auc[i], partial_auc_value_0_1))
     plt.plot([0, 1], [0, 1], color='black', lw=lw, linestyle='--')
     if(vertical_at_01):
-        plt.axvline(x=0.1,color='green',linestyle='--')
+        plt.axvline(x=0.1,color=vertical_line_color)
     plt.xlim([0.0, 1.0])
-    plt.ylim([0.0, 1.05])
+    plt.ylim([0.0, 1.0])
     plt.xlabel('False Positive Rate')
     plt.ylabel('True Positive Rate')
     plt.title('ROC CONTACTS MI')
@@ -214,6 +214,21 @@ def contact_map_with_top_rank_mi(contact_map, x_nat, y_nat, x_evol,y_evol,output
     #plt.show()
     plt.gcf().clear()
 
+def auc_family(x,y,output,title,color="black",line_xy=True,color_line='grey',axis_label=['AUC MSA Evolucionado','AUC MSA Natural']):
+    plt.scatter(x, y,color=color)
+    plt.axis([0, 1, 0, 1])
+    if(line_xy==True):
+        plt.plot([0,1],color=color_line)
+    plt.xlabel(axis_label[0])
+    plt.ylabel(axis_label[1])
+    plt.title(title)
+    plt.savefig(output+'.pdf')
+    plt.savefig(output+'.png')
+    plt.savefig(output+'.eps')
+    plt.gcf().clear()    
+    
+        
+    
 def contact_map_with_top_rank_mi_desarrollo(contact_map, x_nat, y_nat, x_evol,y_evol,x_evol2,y_evol2,output_path,filename):
     cmap=contact_map
     plt.scatter(x_nat, y_nat,color="b",s=40,  marker=(5, 2))

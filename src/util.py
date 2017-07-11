@@ -336,6 +336,78 @@ def find_pdb_start_end_for_protein(stockholm_msa_file, protein, pdb_name, chain)
     except Exception as inst:
         print inst
         logging.error("Error no controlado intentando leer el rango de residuos de la proteina " + protein  +" pdb " + pdb_name + " cadena " + chain)
+
+def getSequence(fasta, seq_id):
+    return "ISLFEGANFKGNTIEIQDDAPSLWVFSVGSVKVSSGTWVGYQYPGYRGYQYLLEPGDFRHWNEWGAFQPQMQSL"
+def getPDBSequence(pdb_name, pdb_path, chain):
+    logging.info("getPDBSequence pdb " + pdb_name + " cadena " + chain)
+    from Bio.PDB.PDBParser import PDBParser
+    from Bio.PDB.Polypeptide import three_to_one
+    from Bio.PDB.Polypeptide import is_aa
+    residue_position = []
+    residue_name = list()
+    try:
+        parser = PDBParser(PERMISSIVE=1)
+        structure = parser.get_structure(pdb_name, pdb_path)
+        model = structure[0]
+        chain = model[chain]
+        for residue in chain:
+            if is_aa(residue.get_resname(), standard=True):
+                residue_name.append(three_to_one(residue.get_resname()))
+                residue_position.append(residue.get_full_id()[3][1])
+            #else:
+                #residue_name.append("X")
+                #residue_position.append(residue.get_full_id()[3][1])
+                #raise Exception("Secuencia no valida, error en la posicion: " + str(residue.get_full_id()[3][1]))
+     
+    except Exception as inst:
+        print inst
+        logging.error("Error no controlado intentando leer la sequencia del pdb "  + pdb_name + " cadena " + chain + " path " + pdb_path)            
+        raise Exception ("PDB Invalido pdb "  + pdb_name + " cadena " + chain + " path " + pdb_path)
+    return residue_position, residue_name
+    
+    
+    '''
+    df_columnas = pandas.read_csv(pdb_path, delim_whitespace=True,header=None,usecols=[5])
+    df_columnas=df_columnas.dropna()
+    df_columnas[5] = df_columnas[5].astype('int32')
+    df_columnas=df_columnas.groupby(5).first().reset_index()
+    
+    with open(pdb_path,'r') as file:
+        for line in file:
+            if(line.startswith("ATOM") and line[21]==chain):  
+                residue_position.append(line[23:26])
+                residue_name.append(line[17:19])
+    file.close()
+    return residue_position, residue_name
+    '''
+'''def mapCDtoPDB(sequence, pdb, chain):
+    pdb_seq, positions = getPDBSequence()
+    MusclePairAlign("protein_seq",sequence,"pdb",pdb_seq)
+'''    
+def MusclePairAlign(id1, seq1, id2, seq2):
+    from Bio.Align.Applications import MuscleCommandline
+    from Bio import SeqIO
+    tmpname = "test"
+    if not os.path.exists(os.path.join("tmp")):
+        os.makedirs(os.path.join("tmp"))
+    with open(os.path.join("tmp", tmpname+".fasta"), 'w') as o:
+        o.write(">"+id1+"\n")
+        o.write(seq1+"\n")
+        o.write(">"+id2+"\n")
+        o.write(seq2+"\n")
+    muscle_line = MuscleCommandline(input=os.path.join("tmp", tmpname+".fasta"), out=os.path.join("tmp", tmpname+".fasta.out"))
+    stdout, stderr = muscle_line()
+    handle = open(os.path.join("tmp", tmpname+".fasta.out"), "rU")
+    records = list(SeqIO.parse(handle, "fasta"))
+    handle.close()
+    # print str(records[0].id)
+    # print str(records[0].seq)
+    # print str(records[1].id)
+    # print str(records[1].seq)
+    return(records[0].seq,records[1].seq)
+
+
 '''    
 import math, string, sys, fileinput
 

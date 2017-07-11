@@ -201,7 +201,6 @@ def convertMSAToFasta(msa_, new_msa):
 def natural_msa_mi(msa_file_name_fasta, result_zmip_path):
     try:
         dataanalisys.buslje09(msa_file_name_fasta, result_zmip_path)
-        return msa_complete_filename
     except BaseException as inst:
         logging.error('Error execution MI form the natural MSA ' )
         raise Exception('Error execution MI form the natural MSA')

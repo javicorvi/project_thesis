@@ -33,7 +33,7 @@ window = 1
 '''
 Family Evolution
 '''
-execute_family_evol=False
+execute_family_evol=True
 
 '''
 Calculate the MI for the natural MSA putting the protein as the reference
@@ -82,7 +82,7 @@ execute_dataanalisys = False
 '''
 Execute the analisys of the information between all the PDBS and MSA generated. All together
 '''
-execute_joined_pdb_analisys = True
+execute_joined_pdb_analisys = False
 
 '''
 Pattern to execute process
@@ -92,7 +92,7 @@ pattern=["sequences"]
 '''
 Iterates over the structures, pdbs and execute the scpe and the clusterization 
 '''        
-input_families_folder="../FAMILY_PF00085/"
+input_families_folder="../FAMILIES_FIVE/"
 def run_families_evol():
     logging.info('Begin of the execution process')
     start_time = time.time()
@@ -277,11 +277,16 @@ def family_evol(input_families_folder, family_folder, pdb_to_evol_df, family_pdb
                     os.makedirs(mi_data_analisys)
                 if not os.path.exists(optimization_folder):
                     os.makedirs(optimization_folder)
-                
-                
+                 
+                cd_secuence = util.getSequence(msa_file_name_fasta, "CRBB1_HUMAN/150-232")
                 #start_residue = int(pdb_protein_to_evolve['seq'][pdb_protein_to_evolve['seq'].index("/")+1:pdb_protein_to_evolve['seq'].index("-")]) 
                 #end_residue = int(pdb_protein_to_evolve['seq'][pdb_protein_to_evolve['seq'].index("-")+1:]) 
-                start_residue, end_residue = util.find_pdb_start_end_for_protein(msa_complete_filename_stock, pdb_protein_to_evolve['seq'], pdb_name, chain_name)
+                if(pdb_protein_to_evolve['status']!='okey'):
+                    residue_position, residue_name = util.getPDBSequence(pdb_name,pdb_file_complete, chain_name)
+                    print residue_position
+                    print residue_name
+                    util.MusclePairAlign("pdb", ''.join(residue_name), "cd_sequence", cd_secuence)
+                    start_residue, end_residue = util.find_pdb_start_end_for_protein(msa_complete_filename_stock, pdb_protein_to_evolve['seq'], pdb_name, chain_name)
                 #pdb_to_evol_df.set_value(index,"start_residue",start_residue)
                 #pdb_to_evol_df.set_value(index,"end_residue",end_residue)
                     
@@ -441,8 +446,9 @@ def run_optimization_parameters(protein, pdb_name,optimization_folder, optimizat
     runs = ["1000","5000","10000","20000"]
     nsus = ["1.0","2.0","3.0","5.0","7.0","10.0","15.0"]
     
-    
-    runs = ["20000"]
+    beta = ["2.0"]
+    runs = ["100"]
+    nsus=["1.0"]
     
     
     
@@ -705,6 +711,18 @@ def plot_rocs():
     output_file = '../THIO_ECOLI_4_107_2TRX_A/example_beta2_nsus3_differentruns'
     plot.roc_curve_(target, sc, labels, colors, output_file)
 
+def plot_auc_family():
+    file = '../FAMILY_PF00085/PF00085/PF00085_evol_info.csv'
+    output= '../FAMILY_PF00085/PF00085/PF00085_AUC'
+    df = pandas.read_csv(file, header=0,usecols=['auc','auc_nat','auc_01','auc_nat_01','status'])
+    pdb_to_compare=df.loc[df['status'] == 'okey']
+    plot.auc_family(pdb_to_compare['auc'],pdb_to_compare['auc_nat'], output, 'PF00085 AUC' )
+    
+    output= '../FAMILY_PF00085/PF00085/PF00085_AUC_01'
+    plot.auc_family(pdb_to_compare['auc_01'],pdb_to_compare['auc_nat_01'], output, 'PF00085 AUC 0.1' , )
+    print()
+    
+    
 
-plot_rocs()
-#run_families_evol()                                   
+#plot_rocs()
+plot_roc_natural_2trx()                                   
