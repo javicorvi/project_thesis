@@ -26,7 +26,7 @@ def count_sequences(msa_path):
     count = 0
     with open(msa_path,'r') as msa:
         for line in msa:
-            if('>' in line):
+            if('>' not in line):
                 count=count+1
     msa.close()
     return count
@@ -201,13 +201,14 @@ def convertMSAToFasta(msa_, new_msa):
 def natural_msa_mi(msa_file_name_fasta, result_zmip_path):
     try:
         dataanalisys.buslje09(msa_file_name_fasta, result_zmip_path)
-        return msa_complete_filename
     except BaseException as inst:
         logging.error('Error execution MI form the natural MSA ' )
         raise Exception('Error execution MI form the natural MSA')
     
 def lettercount(pos):
     return {c: pos.count(c) for c in pos}
+
+
 
 def frequency():
     sequences = ['AATC','GCCT','ATCA']
@@ -224,5 +225,13 @@ def frequency():
                 else:
                     print l + "0"    
         f.close()   
-#frequency()        
+
+def random_seq(input, ouput,count):
+    import random
+    lines = open(input).read().splitlines()  
+    with open(ouput, "w") as f:
+        for i in xrange(0,count):
+            f.write(random.choice(lines)+"\n")  
+        f.close()    
+            
         

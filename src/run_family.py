@@ -706,5 +706,5 @@ def plot_rocs():
     plot.roc_curve_(target, sc, labels, colors, output_file)
 
 
-plot_rocs()
-#run_families_evol()                                   
+#plot_rocs()
+run_families_evol()                                   

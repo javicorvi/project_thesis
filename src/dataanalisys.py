@@ -560,6 +560,7 @@ def compute_joined_msas(family_folder,pdb_to_compare):
         os.makedirs(joined_path)
     folder_to_join = "sincronized_evol_path/"
     fasta_files = []
+    
     for index,pdb_protein_to_evolve in pdb_to_compare.iterrows():
         pdb_folder = family_folder + "/PDB/" +  pdb_protein_to_evolve['pdb_folder_name']
         if(os.path.isdir(pdb_folder)):
@@ -571,25 +572,28 @@ def compute_joined_msas(family_folder,pdb_to_compare):
             if(os.path.isfile(msa_file)):
                 fasta_files.append(msa_file)
     count = 0
+    '''
     with open(joined_fasta_path, "w") as joined_fasta:
         for fasta in fasta_files:
             logging.info('Attach MSA  ' + fasta )
             with open(fasta) as infile:
                 for line in infile:
-                    if('>' in line):
-                        line = line.replace('\n','_'+str(count)+'\n')
-                        count=count+1
-                    joined_fasta.write(line)
+                    if('>' not in line):
+                        joined_fasta.write(line)
             infile.close() 
     joined_fasta.close()
     logging.info('End of Attach evolutionated MSAs  ' )
     
-    joined_fasta_clustering_path = joined_fasta_path + "_cluster_70"
-    msa.clustering_singular("0.70",joined_fasta_path, joined_fasta_clustering_path)
+    joined_fasta_clustering_path = joined_fasta_path + "_cluster_90"
+    '''
+    #msa.clustering_singular("0.70",joined_fasta_path, joined_fasta_clustering_path)
     
-    mi_data_output_path = joined_path + name + ".csv"
-    msa_conservation_path =  joined_path
-    evol_analisys(joined_fasta_clustering_path, mi_data_output_path, msa_conservation_path, name)
+    for i  in xrange(10):
+        msa.random_seq(joined_fasta_path, joined_fasta_path + "_"+str(i),10000)
+        mi_data_output_path = joined_fasta_path + "_"+str(i)+ ".csv"
+        msa_conservation_path =  joined_path
+        evol_analisys(joined_fasta_path + "_"+str(i), mi_data_output_path, joined_fasta_path + "_"+str(i)+"_conservation" , name)
+    
     logging.info('End of the execution process compute_joined_msas')
 
 """
