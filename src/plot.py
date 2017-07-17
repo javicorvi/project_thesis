@@ -96,7 +96,7 @@ def roc_curve(df,index,y_true,scores,labels,colors,output_file):
     #plt.show()
     plt.gcf().clear()
 
-def roc_curve_(y_true,scores,labels,colors,output_file, vertical_at_01=True,vertical_line_color='grey',xy_line=True,xy_line_color='grey'):
+def roc_curve_(y_true,scores,labels,title,colors,legend_title,output_file, vertical_at_01=True,vertical_line_color='grey',xy_line=True,xy_line_color='grey'):
     fpr = dict()
     tpr = dict()
     roc_auc = dict()
@@ -116,10 +116,10 @@ def roc_curve_(y_true,scores,labels,colors,output_file, vertical_at_01=True,vert
     plt.ylim([0.0, 1.0])
     plt.xlabel('False Positive Rate')
     plt.ylabel('True Positive Rate')
-    plt.title('ROC CONTACTS MI')
-    plt.legend(loc="lower right")
+    plt.title(title)
+    plt.legend(loc="lower right",prop={'size':10},title=legend_title)
     plt.savefig(output_file)
-    #plt.show()
+    plt.show()
     plt.gcf().clear()
 
 def partial_auc(fpr, tpr, max_fpr):
@@ -187,6 +187,9 @@ def plot_auc(result_auc_path,output_path,beta,runs,nsus):
     #plt.show()   
     #plt.savefig(output_path+'/auc.png')
     plt.gcf().clear()
+
+
+
 
 '''
 
@@ -308,5 +311,29 @@ def conservation_between_msas(msas_entropy, output_file,natural_line_style='-'):
     #plt.legend(loc=1,prop={'size':10},title="PDB")
     plt.savefig(output_file)
     #plt.show()  
+    plt.gcf().clear()
+
+def auc_optimization(df,output_path):
+    betas=df.groupby('beta').first().reset_index()
+    betas_list=betas['beta'].tolist()
+    for b in betas_list:
+        df_to_plot=df[(df['beta']==b)]
+        plt.scatter(df_to_plot['nsus'], df_to_plot['auc_'],label=None)
+        plt.plot(df_to_plot['nsus'], df_to_plot['auc_'],label=b)
+        
+    '''for y in zip(df):
+        splt.scatter(nsus, y, color=c,picker=True)  
+        splt.plot(nsus, y,color=c, label=beta[i])
+        i=i+1    
+    '''
+    plt.legend(loc="lower right",prop={'size':10},title="Betas")
+    plt.xticks([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18])
+    plt.yticks([0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1])
+    plt.axis([0, 20, 0, 1])
+    plt.xlabel('NSUS (Sustituciones no sinonimas por sitio)')
+    plt.ylabel('AUC')
+    plt.title('Optimizacion de la proteina 2TRX')
+    plt.show()   
+    plt.savefig(output_path)
     plt.gcf().clear()
 

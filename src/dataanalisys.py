@@ -587,6 +587,12 @@ def compute_joined_msas(family_folder,pdb_to_compare):
     joined_fasta_clustering_path = joined_fasta_path + "_cluster_70"
     msa.clustering_singular("0.70",joined_fasta_path, joined_fasta_clustering_path)
     
+    for i  in xrange(10):
+        msa.random_seq(joined_fasta_path, joined_fasta_path + "_"+str(i),10000)
+        mi_data_output_path = joined_fasta_path + "_"+str(i)+ ".csv"
+        msa_conservation_path =  joined_path
+        evol_analisys(joined_fasta_path + "_"+str(i), mi_data_output_path, joined_fasta_path + "_"+str(i)+"_conservation" , name)
+    
     mi_data_output_path = joined_path + name + ".csv"
     msa_conservation_path =  joined_path
     evol_analisys(joined_fasta_clustering_path, mi_data_output_path, msa_conservation_path, name)

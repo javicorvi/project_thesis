@@ -490,7 +490,7 @@ def run_optimization_parameters(protein, pdb_name,optimization_folder, optimizat
     df['execution_time_optimization_total']=time.time() - start_time_total            
     df.to_csv(optimization_file_path)                
     return parameters
-
+'''
 def run_metaheuristic_optimization_parameters(protein, pdb_name,optimization_folder, optimization_file_path,pdb_file_complete_filename_to_evolve, cutted_pdb_path, chain, start_residue, end_residue ):
     logging.info('Run Meta Heuristic Optimization For ' + pdb_name)
     start_time_total = time.time()
@@ -511,10 +511,10 @@ def run_metaheuristic_optimization_parameters(protein, pdb_name,optimization_fol
     if not os.path.exists(mi_data_path):
         os.makedirs(mi_data_path)    
     
-    '''beta = ["0.5","1.00","1.5","2.00","2.5","3.00","3.5","4.0"]
+    beta = ["0.5","1.00","1.5","2.00","2.5","3.00","3.5","4.0"]
     runs = ["1000","20000","30000"]
     nsus = ["1.0","2.0","3.0","4.0","5.0"]
-    '''
+    
     beta = ["0.5","1.0","2.0","3.0","5.0", "7.0", "10.0","15.0","20.0"]
     
     nsus = ["1.0","2.0","3.0","5.0","7.0","10.0","15.0"]
@@ -563,7 +563,7 @@ def run_metaheuristic_optimization_parameters(protein, pdb_name,optimization_fol
     df['execution_time_optimization_total']=time.time() - start_time_total            
     df.to_csv(optimization_file_path)                
     return parameters
-
+'''
 def find_neightbord(solution):
     beta = solution.beta + 1
     nsus = solution.nsus + 1
@@ -693,23 +693,22 @@ def plot_roc_natural_2trx():
 def plot_rocs():
     mi_data_path = '../THIO_ECOLI_4_107_2TRX_A/optimization_folder/clustered_sequences_path/mi_data_path/'
     contact_map_path = '../THIO_ECOLI_4_107_2TRX_A/optimization_folder/contact_map.dat'
-    beta=['2.0']
-    nsus=['3.0']
-    runs=[1000,5000,10000,20000] 
+    beta=['5.0']
+    nsus=['15.0']
+    runs=[20000] 
     labels=['1000','5000','10000','20000']
-    colors=['y','o','g','r']
+    colors=['yellow','orange','red','blue']
+    sc=[]
     for b in beta:
         for sus in nsus:
             for r in runs:
                 sufix = "zmip_sequences-beta"+str(b)+"-nsus"+str(sus)+"-runs"+str(r)
                 file_name = sufix +".csv"
                 target,scores=dataanalisys.getTargetScores(mi_data_path+file_name,contact_map_path,window)
-                sc=[]
                 sc.append(scores)
-                
-                labels.append("beta"+str(b)+"-nsus"+str(sus)+"-runs"+str(r))
-    output_file = '../THIO_ECOLI_4_107_2TRX_A/example_beta2_nsus3_differentruns'
-    plot.roc_curve_(target, sc, labels, colors, output_file)
+                #labels.append("beta"+str(b)+"-nsus"+str(sus)+"-runs"+str(r))
+    output_file = '../THIO_ECOLI_4_107_2TRX_A/example_beta5_nsus15_differentruns'
+    plot.roc_curve_(target, sc, labels, 'ROC curve beta 5 nsus 15' , colors, 'Runs',output_file)
 
 def plot_auc_family():
     file = '../FAMILY_PF00085/PF00085/PF00085_evol_info.csv'
@@ -717,12 +716,19 @@ def plot_auc_family():
     df = pandas.read_csv(file, header=0,usecols=['auc','auc_nat','auc_01','auc_nat_01','status'])
     pdb_to_compare=df.loc[df['status'] == 'okey']
     plot.auc_family(pdb_to_compare['auc'],pdb_to_compare['auc_nat'], output, 'PF00085 AUC' )
-    
     output= '../FAMILY_PF00085/PF00085/PF00085_AUC_01'
     plot.auc_family(pdb_to_compare['auc_01'],pdb_to_compare['auc_nat_01'], output, 'PF00085 AUC 0.1' , )
-    print()
     
     
-
+def plot_auc_optimization():
+    optimization_results = '../THIO_ECOLI_4_107_2TRX_A/optimization_folder/optimizacion.csv'    
+    df = pandas.read_csv(optimization_results, header=0,usecols=['auc_','beta','nsus','run'])
+    df_to_plot=df[(df['run']==20000)]
+    df_to_plot=df_to_plot[(df_to_plot['beta']==0.1) | (df_to_plot['beta']==0.5) | (df_to_plot['beta']==1) | (df_to_plot['beta']==5) | (df_to_plot['beta']==7) | (df_to_plot['beta']==10) | (df_to_plot['beta']==15) | (df_to_plot['beta']==20)]
+    #df_to_plot=df[(df['beta']==0.1) | (df['beta']==0.5) | (df['beta']==1) | (df['beta']==2) | (df['beta']==3) | (df['beta']==5)]
+    plot.auc_optimization(df_to_plot, optimization_results + '.png')
+    
+plot_auc_optimization()    
 #plot_rocs()
-plot_roc_natural_2trx()                                   
+#plot_roc_natural_2trx()
+                                   

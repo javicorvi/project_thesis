@@ -9,7 +9,7 @@ int ReadAlignment(FILE *ali_input)
 {
 
 int i,j,num;
-char line[MAXSTR],str[MAXSTR];
+char line[MAXSTR],str[MAXSTR]; 
 int posit;
                 i=0;
                 while (fgets(line, MAXSTR, ali_input) != NULL ) {
@@ -248,14 +248,15 @@ if((contactmap=fopen(Options.print_sequences_contact_map_outputfile,"w"))==NULL)
     } 
  
 /*Monomer cmat*/
-    i=thisresidue=0;
+	printf("Chain in tools %c\n ",Options.chain);
+	i=thisresidue=0;
     while(i<natoms){
     thisresidue=atom[i].sequential;
     if(atom[i].sidechain==1 && atom[i].chain[0]== Options.chain){
     //if(atom[i].chain[0]== Options.chain){
        for(j=0;j<natoms;j++){
             if( atom[j].chain[0]==Options.chain){        
-             if(atom[j].sequential < thisresidue-1 || atom[j].sequenial > thisresidue+1) {
+             if(atom[j].sequential < thisresidue-1 || atom[j].sequential > thisresidue+1) {
              //los vecinos tambien son tenidos en cuenta, se cambia el if de arriba
              //if(atom[j].sequential != thisresidue) {
             	//if(1==1) {
@@ -907,16 +908,17 @@ double Calculate_score( int *seqnumT, int *seqnumA)
 int Accept_trial(double score,float beta)
 {
   double prob,r;
-
+  
   if(score==0) return(1);
 
 
   if(Options.acceptmodel) {       /*hard evaluation*/
-
+	
 #if defined(DEBUG)
+     fprintf(logfile,"score=%f beta=%f ",score, beta);
      printf("score=%f beta=%f ",score, beta);
 #endif
-                        if(score<beta) return(1);
+                        if(score<beta) return(1); 
                         else return(0);
   }
   else{
@@ -926,7 +928,7 @@ int Accept_trial(double score,float beta)
      /*Evaluate if trial is accepted or not*/
 
      r=rndu();
-
+     
 #if defined(DEBUG)
      printf("prob=%f r=%f score=%f beta=%f ",prob, r, score,beta);
 #endif
@@ -972,9 +974,11 @@ char run(int *Aj,int *Tj,int *mut)
       if(Accept_trial(score,beta)){
         Accumul_sust(A,T,Nsus_pos);   
         memcpy(A,T,protsize*(sizeof(int)));    /*if trial is Accepted copy T -> A*/
+	printf(logfile,"score=%f beta=%f ACEPTADO \n",score, beta);
         return('A');
       }	
       else{
+	   printf(logfile,"score=%f beta=%f NO ACEPTADO \n",score, beta);	
            Accumul_sust(A,A,Nsus_pos);  /* trial Not accepted */
            return('N');
       }
