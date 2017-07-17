@@ -710,6 +710,7 @@ def plot_rocs():
     output_file = '../THIO_ECOLI_4_107_2TRX_A/example_beta5_nsus15_differentruns'
     plot.roc_curve_(target, sc, labels, 'ROC curve beta 5 nsus 15' , colors, 'Runs',output_file)
 
+
 def plot_auc_family():
     file = '../FAMILY_PF00085/PF00085/PF00085_evol_info.csv'
     output= '../FAMILY_PF00085/PF00085/PF00085_AUC'
@@ -732,3 +733,7 @@ plot_auc_optimization()
 #plot_rocs()
 #plot_roc_natural_2trx()
                                    
+
+#plot_rocs()
+run_families_evol()                                   
+
