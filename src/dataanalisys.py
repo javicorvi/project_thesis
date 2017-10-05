@@ -166,8 +166,12 @@ def run_analisys(df,index, zmip_natural_result_path, mi_results_path, pattern_ar
             result_file.close()
             print '************************************************************************'
 
-def getTargetScores(mi_file_path,contact_map,window=1):
-    cmap=util.load_contact_map(contact_map)
+def getTargetScores(mi_file_path,contact_map,window=1,threshold=0):
+    cmap=util.load_contact_map(contact_map,np.float64)
+    print cmap
+    cmap[cmap > threshold] = 1
+    cmap[cmap <= threshold] = 0
+    print cmap
     zmip_evol = util.load_zmip(mi_file_path, window)
     scores = []
     target = []
@@ -522,7 +526,7 @@ def comparative_conservation(family_folder, family_name, pdb_to_compare):
             beta=str(pdb_protein_to_evolve['beta'])
             nsus=str(pdb_protein_to_evolve['nsus'])
             runs=str(int(pdb_protein_to_evolve['runs']))
-            sufix = "sequences-beta"+beta+"-nsus"+nsus+"-runs"+runs+"_data_kl.csv"
+            sufix = "sequences-beta"+beta+".0-nsus"+nsus+".0-runs"+runs+"_data_kl.csv"
             conservation_file = pdb_folder + "/sincronized_evol_path/conservation/"+sufix
             if(os.path.isfile(conservation_file)):
                 df=msa.read_conservation(conservation_file)
@@ -550,7 +554,7 @@ def comparative_conservation(family_folder, family_name, pdb_to_compare):
 '''
 Compute joined msas
 '''
-def compute_joined_msas(family_folder,pdb_to_compare):
+def compute_joined_msas(family_folder,pdb_to_compare,contact_map_path):
     logging.info('compute_joined_msas :: Begin ')
     start_time = time.time()
     joined_path =  family_folder + "/joined/"
@@ -558,21 +562,17 @@ def compute_joined_msas(family_folder,pdb_to_compare):
     joined_fasta_path = joined_path + name +  ".fasta"
     if not os.path.exists(joined_path):
         os.makedirs(joined_path)
-    folder_to_join = "sincronized_evol_path/"
     fasta_files = []
-    
-    for index,pdb_protein_to_evolve in pdb_to_compare.iterrows():
+    '''for index,pdb_protein_to_evolve in pdb_to_compare.iterrows():
         pdb_folder = family_folder + "/PDB/" +  pdb_protein_to_evolve['pdb_folder_name']
         if(os.path.isdir(pdb_folder)):
             beta=str(pdb_protein_to_evolve['beta'])
             nsus=str(pdb_protein_to_evolve['nsus'])
             runs=str(int(pdb_protein_to_evolve['runs']))
-            sufix = "sequences-beta"+beta+"-nsus"+nsus+"-runs"+runs+".fasta"
+            sufix = "sequences-beta"+beta+".0-nsus"+nsus+".0-runs"+runs+".fasta"
             msa_file = pdb_folder + "/sincronized_evol_path/"+sufix
             if(os.path.isfile(msa_file)):
                 fasta_files.append(msa_file)
-    count = 0
-    '''
     with open(joined_fasta_path, "w") as joined_fasta:
         for fasta in fasta_files:
             logging.info('Attach MSA  ' + fasta )
@@ -583,28 +583,40 @@ def compute_joined_msas(family_folder,pdb_to_compare):
             infile.close() 
     joined_fasta.close()
     logging.info('End of Attach evolutionated MSAs  ' )
-    
-    joined_fasta_clustering_path = joined_fasta_path + "_cluster_90"
     '''
     #msa.clustering_singular("0.70",joined_fasta_path, joined_fasta_clustering_path)
-    joined_fasta_clustering_path = joined_fasta_path + "_cluster_90"
-    for i  in xrange(10):
-        msa.random_seq(joined_fasta_path, joined_fasta_path + "_"+str(i),10000)
-        mi_data_output_path = joined_fasta_path + "_"+str(i)+ ".csv"
-        msa_conservation_path =  joined_path
-        evol_analisys(joined_fasta_path + "_"+str(i), mi_data_output_path, joined_fasta_path + "_"+str(i)+"_conservation" , name)
     
-
-    for i  in xrange(10):
-        msa.random_seq(joined_fasta_path, joined_fasta_path + "_"+str(i),10000)
-        mi_data_output_path = joined_fasta_path + "_"+str(i)+ ".csv"
-        msa_conservation_path =  joined_path
-        evol_analisys(joined_fasta_path + "_"+str(i), mi_data_output_path, joined_fasta_path + "_"+str(i)+"_conservation" , name)
-    
-    mi_data_output_path = joined_path + name + ".csv"
-    msa_conservation_path =  joined_path
-    evol_analisys(joined_fasta_clustering_path, mi_data_output_path, msa_conservation_path, name)
-
+    columns=["run_id","auc_threshold_0","auc_01_threshold_0","auc_threshold_25","auc_01_threshold_25","auc_threshold_50","auc_01_threshold_50","auc_threshold_75","auc_01_threshold_75"]
+    df = pandas.DataFrame(columns=columns)
+    for i  in xrange(1,10):
+        random_fasta = joined_fasta_path + "_"+str(i)
+        msa.random_seq(joined_fasta_path, random_fasta,10000)
+        mi_data_output_path = random_fasta+ ".csv"
+        evol_analisys(random_fasta, mi_data_output_path, random_fasta+"_conservation" , name)
+        df.set_value(i, 'run_id', i)
+        target,scores=getTargetScores(mi_data_output_path,contact_map_path,1,0)
+        auc,auc01 = util.getAUC(target,scores)
+        df.set_value(i, 'auc_threshold_0', auc)
+        df.set_value(i, 'auc_01_threshold_0', auc01)
+        target,scores=getTargetScores(mi_data_output_path,contact_map_path,1,0.25)
+        auc,auc01 = util.getAUC(target,scores)
+        df.set_value(i, 'auc_threshold_25', auc)
+        df.set_value(i, 'auc_01_threshold_25', auc01)
+        target,scores=getTargetScores(mi_data_output_path,contact_map_path,1,0.50)
+        auc,auc01 = util.getAUC(target,scores)
+        df.set_value(i, 'auc_threshold_50', auc)
+        df.set_value(i, 'auc_01_threshold_50', auc01)
+        target,scores=getTargetScores(mi_data_output_path,contact_map_path,1,0.75)
+        auc,auc01 = util.getAUC(target,scores)
+        df.set_value(i, 'auc_threshold_75', auc)
+        df.set_value(i, 'auc_01_threshold_75', auc01)
+    df.to_csv(joined_fasta_path+"_poblation.csv")        
+    '''
+        buslje09(clustered_sequences_path,mi_data_path)
+        target,scores=dataanalisys.getTargetScores(mi_data_path,contact_map_path,window)
+        auc,auc01 = util.getAUC(target,scores)
+        '''
+    #target,scores=dataanalisys.getTargetScores(mi_data_path,contact_map_sync,window)
     logging.info('End of the execution process compute_joined_msas')
 
 """
@@ -627,7 +639,7 @@ def comparative_mi_information(family_folder, family_name,top, window, pdb_to_co
             beta=str(pdb_protein_to_evolve['beta'])
             nsus=str(pdb_protein_to_evolve['nsus'])
             runs=str(int(pdb_protein_to_evolve['runs']))
-            sufix = "sequences-beta"+beta+"-nsus"+nsus+"-runs"+runs
+            sufix = "sequences-beta"+beta+".0-nsus"+nsus+".0-runs"+runs
             zmip_file = pdb_folder + "/mi_data/zmip_"+sufix+".csv"
             if(os.path.isfile(zmip_file)):
                 cant = cant + 1

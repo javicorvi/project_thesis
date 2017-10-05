@@ -15,10 +15,11 @@ import util
 import os
 import time
 import constants as const
-import pdb
+import pdb_ as pdb
 import pandas
 
 import logging
+
 logging.basicConfig(filename=const.log_file_path,level=logging.DEBUG,format="%(asctime)s - %(levelname)s - %(filename)s - %(funcName)s - %(message)s ")
 consoleHandler = logging.StreamHandler()
 rootLogger = logging.getLogger()
@@ -33,7 +34,7 @@ window = 1
 '''
 Family Evolution
 '''
-execute_family_evol=True
+execute_family_evol=False
 
 '''
 Calculate the MI for the natural MSA putting the protein as the reference
@@ -82,7 +83,7 @@ execute_dataanalisys = False
 '''
 Execute the analisys of the information between all the PDBS and MSA generated. All together
 '''
-execute_joined_pdb_analisys = False
+execute_joined_pdb_analisys = True
 
 '''
 Pattern to execute process
@@ -92,7 +93,7 @@ pattern=["sequences"]
 '''
 Iterates over the structures, pdbs and execute the scpe and the clusterization 
 '''        
-input_families_folder="../FAMILIES_FIVE/"
+input_families_folder="../FAMILY_PF00085/"
 def run_families_evol():
     logging.info('Begin of the execution process')
     start_time = time.time()
@@ -140,7 +141,7 @@ def run_families_evol():
             
             #dataanalisys.comparative_mi_information(input_families_folder + family_folder, family_folder , 1 ,window, pdb_to_compare)  
             
-            dataanalisys.compute_joined_msas(input_families_folder + family_folder ,pdb_to_compare)
+            dataanalisys.compute_joined_msas(input_families_folder + family_folder ,pdb_to_compare, input_families_folder + family_folder + "/prob_contact_map.dat" )
         
            
             
@@ -599,6 +600,7 @@ def evol_protein(data_frame_evol, index,pdb_file_complete_filename_to_evolve,cut
     dataanalisys.evol_analisys(sincronized_evol_file_path, mi_data_path, msa_conservation_path + sufix, file_name)
     dataanalisys.run_analisys_singular(data_frame_evol, index, zmip_natural_result_path, mi_data_path, contact_map_sync, mi_data_analisys, window)
     data_frame_evol.set_value(index, 'execution_time', time.time() - start_time)
+
 def evol_optimization(pdb_file_complete_filename_to_evolve,cutted_pdb_path, beta,runs,nsus,chain,scpe_sequences,clustered_sequences_folder_path,sincronized_evol_path,mi_data_path,contact_map_path, contact_map_sync):    
     sufix = "sequences-beta"+beta+"-nsus"+nsus+"-runs"+runs
     file_name = sufix +".fasta"
@@ -624,6 +626,30 @@ def evol_optimization(pdb_file_complete_filename_to_evolve,cutted_pdb_path, beta
     target,scores=dataanalisys.getTargetScores(mi_data_path,contact_map_path,window)
     auc,auc01 = util.getAUC(target,scores)
     return auc,auc01,count_seq_scpe,count_seq_cluster,seq_lenght
+
+
+'''Evoluciona una estructura de la thio_ecoli'''
+def evol_protein_for_thio_ecoli_conf(pdb_file_complete_filename_to_evolve, beta,runs,nsus,chain,scpe_sequences,clustered_sequences_folder_path,curated_sequences_folder_path,mi_data_path,contact_map_path, contact_map_sync):    
+    sufix = "sequences-beta"+beta+"-nsus"+nsus+"-runs"+runs
+    file_name = sufix +".fasta"
+    output_msa_path = scpe_sequences + file_name
+    clustered_sequences_path = clustered_sequences_folder_path + file_name + ".cluster"
+    clustered_tmp_sequences_path = clustered_sequences_path + ".clstr"
+    curated_sequences_path = curated_sequences_folder_path + file_name + ".cluster"
+    mi_data_path = mi_data_path + "zmip_"+sufix+".csv"
+    scpe.run_singular(pdb_file_complete_filename_to_evolve, beta, runs,nsus,chain,output_msa_path,contact_map_path)
+    count_seq_scpe = msa.count_sequences(output_msa_path)
+    msa.clustering_singular("0.62",output_msa_path, clustered_sequences_path)
+    count_seq_cluster = msa.count_sequences(clustered_sequences_path)
+    seq_lenght = msa.count_aminoacids(clustered_sequences_path)
+    util.delete_files(clustered_tmp_sequences_path)
+    util.sincronize_natural_evol_msas(clustered_sequences_folder_path, curated_sequences_folder_path,pattern,2,-3)
+    util.sincronize_contact_map(contact_map_path,contact_map_sync,2,106)
+    dataanalisys.buslje09(curated_sequences_path,mi_data_path)
+    target,scores=dataanalisys.getTargetScores(mi_data_path,contact_map_sync,window)
+    auc,auc01 = util.getAUC(target,scores)
+    return auc,auc01,count_seq_scpe,count_seq_cluster,seq_lenght
+    
     
 def download_pdbs(input_families_folder, family_folder, pdb_to_evol_df):
     logging.info('download_pdbs inicio ' + family_folder)
@@ -729,11 +755,89 @@ def plot_auc_optimization():
     #df_to_plot=df[(df['beta']==0.1) | (df['beta']==0.5) | (df['beta']==1) | (df['beta']==2) | (df['beta']==3) | (df['beta']==5)]
     plot.auc_optimization(df_to_plot, optimization_results + '.png')
     
-plot_auc_optimization()    
+#plot_auc_optimization()    
 #plot_rocs()
 #plot_roc_natural_2trx()
                                    
 
 #plot_rocs()
-run_families_evol()                                   
+#run_families_evol()
 
+def evol_thio_ecoli_conformeros():
+    execution_folder = '../THIO_ECOLI_4_107/'
+    structures = ['1THO','2H6X','2TRX']
+    structures = ['1SRX','1XOA','1XOB','2H74','1KEB','2H6Z','2H76']
+    #structures = ['1SRX']#solo tiene carbonos alfa ??
+    structures = ['1KEB']
+    structures = ['2H6Z','2H76']
+    structures = ['1XOA','1THO']
+    chain = 'A'
+    beta='5.0'
+    nsus='15.0'
+    runs='20000'
+    index=1
+    protein='THIO_ECOLI_4_107'
+    columns=["protein","pdb","chain","beta","nsus","run","auc","auc_01","execution_time"]
+    df = pandas.DataFrame(columns=columns)
+    for pdb_name in structures:
+        pdb_folder = execution_folder + pdb_name + "/"
+        pdb_complete_path=pdb_folder + pdb_name+"_complete.pdb"
+        pdb_file_complete_filename_to_evolve = pdb_folder +pdb_name+"_clean.pdb"
+        if not os.path.exists(pdb_folder):
+            os.makedirs(pdb_folder)
+            pdb_data = urllib.urlopen('http://files.rcsb.org/download/'+pdb_name+'.pdb').read()
+            pdb_file = open(pdb_complete_path, "w")
+            pdb_file.write(pdb_data)
+            pdb_file.close()
+            util.clean_pdb(pdb_complete_path,pdb_file_complete_filename_to_evolve, chain)    
+        scpe_sequences = pdb_folder + "scpe_sequences/"
+        clustered_sequences_path = pdb_folder + "clustered_sequences_path/"
+        curated_sequences_path = pdb_folder + "curated_sequences_path/"
+        mi_data_path = pdb_folder + "mi_data_path/"
+        contact_map = pdb_folder + "contact_map.dat"
+        contact_map_sync = pdb_folder + "contact_map_sync.dat"
+        if not os.path.exists(scpe_sequences):
+            os.makedirs(scpe_sequences)
+        if not os.path.exists(clustered_sequences_path):
+            os.makedirs(clustered_sequences_path)
+        if not os.path.exists(curated_sequences_path):
+            os.makedirs(curated_sequences_path)
+        if not os.path.exists(mi_data_path):
+            os.makedirs(mi_data_path)     
+            
+        start_time = time.time()
+        logging.info('Calculation of beta ' + beta + ' nsus ' + nsus + ' run ' + runs)
+        df.set_value(index, 'protein', protein)
+        df.set_value(index, 'pdb', pdb_name)
+        df.set_value(index, 'chain', chain)
+        #df.set_value(index, 'start_residue', start_residue)
+        #df.set_value(index, 'end_residue', end_residue)
+        df.set_value(index, 'beta', beta)
+        df.set_value(index, 'nsus', nsus)
+        df.set_value(index, 'run', runs)
+        try: 
+            auc,auc01,count_seq_scpe,count_seq_cluster,seq_lenght = evol_protein_for_thio_ecoli_conf(pdb_file_complete_filename_to_evolve, beta,runs,nsus,chain, scpe_sequences, clustered_sequences_path, curated_sequences_path, mi_data_path,contact_map,contact_map_sync )
+            df.set_value(index, 'auc', auc)
+            df.set_value(index, 'auc_01', auc01)
+            df.set_value(index, 'count_seq_scpe', count_seq_scpe)
+            df.set_value(index, 'count_seq_cluster', count_seq_cluster)
+            df.set_value(index, 'seq_lenght', seq_lenght)
+            
+        except Exception as inst:
+            print inst
+            x = inst.args
+            print x
+            df.set_value(index, 'auc', 'error')
+            df.set_value(index, 'auc_01', 'error')
+            logging.error('Error with beta ' + beta + ' nsus ' + nsus + ' run ' + runs)        
+        df.set_value(index, 'execution_time', time.time() - start_time)    
+        index=index+1
+        df.to_csv(pdb_folder + 'results.csv')      
+            
+            
+evol_thio_ecoli_conformeros()                                     
+
+#pdb.rms_list(unit_prot_id='P0AA25',reference='2TRX')
+#util.clean_pdb('../THIO_ECOLI_4_107/all_structures/1THO.pdb', '../THIO_ECOLI_4_107/all_structures/1THO_clean.pdb', 'A')
+#r = pdb.align_pdb('../THIO_ECOLI_4_107/2TRX/2TRX_clean.pdb', '../THIO_ECOLI_4_107/2TRX/2TRX_clean.pdb')
+#print r

@@ -15,6 +15,8 @@ import web_logo
 import pandas
 import logging
 import constants as cons
+import random
+    
 '''
 Global Variables
 '''
@@ -227,9 +229,10 @@ def frequency():
         f.close()   
 
 def random_seq(input, ouput,count):
-    import random
     lines = open(input).read().splitlines()  
     with open(ouput, "w") as f:
         for i in xrange(0,count):
-            f.write(random.choice(lines)+"\n")  
+            f.write(">SEQ_"+str(i)+"\n")
+            line = random.choice(lines)
+            f.write(line+"\n") 
         f.close()    

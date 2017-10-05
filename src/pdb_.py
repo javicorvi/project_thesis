@@ -1,4 +1,9 @@
 '''
+Created on Oct 3, 2017
+
+@author: javi
+'''
+'''
 Created on May 5, 2017
 @author: javi
 '''
@@ -46,7 +51,7 @@ import Bio.PDB
 # Select what residues numbers you wish to align
 # and put them in a list
 
-def align_pdb():
+def align_pdb(reference_pdb, sample_pdb):
     start_id = 1
     end_id   = 110
     atoms_to_be_aligned = range(start_id, end_id + 1)
@@ -55,8 +60,8 @@ def align_pdb():
     pdb_parser = Bio.PDB.PDBParser(QUIET = True)
     
     # Get the structures
-    ref_structure = pdb_parser.get_structure("reference", "2TRX.pdb")
-    sample_structure = pdb_parser.get_structure("samle", "2H6X.pdb")
+    ref_structure = pdb_parser.get_structure("reference", reference_pdb)
+    sample_structure = pdb_parser.get_structure("samle", sample_pdb)
     
     # Use the first model in the pdb-files for alignment
     # Change the number 0 if you want to align to another structure
@@ -86,12 +91,58 @@ def align_pdb():
     # Now we initiate the superimposer:
     super_imposer = Bio.PDB.Superimposer()
     super_imposer.set_atoms(ref_atoms, sample_atoms)
+    
     super_imposer.apply(sample_model.get_atoms())
     
     # Print RMSD:
-    print super_imposer.rms
+    return super_imposer.rms
     
     # Save the aligned version of 1UBQ.pdb
-    io = Bio.PDB.PDBIO()
-    io.set_structure(sample_structure) 
-    io.save("1UBQ_aligned.pdb")
+    #io = Bio.PDB.PDBIO()
+    #io.set_structure(sample_structure) 
+    #io.save("1UBQ_aligned.pdb")
+    
+    
+def rms_list(unit_prot_id='P0AA25',reference='2TRX',chain='A'):
+    import urllib
+    import xml.etree.ElementTree as ET
+    import pandas
+    structures_path = '../THIO_ECOLI_4_107/all_structures/'
+    columns=["protein","pdb","method","resolution","chain","rms"]
+    df = pandas.DataFrame(columns=columns)
+    response = urllib.urlopen("http://www.uniprot.org/uniprot/"+unit_prot_id+".xml").read()
+    root  = ET.fromstring(response)
+    entry = root.find("{http://uniprot.org/uniprot}entry")
+    index=0
+    for child in entry.findall('{http://uniprot.org/uniprot}dbReference'):
+        if child.attrib['type']=='PDB':
+            id=child.attrib['id']
+            print id
+            for propery in child:
+                if propery.attrib['type']=='chains':
+                    chain_property=propery.attrib['value']
+                elif propery.attrib['type']=='method':
+                    method=propery.attrib['value']
+                elif propery.attrib['type']=='resolution':     
+                    resolution=propery.attrib['value']
+            if chain in chain_property:
+                pdb_data = urllib.urlopen('http://files.rcsb.org/download/'+id+'.pdb').read()
+                pdb_file = open(structures_path+id+'.pdb', "w")
+                pdb_file.write(pdb_data)
+                pdb_file.close()
+                try:
+                    util.clean_pdb(structures_path+id+'.pdb',structures_path+id+'_clean.pdb', chain)
+                    rms = align_pdb('../THIO_ECOLI_4_107/2TRX/2TRX_clean.pdb', structures_path+id+'_clean.pdb')
+                    df.set_value(index, 'protein', 'THIO_ECOLI_4_107')
+                    df.set_value(index, 'pdb', id)
+                    df.set_value(index, 'chain', chain)
+                    df.set_value(index, 'method', method)
+                    df.set_value(index, 'resolution', resolution)
+                    df.set_value(index, 'rms', rms)
+                    index=index+1
+                except Exception as inst:
+                    print inst
+            else: 
+                print 'No contiene la cadena ' + chain        
+    df=df.sort('rms', ascending=False)
+    df.to_csv(structures_path + 'rms.csv')                  

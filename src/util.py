@@ -307,12 +307,15 @@ def find_pdb_to_evolve(family_pdb_information):
 '''
 Elimina informacion innecesaria
 '''    
-def clean_pdb(pdb_path, new_pdb , chain,start_residue, end_residue):    
+def clean_pdb(pdb_path, new_pdb , chain,start_residue=-100000, end_residue=100000):    
     with open(new_pdb,'w') as new_file:
         with open(pdb_path) as old_file:
             for line in old_file:
                 if(line.startswith("ATOM") and line[21]==chain and int(line[23:26])>=start_residue and int(line[23:26])<=end_residue):  
-                    new_file.write(line)  
+                    #no imprimo los residuos repetidos y los limpio para el analisis
+                    if(line[26]==' '):
+                        new_file.write(line)
+                      
     old_file.close()
     new_file.close()
     #os.remove(pdb_path)
