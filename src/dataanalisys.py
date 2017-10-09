@@ -255,19 +255,20 @@ def run_analisys_singular(df,index, zmip_natural_result_path, mi_result_file_pat
     util.order(m2)
             
     #util.save_list_to_csv(mi_result_file_path+"_order.csv", m2, ['Position 1',' Position 2','ZMIP'])
-            
+    top_df = pandas.DataFrame()        
     print "TOTAL PAR POSITIONS " + str(len(zmip_natural))
             
     result_file = open(mi_result_file_path+".txt","w")
     result_file.write(mi_result_file_path+ '\n')
     result_file.write(" SPEARMAN RANK CORRELATION " + str(value_spearman)+ '\n')
-    top_rank_result = top_rank(zmip_natural,m2,0.5,contact_map,mi_result_file_path+'top_0.5percent_withcon.png',mi_result_file_path,result_file)
-    top_rank_result = top_rank(zmip_natural,m2,1,contact_map,mi_result_file_path+'top_1percent_withcon.png',mi_result_file_path,result_file)
-    top_rank_result = top_rank(zmip_natural,m2,2,contact_map,mi_result_file_path+'top_2percent_withcon.png',mi_result_file_path,result_file)
+    top_rank_result = top_rank(zmip_natural,m2,0.5,contact_map,mi_result_file_path+'top_0.5percent_withcon.png',mi_result_file_path,result_file,top_df,1)
+    top_rank_result = top_rank(zmip_natural,m2,1,contact_map,mi_result_file_path+'top_1percent_withcon.png',mi_result_file_path,result_file,top_df,2)
+    top_rank_result = top_rank(zmip_natural,m2,2,contact_map,mi_result_file_path+'top_2percent_withcon.png',mi_result_file_path,result_file,top_df,3)
     #top_rank(zmip_natural,m2,3,contact_map,mi_result_file_path+'top_3percent_withcon.png',mi_result_file_path,result_file)
     #top_rank(zmip_natural,m2,4,contact_map,mi_result_file_path+'top_4percent_withcon.png',mi_result_file_path,result_file)
     #top_rank(zmip_natural,m2,5,contact_map,mi_result_file_path+'top_5percent_withcon.png',mi_result_file_path,result_file)
     result_file.close()
+    top_df.to_csv(mi_result_file_path + '_top.csv')
     print '************************************************************************'
 
 '''
@@ -318,7 +319,7 @@ Plots information about the top_rank.
 For example give information about the top_rank matches
 Plot a matrix with the contact and the high values (top_rank) of the evolution and the natural msa
 '''
-def top_rank(x,y,top,contact_map,outputpath,filename,result_file):
+def top_rank(x,y,top,contact_map,outputpath,filename,result_file, top_df,index):
     num = len(x)*top/100
     a=x[0:int(num)]
     b=y[0:int(num)]
@@ -365,6 +366,13 @@ def top_rank(x,y,top,contact_map,outputpath,filename,result_file):
     result_file.write("MATCH POSITIONS BETWEEN NAT AND EVOL (NO WINDOW) : " + str(len(data))+ '\n')
     result_file.write("MATCH POSITIONS  : " + str(data) + '\n')
     
+    top_df.set_value(index,'top',str(top))
+    top_df.set_value(index,'par_positions',str(num))
+    top_df.set_value(index,'nat_contact',str(nat_contact))
+    top_df.set_value(index,'nat_contact_%',str(nat_contact*100/num))
+    top_df.set_value(index,'evol_contact',str(evol_contact))
+    top_df.set_value(index,'evol_contact_%',str(evol_contact*100/num))
+    
     data_contact=[]
     for d in data:
         pos1 = int(d[0]-1)
@@ -373,6 +381,7 @@ def top_rank(x,y,top,contact_map,outputpath,filename,result_file):
         if(v==1):
             data_contact.append(d)
     result_file.write("MATCH POSITIONS CONTACTS BETWEEN NAT AND EVOL (NO WINDOW) : " + str(len(data_contact))+ '\n')
+    top_df.set_value(index,'match_positions',str(len(data_contact)))
     result_file.write("MATCH POSITIONS CONTACTS  : " + str(data_contact) + '\n')
     result_file.write("************************************************************************" + '\n')
     

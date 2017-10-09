@@ -771,6 +771,8 @@ def evol_thio_ecoli_conformeros():
     structures = ['1KEB']
     structures = ['2H6Z','2H76']
     structures = ['1XOA','1THO']
+    structures = ['1XOB','2H73','2TIR']
+    structures = ['1XOB']
     chain = 'A'
     beta='5.0'
     nsus='15.0'
@@ -834,8 +836,54 @@ def evol_thio_ecoli_conformeros():
         index=index+1
         df.to_csv(pdb_folder + 'results.csv')      
             
-            
-evol_thio_ecoli_conformeros()                                     
+def analisys_thio_ecoli_conformeros():
+    execution_folder = '../THIO_ECOLI_4_107/'
+    structures = ['2TRX','1XOA','1XOB','2H74','1KEB','2H6Z','2H6X','2H76','1THO']
+    chain = 'A'
+    beta='5.0'
+    nsus='15.0'
+    runs='20000'
+    df_result = pandas.DataFrame()
+    msa_file_name_fasta = "../THIO_ECOLI_4_107_2TRX_A/natural/PF00085_THIO_ECOLI_reference.fasta"
+    zmip_natural_result_file = "../THIO_ECOLI_4_107_2TRX_A/natural/zmip_PF00085_THIO_ECOLI_reference.csv"
+    index=1
+    for pdb_name in structures:
+        pdb_folder = execution_folder + pdb_name + "/"
+        #conservation de la evolucion
+        msa_conservation_path = pdb_folder + "conservation/"
+        if not os.path.exists(msa_conservation_path):
+            os.makedirs(msa_conservation_path)
+        
+        sufix = "sequences-beta"+beta+"-nsus"+nsus+"-runs"+runs
+        msa_file = pdb_folder + "curated_sequences_path/"+sufix+ ".fasta.cluster"
+        mi_data_path = pdb_folder + "mi_data_path/"
+        mi_data_path_file = mi_data_path+ "zmip_"+sufix+".csv"
+        contact_map_sync = pdb_folder + "contact_map_sync.dat"
+        msa_conservation_path = pdb_folder + "conservation/"
+        df_result.set_value(index, 'protein', 'THIO_ECOLI/4_107')
+        df_result.set_value(index, 'pdb', pdb_name)
+        df_result.set_value(index, 'chain', chain)
+        df_result.set_value(index, 'beta', beta)
+        df_result.set_value(index, 'nsus', nsus)
+        df_result.set_value(index, 'run', runs)
+        count_seq_scpe = msa.count_sequences(pdb_folder + "scpe_sequences/"+sufix+ ".fasta")
+        count_seq_cluster = msa.count_sequences(msa_file)
+        df_result.set_value(index, 'count_scpe', count_seq_scpe)
+        df_result.set_value(index, 'count_seq_cluster', count_seq_cluster)
+        try:
+            msa.msa_information(msa_file, msa_conservation_path,sufix)  
+            dataanalisys.run_analisys_singular(df_result, index, zmip_natural_result_file, mi_data_path_file, contact_map_sync, mi_data_path, window)     
+        except Exception as inst:
+            print inst
+            x = inst.args
+            print x
+            df_result.set_value(index, 'auc', 'error')
+            df_result.set_value(index, 'auc_01', 'error')
+            logging.error('Error with beta ' + beta + ' nsus ' + nsus + ' run ' + runs)
+        index=index+1
+        df_result.to_csv(pdb_folder + 'results.csv')
+    df_result.to_csv(execution_folder + 'results_conformeros.csv')       
+analisys_thio_ecoli_conformeros()                                     
 
 #pdb.rms_list(unit_prot_id='P0AA25',reference='2TRX')
 #util.clean_pdb('../THIO_ECOLI_4_107/all_structures/1THO.pdb', '../THIO_ECOLI_4_107/all_structures/1THO_clean.pdb', 'A')
