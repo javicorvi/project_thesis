@@ -180,7 +180,7 @@ def getTargetScores(mi_file_path,contact_map,window=1,threshold=0):
         scores.append(x[2])
         target.append(v)
     return target,scores    
-def run_analisys_singular(df,index, zmip_natural_result_path, mi_result_file_path, contact_map_path,outputpath,window):
+def run_analisys_singular(df,index, zmip_natural_result_path, mi_result_file_path, contact_map_path,outputpath,window, pdb_name):
     #levanto el zmip natural
     zmip_natural = util.load_zmip(zmip_natural_result_path,window)
     util.order(zmip_natural)
@@ -249,7 +249,7 @@ def run_analisys_singular(df,index, zmip_natural_result_path, mi_result_file_pat
     colors = ['blue', 'red']
     plot.roc_curve(df,index,y_true,scores,labels,colors, mi_result_file_path+'_roc_curve.png')
             
-    plot.contacts_with_mi(x_nat_t,y_evol_t,x_nat_f,y_evol_f,mi_result_file_path+'contacts_with_mi.png',mi_result_file_path)
+    plot.contacts_with_mi(x_nat_t,y_evol_t,x_nat_f,y_evol_f,mi_result_file_path+'contacts_with_mi.png',mi_result_file_path, pdb_name)
             
     #ordeno zmip evolucionado sincronizado 
     util.order(m2)
@@ -261,9 +261,9 @@ def run_analisys_singular(df,index, zmip_natural_result_path, mi_result_file_pat
     result_file = open(mi_result_file_path+".txt","w")
     result_file.write(mi_result_file_path+ '\n')
     result_file.write(" SPEARMAN RANK CORRELATION " + str(value_spearman)+ '\n')
-    top_rank_result = top_rank(zmip_natural,m2,0.5,contact_map,mi_result_file_path+'top_0.5percent_withcon.png',mi_result_file_path,result_file,top_df,1)
-    top_rank_result = top_rank(zmip_natural,m2,1,contact_map,mi_result_file_path+'top_1percent_withcon.png',mi_result_file_path,result_file,top_df,2)
-    top_rank_result = top_rank(zmip_natural,m2,2,contact_map,mi_result_file_path+'top_2percent_withcon.png',mi_result_file_path,result_file,top_df,3)
+    top_rank_result = top_rank(zmip_natural,m2,0.5,contact_map,mi_result_file_path+'top_0.5percent_withcon.png',mi_result_file_path,result_file,top_df,1, pdb_name)
+    top_rank_result = top_rank(zmip_natural,m2,1,contact_map,mi_result_file_path+'top_1percent_withcon.png',mi_result_file_path,result_file,top_df,2, pdb_name)
+    top_rank_result = top_rank(zmip_natural,m2,2,contact_map,mi_result_file_path+'top_2percent_withcon.png',mi_result_file_path,result_file,top_df,3, pdb_name)
     #top_rank(zmip_natural,m2,3,contact_map,mi_result_file_path+'top_3percent_withcon.png',mi_result_file_path,result_file)
     #top_rank(zmip_natural,m2,4,contact_map,mi_result_file_path+'top_4percent_withcon.png',mi_result_file_path,result_file)
     #top_rank(zmip_natural,m2,5,contact_map,mi_result_file_path+'top_5percent_withcon.png',mi_result_file_path,result_file)
@@ -296,7 +296,7 @@ def normalice_(m,m2):
 def spearman(x,y):
     return 1 - Bio.Cluster.distancematrix((x,y), dist="s")[1][0]
 
-def matches_coevolved_positions(matrix_ref,matrix_evol):
+def matches_coevolved_positions(matrix_ref,matrix_evol, intersection_evol=False):
     data = []
     for j in matrix_ref:
         pos  = j[0]     
@@ -307,7 +307,8 @@ def matches_coevolved_positions(matrix_ref,matrix_evol):
             if (pos_==pos and pos2_==pos2):
                 #j.append(e[2])
                 aux=j[:]
-                aux.append(e[2])   
+                if (intersection_evol==False):
+                    aux.append(e[2])   
                 data.append(aux)
                 break    
     return  data
@@ -319,8 +320,8 @@ Plots information about the top_rank.
 For example give information about the top_rank matches
 Plot a matrix with the contact and the high values (top_rank) of the evolution and the natural msa
 '''
-def top_rank(x,y,top,contact_map,outputpath,filename,result_file, top_df,index):
-    num = len(x)*top/100
+def top_rank(x,y,top,contact_map,outputpath,filename,result_file, top_df,index,pdb_name):
+    num = len(x)*top//100
     a=x[0:int(num)]
     b=y[0:int(num)]
     print a
@@ -354,7 +355,7 @@ def top_rank(x,y,top,contact_map,outputpath,filename,result_file, top_df,index):
         x_evol.append(int(y[0]-1))
         y_evol.append(int(y[1]-1))
     
-    plot.contact_map_with_top_rank_mi(contact_map,  x_nat, y_nat, x_evol,y_evol,outputpath,filename)
+    plot.contact_map_with_top_rank_mi(contact_map,  x_nat, y_nat, x_evol,y_evol,outputpath,filename,pdb_name + ' Top ' + str(top) +'%')
     
     #find information about secondary structure.
     #find information functional information about position.
@@ -392,6 +393,74 @@ def top_rank(x,y,top,contact_map,outputpath,filename,result_file, top_df,index):
     print "EVOL CONTACTS QUANTITY : " + str(evol_contact) + " - %"+ str(evol_contact*100/num)
     #print data
     return nat_contact, nat_contact*100/num, evol_contact, evol_contact*100/num, len(data),len(data_contact)
+
+def top_rank_intersection(execution_folder, contact_map_path,zmip_natural_result_path, zmip_evol_intersect_result_path, top_df, index, window, contact_threshold, top_threshold):
+    
+    
+    df = pandas.read_csv(zmip_evol_intersect_result_path,delim_whitespace=True,header=0,usecols=[0,1,2])
+    df=df.loc[df['Count']>=top_threshold]
+    num=len(df.index)
+    
+    contact_map= util.load_contact_map(contact_map_path)
+    zmip_natural = util.load_zmip(zmip_natural_result_path,window)
+    util.order(zmip_natural)
+    natural=zmip_natural[0:num]
+    
+    
+    
+    evol=df[0:num]
+    evol=evol.values.tolist()
+    print evol
+    
+    
+    data=matches_coevolved_positions(natural,evol,intersection_evol=True)
+    
+    x_nat=[]
+    y_nat=[]
+    x_evol=[]
+    y_evol=[]
+    evol_contact_pairs=[]
+    nat_contact = 0
+    evol_contact = 0
+    for x, y in map(None, natural, evol):
+        x_nat.append(int(x[0]-1))
+        y_nat.append(int(x[1]-1))
+        x_evol.append(int(y[0]-1))
+        y_evol.append(int(y[1]-1))
+        
+        pos1 = int(x[0]-1)
+        pos2 = int(x[1]-1)
+        v = contact_map[pos1][pos2]
+        if(v >= contact_threshold):
+            nat_contact=nat_contact+1
+        pos1 = int(y[0]-1)
+        pos2 = int(y[1]-1)
+        v = contact_map[pos1][pos2]
+        if(v >= contact_threshold):
+            evol_contact=evol_contact+1 
+            evol_contact_pairs.append(y)
+        
+        
+    plot.contact_map_with_top_rank_mi_sum(contact_map,  x_nat, y_nat, x_evol,y_evol,execution_folder + 'contact_map_thresold_'+str(contact_threshold)+'with_intersection_top_threshold_'+str(top_threshold)+'.png','', 'THIO_ECOLI Top Thresold ' + str(top_threshold) +' Contact Threshold ' + str(contact_threshold))
+    
+    top_df.set_value(index,'top_threshold',str(top_threshold))
+    top_df.set_value(index,'contact_threshold',str(contact_threshold))
+    top_df.set_value(index,'par_positions',str(num))
+    top_df.set_value(index,'nat_contact',str(nat_contact))
+    top_df.set_value(index,'nat_contact_%',str(nat_contact*100/num))
+    top_df.set_value(index,'evol_contact',str(evol_contact))
+    top_df.set_value(index,'evol_contact_%',str(evol_contact*100/num))
+    
+    data_contact=[]
+    for d in data:
+        pos1 = int(d[0]-1)
+        pos2 = int(d[1]-1)
+        v=contact_map[pos1][pos2]
+        if(v>=contact_threshold):
+            data_contact.append(d)
+    top_df.set_value(index,'match_positions',str(len(data_contact)))
+    
+    
 
 '''
 Plots information about the top_rank.
@@ -512,6 +581,77 @@ def sum_contact_map(family_folder,pdb_to_compare):
     plot.contact_map(camp_prob,family_folder + "/prob_contact_map.png")
     conserved_contacts = np.count_nonzero(camp_prob == 1.0)  
     print conserved_contacts
+    
+def contact_map_sum_prob(execution_folder,contact_maps_paths):    
+    cmap_sum = None
+    cant = 0
+    for contact_map_path in contact_maps_paths:
+        cmap = util.load_contact_map(contact_map_path)
+        if(cmap_sum==None):
+            cmap_sum = cmap
+            cant=cant+1
+        else:
+            if(cmap.shape==cmap_sum.shape):
+                cmap_sum = cmap_sum + cmap
+                cant=cant+1
+            else:
+                print " diferent size natural : " + str(cmap_sum.shape)  + " AND " + contact_map_path + " : " + str(cmap.shape)
+                #pdb_to_evol_df=pdb_to_evol_df.drop(index)
+    #print cmap_sum 
+    util.save_contact_map(cmap_sum, execution_folder + "/sum_contact_map.dat")
+    cmap_sum = cmap_sum.astype(float)
+    camp_prob = cmap_sum / cant
+    print camp_prob   
+    util.save_contact_map(camp_prob, execution_folder + "/prob_contact_map.dat") 
+    plot.contact_map(camp_prob,execution_folder + "/prob_contact_map.png")
+    plot.contact_map_sum(cmap_sum,execution_folder + "/contact_map.png")
+    
+    df=pandas.DataFrame()
+    '''conserved_contacts_100 = np.count_nonzero(camp_prob == 1.0)
+    conserved_contacts_75_100 = np.count_nonzero(camp_prob > 0.75 and camp_prob < 1.0 )
+    conserved_contacts_50_75 = np.count_nonzero(camp_prob > 0.5 and camp_prob < 0.75 )
+    conserved_contacts_25_50 = np.count_nonzero(camp_prob > 0.25 and camp_prob < 0.5 )
+    conserved_contacts_0_25 = np.count_nonzero(camp_prob > 0.0 and camp_prob < 0.25 )  
+    '''
+    total_contacts = np.count_nonzero(cmap_sum != 0)
+    conserved_contacts_8 = np.count_nonzero(cmap_sum == 8)
+    conserved_contacts_7 = np.count_nonzero(cmap_sum == 7)
+    conserved_contacts_6 = np.count_nonzero(cmap_sum == 6)
+    conserved_contacts_5 = np.count_nonzero(cmap_sum == 5)
+    conserved_contacts_4 = np.count_nonzero(cmap_sum == 4)
+    conserved_contacts_3 = np.count_nonzero(cmap_sum == 3)
+    conserved_contacts_2 = np.count_nonzero(cmap_sum == 2)
+    conserved_contacts_1 = np.count_nonzero(cmap_sum == 1)
+    
+    df.set_value(1, '#proteins', 1)
+    df.set_value(1, '#contacts', conserved_contacts_1)
+    df.set_value(1, '%contacts', conserved_contacts_1*100//total_contacts)
+    df.set_value(2, '#proteins', 2)
+    df.set_value(2, '#contacts', conserved_contacts_2)
+    df.set_value(2, '%contacts', conserved_contacts_2*100//total_contacts)
+    df.set_value(3, '#proteins', 3)
+    df.set_value(3, '#contacts', conserved_contacts_3)
+    df.set_value(3, '%contacts', conserved_contacts_3*100//total_contacts)
+    df.set_value(4, '#proteins', 4)
+    df.set_value(4, '#contacts', conserved_contacts_4)
+    df.set_value(4, '%contacts', conserved_contacts_4*100//total_contacts)
+    df.set_value(5, '#proteins', 5)
+    df.set_value(5, '#contacts', conserved_contacts_5)
+    df.set_value(5, '%contacts', conserved_contacts_5*100//total_contacts)
+    df.set_value(6, '#proteins', 6)
+    df.set_value(6, '#contacts', conserved_contacts_6)
+    df.set_value(6, '%contacts', conserved_contacts_6*100//total_contacts)
+    df.set_value(7, '#proteins', 7)
+    df.set_value(7, '#contacts', conserved_contacts_7)
+    df.set_value(7, '%contacts', conserved_contacts_7*100//total_contacts)
+    df.set_value(8, '#proteins', 8)
+    df.set_value(8, '#contacts', conserved_contacts_8)
+    df.set_value(8, '%contacts', conserved_contacts_8*100//total_contacts)
+    
+    df.set_value(9, '#total_contacts', total_contacts)
+    df.to_csv(execution_folder+'contact_distribution.csv')
+    
+    
 """
 Lee la informacion sobre consevacion (KL) por columna de cada una de las proteinas evolucionadas. 
 No se esta aplicando ningun entrecruzamiento de la informacion.
@@ -628,6 +768,95 @@ def compute_joined_msas(family_folder,pdb_to_compare,contact_map_path):
     #target,scores=dataanalisys.getTargetScores(mi_data_path,contact_map_sync,window)
     logging.info('End of the execution process compute_joined_msas')
 
+
+def analisys_mi_with_contact_map(execution_folder, mi_paths,contact_map_path, zmip_natural_result_path,top_mi , window, sinchronize_with_natural=False):
+    contact_map = util.load_contact_map(contact_map_path)
+    
+    zmip_natural = util.load_zmip(zmip_natural_result_path,window)
+    util.order(zmip_natural)
+    
+    fields=["Position1","Position2","Count"]
+    df_total = pandas.DataFrame([],columns=fields)
+    cant = 0
+    for mi_file_path in mi_paths:
+        cant = cant + 1
+        zmip_evol = util.load_zmip(mi_file_path,window)
+        
+        if(sinchronize_with_natural==True):
+            zmip_natural,zmip_evol=util.sincronice_mi(zmip_natural, zmip_evol)
+        
+        util.order(zmip_evol)
+        num = len(zmip_evol)*top_mi//100
+        zmip_evol_top=zmip_evol[0:int(num)]
+        df = pandas.DataFrame(zmip_evol_top,columns=fields)
+        df_total=df_total.append(df)
+    
+    #After append all the evolution MI TOP do this
+    #counts = dfres.groupby(['Position1','Position2']).size()
+    #print counts
+    #Count cantidad de veces que aprece en los tops
+    counts_df = pandas.DataFrame(df_total.groupby(['Position1','Position2']).size().rename('Count'))
+    #
+    sorted_df=counts_df.sort_values(by=['Count'],ascending=[False])
+    #print sorted_df
+    
+    sorted_df['ProbTop']=pandas.Series(0.0, index=sorted_df.index)
+    sorted_df['Contacts']=pandas.Series(0.0, index=sorted_df.index)
+    sorted_df['ProbContact']=pandas.Series(0.0, index=sorted_df.index)
+    #print prob_contact_map
+    for index,mi_par in sorted_df.iterrows():
+        #probablidad de que aprezca en top
+        prob_top = mi_par['Count'] * 100 / cant 
+        sorted_df.set_value(index, 'ProbTop' , prob_top/100)
+        #cantidad de contactos 
+        pos1 = int(index[0]-1)
+        pos2 = int(index[1]-1)
+        v=contact_map[pos1][pos2]
+        sorted_df.set_value(index, 'Contacts' , v)
+        #probablidad de contactos
+        prob_contact = float(v) * 100 / cant
+        sorted_df.set_value(index, 'ProbContact' , float(prob_contact)/100)
+        
+    
+    sorted_df.to_csv(execution_folder + '/top_'+str(top_mi)+'_mi.csv', sep='\t', encoding='utf-8')
+    
+    
+    
+    correlation_p = sorted_df['ProbContact'].corr(sorted_df['ProbTop'], method='pearson')
+    correlation_k = sorted_df['ProbContact'].corr(sorted_df['ProbTop'], method='kendall')
+    correlation_s = sorted_df['ProbContact'].corr(sorted_df['ProbTop'], method='spearman')
+    
+    '''correlation_sp = df.corr(method='pearson')
+    correlation_sp = df.corr(method='kendall')
+    correlation_sp = df.corr(method='spearman')
+    '''
+    
+    
+    mean = sorted_df["ProbTop"].mean()
+    median = sorted_df["ProbTop"].median()
+    var = sorted_df["ProbTop"].var()
+    mode = sorted_df["ProbTop"].mode()
+    
+    corr_df = pandas.DataFrame()
+    corr_df.set_value(1, 'pearson', correlation_p)
+    corr_df.set_value(1, 'kendall', correlation_k)
+    corr_df.set_value(1, 'spearman', correlation_s)
+    corr_df.to_csv(execution_folder + '/top_'+str(top_mi)+'_mi_correlation.csv', sep='\t', encoding='utf-8')
+    
+    
+    
+    
+    '''
+    import matplotlib.pyplot as plt
+    sorted_df.plot.scatter(x='ProbTop', y='ProbContact');
+    plt.savefig(execution_folder + "/top_family_mi.png");
+    plt.show()
+    plt.gcf().clear()
+    print sorted_df
+    '''
+    
+    
+            
 """
 Esta funcion toma el top de MI de todas las proteinas evolucionadas y luego realiza una agrupacion indicando la cantidad de veces que aparecen los pares.
 Ordena los pares de forma descendente, osea los pares que mas aparecen en el top quedan arriba. 

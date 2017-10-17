@@ -7,10 +7,11 @@ import itertools
 import matplotlib.pyplot as plt
 import numpy as np
 from sklearn import metrics
+import matplotlib.cm as cm
 '''
 Generates a plot describe the contacts with de MI of the natural and evolution msa
 '''
-def contacts_with_mi(x_nat_t,y_evol_t,x_nat_f,y_evol_f,output_path,filename):
+def contacts_with_mi(x_nat_t,y_evol_t,x_nat_f,y_evol_f,output_path,filename,pdb_name):
     #trues
     #x_nat_t = [27.0,89.0,25.0]
     #y_evol_t = [5.9,3.2,4.0]
@@ -19,19 +20,31 @@ def contacts_with_mi(x_nat_t,y_evol_t,x_nat_f,y_evol_f,output_path,filename):
     #y_evol_f = [1.1,0.32,1.0]
     #plt.scatter(x_nat_t, y_evol_t,color="b")
     #plt.scatter(x_nat_f, y_evol_f,color="r")
-    plt.axis([0, 1, 0, 1])
+    plt.axis([0, 0.6, 0, 0.6])
     no = plt.scatter(y_evol_f, x_nat_f,color="r")
     co = plt.scatter(y_evol_t, x_nat_t,color="b")
     plt.legend((no, co),
            ('No Contact', 'Contact'),
            scatterpoints=1,
-           loc='lower left',
+           loc='lower right',
            ncol=3,
            fontsize=8)
     #plt.set_title(filename)
     plt.ylabel('Natural MI Values')
     plt.xlabel('Evolution MI Values')
-    plt.title(filename)
+    plt.title(pdb_name)
+    
+    a = plt.axes([.6, .6, .25, .25])
+    plt.axis([0, 1, 0, 1])
+    no = plt.scatter(y_evol_f, x_nat_f,color="r")
+    co = plt.scatter(y_evol_t, x_nat_t,color="b")
+    plt.axvline(x=.6, ymin=0.0, ymax=0.6,linestyle='--',color='black')
+    #plt.axhline(y=.4, xmin=0.25, xmax=0.402, linewidth=2, color = 'k')
+    plt.axhline(y=.6, xmin=0.0, xmax=0.6,linestyle='--',color='black')
+    plt.title('Zoom Out')
+    plt.xticks([0,0.6,1])
+    plt.yticks([0,0.6,1])
+    
     
     #x=[[1.0,2.4]]
     #plt.scatter(x,color="r")
@@ -194,27 +207,14 @@ def plot_auc(result_auc_path,output_path,beta,runs,nsus):
 '''
 
 '''
-def contact_map_with_top_rank_mi(contact_map, x_nat, y_nat, x_evol,y_evol,output_path,filename):
-    #np.set_printoptions(threshold=np.nan)
-    #print contact_map
-    #contact_map[contact_map == 'false']=0
-    #contact_map[contact_map == 'true']=1
-    #cmap=np.array(contact_map, dtype='i4')
-    #print cmap2
-    #print len(cmap2)
-    #cmap=np.random.randint(2, size=(108, 108))
-    #print len(cmap)
-    #np.random.seed(101)
+def contact_map_with_top_rank_mi(contact_map, x_nat, y_nat, x_evol,y_evol,output_path,filename,title):
     cmap=contact_map
-    #x_nat_t = [27.0,89.0,25.0]
-    #y_evol_t = [5.9,3.2,4.0]
     plt.scatter(x_nat, y_nat,color="b",s=40,  marker=(5, 2))
     plt.scatter(y_evol, x_evol, color="r",s=40,  marker=(5, 2))
     g = np.floor(cmap)
     plt.imshow(g, cmap='Greys')
-    plt.title(filename)
+    plt.title(title)
     plt.savefig(output_path)
-    #plt.show()
     plt.gcf().clear()
 
 def auc_family(x,y,output,title,color="black",line_xy=True,color_line='grey',axis_label=['AUC MSA Evolucionado','AUC MSA Natural']):
@@ -248,7 +248,7 @@ def contact_map_with_top_rank_mi_desarrollo(contact_map, x_nat, y_nat, x_evol,y_
 Plot the contact map and saved in output_file
 '''
 def contact_map(contact_map, output_file):
-    import matplotlib.cm as cm
+    
     '''
     import matplotlib.pyplot as plt
     import matplotlib.cm as cm
@@ -259,11 +259,44 @@ def contact_map(contact_map, output_file):
     cmap=contact_map
     
     plt.imshow(cmap,cmap=cm.Blues)
+    #plt.imshow(cmap,cmap=cm.Set1,interpolation='nearest')
     plt.colorbar()
     #plt.imshow(cmap,cmap=cm.hot)
     plt.savefig(output_file)
     #plt.show()
     plt.gcf().clear()
+
+def contact_map_sum(contact_map, output_file):
+    
+    '''
+    import matplotlib.pyplot as plt
+    import matplotlib.cm as cm
+    from matplotlib.colors import LogNorm
+    import numpy as np
+    x, y, z = np.loadtxt('data.txt', unpack=True)
+    '''
+    cmap=contact_map
+    
+    #plt.imshow(cmap,cmap=cm.Blues)
+    plt.imshow(cmap,cmap=cm.hot,interpolation='nearest')
+    plt.colorbar(ticks=[0,1,2,3,4,5,6,7,8])
+    #plt.imshow(cmap,cmap=cm.hot)
+    plt.savefig(output_file)
+    #plt.show()
+    plt.gcf().clear()
+
+def contact_map_with_top_rank_mi_sum(contact_map, x_nat, y_nat, x_evol,y_evol,output_path,filename,title):
+    cmap=contact_map
+    plt.scatter(x_nat, y_nat,color="b",s=40,  marker=(5, 2))
+    plt.scatter(y_evol, x_evol, color="r",s=40,  marker=(5, 2))
+    g = np.floor(cmap)
+    plt.imshow(cmap,cmap=cm.Greys,interpolation='nearest')
+    plt.colorbar(ticks=[0,1,2,3,4,5,6,7,8])
+    plt.title(title)
+    plt.savefig(output_path)
+    plt.gcf().clear()
+
+
 '''
 Generates a plot describe the contacts with de MI of the natural and evolution msa
 '''

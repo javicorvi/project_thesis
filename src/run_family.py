@@ -872,7 +872,7 @@ def analisys_thio_ecoli_conformeros():
         df_result.set_value(index, 'count_seq_cluster', count_seq_cluster)
         try:
             msa.msa_information(msa_file, msa_conservation_path,sufix)  
-            dataanalisys.run_analisys_singular(df_result, index, zmip_natural_result_file, mi_data_path_file, contact_map_sync, mi_data_path, window)     
+            dataanalisys.run_analisys_singular(df_result, index, zmip_natural_result_file, mi_data_path_file, contact_map_sync, mi_data_path, window, pdb_name)     
         except Exception as inst:
             print inst
             x = inst.args
@@ -883,7 +883,53 @@ def analisys_thio_ecoli_conformeros():
         index=index+1
         df_result.to_csv(pdb_folder + 'results.csv')
     df_result.to_csv(execution_folder + 'results_conformeros.csv')       
-analisys_thio_ecoli_conformeros()                                     
+
+
+#analisys_thio_ecoli_conformeros()                                     
+
+def analisys_contact_map_thio_ecoli_conformeros():
+    execution_folder = '../THIO_ECOLI_4_107/'
+    structures = ['2TRX','1XOA','1XOB','2H74','1KEB','2H6Z','2H6X','2H76']
+    contact_maps_paths = [execution_folder+pdb+'/contact_map_sync.dat' for pdb in structures]
+    dataanalisys.contact_map_sum_prob(execution_folder, contact_maps_paths) 
+
+def analisys_top_mi_thio_ecoli_conformeros():
+    execution_folder = '../THIO_ECOLI_4_107/'
+    structures = ['2TRX','1XOA','1XOB','2H74','1KEB','2H6Z','2H6X','2H76']
+    mi_paths = [execution_folder+pdb+'/mi_data_path/zmip_sequences-beta5.0-nsus15.0-runs20000.csv' for pdb in structures]
+    contact_map_path = execution_folder + 'sum_contact_map.dat'
+    zmip_natural_result_path = "../THIO_ECOLI_4_107_2TRX_A/natural/zmip_PF00085_THIO_ECOLI_reference.csv"
+    
+    
+    dataanalisys.analisys_mi_with_contact_map(execution_folder, mi_paths,contact_map_path, zmip_natural_result_path,0.5,window=1)
+    dataanalisys.analisys_mi_with_contact_map(execution_folder, mi_paths,contact_map_path,zmip_natural_result_path,1,window=1)
+    dataanalisys.analisys_mi_with_contact_map(execution_folder, mi_paths,contact_map_path,zmip_natural_result_path,2,window=1) 
+    
+    #hacer el desarrollo para mostras la matriz de contactos con los mi top, que se hayan encontrado en al menos 4 msa de proteinas
+    
+    
+    
+    zmip_evol_intersect_result_path = execution_folder + '/top_1_mi.csv'
+    
+    top_df = pandas.DataFrame()
+    dataanalisys.top_rank_intersection(execution_folder, contact_map_path, zmip_natural_result_path, zmip_evol_intersect_result_path, top_df, 1, window=1, contact_threshold=4, top_threshold=4)
+    dataanalisys.top_rank_intersection(execution_folder, contact_map_path, zmip_natural_result_path, zmip_evol_intersect_result_path, top_df, 2, window=1, contact_threshold=3, top_threshold=3)
+    dataanalisys.top_rank_intersection(execution_folder, contact_map_path, zmip_natural_result_path, zmip_evol_intersect_result_path, top_df, 3, window=1, contact_threshold=1, top_threshold=1)
+    
+    top_df.to_csv(execution_folder  + 'top_information.csv')
+    
+    
+def analisys_contacts():
+    execution_folder = '../THIO_ECOLI_4_107/'
+    concat_map_path = execution_folder + 'sum_contact_map.dat'
+    dataanalisys.analisys_contacts_and_mi(execution_folder, concat_map_path)
+    
+
+analisys_top_mi_thio_ecoli_conformeros()
+
+#analisys_contact_map_thio_ecoli_conformeros()
+
+
 
 #pdb.rms_list(unit_prot_id='P0AA25',reference='2TRX')
 #util.clean_pdb('../THIO_ECOLI_4_107/all_structures/1THO.pdb', '../THIO_ECOLI_4_107/all_structures/1THO_clean.pdb', 'A')
