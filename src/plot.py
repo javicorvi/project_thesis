@@ -247,26 +247,7 @@ def contact_map_with_top_rank_mi_desarrollo(contact_map, x_nat, y_nat, x_evol,y_
 '''
 Plot the contact map and saved in output_file
 '''
-def contact_map(contact_map, output_file):
-    
-    '''
-    import matplotlib.pyplot as plt
-    import matplotlib.cm as cm
-    from matplotlib.colors import LogNorm
-    import numpy as np
-    x, y, z = np.loadtxt('data.txt', unpack=True)
-    '''
-    cmap=contact_map
-    
-    plt.imshow(cmap,cmap=cm.Blues)
-    #plt.imshow(cmap,cmap=cm.Set1,interpolation='nearest')
-    plt.colorbar()
-    #plt.imshow(cmap,cmap=cm.hot)
-    plt.savefig(output_file)
-    #plt.show()
-    plt.gcf().clear()
-
-def contact_map_sum(contact_map, output_file):
+def contact_map(contact_map, output_file, title='Contact Map'):
     
     '''
     import matplotlib.pyplot as plt
@@ -278,9 +259,31 @@ def contact_map_sum(contact_map, output_file):
     cmap=contact_map
     
     #plt.imshow(cmap,cmap=cm.Blues)
-    plt.imshow(cmap,cmap=cm.hot,interpolation='nearest')
+    plt.imshow(cmap,cmap=cm.Greys,interpolation='nearest')
+    #plt.imshow(cmap,cmap=cm.Set1,interpolation='nearest')
+    #plt.colorbar()
+    #plt.imshow(cmap,cmap=cm.hot)
+    plt.title(title)
+    plt.savefig(output_file)
+    #plt.show()
+    plt.gcf().clear()
+
+def contact_map_sum(contact_map, output_file,title='Contact Map'):
+    
+    '''
+    import matplotlib.pyplot as plt
+    import matplotlib.cm as cm
+    from matplotlib.colors import LogNorm
+    import numpy as np
+    x, y, z = np.loadtxt('data.txt', unpack=True)
+    '''
+    cmap=contact_map
+    
+    #plt.imshow(cmap,cmap=cm.Blues)
+    plt.imshow(cmap,cmap=cm.YlOrRd,interpolation='nearest')
     plt.colorbar(ticks=[0,1,2,3,4,5,6,7,8])
     #plt.imshow(cmap,cmap=cm.hot)
+    plt.title(title)
     plt.savefig(output_file)
     #plt.show()
     plt.gcf().clear()

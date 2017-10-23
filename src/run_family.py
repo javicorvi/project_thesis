@@ -901,20 +901,27 @@ def analisys_top_mi_thio_ecoli_conformeros():
     zmip_natural_result_path = "../THIO_ECOLI_4_107_2TRX_A/natural/zmip_PF00085_THIO_ECOLI_reference.csv"
     
     
-    dataanalisys.analisys_mi_with_contact_map(execution_folder, mi_paths,contact_map_path, zmip_natural_result_path,0.5,window=1)
-    dataanalisys.analisys_mi_with_contact_map(execution_folder, mi_paths,contact_map_path,zmip_natural_result_path,1,window=1)
-    dataanalisys.analisys_mi_with_contact_map(execution_folder, mi_paths,contact_map_path,zmip_natural_result_path,2,window=1) 
+    dataanalisys.analisys_mi_with_contact_map(execution_folder, mi_paths,contact_map_path, zmip_natural_result_path,0.5,window=1,sinchronize_with_natural=False)
+    dataanalisys.analisys_mi_with_contact_map(execution_folder, mi_paths,contact_map_path,zmip_natural_result_path,1,window=1,sinchronize_with_natural=False)
+    dataanalisys.analisys_mi_with_contact_map(execution_folder, mi_paths,contact_map_path,zmip_natural_result_path,2,window=1,sinchronize_with_natural=False)
     
     #hacer el desarrollo para mostras la matriz de contactos con los mi top, que se hayan encontrado en al menos 4 msa de proteinas
     
     
-    
+    zmip_reference_result_path = execution_folder+'2TRX/mi_data_path/zmip_sequences-beta5.0-nsus15.0-runs20000.csv'
     zmip_evol_intersect_result_path = execution_folder + '/top_1_mi.csv'
-    
+    #zmip_evol_intersect_result_path = execution_folder + '/top_2_mi.csv'
     top_df = pandas.DataFrame()
-    dataanalisys.top_rank_intersection(execution_folder, contact_map_path, zmip_natural_result_path, zmip_evol_intersect_result_path, top_df, 1, window=1, contact_threshold=4, top_threshold=4)
-    dataanalisys.top_rank_intersection(execution_folder, contact_map_path, zmip_natural_result_path, zmip_evol_intersect_result_path, top_df, 2, window=1, contact_threshold=3, top_threshold=3)
-    dataanalisys.top_rank_intersection(execution_folder, contact_map_path, zmip_natural_result_path, zmip_evol_intersect_result_path, top_df, 3, window=1, contact_threshold=1, top_threshold=1)
+    dataanalisys.top_rank_intersection(execution_folder, contact_map_path, zmip_natural_result_path, zmip_evol_intersect_result_path, top_df, zmip_reference_result_path, 1, window=1, contact_threshold=8, top_threshold=8,sinchronize_with_natural=False)
+    dataanalisys.top_rank_intersection(execution_folder, contact_map_path, zmip_natural_result_path, zmip_evol_intersect_result_path, top_df, zmip_reference_result_path, 2, window=1, contact_threshold=7, top_threshold=7,sinchronize_with_natural=False)
+    dataanalisys.top_rank_intersection(execution_folder, contact_map_path, zmip_natural_result_path, zmip_evol_intersect_result_path, top_df, zmip_reference_result_path, 3, window=1, contact_threshold=6, top_threshold=6,sinchronize_with_natural=False)
+    dataanalisys.top_rank_intersection(execution_folder, contact_map_path, zmip_natural_result_path, zmip_evol_intersect_result_path, top_df, zmip_reference_result_path, 4, window=1, contact_threshold=5, top_threshold=5,sinchronize_with_natural=False)
+    dataanalisys.top_rank_intersection(execution_folder, contact_map_path, zmip_natural_result_path, zmip_evol_intersect_result_path, top_df, zmip_reference_result_path, 5, window=1, contact_threshold=4, top_threshold=4,sinchronize_with_natural=False)
+    dataanalisys.top_rank_intersection(execution_folder, contact_map_path, zmip_natural_result_path, zmip_evol_intersect_result_path, top_df, zmip_reference_result_path, 6, window=1, contact_threshold=3, top_threshold=3,sinchronize_with_natural=False)
+    dataanalisys.top_rank_intersection(execution_folder, contact_map_path, zmip_natural_result_path, zmip_evol_intersect_result_path, top_df, zmip_reference_result_path, 7, window=1, contact_threshold=2, top_threshold=2,sinchronize_with_natural=False)
+    dataanalisys.top_rank_intersection(execution_folder, contact_map_path, zmip_natural_result_path, zmip_evol_intersect_result_path, top_df, zmip_reference_result_path, 8, window=1, contact_threshold=1, top_threshold=1,sinchronize_with_natural=False)
+    
+    
     
     top_df.to_csv(execution_folder  + 'top_information.csv')
     
@@ -925,11 +932,138 @@ def analisys_contacts():
     dataanalisys.analisys_contacts_and_mi(execution_folder, concat_map_path)
     
 
-analisys_top_mi_thio_ecoli_conformeros()
+def draw_contact_maps():
+    execution_folder = '../THIO_ECOLI_4_107/'
+    structures = ['2TRX','1XOA','1XOB','2H74','1KEB','2H6Z','2H6X','2H76']
+    contact_maps_paths = [execution_folder+pdb+'/contact_map_sync.dat' for pdb in structures]
+    i=0
+    for cmap_pth in contact_maps_paths:
+        contact_map = util.load_contact_map(cmap_pth)
+        plot.contact_map(contact_map, cmap_pth + '.png', structures[i] + ' Contact Map')
+        i=i+1
+
+def create_msa_without_id_thio_ecoli_conformeros():
+    execution_folder = '../THIO_ECOLI_4_107/'
+    structures = ['2TRX','1XOA','1XOB','2H74','1KEB','2H6Z','2H6X','2H76']
+    msas = [execution_folder+pdb+'/curated_sequences_path/sequences-beta5.0-nsus15.0-runs20000.fasta.cluster' for pdb in structures]
+    for msa_ in msas:
+        msa.create_msa_without_id(msa_, str(msa_) + '_no_seq_ids.fasta')
+    
+    
+def create_msa_conjuntion_thio_ecoli_conformeros():
+    execution_folder = '../THIO_ECOLI_4_107/'
+    structures = ['2TRX','1XOA','1XOB','2H74','1KEB','2H6Z','2H6X','2H76']
+    msas = [execution_folder+pdb+'/curated_sequences_path/sequences-beta5.0-nsus15.0-runs20000.fasta.cluster_no_seq_ids.fasta' for pdb in structures]
+    num=10000
+    msa_conjuntion_bootstrap_path = execution_folder + 'msa_conjuntion/'
+    if not os.path.exists(msa_conjuntion_bootstrap_path):
+        os.makedirs(msa_conjuntion_bootstrap_path)
+    msa.create_msa_bootstrap(msas, msa_conjuntion_bootstrap_path + 'msa_bootstrap_'+str(num)+'.fasta',num)
+    
+def analisys_msa_conjuntion_thio_ecoli_conformeros():
+    execution_folder = '../THIO_ECOLI_4_107/'
+    msa_conjuntion_bootstrap_path = execution_folder + 'msa_conjuntion/'
+    num=10000
+    msa_bootstrap = msa_conjuntion_bootstrap_path + 'msa_bootstrap_'+str(num)+'.fasta'
+    mi_data_output_path = msa_conjuntion_bootstrap_path + 'mi_data_path/'
+    msa_conservation_path = msa_conjuntion_bootstrap_path + 'conservation/'
+    if not os.path.exists(mi_data_output_path):
+        os.makedirs(mi_data_output_path)
+    if not os.path.exists(msa_conservation_path):
+        os.makedirs(msa_conservation_path)
+    mi_data_path = mi_data_output_path + "zmip_bootstrap.csv"
+    msa_conservation_path = msa_conservation_path + 'bootstrap_'
+    msa_bootstrap_clustered = msa_bootstrap + '_cluster_62.cluster'
+    msa.clustering_singular("0.62",msa_bootstrap, msa_bootstrap_clustered)
+    dataanalisys.evol_analisys(msa_bootstrap_clustered, mi_data_path, msa_conservation_path, 'Bootstrap THIO_ECOLI Conformeros')
+ 
+ 
+ 
+def analisys_singular_conjunction_thio_ecoli_conformeros():
+    execution_folder = '../THIO_ECOLI_4_107/msa_conjuntion/'
+    mi_data_output_path = execution_folder + 'mi_data_path/'
+    mi_data_path_file = mi_data_output_path + "zmip_bootstrap.csv"
+    zmip_natural_result_file = "../THIO_ECOLI_4_107_2TRX_A/natural/zmip_PF00085_THIO_ECOLI_reference.csv"
+    contact_map_path = '../THIO_ECOLI_4_107/sum_contact_map.dat'
+    #zmip_reference_result_path = '../THIO_ECOLI_4_107/2TRX/mi_data_path/zmip_sequences-beta5.0-nsus15.0-runs20000.csv'
+    top_df = pandas.DataFrame()
+    pdb_name='THIO_ECOLI CONJUNCTION CONFORMEROS'
+    dataanalisys.run_analisys_singular(top_df, 1, zmip_natural_result_file, mi_data_path_file, contact_map_path, mi_data_output_path, window, pdb_name) 
+    #dataanalisys.top_rank_intersection(execution_folder, contact_map_path,zmip_natural_result_path, mi_data_path_file, top_df, zmip_reference_result_path, index=1, window, contact_threshold=1, top_threshold=1, sinchronize_with_natural=True)
+    
+    top_df.to_csv(execution_folder + 'result_conjunction.csv')
+
+'''Realiza los calculos promediando la informacion mutua obtenida de todas las evoluciones de los conformeros'''
+def analisys_prom_zmip_thio_ecoli_conformeros():
+    execution_folder = '../THIO_ECOLI_4_107/'
+    structures = ['2TRX','1XOA','1XOB','2H74','1KEB','2H6Z','2H6X','2H76']
+    mi_paths = [execution_folder+pdb+'/mi_data_path/zmip_sequences-beta5.0-nsus15.0-runs20000.csv' for pdb in structures]
+    #contact_map_path = execution_folder + 'sum_contact_map.dat'
+    #zmip_natural_result_path = "../THIO_ECOLI_4_107_2TRX_A/natural/zmip_PF00085_THIO_ECOLI_reference.csv"
+    
+    execution_prom_folder = execution_folder + 'prom/'
+    mi_prom_result = execution_prom_folder + 'zmip_prom.csv'
+    if not os.path.exists(execution_prom_folder):
+        os.makedirs(execution_prom_folder)
+    
+    dataanalisys.prom_zmip(mi_paths, mi_prom_result, window)
+    
+    zmip_natural_result_file = "../THIO_ECOLI_4_107_2TRX_A/natural/zmip_PF00085_THIO_ECOLI_reference.csv"
+    contact_map_path = '../THIO_ECOLI_4_107/sum_contact_map.dat'
+    
+    top_df = pandas.DataFrame()
+    pdb_name='THIO_ECOLI PROM CONFORMEROS'
+    dataanalisys.run_analisys_singular(top_df, 1, zmip_natural_result_file, mi_prom_result, contact_map_path, execution_prom_folder, window, pdb_name) 
+    top_df.to_csv(execution_prom_folder + 'result_prom.csv')
+
+    
+    
+    '''
+    dataanalisys.analisys_mi_with_contact_map(execution_folder, mi_paths,contact_map_path, zmip_natural_result_path,0.5,window=1,sinchronize_with_natural=False)
+    dataanalisys.analisys_mi_with_contact_map(execution_folder, mi_paths,contact_map_path,zmip_natural_result_path,1,window=1,sinchronize_with_natural=False)
+    dataanalisys.analisys_mi_with_contact_map(execution_folder, mi_paths,contact_map_path,zmip_natural_result_path,2,window=1,sinchronize_with_natural=False)
+    
+    #hacer el desarrollo para mostras la matriz de contactos con los mi top, que se hayan encontrado en al menos 4 msa de proteinas
+    zmip_reference_result_path = execution_folder+'2TRX/mi_data_path/zmip_sequences-beta5.0-nsus15.0-runs20000.csv'
+    zmip_evol_intersect_result_path = execution_folder + '/top_1_mi.csv'
+    #zmip_evol_intersect_result_path = execution_folder + '/top_2_mi.csv'
+    top_df = pandas.DataFrame()
+    dataanalisys.top_rank_intersection(execution_folder, contact_map_path, zmip_natural_result_path, zmip_evol_intersect_result_path, top_df, zmip_reference_result_path, 1, window=1, contact_threshold=8, top_threshold=8,sinchronize_with_natural=False)
+    dataanalisys.top_rank_intersection(execution_folder, contact_map_path, zmip_natural_result_path, zmip_evol_intersect_result_path, top_df, zmip_reference_result_path, 2, window=1, contact_threshold=7, top_threshold=7,sinchronize_with_natural=False)
+    dataanalisys.top_rank_intersection(execution_folder, contact_map_path, zmip_natural_result_path, zmip_evol_intersect_result_path, top_df, zmip_reference_result_path, 3, window=1, contact_threshold=6, top_threshold=6,sinchronize_with_natural=False)
+    dataanalisys.top_rank_intersection(execution_folder, contact_map_path, zmip_natural_result_path, zmip_evol_intersect_result_path, top_df, zmip_reference_result_path, 4, window=1, contact_threshold=5, top_threshold=5,sinchronize_with_natural=False)
+    dataanalisys.top_rank_intersection(execution_folder, contact_map_path, zmip_natural_result_path, zmip_evol_intersect_result_path, top_df, zmip_reference_result_path, 5, window=1, contact_threshold=4, top_threshold=4,sinchronize_with_natural=False)
+    dataanalisys.top_rank_intersection(execution_folder, contact_map_path, zmip_natural_result_path, zmip_evol_intersect_result_path, top_df, zmip_reference_result_path, 6, window=1, contact_threshold=3, top_threshold=3,sinchronize_with_natural=False)
+    dataanalisys.top_rank_intersection(execution_folder, contact_map_path, zmip_natural_result_path, zmip_evol_intersect_result_path, top_df, zmip_reference_result_path, 7, window=1, contact_threshold=2, top_threshold=2,sinchronize_with_natural=False)
+    dataanalisys.top_rank_intersection(execution_folder, contact_map_path, zmip_natural_result_path, zmip_evol_intersect_result_path, top_df, zmip_reference_result_path, 8, window=1, contact_threshold=1, top_threshold=1,sinchronize_with_natural=False)
+    
+    top_df.to_csv(execution_folder  + 'top_information.csv')
+    '''
+ 
+ 
+#promedio thio_ecoli
+ 
+analisys_prom_zmip_thio_ecoli_conformeros()   
+   
+# conjuncion 
+   
+def conjunction_analisys():
+   
+    #create_msa_without_id_thio_ecoli_conformeros()
+
+    #create_msa_conjuntion_thio_ecoli_conformeros()    
+    
+    analisys_msa_conjuntion_thio_ecoli_conformeros()
+
+    analisys_singular_conjunction_thio_ecoli_conformeros()
+
+#top thio_ecoli
 
 #analisys_contact_map_thio_ecoli_conformeros()
 
+#analisys_top_mi_thio_ecoli_conformeros()
 
+#draw_contact_maps()
 
 #pdb.rms_list(unit_prot_id='P0AA25',reference='2TRX')
 #util.clean_pdb('../THIO_ECOLI_4_107/all_structures/1THO.pdb', '../THIO_ECOLI_4_107/all_structures/1THO_clean.pdb', 'A')
