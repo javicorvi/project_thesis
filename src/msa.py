@@ -236,3 +236,26 @@ def random_seq(input, ouput,count):
             line = random.choice(lines)
             f.write(line+"\n") 
         f.close()    
+
+def create_msa_bootstrap(msas_path, out_put_msa, random_number):
+    i=0
+    with open(out_put_msa, "w") as output:
+        for msa in msas_path:
+            with open(msa,"r") as f:
+                lines = random.sample(f.readlines(),random_number)
+                for line in lines:
+                    output.write(">SEQ_"+str(i)+"\n")
+                    output.write(line)
+                    i=i+1
+            f.close()      
+    output.close()        
+            
+'''Elimina los ids de las secuencias'''
+def create_msa_without_id(msa_path, msa_output_path):
+    with open(msa_output_path, "w") as msa_output:
+        with open(msa_path,"r") as msa:
+            for line in msa:
+                if('>' not in line):
+                    msa_output.write(line)
+        msa.close()
+    msa_output.close()                

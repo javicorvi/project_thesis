@@ -263,6 +263,7 @@ def run_analisys_singular(df,index, zmip_natural_result_path, mi_result_file_pat
     top_rank_result = top_rank(zmip_natural,m2,3,contact_map,mi_result_file_path+'top_3percent_withcon.png',mi_result_file_path,result_file,top_df,4, pdb_name,contact_threashold)
     top_rank_result = top_rank(zmip_natural,m2,4,contact_map,mi_result_file_path+'top_4percent_withcon.png',mi_result_file_path,result_file,top_df,5, pdb_name,contact_threashold)
     top_rank_result = top_rank(zmip_natural,m2,5,contact_map,mi_result_file_path+'top_5percent_withcon.png',mi_result_file_path,result_file,top_df,6, pdb_name,contact_threashold)
+    
     #top_rank(zmip_natural,m2,3,contact_map,mi_result_file_path+'top_3percent_withcon.png',mi_result_file_path,result_file)
     #top_rank(zmip_natural,m2,4,contact_map,mi_result_file_path+'top_4percent_withcon.png',mi_result_file_path,result_file)
     #top_rank(zmip_natural,m2,5,contact_map,mi_result_file_path+'top_5percent_withcon.png',mi_result_file_path,result_file)
@@ -393,7 +394,7 @@ def top_rank(x,y,top,contact_map,outputpath,filename,result_file, top_df,index,p
     #print data
     return nat_contact, nat_contact*100/num, evol_contact, evol_contact*100/num, len(data),len(data_contact)
 
-def top_rank_intersection(execution_folder, contact_map_path,zmip_natural_result_path, zmip_evol_intersect_result_path, top_df, zmip_reference_result_path, index, window, contact_threshold, top_threshold, sinchronize_with_natural=True):
+def top_rank_intersection(execution_folder, contact_map_path,zmip_natural_result_path, zmip_evol_intersect_result_path, top_df, zmip_reference_result_path, zmip_prom_result_path, index, window, contact_threshold, top_threshold, sinchronize_with_natural=True):
     
     df = pandas.read_csv(zmip_evol_intersect_result_path,delim_whitespace=True,header=0,usecols=[0,1,2])
     df=df.loc[df['Count']>=top_threshold]
@@ -410,11 +411,18 @@ def top_rank_intersection(execution_folder, contact_map_path,zmip_natural_result
     data=matches_coevolved_positions(natural,evol,intersection_evol=True)
     
     zmip_reference = util.load_zmip(zmip_reference_result_path,window)
+    zmip_prom = util.load_zmip(zmip_prom_result_path,window)
     if(sinchronize_with_natural==True):
         zmip_natural,zmip_reference=util.sincronice_mi(zmip_natural, zmip_reference)
+        zmip_natural,zmip_prom=util.sincronice_mi(zmip_natural, zmip_prom)
+    
     util.order(zmip_reference)
+    util.order(zmip_prom)
+    
     reference=zmip_reference[0:num]
+    prom=zmip_prom[0:num]
     data_reference=matches_coevolved_positions(natural,reference,intersection_evol=True)
+    data_prom=matches_coevolved_positions(natural,prom,intersection_evol=True)
     
     x_nat=[]
     y_nat=[]
@@ -422,19 +430,28 @@ def top_rank_intersection(execution_folder, contact_map_path,zmip_natural_result
     y_evol=[]
     x_ref=[]
     y_ref=[]
+    x_prom=[]
+    y_prom=[]
+    
+    
     
     evol_contact_pairs=[]
     ref_contact_pairs=[]
+    prom_contact_pairs=[]
     nat_contact = 0
     evol_contact = 0
     ref_contact = 0
-    for x, y, z in map(None, natural, evol,reference):
+    prom_contact = 0
+    for x, y, z, p in map(None, natural, evol,reference,prom):
         x_nat.append(int(x[0]-1))
         y_nat.append(int(x[1]-1))
         x_evol.append(int(y[0]-1))
         y_evol.append(int(y[1]-1))
         x_ref.append(int(z[0]-1))
         y_ref.append(int(z[1]-1))
+        
+        x_prom.append(int(p[0]-1))
+        y_prom.append(int(p[1]-1))
         
         
         
@@ -456,13 +473,20 @@ def top_rank_intersection(execution_folder, contact_map_path,zmip_natural_result
         v = contact_map[pos1][pos2]
         if(v >= contact_threshold):
             ref_contact=ref_contact+1 
-            ref_contact_pairs.append(y)
+            ref_contact_pairs.append(z)
         
+        pos1 = int(p[0]-1)
+        pos2 = int(p[1]-1)
+        v = contact_map[pos1][pos2]
+        if(v >= contact_threshold):
+            prom_contact=prom_contact+1 
+            prom_contact_pairs.append(p)
         
         
     plot.contact_map_with_top_rank_mi_sum(contact_map,  x_nat, y_nat, x_evol,y_evol,execution_folder + 'contact_map_thresold_'+str(contact_threshold)+'with_intersection_top_threshold_'+str(top_threshold)+'.png','', 'THIO_ECOLI Top Thresold ' + str(top_threshold) +' Contact Threshold ' + str(contact_threshold))
     plot.contact_map_with_top_rank_mi_sum(contact_map,  x_nat, y_nat, x_ref,y_ref,execution_folder + 'contact_map_thresold_'+str(contact_threshold)+'with_reference_top_threshold_'+str(top_threshold)+'.png','', 'THIO_ECOLI 2TRX Thresold ' + str(top_threshold) +' Contact Threshold ' + str(contact_threshold))
     
+    plot.contact_map_with_top_rank_mi_sum(contact_map,  x_nat, y_nat, x_prom,y_prom,execution_folder + 'contact_map_thresold_'+str(contact_threshold)+'with_prom_top_threshold_'+str(top_threshold)+'.png','', 'THIO_ECOLI Prom Thresold ' + str(top_threshold) +' Contact Threshold ' + str(contact_threshold))
     
     
     top_df.set_value(index,'top_threshold',str(top_threshold))
@@ -482,6 +506,16 @@ def top_rank_intersection(execution_folder, contact_map_path,zmip_natural_result
             data_contact.append(d)
     top_df.set_value(index,'match_positions',str(len(data_contact)))
     
+    top_df.set_value(index,'prom_contact',str(prom_contact))
+    top_df.set_value(index,'prom_contact_%',str(prom_contact*100/num))
+    data_contact_prom=[]
+    for d in data_prom:
+        pos1 = int(d[0]-1)
+        pos2 = int(d[1]-1)
+        v=contact_map[pos1][pos2]
+        if(v>=contact_threshold):
+            data_contact_prom.append(d)
+    top_df.set_value(index,'match_positions_prom',str(len(data_contact_prom)))
     
     top_df.set_value(index,'ref_contact',str(ref_contact))
     top_df.set_value(index,'ref_contact_%',str(ref_contact*100/num))
@@ -495,22 +529,14 @@ def top_rank_intersection(execution_folder, contact_map_path,zmip_natural_result
             data_contact_ref.append(d)
     top_df.set_value(index,'match_positions_reference',str(len(data_contact_ref)))
     
-    '''Calcular para unicamente la 2TRX
-    top_df_reference = pandas.DataFrame()
-    zmip_2trx_result_path = execution_folder+'2TRX/mi_data_path/zmip_sequences-beta5.0-nsus15.0-runs20000.csv'
-    zmip_2trx = util.load_zmip(zmip_2trx_result_path,window)
-    util.order(zmip_2trx)
-    top_rank_generic(num, zmip_natural, zmip_2trx, num, contact_map, execution_folder+'2TRX/mi_data_path/top_'+str(num)+'_asreference_intersection.png', 'top_'+str(num)+'_asreference_intersection.csv', execution_folder+'2TRX/mi_data_path/top_'+str(num)+'_asreference_intersection.txt', top_df_reference, 1, '2TRX')
-    top_df_reference.to_csv(execution_folder  + 'top_'+str(num)+'_asreference_intersection_information.csv')
-    '''
-
+    
 def call_top_rank(x, y, top, contact_map, outputpath, filename, result_file, top_df, index, pdb_name):
     num = len(x)*top//100
     a=x[0:int(num)]
     b=y[0:int(num)]
     top_rank_generic(num, x, y, top, contact_map, outputpath, filename, result_file, top_df, index, pdb_name)
 
-def top_rank_generic(num, x, y, top_title,contact_map,outputpath,filename,result_file, top_df,index,pdb_name):
+def top_rank_generic(num, x, y, top_title,contact_map,outputpath,filename,result_file, top_df,index,pdb_name, contact_threashold=1):
     a=x[0:int(num)]
     b=y[0:int(num)]
     data=matches_coevolved_positions(a,b)
@@ -527,12 +553,12 @@ def top_rank_generic(num, x, y, top_title,contact_map,outputpath,filename,result
         pos1 = int(x[0]-1)
         pos2 = int(x[1]-1)
         v = contact_map[pos1][pos2]
-        if(v == 1):
+        if(v >= contact_threashold):
             nat_contact=nat_contact+1
         pos1 = int(y[0]-1)
         pos2 = int(y[1]-1)
         v = contact_map[pos1][pos2]
-        if(v == 1):
+        if(v >= contact_threashold):
             evol_contact=evol_contact+1 
             evol_contact_pairs.append(y)       
         
@@ -566,7 +592,7 @@ def top_rank_generic(num, x, y, top_title,contact_map,outputpath,filename,result
         pos1 = int(d[0]-1)
         pos2 = int(d[1]-1)
         v=contact_map[pos1][pos2]
-        if(v==1):
+        if(v >= contact_threashold):
             data_contact.append(d)
     result_file.write("MATCH POSITIONS CONTACTS BETWEEN NAT AND EVOL (NO WINDOW) : " + str(len(data_contact))+ '\n')
     top_df.set_value(index,'match_positions',str(len(data_contact)))
