@@ -117,11 +117,11 @@ def roc_curve_(y_true,scores,labels,title,colors,legend_title,output_file, verti
     plt.figure()
     #for i, (a, b) in enumerate(zip(alist, blist)):
     for i,(label,color) in enumerate(zip(labels, colors)):
-        fpr[i], tpr[i], _ = metrics.roc_curve(y_true, scores[i])
+        fpr[i], tpr[i], _ = metrics.roc_curve(y_true[i], scores[i])
         partial_auc_value_0_1 = partial_auc(fpr[i], tpr[i], 0.1)
         auc = metrics.auc(fpr[i], tpr[i])
         roc_auc[i] = auc
-        plt.plot(fpr[i], tpr[i], color=color, lw=lw,label='ROC curve  {0} (auc = {1:0.2f} | auc 0.1 = {2:0.2f})'''.format(label, roc_auc[i], partial_auc_value_0_1))
+        plt.plot(fpr[i], tpr[i], color=color, lw=lw,label='ROC curve  {0} (auc = {1:0.4f} | auc 0.1 = {2:0.4f})'''.format(label, roc_auc[i], partial_auc_value_0_1))
     plt.plot([0, 1], [0, 1], color='black', lw=lw, linestyle='--')
     if(vertical_at_01):
         plt.axvline(x=0.1,color=vertical_line_color)
@@ -132,7 +132,7 @@ def roc_curve_(y_true,scores,labels,title,colors,legend_title,output_file, verti
     plt.title(title)
     plt.legend(loc="lower right",prop={'size':10},title=legend_title)
     plt.savefig(output_file)
-    plt.show()
+    #plt.show()
     plt.gcf().clear()
 
 def partial_auc(fpr, tpr, max_fpr):
@@ -209,10 +209,13 @@ def plot_auc(result_auc_path,output_path,beta,runs,nsus):
 '''
 def contact_map_with_top_rank_mi(contact_map, x_nat, y_nat, x_evol,y_evol,output_path,filename,title):
     cmap=contact_map
-    plt.scatter(x_nat, y_nat,color="b",s=40,  marker=(5, 2))
-    plt.scatter(y_evol, x_evol, color="r",s=40,  marker=(5, 2))
+    n=plt.scatter(x_nat, y_nat,color="b",s=40,  marker=(5, 2))
+    e=plt.scatter(y_evol, x_evol, color="r",s=40,  marker=(5, 2))
+    plt.legend((n, e), ('Natural', 'Evol'),scatterpoints=1,loc='upper right',ncol=3,fontsize=8)
     g = np.floor(cmap)
     plt.imshow(g, cmap='Greys')
+    cbar=plt.colorbar(ticks=[])
+    cbar.set_label('contacts')
     plt.title(title)
     plt.savefig(output_path)
     plt.gcf().clear()
@@ -349,27 +352,129 @@ def conservation_between_msas(msas_entropy, output_file,natural_line_style='-'):
     #plt.show()  
     plt.gcf().clear()
 
-def auc_optimization(df,output_path):
+def top_comparation(df, contact_threshold ,output_path):
+    #df_to_plot=df[(df['beta']==b)]
+    plt.scatter(df['top'], df['nat_contact_%'],color='blue',label=None)
+    plt.plot(df['top'], df['nat_contact_%'],color='blue',label='Natural')
+    
+    
+    
+    plt.scatter(df['top'], df['ref_contact_%'],color='green',label=None)
+    plt.plot(df['top'], df['ref_contact_%'],color='green',label='2TRX')
+    
+    plt.scatter(df['top'], df['evol_contact_%'],color='orange',label=None)
+    plt.plot(df['top'], df['evol_contact_%'],color='orange',label='Sumatoria de TOP MI')
+    
+    plt.scatter(df['top'], df['prom_contact_%'],color='red',label=None)
+    plt.plot(df['top'], df['prom_contact_%'],color='red',label='Promedio')
+    
+    plt.legend(loc="upper right",prop={'size':10})
+    plt.xticks([0,0.5,1,2,3,4,5])
+    plt.yticks([0,10,20,30,40,50,60,70,80,90,100])
+    #plt.axis([0, 20, 0.5, 1])
+    plt.xlabel('Tops %')
+    plt.ylabel('% de contactos')
+    plt.title('Procentaje de contactos por Top. Contacts ' + contact_threshold)
+    #plt.show()   
+    plt.savefig(output_path)
+    plt.gcf().clear()
+    
+    plt.scatter(df['top'], df['match_positions_reference'],color='green',label=None)
+    plt.plot(df['top'], df['match_positions_reference'],color='green',label='2TRX')
+    
+    plt.scatter(df['top'], df['match_positions'],color='orange',label=None)
+    plt.plot(df['top'], df['match_positions'],color='orange',label='Sumatoria de TOP MI')
+    
+    plt.scatter(df['top'], df['match_positions_prom'],color='red',label=None)
+    plt.plot(df['top'], df['match_positions_prom'],color='red',label='Promedio')
+    
+    plt.legend(loc="upper right",prop={'size':10})
+    plt.xticks([0,0.5,1,2,3,4,5])
+    plt.yticks([0,5,10,20,30,40,50,60,70,80,90,100])
+    #plt.axis([0, 20, 0.5, 1])
+    plt.xlabel('Tops %')
+    plt.ylabel('# contactos compartidos con el natural')
+    plt.title('Contactos compartidos con el natural. Contacts ' + contact_threshold)
+    #plt.show()   
+    plt.savefig(output_path + '_match.png')
+    
+    
+    plt.gcf().clear()
+
+
+def top_comparation_sub(df, contact_threshold ,output_path):
+    #df_to_plot=df[(df['beta']==b)]
+    plt.scatter(df['top'], df['nat_contact_%'],color='blue',label=None)
+    plt.plot(df['top'], df['nat_contact_%'],color='blue',label='Natural')
+    
+    
+    
+    plt.scatter(df['top'], df['ref_contact_%'],color='green',label=None)
+    plt.plot(df['top'], df['ref_contact_%'],color='green',label='2TRX')
+    
+    plt.scatter(df['top'], df['evol_contact_%'],color='orange',label=None)
+    plt.plot(df['top'], df['evol_contact_%'],color='orange',label='Sumatoria de TOP MI')
+    
+    plt.scatter(df['top'], df['prom_contact_%'],color='red',label=None)
+    plt.plot(df['top'], df['prom_contact_%'],color='red',label='Promedio')
+    
+    plt.legend(loc="lower left",prop={'size':8})
+    plt.xticks([0,0.5,1,2,3,4,5])
+    plt.yticks([0,10,20,30,40,50,60,70,80,90,100])
+    #plt.axis([0, 20, 0.5, 1])
+    plt.xlabel('Tops %')
+    plt.ylabel('% de contactos')
+    plt.title('Procentaje de contactos por Top. Contacts ' + contact_threshold)
+    #plt.show()   
+    
+    a = plt.axes([.6, .6, .25, .25])
+    #plt.axis([0, 1, 0, 1])
+    #no = plt.scatter(y_evol_f, x_nat_f,color="r")
+    #co = plt.scatter(y_evol_t, x_nat_t,color="b")
+    plt.scatter(df['top'], df['match_positions_reference'],color='green',label=None)
+    plt.plot(df['top'], df['match_positions_reference'],color='green',label='2TRX')
+    
+    plt.scatter(df['top'], df['match_positions'],color='orange',label=None)
+    plt.plot(df['top'], df['match_positions'],color='orange',label='Sumatoria de TOP MI')
+    
+    plt.scatter(df['top'], df['match_positions_prom'],color='red',label=None)
+    plt.plot(df['top'], df['match_positions_prom'],color='red',label='Promedio')
+    
+    plt.legend(loc="upper left",prop={'size':4})
+    plt.xticks([0,0.5,1,2,3,4,5])
+    #plt.yticks([0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,90,100])
+    plt.yticks([0,10,20,30,40,50,60,70,80])
+    #plt.axis([0, 20, 0.5, 1])
+    #plt.xlabel('Tops %')
+    #plt.ylabel('# contactos compartidos con el natural')
+    #plt.title('Contactos compartidos con el natural. Contacts ' + contact_threshold)
+    #plt.show()   
+    plt.savefig(output_path + '_sub.png')
+    
+    
+    plt.gcf().clear()
+
+def auc_optimization(df,colors,output_path):
     betas=df.groupby('beta').first().reset_index()
     betas_list=betas['beta'].tolist()
+    i=0
     for b in betas_list:
         df_to_plot=df[(df['beta']==b)]
-        plt.scatter(df_to_plot['nsus'], df_to_plot['auc_'],label=None)
-        plt.plot(df_to_plot['nsus'], df_to_plot['auc_'],label=b)
-        
+        plt.scatter(df_to_plot['nsus'], df_to_plot['auc_'],color=colors[i],label=None)
+        plt.plot(df_to_plot['nsus'], df_to_plot['auc_'],color=colors[i],label=b)
+        i=i+1
     '''for y in zip(df):
         splt.scatter(nsus, y, color=c,picker=True)  
         splt.plot(nsus, y,color=c, label=beta[i])
         i=i+1    
     '''
-    plt.legend(loc="lower right",prop={'size':10},title="Betas")
-    plt.xticks([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18])
-    plt.yticks([0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1])
-    plt.axis([0, 20, 0, 1])
+    plt.legend(loc="lower right",prop={'size':10},title="Beta")
+    plt.xticks([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15])
+    plt.yticks([0.5,0.6,0.7,0.8,0.9,1])
+    plt.axis([0, 20, 0.5, 1])
     plt.xlabel('NSUS (Sustituciones no sinonimas por sitio)')
     plt.ylabel('AUC')
-    plt.title('Optimizacion de la proteina 2TRX')
-    plt.show()   
+    plt.title('Optimizacion  THIO_ECOLI cadena A estructura 2TRX')
+    #plt.show()   
     plt.savefig(output_path)
     plt.gcf().clear()
-
