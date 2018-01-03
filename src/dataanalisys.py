@@ -1131,7 +1131,8 @@ def top_rank_comparation(execution_folder, top,contact_map_path,zmip_natural_res
     num = int(num)
     natural=zmip_natural[0:num]
     
-    df = pandas.read_csv(zmip_evol_intersect_result_path,delim_whitespace=True,header=0,usecols=[0,1,2])
+    df = pandas.read_csv(zmip_evol_intersect_result_path,delim_whitespace=True,header=0,usecols=[0,1,2,4])
+    df=df.sort(['Count', 'Contacts'], ascending=[False, False])
     evol=df.head(n=num)
     evol=evol.values.tolist()
     

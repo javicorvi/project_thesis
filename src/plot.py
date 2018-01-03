@@ -352,6 +352,29 @@ def conservation_between_msas(msas_entropy, output_file,natural_line_style='-'):
     #plt.show()  
     plt.gcf().clear()
 
+
+'''
+Plot the conservation of the MSA evolutionated and the Natural MSA
+'''
+def conservation_comparation(msas_entropy, output_file, title):
+    plt.figure(num=None, figsize=(10, 6), dpi=80, facecolor='w', edgecolor='k')
+    for index,msa_entropy in enumerate(msas_entropy):
+        plt.plot(msa_entropy[0],label=msa_entropy[1],color=msa_entropy[2],linewidth=2)
+    
+    #plt.plot([30,33],[6,6],color='black')
+    plt.ylabel('Bits Entropy')
+    plt.xlabel('Position')
+    plt.legend(loc=1,prop={'size':10})
+    
+    #np.arange(min(x), max(x)+1, 1.0)
+    
+    plt.axis([0, 110, 0, 7])
+    plt.xticks(np.arange(0, 110, 5.0))
+    plt.title(title)
+    plt.savefig(output_file)
+    #plt.show()  
+    plt.gcf().clear()
+
 def top_comparation(df, contact_threshold ,output_path):
     #df_to_plot=df[(df['beta']==b)]
     plt.scatter(df['top'], df['nat_contact_%'],color='blue',label=None)

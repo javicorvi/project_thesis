@@ -1245,12 +1245,6 @@ def resultados_top_mi_comparation():
     
     top_df.to_csv(execution_folder + 'result_mi_comparation.csv')
     
-    df_1=top_df.loc[top_df['contact_threshold'] == '1']
-    plot.top_comparation(df_1, '>= 1',execution_folder + 'top_comparation_contact_1.png')
-    df_4=top_df.loc[top_df['contact_threshold'] == 4]
-    plot.top_comparation(df_4, '>= 4',execution_folder + 'top_comparation_contact_4.png')
-    df_8=top_df.loc[top_df['contact_threshold'] == 8]
-    plot.top_comparation(df_8, '= 8',execution_folder + 'top_comparation_contact_8.png')
 #resultados_top_mi_comparation()
 
 def plot_comparation_top():
@@ -1263,4 +1257,85 @@ def plot_comparation_top():
     plot.top_comparation(df_4, '>= 4',execution_folder + 'top_comparation_contact_4.png')
     df_8=top_df.loc[top_df['contact_threshold'] == 8]
     plot.top_comparation(df_8, '= 8',execution_folder + 'top_comparation_contact_8.png')
-plot_comparation_top()
+#plot_comparation_top()
+
+def seq_to_logo():
+    execution_folder = '../THIO_ECOLI_4_107/'
+    structures = ['2TRX','1XOA','1XOB','2H74','1KEB','2H6Z','2H6X','2H76']
+    msas = [execution_folder+pdb+'/curated_sequences_path/sequences-beta5.0-nsus15.0-runs20000.fasta.cluster' for pdb in structures]
+    msa.seq_to_logo(msas,structures)
+#seq_to_logo()
+
+def entropy_by_column():
+    #alignment = AlignIO.read('fasta.txt', "fasta", alphabet=Alphabet.ProteinAlphabet())
+    execution_folder = '../THIO_ECOLI_4_107/'
+    structures = ['2TRX','1XOA','1XOB','2H74','1KEB','2H6Z','2H6X','2H76']
+    #structures = ['1KEB']
+    msas = [execution_folder+pdb+'/curated_sequences_path/sequences-beta5.0-nsus15.0-runs20000.fasta.cluster' for pdb in structures]
+    outputs = [execution_folder+pdb+'/conservation/information_content.csv' for pdb in structures]
+    i=0
+    for m in msas:
+        msa.summary(m,outputs[i],structures[i])
+        i=i+1
+    #p_data= df.value_counts()/len(df) # calculates the probabilities
+    #entropy=sc.stats.entropy(p_data)  # input probabilities to get the entropy 
+    #return entropy
+    
+#entropy_by_column()
+'''
+Entropia del alienamiento natural pf00085 gapstrip thio_ecoli
+'''
+def natural_entropy_by_column():
+    msa_natural = '../THIO_ECOLI_4_107_2TRX_A/PF00085_THIO_ECOLI_reference.fasta'
+    msa.summary(msa_natural,'../THIO_ECOLI_4_107_2TRX_A/information_content_PF00085_THIO_ECOLI_reference.csv','PF00085_THIO_ECOLI_reference')
+
+#natural_entropy_by_column()
+
+'''
+Calculo de la entropia media por columna 
+'''
+def entropy_by_column_media():
+    execution_folder = '../THIO_ECOLI_4_107/'
+    structures = ['2TRX','1XOA','1XOB','2H74','1KEB','2H6Z','2H6X','2H76']
+    #structures = ['1KEB']
+    msas_summary = [execution_folder+pdb+'/conservation/information_content.csv' for pdb in structures]
+    output=execution_folder+'information_content_media.csv'
+    msa.conservation_media(msas_summary,output)
+    
+#entropy_by_column_media()
+
+'''
+Plot conservacion media con natural
+'''
+def plot_conservation_media_with_natural():
+    execution_folder = '../THIO_ECOLI_4_107/'
+    conservation_media=execution_folder+'information_content_media.csv'
+    conservation_natural='../THIO_ECOLI_4_107_2TRX_A/information_content_PF00085_THIO_ECOLI_reference.csv'
+    df_media = pandas.read_csv(conservation_media, usecols=['Entropy'])
+    df_natural = pandas.read_csv(conservation_natural, usecols=['Entropy'])
+    natural = df_natural['Entropy'].tolist()
+    natural.insert(0,None)
+    media = df_media['Entropy'].tolist()
+    media.insert(0,None)
+    msas_entropy=[[natural,'Natural', 'blue'],[media,'Media','red']]
+    plot.conservation_comparation(msas_entropy,execution_folder + 'conservation_media_example.png','Conservacion Media y Natural')
+     
+plot_conservation_media_with_natural()    
+
+'''
+Plot conservacion de conformeros
+'''
+def plot_conservation_conformeros():
+    execution_folder = '../THIO_ECOLI_4_107/'
+    structures = ['2TRX','1XOA','1XOB','2H74','1KEB','2H6Z','2H6X','2H76']
+    msas_summary = [execution_folder+pdb+'/conservation/information_content.csv' for pdb in structures]
+    output=execution_folder+'convervation_conformeros.png'
+    msas_entropy=[]
+    colors=['orange','green','grey','yellow','brown','goldenrod','magenta','crimson']
+    i=0
+    for m in msas_summary:
+        df_c = pandas.read_csv(m, usecols=['Entropy'])
+        msas_entropy.append([df_c['Entropy'].tolist(),structures[i], colors[i]])
+        i=i+1
+    plot.conservation_comparation(msas_entropy,output,'Conservacion Conformeros')
+#plot_conservation_conformeros()

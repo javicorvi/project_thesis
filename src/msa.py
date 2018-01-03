@@ -16,6 +16,12 @@ import pandas
 import logging
 import constants as cons
 import random
+from Bio import AlignIO
+from Bio.Align import AlignInfo
+from Bio.Alphabet import IUPAC
+from Bio.SubsMat import FreqTable
+import Bio.Alphabet as Alphabet
+from Bio import motifs
     
 '''
 Global Variables
@@ -117,7 +123,18 @@ def msa_information(input_msa, output_msa, msa_name):
 
     print "msa_information"
     print("--- %s seconds ---" % (time.time() - start_time))
-    
+
+def seq_to_logo(msas,structures):
+    print "seq to logo"
+    import subprocess 
+    i=0
+    for msa in msas:
+        #subprocess.call("seq2logo-2.0/Seq2Logo.py -f seq2logo-2.0/test_data/fasta.txt -o logo_example -I 2 -u Bits -t 'Titulo_Logo' --formats 'JPEG,PNG,SVG,PDF'", shell=True)
+        subprocess.call("seq2logo-2.0/Seq2Logo.py -f " + msa + " -o "+msa+'_logo'+" -I 2 -u Bits -t "+structures[i]+" --format 'JPEG,PNG,SVG,PDF'", shell=True)
+        i=i+1
+    #call(["seq2logo-2.0/Seq2Logo.py", "-f" ,"seq2logo-2.0/test_data/fasta.txt"])
+    #os.system("script2.py 1")
+    print "end"
 '''
 Read the conservation info stored in file_conservation_path  
 '''
@@ -212,6 +229,7 @@ def lettercount(pos):
 
 
 
+
 def frequency():
     sequences = ['AATC','GCCT','ATCA']
     f = zip(*sequences)
@@ -259,3 +277,137 @@ def create_msa_without_id(msa_path, msa_output_path):
                     msa_output.write(line)
         msa.close()
     msa_output.close()                
+    
+'''Informacion relacionada con el MSA '''    
+def summary(msa,output,title):
+    '''
+       Ala (A) 9.10   Gln (Q) 3.79   Leu (L) 9.87   Ser (S) 6.69
+       Arg (R) 5.71   Glu (E) 6.16   Lys (K) 4.99   Thr (T) 5.57
+       Asn (N) 3.88   Gly (G) 7.26   Met (M) 2.38   Trp (W) 1.29
+       Asp (D) 5.45   His (H) 2.19   Phe (F) 3.92   Tyr (Y) 2.93
+       Cys (C) 1.21   Ile (I) 5.70   Pro (P) 4.85   Val (V) 6.88
+    '''
+    #unit_prot freq table of aminoacids 23/11/2017   
+    e_freq_dict={'A':0.091, 'R':0.0571, 'N':0.0388, 'D':0.0545,'C':0.0121,'Q':0.0379,'E':0.0616,'G':0.0726,'H':0.0219,'I':0.0570,'L':0.0987,'K':0.0499,'M':0.0238,'F':0.0392,'P':0.0485,'S':0.0669,'T':0.0557,'W':0.0129,'Y':0.0293,'V':0.0688}
+    #e_freq_dict={'A': 0.175, 'B': 0.325, 'C': 0.5}
+    e_freq_table = FreqTable.FreqTable(e_freq_dict, FreqTable.FREQ, alphabet=Alphabet.ProteinAlphabet())
+    #e_freq_table=None
+    df = pandas.DataFrame()
+    alignment = AlignIO.read(msa, "fasta", alphabet=Alphabet.ProteinAlphabet())
+    summary_align = AlignInfo.SummaryInfo(alignment)
+    total_entropy, entropy_columns, freq_dict_columns = information_content(summary_align,e_freq_table=e_freq_table)
+    '''Print File de resultados'''
+    for i in range(len(entropy_columns.values())):
+        freq_dict = freq_dict_columns[i]
+        df_2 = pandas.DataFrame([freq_dict], columns=freq_dict.keys())
+        df_2['Entropy']=entropy_columns[i]
+        df=df.append(df_2,ignore_index=True)
+        #df.set_value(i, 'Entropy' , entropy_columns[i])
+    df.to_csv(output)  
+        
+        
+'''Informacion Entropia y Frecuencia de Amoniocidos por columna
+Metodo sobreesctrito y adaptado de BioPython'''        
+def information_content(self, start=0,
+                            end=None,
+                            e_freq_table=None, log_base=2,
+                            chars_to_ignore=None):
+    
+        """Calculate the information content for each residue along an alignment.
+
+        Arguments:
+            - start, end - The starting an ending points to calculate the
+              information content. These points should be relative to the first
+              sequence in the alignment, starting at zero (ie. even if the 'real'
+              first position in the seq is 203 in the initial sequence, for
+              the info content, we need to use zero). This defaults to the entire
+              length of the first sequence.
+            - e_freq_table - A FreqTable object specifying the expected frequencies
+              for each letter in the alphabet we are using (e.g. {'G' : 0.4,
+              'C' : 0.4, 'T' : 0.1, 'A' : 0.1}). Gap characters should not be
+              included, since these should not have expected frequencies.
+            - log_base - The base of the logathrim to use in calculating the
+              information content. This defaults to 2 so the info is in bits.
+            - chars_to_ignore - A listing of characters which should be ignored
+              in calculating the info content. Defaults to none.
+
+        Returns:
+            - A number representing the info content for the specified region.
+
+        Please see the Biopython manual for more information on how information
+        content is calculated.
+        """
+        # if no end was specified, then we default to the end of the sequence
+        Protein20Random = 0.05
+        Nucleotide4Random = 0.25
+        if end is None:
+            end = len(self.alignment[0].seq)
+        if chars_to_ignore is None:
+            chars_to_ignore = []
+
+        if start < 0 or end > len(self.alignment[0].seq):
+            raise ValueError("Start (%s) and end (%s) are not in the \
+                    range %s to %s"
+                    % (start, end, 0, len(self.alignment[0].seq)))
+        # determine random expected frequencies, if necessary
+        random_expected = None
+        if not e_freq_table:
+            # TODO - What about ambiguous alphabets?
+            base_alpha = Alphabet._get_base_alphabet(self.alignment._alphabet)
+            if isinstance(base_alpha, Alphabet.ProteinAlphabet):
+                random_expected = Protein20Random
+            elif isinstance(base_alpha, Alphabet.NucleotideAlphabet):
+                random_expected = Nucleotide4Random
+            else:
+                errstr = "Error in alphabet: not Nucleotide or Protein, "
+                errstr += "supply expected frequencies"
+                raise ValueError(errstr)
+            del base_alpha
+        elif not isinstance(e_freq_table, FreqTable.FreqTable):
+            raise ValueError("e_freq_table should be a FreqTable object")
+
+        # determine all of the letters we have to deal with
+        all_letters = self._get_all_letters()
+        for char in chars_to_ignore:
+            all_letters = all_letters.replace(char, '')
+
+        info_content = {}
+        freq_dict_ = {}
+        for residue_num in range(start, end):
+            freq_dict = self._get_letter_freqs(residue_num,
+                                               self.alignment,
+                                               all_letters, chars_to_ignore)
+            # print freq_dict,
+            column_score = self._get_column_info_content(freq_dict,
+                                                         e_freq_table,
+                                                         log_base,
+                                                         random_expected)
+
+            info_content[residue_num] = column_score
+            freq_dict_[residue_num] = freq_dict
+        # sum up the score
+        total_info = sum(info_content.values())
+        # fill in the ic_vector member: holds IC for each column
+        for i in info_content:
+            self.ic_vector[i] = info_content[i]
+        return total_info, info_content, freq_dict_ 
+
+'''
+Calcula la conservacion media
+'''    
+def conservation_media(msas_summary, output):    
+    entropy_media=[]
+    i=0
+    for summary in msas_summary:
+        df = pandas.read_csv(summary, usecols=['Entropy'])
+        print (df)
+        if(i==0):
+            entropy_media = df['Entropy'].tolist()
+        else:
+            entropy_media = [x + y for x, y in zip(entropy_media , df['Entropy'].tolist() )]
+        i=i+1
+    entropy_media =   [x / i  for x in entropy_media]
+    df = pandas.DataFrame(entropy_media,columns=['Entropy'])
+    df.to_csv(output)
+     
+    
