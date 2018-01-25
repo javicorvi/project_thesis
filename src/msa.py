@@ -11,7 +11,7 @@ import gzip
 import time
 import re
 import dataanalisys
-import web_logo
+#import web_logo
 import pandas
 import logging
 import constants as cons

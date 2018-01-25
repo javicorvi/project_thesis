@@ -12,7 +12,7 @@ from sklearn import preprocessing
 import numpy as np 
 import glob
 import msa
-from sklearn.datasets.california_housing import TARGET_FILENAME
+#from sklearn.datasets.california_housing import TARGET_FILENAME
 import constants as cons
 import pandas 
 import logging
