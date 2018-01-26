@@ -1352,36 +1352,52 @@ def plot_conservation_conformeros():
 Entropy by Column Family 
 '''
 def entropy_by_column_family():
-    # alignment = AlignIO.read('fasta.txt', "fasta", alphabet=Alphabet.ProteinAlphabet())
-    execution_folder = '../PF00085/PDB/'
-    structures = ['2TRX', '1XOA', '1XOB', '2H74', '1KEB', '2H6Z', '2H6X', '2H76']
-    #TODO the structures are in the cvs file with the results. get the columns with the pdb information read the MSA
-    msas = [execution_folder + pdb + '/curated_sequences_path/sequences-beta5.0-nsus15.0-runs20000.fasta.cluster' for pdb in structures]
-    outputs = [execution_folder + pdb + '/conservation/information_content.csv' for pdb in structures]
+    file = '../FAMILY_PF00085/PF00085/PF00085_evol_info.csv'
+    df = pandas.read_csv(file, header=0, usecols=['pdb','pdb_folder_name','auc', 'auc_nat', 'auc_01', 'auc_nat_01', 'status'])
+    pdb_to_compare = df.loc[df['status'] == 'okey']
+    structures = pdb_to_compare['pdb_folder_name'].tolist()
+    execution_folder = '../FAMILY_PF00085/PF00085/PDB/'
+    msas = [execution_folder + pdb + '/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta' for pdb in structures]
+    outputs = [execution_folder + pdb + '/sincronized_evol_path/conservation/information_content.csv' for pdb in structures]
     i = 0
     for m in msas:
+        print ("BEGIN " + m)
         msa.summary(m, outputs[i], structures[i])
         i = i + 1
+        print ("END " + m)
+    print ("fin")    
+#entropy_by_column_family()
 
 '''
 Calculo de la entropia media por columna para toda la familia
 '''
 def entropy_by_column_media_family():
-    execution_folder = '../PF00085/PDB/'
-    structures = ['2TRX', '1XOA', '1XOB', '2H74', '1KEB', '2H6Z', '2H6X', '2H76']
-    #TODO the structures are in the cvs file with the results. get the columns with the pdb information read the MSA
-    msas_summary = [execution_folder + pdb + '/conservation/information_content.csv' for pdb in structures]
-    output = execution_folder + 'information_content_media.csv'
+    file = '../FAMILY_PF00085/PF00085/PF00085_evol_info.csv'
+    df = pandas.read_csv(file, header=0, usecols=['pdb','pdb_folder_name','status'])
+    pdb_to_compare = df.loc[df['status'] == 'okey']
+    structures = pdb_to_compare['pdb_folder_name'].tolist()
+    execution_folder = '../FAMILY_PF00085/PF00085/PDB/'
+    
+    msas_summary = [execution_folder + pdb + '/sincronized_evol_path/conservation/information_content.csv' for pdb in structures]
+    output = '../FAMILY_PF00085/PF00085/information_content_media.csv'
     msa.conservation_media(msas_summary, output)
- 
+    
+#entropy_by_column_media_family ()
+
+def natural_entropy_by_column_family():
+    msa_natural = '../FAMILY_PF00085/PF00085/PF00085.fasta'
+    msa.summary(msa_natural, '../FAMILY_PF00085/PF00085/information_content_superimposed_PF00085.csv', 'PF00085_superimposed')
+
+#natural_entropy_by_column_family()
+
 '''
 Plot conservacion media con natural, de toda la familia 
 '''    
 def plot_conservation_media_with_natural_family():
-    execution_folder = '../PF00085/PDB/'
-    conservation_media = execution_folder + 'information_content_media.csv'
+    execution_folder = '../FAMILY_PF00085/PF00085/'
+    conservation_media = '../FAMILY_PF00085/PF00085/information_content_media.csv'
     #TODO la conservacion natural debe ser del MSA natural superpuesto y recortado.
-    conservation_natural = '../THIO_ECOLI_4_107_2TRX_A/information_content_PF00085_THIO_ECOLI_reference.csv'
+    conservation_natural = '../FAMILY_PF00085/PF00085/information_content_superimposed_PF00085.csv'
     df_media = pandas.read_csv(conservation_media, usecols=['Entropy'])
     df_natural = pandas.read_csv(conservation_natural, usecols=['Entropy'])
     natural = df_natural['Entropy'].tolist()
@@ -1389,4 +1405,6 @@ def plot_conservation_media_with_natural_family():
     media = df_media['Entropy'].tolist()
     media.insert(0, None)
     msas_entropy = [[natural, 'Natural', 'blue'], [media, 'Media', 'red']]
-    plot.conservation_comparation(msas_entropy, execution_folder + 'conservation_media_example.png', 'Conservacion Media y Natural')
+    plot.conservation_comparation(msas_entropy, execution_folder + 'conservation_media.png', 'Conservacion Media y Natural')
+    
+plot_conservation_media_with_natural_family()    

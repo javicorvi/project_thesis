@@ -388,8 +388,8 @@ def information_content(self, start=0,
         # sum up the score
         total_info = sum(info_content.values())
         # fill in the ic_vector member: holds IC for each column
-        for i in info_content:
-            self.ic_vector[i] = info_content[i]
+        #for i in info_content:
+        #    self.ic_vector[i] = info_content[i]
         return total_info, info_content, freq_dict_ 
 
 '''
