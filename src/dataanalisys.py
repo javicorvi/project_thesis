@@ -185,13 +185,15 @@ def getTargetScores(mi_file_path,contact_map, mi_data_path_natural=None,sincroni
         target.append(v)
     return target,scores    
 def run_analisys_singular(df,index, zmip_natural_result_path, mi_result_file_path, contact_map_path,outputpath,window, pdb_name, contact_threashold=1):
+    contact_threashold_str = str(contact_threashold)
     #levanto el zmip natural
     zmip_natural = util.load_zmip(zmip_natural_result_path,window)
     util.order(zmip_natural)
     #util.save_list_to_csv(zmip_natural_result_path+"_order.csv", zmip_natural, ['Position 1',' Position 2','ZMIP'])
     contact_map=util.load_contact_map(contact_map_path)
     #Agrego los numeros de contactos de la matriz
-    contacts_count = np.count_nonzero(contact_map)
+    contacts_count = np.count_nonzero(contact_map>=contact_threashold)
+    df.set_value(index, 'contact_threashold', contact_threashold)
     df.set_value(index, 'contacts_count', contacts_count)
     
     print " Calculation of : " + mi_result_file_path + " with contact map " + contact_map_path
@@ -247,9 +249,9 @@ def run_analisys_singular(df,index, zmip_natural_result_path, mi_result_file_pat
     scores.append(scores_evol)
     #plot.roc_curve(y_true,scores_nat,scores_evol)
     colors = ['blue', 'red']
-    plot.roc_curve(df,index,y_true,scores,labels,colors, mi_result_file_path+'_roc_curve.png')
+    plot.roc_curve(df,index,y_true,scores,labels,colors, mi_result_file_path+'_roc_curve_'+contact_threashold_str+'.png')
             
-    plot.contacts_with_mi(x_nat_t,y_evol_t,x_nat_f,y_evol_f,mi_result_file_path+'contacts_with_mi.png',mi_result_file_path, pdb_name)
+    plot.contacts_with_mi(x_nat_t,y_evol_t,x_nat_f,y_evol_f,mi_result_file_path+'contacts_with_mi'+contact_threashold_str+'.png',mi_result_file_path, pdb_name)
             
     #ordeno zmip evolucionado sincronizado 
     util.order(m2)
@@ -258,21 +260,21 @@ def run_analisys_singular(df,index, zmip_natural_result_path, mi_result_file_pat
     top_df = pandas.DataFrame()        
     print "TOTAL PAR POSITIONS " + str(len(zmip_natural))
             
-    result_file = open(mi_result_file_path+".txt","w")
+    result_file = open(mi_result_file_path+contact_threashold_str+'.txt','w')
     result_file.write(mi_result_file_path+ '\n')
     result_file.write(" SPEARMAN RANK CORRELATION " + str(value_spearman)+ '\n')
-    top_rank_result = top_rank(zmip_natural,m2,0.5,contact_map,mi_result_file_path+'top_0.5percent_withcon.png',mi_result_file_path,result_file,top_df,1, pdb_name,contact_threashold)
-    top_rank_result = top_rank(zmip_natural,m2,1,contact_map,mi_result_file_path+'top_1percent_withcon.png',mi_result_file_path,result_file,top_df,2, pdb_name,contact_threashold)
-    top_rank_result = top_rank(zmip_natural,m2,2,contact_map,mi_result_file_path+'top_2percent_withcon.png',mi_result_file_path,result_file,top_df,3, pdb_name,contact_threashold)
-    top_rank_result = top_rank(zmip_natural,m2,3,contact_map,mi_result_file_path+'top_3percent_withcon.png',mi_result_file_path,result_file,top_df,4, pdb_name,contact_threashold)
-    top_rank_result = top_rank(zmip_natural,m2,4,contact_map,mi_result_file_path+'top_4percent_withcon.png',mi_result_file_path,result_file,top_df,5, pdb_name,contact_threashold)
-    top_rank_result = top_rank(zmip_natural,m2,5,contact_map,mi_result_file_path+'top_5percent_withcon.png',mi_result_file_path,result_file,top_df,6, pdb_name,contact_threashold)
+    top_rank_result = top_rank(zmip_natural,m2,0.5,contact_map,mi_result_file_path+'top_0.5percent_withcon'+contact_threashold_str+'.png',mi_result_file_path,result_file,top_df,1, pdb_name,contact_threashold)
+    top_rank_result = top_rank(zmip_natural,m2,1,contact_map,mi_result_file_path+'top_1percent_withcon'+contact_threashold_str+'.png',mi_result_file_path,result_file,top_df,2, pdb_name,contact_threashold)
+    top_rank_result = top_rank(zmip_natural,m2,2,contact_map,mi_result_file_path+'top_2percent_withcon'+contact_threashold_str+'.png',mi_result_file_path,result_file,top_df,3, pdb_name,contact_threashold)
+    top_rank_result = top_rank(zmip_natural,m2,3,contact_map,mi_result_file_path+'top_3percent_withcon'+contact_threashold_str+'.png',mi_result_file_path,result_file,top_df,4, pdb_name,contact_threashold)
+    top_rank_result = top_rank(zmip_natural,m2,4,contact_map,mi_result_file_path+'top_4percent_withcon'+contact_threashold_str+'.png',mi_result_file_path,result_file,top_df,5, pdb_name,contact_threashold)
+    top_rank_result = top_rank(zmip_natural,m2,5,contact_map,mi_result_file_path+'top_5percent_withcon'+contact_threashold_str+'.png',mi_result_file_path,result_file,top_df,6, pdb_name,contact_threashold)
     
     #top_rank(zmip_natural,m2,3,contact_map,mi_result_file_path+'top_3percent_withcon.png',mi_result_file_path,result_file)
     #top_rank(zmip_natural,m2,4,contact_map,mi_result_file_path+'top_4percent_withcon.png',mi_result_file_path,result_file)
     #top_rank(zmip_natural,m2,5,contact_map,mi_result_file_path+'top_5percent_withcon.png',mi_result_file_path,result_file)
     result_file.close()
-    top_df.to_csv(mi_result_file_path + '_top.csv')
+    top_df.to_csv(mi_result_file_path + '_top'+contact_threashold_str+'.csv')
     print '************************************************************************'
 
 '''
@@ -294,8 +296,8 @@ def normalice_(m,m2):
     #import numpy as np   
     #X_train = np.array([[ 1., -1.,  2.],[ 2.,  0.,  0.],[ 0.,  1., -1.]])
     min_max_scaler = preprocessing.MinMaxScaler()
-    m_train_minmax = min_max_scaler.fit_transform(m)
-    m2_train_minmax = min_max_scaler.fit_transform(m2) 
+    m_train_minmax = min_max_scaler.fit_transform( np.asarray(m).reshape(-1, 1))
+    m2_train_minmax = min_max_scaler.fit_transform( np.asarray(m2).reshape(-1, 1)) 
     return m_train_minmax,m2_train_minmax   
 def spearman(x,y):
     return 1 - Bio.Cluster.distancematrix((x,y), dist="s")[1][0]
@@ -737,7 +739,8 @@ def contact_map_sum_prob(execution_folder,contact_maps_paths):
     cant = 0
     for contact_map_path in contact_maps_paths:
         cmap = util.load_contact_map(contact_map_path)
-        if(cmap_sum==None):
+        #if(cmap_sum==None):
+        if(cant==0):
             cmap_sum = cmap
             cant=cant+1
         else:
@@ -762,6 +765,7 @@ def contact_map_sum_prob(execution_folder,contact_maps_paths):
     conserved_contacts_50_75 = np.count_nonzero(camp_prob > 0.5 and camp_prob < 0.75 )
     conserved_contacts_25_50 = np.count_nonzero(camp_prob > 0.25 and camp_prob < 0.5 )
     conserved_contacts_0_25 = np.count_nonzero(camp_prob > 0.0 and camp_prob < 0.25 )  
+    '''
     '''
     total_contacts = np.count_nonzero(cmap_sum != 0)
     conserved_contacts_8 = np.count_nonzero(cmap_sum == 8)
@@ -800,7 +804,7 @@ def contact_map_sum_prob(execution_folder,contact_maps_paths):
     
     df.set_value(9, '#total_contacts', total_contacts)
     df.to_csv(execution_folder+'contact_distribution.csv')
-    
+    '''
     
 """
 Lee la informacion sobre consevacion (KL) por columna de cada una de las proteinas evolucionadas. 

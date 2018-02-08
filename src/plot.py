@@ -121,7 +121,7 @@ def roc_curve_(y_true,scores,labels,title,colors,legend_title,output_file, verti
         partial_auc_value_0_1 = partial_auc(fpr[i], tpr[i], 0.1)
         auc = metrics.auc(fpr[i], tpr[i])
         roc_auc[i] = auc
-        plt.plot(fpr[i], tpr[i], color=color, lw=lw,label='ROC curve  {0} (auc = {1:0.4f} | auc 0.1 = {2:0.4f})'''.format(label, roc_auc[i], partial_auc_value_0_1))
+        plt.plot(fpr[i], tpr[i], color=color, lw=lw,label='{0} (auc = {1:0.4f} | auc 0.1 = {2:0.4f})'''.format(label, roc_auc[i], partial_auc_value_0_1))
     plt.plot([0, 1], [0, 1], color='black', lw=lw, linestyle='--')
     if(vertical_at_01):
         plt.axvline(x=0.1,color=vertical_line_color)

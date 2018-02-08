@@ -24,11 +24,7 @@ logging.basicConfig(filename=const.log_file_path, level=logging.DEBUG, format="%
 consoleHandler = logging.StreamHandler()
 rootLogger = logging.getLogger()
 rootLogger.addHandler(consoleHandler)
-# Ver que es ejecucion
-# 2   if(atom[j].sequential < thisresidue-1 || atom[j].sequential > thisresidue+1) w=4
-# 3  if(atom[j].sequential < thisresidue-3 || atom[j].sequential > thisresidue+3) w=4
-# 4  if(atom[j].sequential < thisresidue-3 || atom[j].sequential > thisresidue+3) w=0
-# 5 if(atom[j].sequential < thisresidue-1 || atom[j].sequential > thisresidue+1) w=0
+
  
 window = 1
 '''
@@ -1407,4 +1403,95 @@ def plot_conservation_media_with_natural_family():
     msas_entropy = [[natural, 'Natural', 'blue'], [media, 'Media', 'red']]
     plot.conservation_comparation(msas_entropy, execution_folder + 'conservation_media.png', 'Conservacion Media y Natural')
     
-plot_conservation_media_with_natural_family()    
+#plot_conservation_media_with_natural_family()    
+
+'''
+Plot conservacion media de toda la familia, conservacion media de los conformeros de la thio_ecoli  
+'''    
+def plot_conservation_media_with_natural_family():
+    execution_folder = '../FAMILY_PF00085/PF00085/'
+    conservation_media = '../FAMILY_PF00085/PF00085/information_content_media.csv'
+    #TODO la conservacion natural debe ser del MSA natural superpuesto y recortado.
+    conservation_natural = '../FAMILY_PF00085/PF00085/information_content_superimposed_PF00085.csv'
+    df_media = pandas.read_csv(conservation_media, usecols=['Entropy'])
+    df_natural = pandas.read_csv(conservation_natural, usecols=['Entropy'])
+    natural = df_natural['Entropy'].tolist()
+    natural.insert(0, None)
+    media = df_media['Entropy'].tolist()
+    media.insert(0, None)
+    msas_entropy = [[natural, 'Natural', 'blue'], [media, 'Media', 'red']]
+    plot.conservation_comparation(msas_entropy, execution_folder + 'conservation_media.png', 'Conservacion Media y Natural')
+ 
+ 
+'''Analisis de la matriz de contacto conjunta sumada'''
+
+
+def analisys_contact_map_thio_ecoli_family():
+    file = '../FAMILY_PF00085/PF00085/PF00085_evol_info.csv'
+    df = pandas.read_csv(file, header=0, usecols=['pdb','pdb_folder_name','status'])
+    pdb_to_compare = df.loc[df['status'] == 'okey']
+    structures = pdb_to_compare['pdb_folder_name'].tolist()
+    execution_folder = '../FAMILY_PF00085/PF00085/PDB/'
+    
+    contact_maps_paths = [execution_folder + pdb + '/contact_map_sync.dat' for pdb in structures]
+    dataanalisys.contact_map_sum_prob('../FAMILY_PF00085/PF00085', contact_maps_paths)     
+
+#analisys_contact_map_thio_ecoli_family()
+
+    
+'''Realiza los calculos promediando la informacion mutua obtenida de todas las evoluciones de los conformeros'''
+
+
+def analisys_prom_zmip_thio_ecoli_family():
+    file = '../FAMILY_PF00085/PF00085/PF00085_evol_info.csv'
+    df = pandas.read_csv(file, header=0, usecols=['pdb','pdb_folder_name','status'])
+    pdb_to_compare = df.loc[df['status'] == 'okey']
+    structures = pdb_to_compare['pdb_folder_name'].tolist()
+    execution_folder = '../FAMILY_PF00085/PF00085/PDB/'
+    
+    mi_paths = [execution_folder + pdb + '/mi_data/zmip_sequences-beta5.0-nsus15.0-runs20000.csv' for pdb in structures]
+    # contact_map_path = execution_folder + 'sum_contact_map.dat'
+    # zmip_natural_result_path = "../THIO_ECOLI_4_107_2TRX_A/natural/zmip_PF00085_THIO_ECOLI_reference.csv"
+    
+    execution_prom_folder = '../FAMILY_PF00085/PF00085/prom/'
+    mi_prom_result = execution_prom_folder + 'zmip_prom.csv'
+    if not os.path.exists(execution_prom_folder):
+        os.makedirs(execution_prom_folder)
+    
+    dataanalisys.prom_zmip(mi_paths, mi_prom_result, 0)
+    
+    zmip_natural_result_file = '../FAMILY_PF00085/PF00085/PF00085.fasta_zmip.dat'
+    
+    contact_map_path = '../FAMILY_PF00085/PF00085/sum_contact_map.dat'
+    
+    top_df = pandas.DataFrame()
+    pdb_name = 'THIO_ECOLI PROM FAMILY'
+    
+    dataanalisys.run_analisys_singular(top_df, 1, zmip_natural_result_file, mi_prom_result, contact_map_path, execution_prom_folder, 0, pdb_name,1) 
+    dataanalisys.run_analisys_singular(top_df, 2, zmip_natural_result_file, mi_prom_result, contact_map_path, execution_prom_folder, 0, pdb_name,15)
+    dataanalisys.run_analisys_singular(top_df, 3, zmip_natural_result_file, mi_prom_result, contact_map_path, execution_prom_folder, 0, pdb_name,31)
+    dataanalisys.run_analisys_singular(top_df, 4, zmip_natural_result_file, mi_prom_result, contact_map_path, execution_prom_folder, 0, pdb_name,46)
+    dataanalisys.run_analisys_singular(top_df, 5, zmip_natural_result_file, mi_prom_result, contact_map_path, execution_prom_folder, 0, pdb_name,64)
+    top_df.to_csv(execution_prom_folder + 'result_prom.csv')
+    
+analisys_prom_zmip_thio_ecoli_family()
+
+'''
+Plot roc cur familia pf00085 estructuras superpuestas.
+'''
+def plot_roc_natural_family_superpost():
+    zmip_natural_result_file = '../FAMILY_PF00085/PF00085/PF00085.fasta_zmip.dat'
+    contact_map_path = '../FAMILY_PF00085/PF00085/sum_contact_map.dat'
+    
+    target, scores = dataanalisys.getTargetScores(zmip_natural_result_file, contact_map_path, 0)
+    sc = []
+    targets = []
+    sc.append(scores)
+    targets.append(target)
+    auc, auc01 = util.getAUC(target, scores)
+    colors = ['blue']
+    labels = ['Familia PF00085']
+    output_file = '../FAMILY_PF00085/PF00085/natural_spuerpuesta_roc'
+    plot.roc_curve_(targets, sc, labels, 'Familia PF00085 estructuras superpuestas' , colors, 'Runs', output_file)
+    
+#plot_roc_natural_family_superpost()    
