@@ -1468,13 +1468,13 @@ def analisys_prom_zmip_thio_ecoli_family():
     pdb_name = 'THIO_ECOLI PROM FAMILY'
     
     dataanalisys.run_analisys_singular(top_df, 1, zmip_natural_result_file, mi_prom_result, contact_map_path, execution_prom_folder, 0, pdb_name,1) 
-    dataanalisys.run_analisys_singular(top_df, 2, zmip_natural_result_file, mi_prom_result, contact_map_path, execution_prom_folder, 0, pdb_name,15)
-    dataanalisys.run_analisys_singular(top_df, 3, zmip_natural_result_file, mi_prom_result, contact_map_path, execution_prom_folder, 0, pdb_name,31)
-    dataanalisys.run_analisys_singular(top_df, 4, zmip_natural_result_file, mi_prom_result, contact_map_path, execution_prom_folder, 0, pdb_name,46)
+    dataanalisys.run_analisys_singular(top_df, 2, zmip_natural_result_file, mi_prom_result, contact_map_path, execution_prom_folder, 0, pdb_name,16)
+    dataanalisys.run_analisys_singular(top_df, 3, zmip_natural_result_file, mi_prom_result, contact_map_path, execution_prom_folder, 0, pdb_name,32)
+    dataanalisys.run_analisys_singular(top_df, 4, zmip_natural_result_file, mi_prom_result, contact_map_path, execution_prom_folder, 0, pdb_name,48)
     dataanalisys.run_analisys_singular(top_df, 5, zmip_natural_result_file, mi_prom_result, contact_map_path, execution_prom_folder, 0, pdb_name,64)
     top_df.to_csv(execution_prom_folder + 'result_prom.csv')
     
-analisys_prom_zmip_thio_ecoli_family()
+#analisys_prom_zmip_thio_ecoli_family()
 
 '''
 Plot roc cur familia pf00085 estructuras superpuestas.
@@ -1495,3 +1495,79 @@ def plot_roc_natural_family_superpost():
     plot.roc_curve_(targets, sc, labels, 'Familia PF00085 estructuras superpuestas' , colors, 'Runs', output_file)
     
 #plot_roc_natural_family_superpost()    
+
+'''
+
+'''
+def create_msa_without_id_thio_ecoli_family():
+    file = '../FAMILY_PF00085/PF00085/PF00085_evol_info.csv'
+    df = pandas.read_csv(file, header=0, usecols=['pdb','pdb_folder_name','status'])
+    pdb_to_compare = df.loc[df['status'] == 'okey']
+    structures = pdb_to_compare['pdb_folder_name'].tolist()
+    execution_folder = '../FAMILY_PF00085/PF00085/PDB/'
+    
+    msas = [execution_folder + pdb + '/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta' for pdb in structures]
+    for msa_ in msas:
+        msa.create_msa_without_id(msa_, str(msa_) + '_no_seq_ids.fasta')
+        
+def create_msa_conjuntion_thio_ecoli_family(num=1500):
+    file = '../FAMILY_PF00085/PF00085/PF00085_evol_info.csv'
+    df = pandas.read_csv(file, header=0, usecols=['pdb','pdb_folder_name','status'])
+    pdb_to_compare = df.loc[df['status'] == 'okey']
+    structures = pdb_to_compare['pdb_folder_name'].tolist()
+    execution_folder = '../FAMILY_PF00085/PF00085/PDB/'
+    
+    msas = [execution_folder + pdb + '/sincronized_evol_path/sequences-beta5.0-nsus15.0-runs20000.fasta_no_seq_ids.fasta' for pdb in structures]
+    msa_conjuntion_bootstrap_path = '../FAMILY_PF00085/PF00085/msa_conjuntion_' + str(num) + '/'
+    if not os.path.exists(msa_conjuntion_bootstrap_path):
+        os.makedirs(msa_conjuntion_bootstrap_path)
+    msa.create_msa_bootstrap(msas, msa_conjuntion_bootstrap_path + 'msa_bootstrap_' + str(num) + '.fasta', num)
+
+def analisys_msa_conjuntion_thio_ecoli_family(num=1500):
+    execution_folder = '../FAMILY_PF00085/PF00085/'
+    msa_conjuntion_bootstrap_path = execution_folder + 'msa_conjuntion_' + str(num) + '/'
+    
+    msa_bootstrap = msa_conjuntion_bootstrap_path + 'msa_bootstrap_' + str(num) + '.fasta'
+    mi_data_output_path = msa_conjuntion_bootstrap_path + 'mi_data_path/'
+    msa_conservation_path = msa_conjuntion_bootstrap_path + 'conservation/'
+    if not os.path.exists(mi_data_output_path):
+        os.makedirs(mi_data_output_path)
+    if not os.path.exists(msa_conservation_path):
+        os.makedirs(msa_conservation_path)
+    mi_data_path = mi_data_output_path + "zmip_bootstrap.csv"
+    msa_conservation_path = msa_conservation_path + 'bootstrap_'
+    msa_bootstrap_clustered = msa_bootstrap + '_cluster_62.cluster'
+    
+    msa.clustering_singular("0.62", msa_bootstrap, msa_bootstrap_clustered)
+    dataanalisys.evol_analisys(msa_bootstrap_clustered, mi_data_path, msa_conservation_path, 'Bootstrap Family PF00085')
+    
+    #dataanalisys.evol_analisys(msa_bootstrap, mi_data_path, msa_conservation_path, 'Bootstrap Family PF00085')
+
+def analisys_singular_conjunction_thio_ecoli_family(num=1500):
+    execution_folder = '../FAMILY_PF00085/PF00085/msa_conjuntion_' + str(num) + '/'
+    mi_data_output_path = execution_folder + 'mi_data_path/'
+    mi_data_path_file = mi_data_output_path + "zmip_bootstrap.csv"
+    zmip_natural_result_file = '../FAMILY_PF00085/PF00085/PF00085.fasta_zmip.dat'
+    contact_map_path = '../FAMILY_PF00085/PF00085/sum_contact_map.dat'
+    # zmip_reference_result_path = '../THIO_ECOLI_4_107/2TRX/mi_data_path/zmip_sequences-beta5.0-nsus15.0-runs20000.csv'
+    top_df = pandas.DataFrame()
+    pdb_name = 'Family PF00085 conjunction'
+    dataanalisys.run_analisys_singular(top_df, 1, zmip_natural_result_file, mi_data_path_file, contact_map_path, mi_data_output_path, window, pdb_name) 
+    # dataanalisys.top_rank_intersection(execution_folder, contact_map_path,zmip_natural_result_path, mi_data_path_file, top_df, zmip_reference_result_path, index=1, window, contact_threshold=1, top_threshold=1, sinchronize_with_natural=True)
+    
+    top_df.to_csv(execution_folder + 'result_conjunction.csv')
+
+def conjunction_analisys_family(num):
+   
+    create_msa_without_id_thio_ecoli_family()
+
+    create_msa_conjuntion_thio_ecoli_family(num)    
+    
+    analisys_msa_conjuntion_thio_ecoli_family(num)
+
+    analisys_singular_conjunction_thio_ecoli_family(num)
+    
+conjunction_analisys_family(200)    
+# conjunction_analisys(3000)
+# conjunction_analisys(5000)
+# conjunction_analisys(10000)
