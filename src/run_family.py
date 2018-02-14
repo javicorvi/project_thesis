@@ -1552,22 +1552,33 @@ def analisys_singular_conjunction_thio_ecoli_family(num=1500):
     # zmip_reference_result_path = '../THIO_ECOLI_4_107/2TRX/mi_data_path/zmip_sequences-beta5.0-nsus15.0-runs20000.csv'
     top_df = pandas.DataFrame()
     pdb_name = 'Family PF00085 conjunction'
-    dataanalisys.run_analisys_singular(top_df, 1, zmip_natural_result_file, mi_data_path_file, contact_map_path, mi_data_output_path, window, pdb_name) 
-    # dataanalisys.top_rank_intersection(execution_folder, contact_map_path,zmip_natural_result_path, mi_data_path_file, top_df, zmip_reference_result_path, index=1, window, contact_threshold=1, top_threshold=1, sinchronize_with_natural=True)
+    
+    #dataanalisys.run_analisys_singular(top_df, 1, zmip_natural_result_file, mi_data_path_file, contact_map_path, mi_data_output_path, window, pdb_name) 
+    
+    dataanalisys.run_analisys_singular(top_df, 1, zmip_natural_result_file, mi_data_path_file, contact_map_path, mi_data_output_path, 0, pdb_name,1) 
+    dataanalisys.run_analisys_singular(top_df, 2, zmip_natural_result_file, mi_data_path_file, contact_map_path, mi_data_output_path, 0, pdb_name,16)
+    dataanalisys.run_analisys_singular(top_df, 3, zmip_natural_result_file, mi_data_path_file, contact_map_path, mi_data_output_path, 0, pdb_name,32)
+    dataanalisys.run_analisys_singular(top_df, 4, zmip_natural_result_file, mi_data_path_file, contact_map_path, mi_data_output_path, 0, pdb_name,48)
+    dataanalisys.run_analisys_singular(top_df, 5, zmip_natural_result_file, mi_data_path_file, contact_map_path, mi_data_output_path, 0, pdb_name,64)
+    
     
     top_df.to_csv(execution_folder + 'result_conjunction.csv')
 
 def conjunction_analisys_family(num):
    
-    create_msa_without_id_thio_ecoli_family()
+    #create_msa_without_id_thio_ecoli_family()
 
-    create_msa_conjuntion_thio_ecoli_family(num)    
+    #create_msa_conjuntion_thio_ecoli_family(num)    
     
-    analisys_msa_conjuntion_thio_ecoli_family(num)
+    #analisys_msa_conjuntion_thio_ecoli_family(num)
 
     analisys_singular_conjunction_thio_ecoli_family(num)
     
-conjunction_analisys_family(200)    
+conjunction_analisys_family(100)   
+conjunction_analisys_family(200)
+conjunction_analisys_family(400)
+conjunction_analisys_family(600)
+conjunction_analisys_family(800) 
 # conjunction_analisys(3000)
 # conjunction_analisys(5000)
 # conjunction_analisys(10000)
