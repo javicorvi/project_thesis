@@ -1404,24 +1404,6 @@ def plot_conservation_media_with_natural_family():
     plot.conservation_comparation(msas_entropy, execution_folder + 'conservation_media.png', 'Conservacion Media y Natural')
     
 #plot_conservation_media_with_natural_family()    
-
-'''
-Plot conservacion media de toda la familia, conservacion media de los conformeros de la thio_ecoli  
-'''    
-def plot_conservation_media_with_natural_family():
-    execution_folder = '../FAMILY_PF00085/PF00085/'
-    conservation_media = '../FAMILY_PF00085/PF00085/information_content_media.csv'
-    #TODO la conservacion natural debe ser del MSA natural superpuesto y recortado.
-    conservation_natural = '../FAMILY_PF00085/PF00085/information_content_superimposed_PF00085.csv'
-    df_media = pandas.read_csv(conservation_media, usecols=['Entropy'])
-    df_natural = pandas.read_csv(conservation_natural, usecols=['Entropy'])
-    natural = df_natural['Entropy'].tolist()
-    natural.insert(0, None)
-    media = df_media['Entropy'].tolist()
-    media.insert(0, None)
-    msas_entropy = [[natural, 'Natural', 'blue'], [media, 'Media', 'red']]
-    plot.conservation_comparation(msas_entropy, execution_folder + 'conservation_media.png', 'Conservacion Media y Natural')
- 
  
 '''Analisis de la matriz de contacto conjunta sumada'''
 
@@ -1566,8 +1548,21 @@ def conjunction_analisys_family(num):
     analisys_msa_conjuntion_thio_ecoli_family(num)
 
     analisys_singular_conjunction_thio_ecoli_family(num)
+
+#conjunction_analisys_family(100)   
+#conjunction_analisys_family(200)   
+#conjunction_analisys_family(400)   
+#conjunction_analisys_family(600)
+#conjunction_analisys_family(800)   
     
-conjunction_analisys_family(200)    
 # conjunction_analisys(3000)
 # conjunction_analisys(5000)
 # conjunction_analisys(10000)
+
+
+def matrix_prob_contact_vs_prob_tops_1():
+    sum_contact_map='../THIO_ECOLI_4_107/sum_contact_map.dat'
+    cmap = util.load_contact_map(sum_contact_map)
+    #plot.contact_map(cmap,'THIO_ECOLI_4_107/prob_contact_map_.png')
+    plot.contact_map_sum(cmap,'../THIO_ECOLI_4_107/contact_map_with_mi_top_1.png','Sum Contact Map and Sum Top 1 MI')
+matrix_prob_contact_vs_prob_tops_1()    
