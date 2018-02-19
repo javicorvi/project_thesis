@@ -1569,14 +1569,22 @@ def conjunction_analisys_family(num):
 
 
 def generate_contact_map_with_top_mi_matrix():
-    sum_contact_map='../FAMILY_PF00085/PF00085/sum_contact_map.dat'
+    sum_contact_map='../THIO_ECOLI_4_107/sum_contact_map.dat'
     #sum_contact_map='../THIO_ECOLI_4_107/sum_contact_map.dat'
-    top_smi = '../top_smi.csv'
-    #top_smi = '../THIO_ECOLI_4_107/sum_contact_map.dat'
+    #top_smi = '../top_smi.csv'
+    top_1_mi = '../THIO_ECOLI_4_107/conjunction_mi/top_1_mi.csv'
+    top_2_mi = '../THIO_ECOLI_4_107/conjunction_mi/top_2_mi.csv'
+    top_3_mi = '../THIO_ECOLI_4_107/conjunction_mi/top_3_mi.csv'
+    top_4_mi = '../THIO_ECOLI_4_107/conjunction_mi/top_4_mi.csv'
+    top_5_mi = '../THIO_ECOLI_4_107/conjunction_mi/top_5_mi.csv'
     out_matrix = '../THIO_ECOLI_4_107/sum_contact_map_and_top_mi.dat'
-    dataanalisys.generate_contact_map_with_top_mi_matrix(sum_contact_map, top_smi, out_matrix)
+    dataanalisys.generate_contact_map_with_top_mi_matrix(str(1),sum_contact_map, top_1_mi, out_matrix+'1')
+    dataanalisys.generate_contact_map_with_top_mi_matrix(str(2),sum_contact_map, top_2_mi, out_matrix+'2')
+    dataanalisys.generate_contact_map_with_top_mi_matrix(str(3),sum_contact_map, top_3_mi, out_matrix+'3')
+    dataanalisys.generate_contact_map_with_top_mi_matrix(str(4),sum_contact_map, top_4_mi, out_matrix+'4')
+    dataanalisys.generate_contact_map_with_top_mi_matrix(str(5),sum_contact_map, top_5_mi, out_matrix+'5')
     #plot.contact_map(cmap,'THIO_ECOLI_4_107/prob_contact_map_.png')
-    #plot.contact_map_sum(cmap,'../THIO_ECOLI_4_107/contact_map_with_mi_top_1.png','Sum Contact Map and Sum Top 1 MI')
+    
 generate_contact_map_with_top_mi_matrix()   
 
  
