@@ -1261,3 +1261,21 @@ def top_rank_comparation(execution_folder, top,contact_map_path,zmip_natural_res
             data_contact_ref.append(d)
     top_df.set_value(index,'match_positions_reference',str(len(data_contact_ref)))
     
+    
+    
+    
+def generate_contact_map_with_top_mi_matrix(sum_contact_map, top_smi_path, out_matrix):
+    cmap = util.load_contact_map(sum_contact_map) 
+    cmap_with_mi=np.triu(cmap, -1)
+    
+    #add mi values to map 
+    for x in map(None, top_smi):
+        pos1 = int(x[0]-1)
+        pos2 = int(x[1]-1)
+        v = cmap_with_mi[pos2][pos1]
+        if(v!=0):
+            print ("error")
+        #set the value of the smi    
+        cmap_with_mi[pos2][pos1]=x[2]
+    util.save_contact_map(cmap_with_mi, out_matrix)    
+        

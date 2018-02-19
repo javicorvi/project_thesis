@@ -1568,9 +1568,15 @@ def conjunction_analisys_family(num):
 # conjunction_analisys(10000)
 
 
-def matrix_prob_contact_vs_prob_tops_1():
-    sum_contact_map='../THIO_ECOLI_4_107/sum_contact_map.dat'
-    cmap = util.load_contact_map(sum_contact_map)
+def generate_contact_map_with_top_mi_matrix():
+    sum_contact_map='../FAMILY_PF00085/PF00085/sum_contact_map.dat'
+    #sum_contact_map='../THIO_ECOLI_4_107/sum_contact_map.dat'
+    top_smi = '../top_smi.csv'
+    #top_smi = '../THIO_ECOLI_4_107/sum_contact_map.dat'
+    out_matrix = '../THIO_ECOLI_4_107/sum_contact_map_and_top_mi.dat'
+    dataanalisys.generate_contact_map_with_top_mi_matrix(sum_contact_map, top_smi, out_matrix)
     #plot.contact_map(cmap,'THIO_ECOLI_4_107/prob_contact_map_.png')
-    plot.contact_map_sum(cmap,'../THIO_ECOLI_4_107/contact_map_with_mi_top_1.png','Sum Contact Map and Sum Top 1 MI')
-matrix_prob_contact_vs_prob_tops_1()    
+    #plot.contact_map_sum(cmap,'../THIO_ECOLI_4_107/contact_map_with_mi_top_1.png','Sum Contact Map and Sum Top 1 MI')
+generate_contact_map_with_top_mi_matrix()   
+
+ 
