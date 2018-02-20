@@ -283,7 +283,7 @@ def contact_map_sum(contact_map, output_file,title='Contact Map'):
     cmap=contact_map
     
     #plt.imshow(cmap,cmap=cm.Blues)
-    plt.imshow(cmap,cmap=cm.YlOrRd,interpolation='nearest')
+    plt.imshow(cmap,cmap=cm.GnBu,interpolation='nearest')
     plt.colorbar(ticks=[0,1,2,3,4,5,6,7,8])
     #plt.imshow(cmap,cmap=cm.hot)
     plt.title(title)
