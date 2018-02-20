@@ -1583,6 +1583,9 @@ def generate_contact_map_with_top_mi_matrix():
     dataanalisys.generate_contact_map_with_top_mi_matrix(str(3),sum_contact_map, top_3_mi, out_matrix+'3')
     dataanalisys.generate_contact_map_with_top_mi_matrix(str(4),sum_contact_map, top_4_mi, out_matrix+'4')
     dataanalisys.generate_contact_map_with_top_mi_matrix(str(5),sum_contact_map, top_5_mi, out_matrix+'5')
+    
+    #dataanalisys.generate_contact_map_with_top_mi_two_separated_matrix(str(1),sum_contact_map, top_1_mi, out_matrix+'1')
+    
     #plot.contact_map(cmap,'THIO_ECOLI_4_107/prob_contact_map_.png')
     
 generate_contact_map_with_top_mi_matrix()   

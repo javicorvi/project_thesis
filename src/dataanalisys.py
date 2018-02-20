@@ -1269,7 +1269,9 @@ def generate_contact_map_with_top_mi_matrix(top,sum_contact_map, top_smi_path, o
     cmap_with_mi=np.triu(cmap, -1)
     
     df = pandas.read_csv(top_smi_path,delim_whitespace=True,header=0,usecols=[0,1,2,4])
-    df=df.sort(['Count', 'Contacts'], ascending=[False, False])
+    #df=df.sort(['Count', 'Contacts'], ascending=[False, False])
+    df=df.sort_values(by=['Count', 'Contacts'],ascending=[False, False])
+    
     top_smi=df.values.tolist()
     
     #add mi values to map 
@@ -1282,4 +1284,31 @@ def generate_contact_map_with_top_mi_matrix(top,sum_contact_map, top_smi_path, o
         #set the value of the smi    
         cmap_with_mi[pos2][pos1]=x[2]
     util.save_contact_map(cmap_with_mi, out_matrix)    
-    plot.contact_map_sum(cmap_with_mi,'../THIO_ECOLI_4_107/contact_map_with_mi_top_'+top+'.png','Sum Contact Map and Sum Top 1 MI')    
+    plot.contact_map_sum(cmap_with_mi,'../THIO_ECOLI_4_107/contact_map_with_mi_top_'+top+'.png','Sum Contact Map and Sum Top '+top+' MI')    
+    
+    
+    
+def generate_contact_map_with_top_mi_two_separated_matrix(top,sum_contact_map, top_smi_path, out_matrix):
+    cmap = util.load_contact_map(sum_contact_map) 
+    cmap =np.triu(cmap, -1)
+    mat_mi = np.zeros(cmap.shape)
+    
+    df = pandas.read_csv(top_smi_path,delim_whitespace=True,header=0,usecols=[0,1,2,4])
+    #df=df.sort(['Count', 'Contacts'], ascending=[False, False])
+    df=df.sort_values(by=['Count', 'Contacts'],ascending=[False, False])
+    top_smi=df.values.tolist()
+    
+    #add mi values to map 
+    for x in map(None, top_smi):
+        pos1 = int(x[0]-1)
+        pos2 = int(x[1]-1)
+        v = mat_mi[pos2][pos1]
+        if(v!=0):
+            print ("error")
+        #set the value of the smi    
+        mat_mi[pos2][pos1]=x[2]
+    
+    print  mat_mi
+    
+    #util.save_contact_map(cmap_with_mi, out_matrix)    
+    plot.contact_map_sum_top_mi_matrix(cmap, mat_mi ,'../THIO_ECOLI_4_107/contact_map_with_mi_top_'+top+'_two_color_bars.png','Sum Contact Map and Sum Top 1 MI') 

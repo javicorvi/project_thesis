@@ -501,3 +501,34 @@ def auc_optimization(df,colors,output_path):
     #plt.show()   
     plt.savefig(output_path)
     plt.gcf().clear()
+    
+    
+def contact_map_sum_top_mi_matrix(mat1, mat2,output_file,title='Contact Map'):
+    mat1 =np.triu(mat1, -1)
+    mat2 =np.triu(mat2, 1)
+    '''
+    import matplotlib.pyplot as plt
+    import matplotlib.cm as cm
+    from matplotlib.colors import LogNorm
+    import numpy as np
+    x, y, z = np.loadtxt('data.txt', unpack=True)
+    '''
+    
+    #fig = plt.figure()
+    #ax1 = fig.add_subplot(111)
+    
+    fig,ax = plt.subplots()
+    pa = ax.imshow(mat1,cmap=cm.YlOrRd,interpolation='nearest')
+    cba = plt.colorbar(pa,shrink=0.25,ticks=[0,1,2,3,4,5,6,7,8])
+    
+    pb = ax.imshow(mat2,cmap=cm.Blues,interpolation='nearest')
+    cbb = plt.colorbar(pb,shrink=0.25,ticks=[0,1,2,3,4,5,6,7,8])
+
+    plt.show()
+    
+    
+    #plt.imshow(cmap,cmap=cm.hot)
+    plt.title(title)
+    plt.savefig(output_file)
+    #plt.show()
+    plt.gcf().clear() 
