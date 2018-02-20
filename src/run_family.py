@@ -1588,6 +1588,19 @@ def generate_contact_map_with_top_mi_matrix():
     
     #plot.contact_map(cmap,'THIO_ECOLI_4_107/prob_contact_map_.png')
     
-generate_contact_map_with_top_mi_matrix()   
+#generate_contact_map_with_top_mi_matrix()
+
+def select_thio_ecoli_conf():
+    structures_path = '../THIO_ECOLI_4_107/all_structures_2/'
+    pdb.rms_list('P0AA25','2TRX', 'A', structures_path)
+select_thio_ecoli_conf()
+# pdb.rms_list(unit_prot_id='P0AA25',reference='2TRX')
+# util.clean_pdb('../THIO_ECOLI_4_107/all_structures/1THO.pdb', '../THIO_ECOLI_4_107/all_structures/1THO_clean.pdb', 'A')
+# r = pdb.align_pdb('../THIO_ECOLI_4_107/2TRX/2TRX_clean.pdb', '../THIO_ECOLI_4_107/2TRX/2TRX_clean.pdb')
+# print r   
+
+
+
+
 
  

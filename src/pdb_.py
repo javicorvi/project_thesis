@@ -103,12 +103,11 @@ def align_pdb(reference_pdb, sample_pdb):
     #io.save("1UBQ_aligned.pdb")
     
     
-def rms_list(unit_prot_id='P0AA25',reference='2TRX',chain='A'):
+def rms_list(unit_prot_id='P0AA25',reference='2TRX',chain='A',structures_path='../THIO_ECOLI_4_107/all_structures_2/'):
     import urllib
     import xml.etree.ElementTree as ET
     import pandas
-    structures_path = '../THIO_ECOLI_4_107/all_structures/'
-    columns=["protein","pdb","method","resolution","chain","rms"]
+    columns=["protein","pdb","method","resolution","chain","rmsd_with_2trx","result","message"]
     df = pandas.DataFrame(columns=columns)
     response = urllib.urlopen("http://www.uniprot.org/uniprot/"+unit_prot_id+".xml").read()
     root  = ET.fromstring(response)
@@ -132,17 +131,21 @@ def rms_list(unit_prot_id='P0AA25',reference='2TRX',chain='A'):
                 pdb_file.close()
                 try:
                     util.clean_pdb(structures_path+id+'.pdb',structures_path+id+'_clean.pdb', chain)
-                    rms = align_pdb('../THIO_ECOLI_4_107/2TRX/2TRX_clean.pdb', structures_path+id+'_clean.pdb')
                     df.set_value(index, 'protein', 'THIO_ECOLI_4_107')
                     df.set_value(index, 'pdb', id)
                     df.set_value(index, 'chain', chain)
                     df.set_value(index, 'method', method)
                     df.set_value(index, 'resolution', resolution)
-                    df.set_value(index, 'rms', rms)
+                    rms = align_pdb('../THIO_ECOLI_4_107/2TRX/2TRX_clean.pdb', structures_path+id+'_clean.pdb')
+                    df.set_value(index, 'rmsd_with_2trx', rms)
+                    df.set_value(index, 'result', 'okey')
                     index=index+1
                 except Exception as inst:
+                    df.set_value(index, 'result', 'error')
+                    df.set_value(index, 'message', inst)
+                    index=index+1
                     print inst
             else: 
                 print 'No contiene la cadena ' + chain        
-    df=df.sort('rms', ascending=False)
+    df=df.sort_values(by='rmsd_with_2trx', ascending=False)
     df.to_csv(structures_path + 'rms.csv')                  
