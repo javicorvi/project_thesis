@@ -1600,25 +1600,23 @@ def select_thio_ecoli_conf():
 # print r   
 
 
-def dendograma():
-   from matplotlib import pyplot as plt
-   from scipy.cluster.hierarchy import dendrogram, linkage
-   from sklearn import datasets
-   import numpy as np
-    
-   iris = datasets.load_iris()
-   X=iris.data
-    
-   Z = linkage(X, 'ward')
-    
-   plt.figure(figsize=(10, 8))
-   plt.title('Dendograma jerarquico para clasificar IRIS setosa')
-   plt.xlabel('Indice de entrada (1-50,51-100,101-150)')
-   plt.ylabel('Distancia')
-   max_d = 10
-   dendrogram(Z,leaf_rotation=90.,leaf_font_size=8.,show_contracted=True)
-   plt.axhline(y=max_d, c='k')
-   plt.show()
+def dendogram_contact_maps():
+    execution_folder = '../THIO_ECOLI_4_107/'
+    output_path = execution_folder + 'contact_dendogram.png'
+    structures = ['2TRX', '1XOA', '1XOB', '2H74', '1KEB', '2H6Z', '2H6X', '2H76']
+    contact_maps_paths = [execution_folder + pdb + '/contact_map_sync.dat' for pdb in structures]
+    dataanalisys.dendogram_matrix(contact_maps_paths,output_path,'Contact Map Clustering entre Conformeros',structures,'single')
+#dendogram_contact_maps()
 
-dendograma()
- 
+
+def dendogram_top_mi():
+    execution_folder = '../THIO_ECOLI_4_107/'
+    output_path = execution_folder + 'top_mi_dendogram.png'
+    zmip_natural_result_path = "../THIO_ECOLI_4_107_2TRX_A/natural/zmip_PF00085_THIO_ECOLI_reference.csv"
+    structures = ['2TRX', '1XOA', '1XOB', '2H74', '1KEB', '2H6Z', '2H6X', '2H76']
+    mi_paths = [execution_folder + pdb + '/mi_data_path/zmip_sequences-beta5.0-nsus15.0-runs20000.csv' for pdb in structures]
+    sum_contact_map='../THIO_ECOLI_4_107/sum_contact_map.dat'
+    contact_map = util.load_contact_map(sum_contact_map)
+    dataanalisys.dendogram_top_mi(1,zmip_natural_result_path,mi_paths,output_path,'Top MI Clustering entre Conformeros',structures,'single', contact_map.shape, window)
+dendogram_top_mi()
+

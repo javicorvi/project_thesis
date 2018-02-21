@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from sklearn import metrics
 import matplotlib.cm as cm
+from scipy.cluster.hierarchy import dendrogram
 '''
 Generates a plot describe the contacts with de MI of the natural and evolution msa
 '''
@@ -532,3 +533,14 @@ def contact_map_sum_top_mi_matrix(mat1, mat2,output_file,title='Contact Map'):
     plt.savefig(output_file)
     #plt.show()
     plt.gcf().clear() 
+
+def dendogram_matrix(Z, output_path,title,labels):
+    
+    plt.figure(figsize=(10, 8))
+    plt.title(title)
+    #plt.xlabel('Indice de entrada (1-50,51-100,101-150)')
+    #plt.ylabel('Distancia')
+    #max_d = 10
+    dendrogram(Z,leaf_rotation=90.,leaf_font_size=8.,show_contracted=True,labels=labels)
+    #plt.axhline(y=max_d, c='k') 
+    plt.savefig(output_path)

@@ -16,6 +16,7 @@ import msa
 import constants as cons
 import pandas 
 import logging
+from scipy.cluster.hierarchy import  linkage
 '''
 Calculate the AUC.  
 For the protein family (fasta_path) and the contact_map calculates the AUC. 
@@ -1312,3 +1313,31 @@ def generate_contact_map_with_top_mi_two_separated_matrix(top,sum_contact_map, t
     
     #util.save_contact_map(cmap_with_mi, out_matrix)    
     plot.contact_map_sum_top_mi_matrix(cmap, mat_mi ,'../THIO_ECOLI_4_107/contact_map_with_mi_top_'+top+'_two_color_bars.png','Sum Contact Map and Sum Top 1 MI') 
+    
+
+def dendogram_matrix(contact_maps_paths,output_path,title,structures,clustering_type):
+    Y=[]
+    for cmap_pth in contact_maps_paths:
+        contact_map = util.load_contact_map(cmap_pth)
+        contact_map=contact_map.ravel()
+        Y.append(contact_map)
+    Z = linkage(Y, clustering_type)
+    plot.dendogram_matrix(Z,output_path,title,structures)
+    
+def dendogram_top_mi(top, zmip_nat,zmip_paths, output_path,title ,structures, clustering_type, shape ,window):
+    Y=[]
+    zmip_natural = util.load_zmip(zmip_nat,window)
+    util.order(zmip_natural)
+    for zmip_path in zmip_paths:
+        zmip = util.load_zmip(zmip_path,window)
+        zmip_natural,zmip=util.sincronice_mi(zmip_natural, zmip)
+        util.order(zmip)
+        #pares de posiciones 
+        num = len(zmip)*top//100
+        num = int(num)
+        zmip=zmip[0:num]   
+        cmap_with_mi=np.zeros(shape)
+        
+        
+        
+            
