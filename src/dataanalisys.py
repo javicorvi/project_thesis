@@ -1337,7 +1337,16 @@ def dendogram_top_mi(top, zmip_nat,zmip_paths, output_path,title ,structures, cl
         num = int(num)
         zmip=zmip[0:num]   
         cmap_with_mi=np.zeros(shape)
-        
-        
+        for x in map(None, zmip):
+            pos1 = int(x[0]-1)
+            pos2 = int(x[1]-1)
+            cmap_with_mi[pos2][pos1]=1
+        print zmip
+        print "-------"
+        print cmap_with_mi
+        cmap_with_mi=cmap_with_mi.ravel()
+        Y.append(cmap_with_mi)
+    Z = linkage(Y, clustering_type)
+    plot.dendogram_matrix(Z,output_path,title,structures)   
         
             
