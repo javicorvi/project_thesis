@@ -11,7 +11,7 @@ import gzip
 import time
 import re
 import dataanalisys
-#import web_logo
+import web_logo
 import pandas
 import logging
 import constants as cons
@@ -409,5 +409,22 @@ def conservation_media(msas_summary, output):
     entropy_media =   [x / i  for x in entropy_media]
     df = pandas.DataFrame(entropy_media,columns=['Entropy'])
     df.to_csv(output)
-     
-    
+
+'''
+Calcula el DCA por pares de posiciones , pseudocount = Frobenius 
+'''     
+def dca_gauss_frob(fasta_path,output_path):
+    start_time = time.time()
+    logging.info('Begin of the method')
+    #call(["julia", "auc_script.jl" ])
+    call([cons.julia_exe_path, "dca/dca_gauss_Frob.jl",fasta_path, output_path])
+    logging.info('Time of Execution --- %s seconds ---' % (time.time() - start_time)) 
+'''
+Calcula el DCA por pares de posiciones, pseudocount = Direct Information
+'''    
+def dca_gauss_di(fasta_path,output_path):
+    start_time = time.time()
+    logging.info('Begin of the method')
+    #call(["julia", "auc_script.jl" ])
+    call([cons.julia_exe_path, "dca/dca_gauss_DI.jl",fasta_path, output_path])
+    logging.info('Time of Execution --- %s seconds ---' % (time.time() - start_time))        

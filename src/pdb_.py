@@ -9,6 +9,10 @@ Created on May 5, 2017
 '''
 import os
 import util
+import urllib
+import xml.etree.ElementTree as ET
+import pandas
+import Bio.PDB
 '''
 REMOVE PDB HEADER, SAVE ONLY THE ATOMS
 '''
@@ -46,7 +50,7 @@ def remove_header(pdb_path):
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-import Bio.PDB
+
 
 # Select what residues numbers you wish to align
 # and put them in a list
@@ -102,11 +106,47 @@ def align_pdb(reference_pdb, sample_pdb):
     #io.set_structure(sample_structure) 
     #io.save("1UBQ_aligned.pdb")
     
+
+def download_pdbs(unit_prot_id='P0AA25',reference='2TRX',chain='A',structures_path='../THIO_ECOLI_4_107/all_structures_2/'):
+
+    columns=["protein","pdb","method","resolution","chain"]
+    df = pandas.DataFrame(columns=columns)
+    response = urllib.urlopen("http://www.uniprot.org/uniprot/"+unit_prot_id+".xml").read()
+    root  = ET.fromstring(response)
+    entry = root.find("{http://uniprot.org/uniprot}entry")
+    index=0
+    for child in entry.findall('{http://uniprot.org/uniprot}dbReference'):
+        if child.attrib['type']=='PDB':
+            id=child.attrib['id']
+            print id
+            for propery in child:
+                if propery.attrib['type']=='chains':
+                    chain_property=propery.attrib['value']
+                elif propery.attrib['type']=='method':
+                    method=propery.attrib['value']
+                elif propery.attrib['type']=='resolution':     
+                    resolution=propery.attrib['value']
+            if chain in chain_property:
+                pdb_data = urllib.urlopen('http://files.rcsb.org/download/'+id+'.pdb').read()
+                pdb_file = open(structures_path+id+'.pdb', "w")
+                pdb_file.write(pdb_data)
+                pdb_file.close()
+                try:
+                    util.clean_pdb(structures_path+id+'.pdb',structures_path+id+'_clean.pdb', chain)
+                    df.set_value(index, 'protein', 'THIO_ECOLI_4_107')
+                    df.set_value(index, 'pdb', id)
+                    df.set_value(index, 'chain', chain)
+                    df.set_value(index, 'method', method)
+                    df.set_value(index, 'resolution', resolution)
+                    index=index+1
+                except Exception as inst:
+                    index=index+1
+                    print inst
+            else: 
+                print 'No contiene la cadena ' + chain        
+    df.to_csv(structures_path + 'pdbs.csv')
     
 def rms_list(unit_prot_id='P0AA25',reference='2TRX',chain='A',structures_path='../THIO_ECOLI_4_107/all_structures_2/'):
-    import urllib
-    import xml.etree.ElementTree as ET
-    import pandas
     columns=["protein","pdb","method","resolution","chain","rmsd_with_2trx","result","message"]
     df = pandas.DataFrame(columns=columns)
     response = urllib.urlopen("http://www.uniprot.org/uniprot/"+unit_prot_id+".xml").read()

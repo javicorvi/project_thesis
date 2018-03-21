@@ -284,7 +284,7 @@ def contact_map_sum(contact_map, output_file,title='Contact Map'):
     cmap=contact_map
     
     #plt.imshow(cmap,cmap=cm.Blues)
-    plt.imshow(cmap,cmap=cm.GnBu,interpolation='nearest')
+    plt.imshow(cmap,cmap=cm.YlOrRd,interpolation='nearest')
     plt.colorbar(ticks=[0,1,2,3,4,5,6,7,8])
     #plt.imshow(cmap,cmap=cm.hot)
     plt.title(title)
@@ -369,8 +369,8 @@ def conservation_comparation(msas_entropy, output_file, title):
     
     #np.arange(min(x), max(x)+1, 1.0)
     
-    plt.axis([0, 71, 0, 7])
-    plt.xticks(np.arange(0, 71, 5.0))
+    plt.axis([0, 106, 0, 7])
+    plt.xticks(np.arange(0, 106, 5.0))
     plt.title(title)
     plt.savefig(output_file)
     #plt.show()  
@@ -536,11 +536,11 @@ def contact_map_sum_top_mi_matrix(mat1, mat2,output_file,title='Contact Map'):
 
 def dendogram_matrix(Z, output_path,title,labels):
     
-    plt.figure(figsize=(10, 8))
+    plt.figure(figsize=(5, 5))
     plt.title(title)
     #plt.xlabel('Indice de entrada (1-50,51-100,101-150)')
     #plt.ylabel('Distancia')
     #max_d = 10
-    dendrogram(Z,leaf_rotation=90.,leaf_font_size=8.,show_contracted=True,labels=labels)
+    dendrogram(Z,leaf_rotation=90.,leaf_font_size=10.,show_contracted=True,labels=labels, orientation='top')
     #plt.axhline(y=max_d, c='k') 
     plt.savefig(output_path)

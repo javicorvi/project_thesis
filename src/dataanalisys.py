@@ -17,6 +17,7 @@ import constants as cons
 import pandas 
 import logging
 from scipy.cluster.hierarchy import  linkage
+from _ast import Num
 '''
 Calculate the AUC.  
 For the protein family (fasta_path) and the contact_map calculates the AUC. 
@@ -167,13 +168,13 @@ def run_analisys(df,index, zmip_natural_result_path, mi_results_path, pattern_ar
             result_file.close()
             print '************************************************************************'
 
-def getTargetScores(mi_file_path,contact_map, mi_data_path_natural=None,sincronized_with_natural=False,window=1,threshold=0):
+def getTargetScores(mi_file_path,contact_map, mi_data_path_natural=None,sincronized_with_natural=False,window=1,threshold=0,split_char=r'\t+'):
     cmap=util.load_contact_map(contact_map,np.float64)
     print cmap
     cmap[cmap > threshold] = 1
     cmap[cmap <= threshold] = 0
     print cmap
-    zmip_evol = util.load_zmip(mi_file_path, window)
+    zmip_evol = util.load_zmip(mi_file_path, window,split_char)
     if(sincronized_with_natural==True):
         zmip_natural = util.load_zmip(mi_data_path_natural,window)
         m,zmip_evol=util.sincronice_mi(zmip_natural, zmip_evol)
@@ -767,7 +768,7 @@ def contact_map_sum_prob(execution_folder,contact_maps_paths):
     conserved_contacts_25_50 = np.count_nonzero(camp_prob > 0.25 and camp_prob < 0.5 )
     conserved_contacts_0_25 = np.count_nonzero(camp_prob > 0.0 and camp_prob < 0.25 )  
     '''
-    '''
+    
     total_contacts = np.count_nonzero(cmap_sum != 0)
     conserved_contacts_8 = np.count_nonzero(cmap_sum == 8)
     conserved_contacts_7 = np.count_nonzero(cmap_sum == 7)
@@ -805,8 +806,7 @@ def contact_map_sum_prob(execution_folder,contact_maps_paths):
     
     df.set_value(9, '#total_contacts', total_contacts)
     df.to_csv(execution_folder+'contact_distribution.csv')
-    '''
-    
+        
 """
 Lee la informacion sobre consevacion (KL) por columna de cada una de las proteinas evolucionadas. 
 No se esta aplicando ningun entrecruzamiento de la informacion.
@@ -1140,6 +1140,10 @@ def top_rank_comparation(execution_folder, top,contact_map_path,zmip_natural_res
     df=df.sort(['Count', 'Contacts'], ascending=[False, False])
     evol=df.head(n=num)
     evol=evol.values.tolist()
+    
+    evol_num=num
+    if(num>len(df.index)):
+        evol_num=len(df.index)
     
     data=matches_coevolved_positions(natural,evol,intersection_evol=True)
     

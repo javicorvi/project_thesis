@@ -34,14 +34,14 @@ def getAUC(target,scores):
     auc = metrics.auc(fpr, tpr)
     auc01 = getPartialAUC(fpr, tpr, 0.1)
     return auc,auc01
-def load_zmip(zmip_result_path,window_mi_neightboards=0):
+def load_zmip(zmip_result_path,window_mi_neightboards=0,split_char=r'\t+'):
     column = []
     file = open(zmip_result_path)
     for line in file:
         line = line.replace('NaN','0')
         line = line.replace('\n','')
         #column.append(map(float,re.split(r'\t+', line)))
-        line_float = map(float,re.split(r'\t+', line))
+        line_float = map(float,re.split(split_char, line))
         if (line_float[0] + window_mi_neightboards >= line_float[1]):
             line_float[2]=0
         column.append(line_float)
