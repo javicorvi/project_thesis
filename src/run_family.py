@@ -19,6 +19,7 @@ import pdb_ as pdb
 import pandas
 
 import logging
+from pandas.io.tests.parser import index_col
 
 logging.basicConfig(filename=const.log_file_path, level=logging.DEBUG, format="%(asctime)s - %(levelname)s - %(filename)s - %(funcName)s - %(message)s ")
 consoleHandler = logging.StreamHandler()
@@ -303,29 +304,6 @@ def family_evol(input_families_folder, family_folder, pdb_to_evol_df, family_pdb
     logging.info('--- %s seconds ---' % (time.time() - start_time))   
 
 
-def evol_2trx():
-    chain_name = "A"
-    # the contact map will be created by scpe 
-    pdb_folder = "../THIO_ECOLI_4_107_2TRX_A"
-    
-    pdb_file_complete = pdb_folder + "/THIO_ECOLI_4_107_2TRX_A_complete.pdb"
-    pdb_file_complete_filename_to_evolve = pdb_folder + "/THIO_ECOLI_4_107_2TRX_A_clean.pdb" 
-    optimization_folder = pdb_folder + "/optimization_folder/"
-    optimization_file_path = optimization_folder + "optimization.csv"
-    
-    zmip_natural_result_path = pdb_folder + "/natural/"
-    if not os.path.exists(zmip_natural_result_path):
-        os.makedirs(zmip_natural_result_path)
-    
-    cutted_pdb_path = "/cutted_pdb_path/"
-    zmip_natural_result_file = zmip_natural_result_path + "zmip_PF00085_THIO_ECOLI_reference.csv"
-    msa_file_name_fasta = pdb_folder + "/PF00085_THIO_ECOLI_reference.fasta"
-    # setea como referencia la 2trx a la familia
-    dataanalisys.buslje09(msa_file_name_fasta, zmip_natural_result_file)
-    msa.msa_information(msa_file_name_fasta, msa_file_name_fasta, "PF00085")
-    util.clean_pdb(pdb_file_complete, pdb_file_complete_filename_to_evolve, chain_name)   
-    # run_optimization_parameters("THIO_ECOLI/4-107", "2TRX",optimization_folder,optimization_file_path, pdb_file_complete_filename_to_evolve, cutted_pdb_path, chain_name)
-
 
 def analisys_2trx_evol():
     chain_name = "A"
@@ -415,9 +393,9 @@ def run_optimization_parameters(protein, pdb_name, optimization_folder, optimiza
     runs = ["1000", "5000", "10000", "20000"]
     nsus = ["1.0", "2.0", "3.0", "5.0", "7.0", "10.0", "15.0"]
     
-    beta = ["2.0"]
-    runs = ["100"]
-    nsus = ["1.0"]
+    beta = ["0.5"]
+    runs = ["20000"]
+    nsus = ["5.0"]
      
     auc_max = 0
     index = 1
@@ -456,6 +434,9 @@ def run_optimization_parameters(protein, pdb_name, optimization_folder, optimiza
     df['execution_time_optimization_total'] = time.time() - start_time_total            
     df.to_csv(optimization_file_path)                
     return parameters
+
+
+
 
 
 '''
@@ -676,7 +657,7 @@ def download_pdbs(input_families_folder, family_folder, pdb_to_evol_df):
     
 '''      
 
-
+'''
 def plot_roc_natural_2trx():
     mi_data_path = '../THIO_ECOLI_4_107_2TRX_A/natural/zmip_PF00085_THIO_ECOLI_reference.csv'
     contact_map_path = '../THIO_ECOLI_4_107_2TRX_A/optimization_folder/contact_map_sync.dat'
@@ -688,7 +669,7 @@ def plot_roc_natural_2trx():
     labels = ['Natural']
     output_file = '../THIO_ECOLI_4_107_2TRX_A/natural/natural_roc'
     plot.roc_curve_(target, sc, labels, colors, output_file)
-
+'''
 
 
 def analisis_para_evolciones_espeficas():
@@ -718,6 +699,83 @@ def analisis_para_evolciones_espeficas():
     
 # analisis_para_evolciones_espeficas()
 '''Plot de curvas rocs para evoluciones especificas'''
+
+
+def plot_rocs_example_2trx():
+    mi_data_path = '../THIO_ECOLI_4_107_2TRX_A/optimization_folder/clustered_sequences_path/mi_data_path/'
+    contact_map_path = '../THIO_ECOLI_4_107_2TRX_A/optimization_folder/contact_map.dat'
+    dca_data_path = '../THIO_ECOLI_4_107_2TRX_A/optimization_folder/clustered_sequences_path/dca/'
+    labels = ['runs 20000', 'runs 10000', 'runs 5000','runs 1000']
+    colors = ['red', 'orange', 'yellow', 'chocolate']
+    sc = []
+    targets = []
+    mi_data_path_natural = '../THIO_ECOLI_4_107_2TRX_A/natural/zmip_PF00085_THIO_ECOLI_reference.csv'
+    
+    sufix = "zmip_sequences-beta0.5-nsus2.0-runs20000"
+    file_name = sufix + ".csv"
+    target, scores = dataanalisys.getTargetScores(mi_data_path + file_name, contact_map_path, mi_data_path_natural, False, window)
+    sc.append(scores)
+    targets.append(target)
+    
+    sufix = "zmip_sequences-beta0.5-nsus2.0-runs10000"
+    file_name = sufix + ".csv"
+    target, scores = dataanalisys.getTargetScores(mi_data_path + file_name, contact_map_path, mi_data_path_natural, False, window)
+    sc.append(scores)
+    targets.append(target)
+    
+    sufix = "zmip_sequences-beta0.5-nsus2.0-runs5000"
+    file_name = sufix + ".csv"
+    target, scores = dataanalisys.getTargetScores(mi_data_path + file_name, contact_map_path, mi_data_path_natural, False, window)
+    sc.append(scores)
+    targets.append(target)
+    
+    sufix = "zmip_sequences-beta0.5-nsus2.0-runs1000"
+    file_name = sufix + ".csv"
+    target, scores = dataanalisys.getTargetScores(mi_data_path + file_name, contact_map_path, mi_data_path_natural, False, window)
+    sc.append(scores)
+    targets.append(target)
+    
+    
+    
+    
+    output_file = '../THIO_ECOLI_4_107_2TRX_A/beta0.5_nsus_2_MI.png'
+    plot.roc_curve_(targets, sc, labels, 'ROC curves beta=0.5 nsus=2 metodo MI' , colors, 'Runs', output_file)
+
+    #dca
+    
+    sc = []
+    targets = []
+    
+    
+    sufix = "dca_disequences-beta0.5-nsus2.0-runs20000"
+    file_name = sufix + ".csv"
+    target, scores = dataanalisys.getTargetScores(dca_data_path + file_name, contact_map_path, mi_data_path_natural, False, window, split_char=' ')
+    sc.append(scores)
+    targets.append(target)
+    
+    sufix = "dca_disequences-beta0.5-nsus2.0-runs10000"
+    file_name = sufix + ".csv"
+    target, scores = dataanalisys.getTargetScores(dca_data_path + file_name, contact_map_path, mi_data_path_natural, False, window, split_char=' ')
+    sc.append(scores)
+    targets.append(target)
+    
+    sufix = "dca_disequences-beta0.5-nsus2.0-runs5000"
+    file_name = sufix + ".csv"
+    target, scores = dataanalisys.getTargetScores(dca_data_path + file_name, contact_map_path, mi_data_path_natural, False, window, split_char=' ')
+    sc.append(scores)
+    targets.append(target)
+    
+    sufix = "dca_disequences-beta0.5-nsus2.0-runs1000"
+    file_name = sufix + ".csv"
+    target, scores = dataanalisys.getTargetScores(dca_data_path + file_name, contact_map_path, mi_data_path_natural, False, window, split_char=' ')
+    sc.append(scores)
+    targets.append(target)
+    
+    output_file = '../THIO_ECOLI_4_107_2TRX_A/beta0.5_nsus_2_DCA.png'
+    plot.roc_curve_(targets, sc, labels, 'ROC curves beta=0.5 nsus=2 metodo DCA' , colors, 'Runs', output_file)
+
+
+#plot_rocs_example_2trx()
 
 
 def plot_rocs():
@@ -754,6 +812,48 @@ def plot_rocs():
     output_file = '../THIO_ECOLI_4_107_2TRX_A/comparation_beta_nsus_with_natural'
     plot.roc_curve_(targets, sc, labels, 'ROC curve beta/nsus comparations with natural' , colors, 'Runs', output_file)
 
+
+def plot_rocs_2trx():
+    mi_data_path = '../THIO_ECOLI_4_107_2TRX_A/optimization_folder/curated_sequences_path/mi_data_path/'
+    dca_data_path = '../THIO_ECOLI_4_107_2TRX_A/optimization_folder/curated_sequences_path/dca/'
+    contact_map_path = '../THIO_ECOLI_4_107_2TRX_A/optimization_folder/contact_map_sync.dat'
+
+    labels = ['Natural MI', 'Natural DCA', 'MI Beta 5 Nsus 15', 'DCA Beta 0.5 Nsus 5']
+    colors = ['blue', 'green', 'red', 'orange']
+    sc = []
+    targets = []
+    
+    mi_data_path_natural = '../THIO_ECOLI_4_107_2TRX_A/natural/zmip_PF00085_THIO_ECOLI_reference.csv'
+    target, scores = dataanalisys.getTargetScores(mi_data_path_natural, contact_map_path, window)
+    sc.append(scores)
+    targets.append(target)
+
+    mi_data_path_DI = '../THIO_ECOLI_4_107_2TRX_A/natural/PF00085_THIO_ECOLI_reference.fasta_dca_DI.txt'
+    target_di, scores_di = dataanalisys.getTargetScores(mi_data_path_DI, contact_map_path, window,split_char=' ')
+    sc.append(scores_di)
+    targets.append(target_di)
+    
+    
+    sufix = "zmip_sequences-beta5.0-nsus15.0-runs20000"
+    file_name = sufix + ".csv"
+    target, scores = dataanalisys.getTargetScores(mi_data_path + file_name, contact_map_path, mi_data_path_natural, True, window)
+    sc.append(scores)
+    targets.append(target)
+    
+    
+    
+    sufix = "dca_disequences-beta0.5-nsus5.0-runs20000"
+    file_name = sufix + ".csv"
+    target, scores = dataanalisys.getTargetScores(dca_data_path + file_name, contact_map_path, mi_data_path_DI, True, window,split_char=' ')
+    sc.append(scores)
+    targets.append(target)
+    
+    
+        
+    output_file = '../THIO_ECOLI_4_107_2TRX_A/comparation_beta_nsus_with_natural'
+    plot.roc_curve_(targets, sc, labels, 'Best ROC curves for MI and DCA' , colors, 'Runs', output_file)
+
+#plot_rocs_2trx()
 
 '''Plot de curvas rocs para evoluciones especificas. Igual pero plotea al promedio con los conformeros'''
 
@@ -844,12 +944,21 @@ def plot_auc_optimization():
     optimization_results = '../THIO_ECOLI_4_107_2TRX_A/optimization_folder/optimizacion.csv'    
     df = pandas.read_csv(optimization_results, header=0, usecols=['auc_', 'beta', 'nsus', 'run'])
     df_to_plot = df[(df['run'] == 20000)]
-    df_to_plot = df_to_plot[(df_to_plot['beta'] == 0.1) | (df_to_plot['beta'] == 0.5) | (df_to_plot['beta'] == 1) | (df_to_plot['beta'] == 5) | (df_to_plot['beta'] == 7) | (df_to_plot['beta'] == 10) | (df_to_plot['beta'] == 15) | (df_to_plot['beta'] == 20)]
-    colors = ['tan', 'yellow', 'yellowgreen', 'red', 'orange', 'coral', 'olive', 'green']
+    df_to_plot = df_to_plot[(df_to_plot['beta'] == 0.1) | (df_to_plot['beta'] == 0.25) | (df_to_plot['beta'] == 0.5) | (df_to_plot['beta'] == 1) | (df_to_plot['beta'] == 5) | (df_to_plot['beta'] == 7) | (df_to_plot['beta'] == 10) | (df_to_plot['beta'] == 15) | (df_to_plot['beta'] == 20)]
+    colors = ['tan', 'chocolate' ,'yellow', 'yellowgreen', 'red', 'orange', 'coral', 'olive', 'green']
     # df_to_plot=df[(df['beta']==0.1) | (df['beta']==0.5) | (df['beta']==1) | (df['beta']==2) | (df['beta']==3) | (df['beta']==5)]
-    plot.auc_optimization(df_to_plot, colors, optimization_results + '.png')
+    plot.auc_optimization(df_to_plot, 'auc_' , colors, optimization_results + '.png','Optimizacion Metodo MI')
+#plot_auc_optimization()
+def plot_auc_optimization_dca():
+    optimization_results = '../THIO_ECOLI_4_107_2TRX_A/optimization_folder/optimization_data.csv'    
+    df = pandas.read_csv(optimization_results, header=0, usecols=['auc_di_', 'beta', 'nsus', 'run'])
+    df_to_plot = df[(df['run'] == 20000)]
+    df_to_plot = df_to_plot[(df_to_plot['beta'] == 0.1) | (df_to_plot['beta'] == 0.25) | (df_to_plot['beta'] == 0.5) | (df_to_plot['beta'] == 1) | (df_to_plot['beta'] == 5) | (df_to_plot['beta'] == 7) | (df_to_plot['beta'] == 10) | (df_to_plot['beta'] == 15) | (df_to_plot['beta'] == 20)]
+    colors = ['tan', 'chocolate' ,'yellow', 'yellowgreen', 'red', 'orange', 'coral', 'olive', 'green']
+    # df_to_plot=df[(df['beta']==0.1) | (df['beta']==0.5) | (df['beta']==1) | (df['beta']==2) | (df['beta']==3) | (df['beta']==5)]
+    plot.auc_optimization(df_to_plot, 'auc_di_',colors, optimization_results + '_di.png','Optimizacion Metodo DCA')
     
-# plot_auc_optimization()    
+#plot_auc_optimization_dca()    
 # plot_rocs()
 # plot_roc_natural_2trx()
 
@@ -1647,14 +1756,13 @@ def dca_thio_ecoli_conformeros():
         i=i+1
 #dca_thio_ecoli_conformeros()        
 
-def plot_roc_natural_2trx_dca():
+def plot_roc_natural_2trx():
     
-   
     contact_map_path = '../THIO_ECOLI_4_107_2TRX_A/optimization_folder/contact_map_sync.dat'
     output_file = '../THIO_ECOLI_4_107_2TRX_A/natural/natural_roc_mianddca'
     
-    colors = ['orange', 'green' , 'blue']
-    labels = ['DCA DI','DCA Frob', 'MI']
+    colors = ['green' , 'blue']
+    labels = ['DCA DI', 'MI']
     sc = []
     targets=[]
     
@@ -1663,10 +1771,10 @@ def plot_roc_natural_2trx_dca():
     sc.append(scores_di)
     targets.append(target_di)
     
-    mi_data_path_Frob = '../THIO_ECOLI_4_107_2TRX_A/natural/PF00085_THIO_ECOLI_reference.fasta_dca_Frob.txt' 
+    '''mi_data_path_Frob = '../THIO_ECOLI_4_107_2TRX_A/natural/PF00085_THIO_ECOLI_reference.fasta_dca_Frob.txt' 
     target_Frob, scores_Frob = dataanalisys.getTargetScores(mi_data_path_Frob, contact_map_path, window,split_char=' ')
     sc.append(scores_Frob)
-    targets.append(target_Frob)
+    targets.append(target_Frob)'''
     
     mi_data_path = '../THIO_ECOLI_4_107_2TRX_A/natural/zmip_PF00085_THIO_ECOLI_reference.csv'
     target_mi, scores_mi = dataanalisys.getTargetScores(mi_data_path, contact_map_path, window)
@@ -1675,6 +1783,7 @@ def plot_roc_natural_2trx_dca():
     
     
     plot.roc_curve_(targets, sc, labels, 'MSA Natural ROC curves' ,colors, '',output_file)
+#plot_roc_natural_2trx()
 
 '''    
 def analysis_dca_optimization_2trx():    
@@ -1723,7 +1832,12 @@ def analysis_dca_optimization_2trx():
     
 plot_roc_natural_2trx_dca()    
 '''
-    
+
+
+
+'''
+Calcula el DCA para los MSA evolucionados completos sin sincronizar
+'''    
 def dca_2trx_evol():
     # the contact map will be created by scpe 
     pdb_folder = "../THIO_ECOLI_4_107_2TRX_A"
@@ -1733,12 +1847,12 @@ def dca_2trx_evol():
     
     optimization_folder = pdb_folder + "/optimization_folder/"
     optimization_file_path = optimization_folder + "optimization_data.csv"
-    optimization_df = pandas.read_csv(optimization_file_path, header=0, index_col=0)
+    optimization_df = pandas.read_csv(optimization_file_path, header=0)
     contact_map_path = '../THIO_ECOLI_4_107_2TRX_A/optimization_folder/contact_map.dat'
     
     for index, row_optimization in optimization_df.iterrows():
         try:
-            if(row_optimization['analysis']!='okey_complete2'):
+            if(row_optimization['analysis']!='dca_okey'):
                 beta = str(row_optimization['beta'])
                 nsus = str(row_optimization['nsus'])
                 runs = str(int(row_optimization['run']))
@@ -1747,8 +1861,8 @@ def dca_2trx_evol():
                 dca_di = dca_path + "dca_di" + sufix + ".csv" 
                 dca_Frob = dca_path + "dca_Frob" + sufix + ".csv"
                 
-                msa.dca_gauss_frob(curated_seq, dca_Frob)
-                msa.dca_gauss_di(curated_seq, dca_di)
+                #msa.dca_gauss_frob(curated_seq, dca_Frob)
+                #msa.dca_gauss_di(curated_seq, dca_di)
                 
                 target_di, scores_di = dataanalisys.getTargetScores(dca_di, contact_map_path, window,split_char=' ')
                 auc_di_, auc01_di_ = util.getAUC(target_di, scores_di)
@@ -1760,7 +1874,7 @@ def dca_2trx_evol():
                 optimization_df.set_value(index, 'auc01_di_', auc01_di_)
                 optimization_df.set_value(index, 'auc_frob_', auc_frob_)
                 optimization_df.set_value(index, 'auc01_frob_', auc01_frob_)
-                optimization_df.set_value(index, 'analysis', 'okey_complete2')
+                optimization_df.set_value(index, 'analysis', 'dca_okey')
                 
                 optimization_df.to_csv(optimization_file_path)
         except Exception as inst:
@@ -1769,7 +1883,122 @@ def dca_2trx_evol():
             print x
             optimization_df.set_value(index, 'analysis', 'error')
                 
-dca_2trx_evol()  
+#dca_2trx_evol()  
+
+
+#def auc_dca_evol_2trx():
+    
+
+'''
+Calcula el DCA para los MSA evolucionados completos  sincronizado
+'''    
+def dca_2trx_evol_sync():
+    # the contact map will be created by scpe 
+    pdb_folder = "../THIO_ECOLI_4_107_2TRX_A"
+    optimization_folder = pdb_folder + "/optimization_folder/"
+    clustered_sequences_path = optimization_folder + "clustered_sequences_path/"
+    curated_sequences_path = optimization_folder + "curated_sequences_path/"
+    dca_path = curated_sequences_path + "dca/"
+    
+    optimization_folder = pdb_folder + "/optimization_folder/"
+    optimization_file_path = optimization_folder + "optimization_data.csv"
+    optimization_df = pandas.read_csv(optimization_file_path, header=0, index_col=0)
+    contact_map_path = '../THIO_ECOLI_4_107_2TRX_A/optimization_folder/contact_map_sync.dat'
+    
+    #pattern=["sequences-beta0.1","sequences-beta0.01","sequences-beta0.001","sequences-beta0.25"]
+    #util.sincronize_natural_evol_msas(clustered_sequences_path, curated_sequences_path, pattern, 2, -3)
+    msa_conservation_path = dca_path + "conservation/"
+    zmip_natural_result_path = "../THIO_ECOLI_4_107_2TRX_A/natural/PF00085_THIO_ECOLI_reference.fasta_dca_DI.txt"
+    for index, row_optimization in optimization_df.iterrows():
+        try:
+            #if(row_optimization['auc_di']!=''):
+            if(row_optimization['auc_di_']>=0.8):
+                beta = str(row_optimization['beta'])
+                nsus = str(row_optimization['nsus'])
+                runs = str(int(row_optimization['run']))
+                sufix = "sequences-beta" + beta + "-nsus" + nsus + "-runs" + runs
+                
+                curated_seq = curated_sequences_path + sufix + ".fasta.cluster"
+                
+                dca_di = dca_path + "dca_di" + sufix + ".csv" 
+                dca_Frob = dca_path + "dca_Frob" + sufix + ".csv"
+                
+                #msa.dca_gauss_frob(curated_seq, dca_Frob)
+                #msa.dca_gauss_di(curated_seq, dca_di)
+                
+                target_di, scores_di = dataanalisys.getTargetScores(dca_di, contact_map_path, zmip_natural_result_path,True,window,split_char=' ')
+                auc_di, auc01_di = util.getAUC(target_di, scores_di)
+                target_frob, scores_frob = dataanalisys.getTargetScores(dca_Frob, contact_map_path,zmip_natural_result_path,True, window,split_char=' ')
+                auc_frob, auc01_frob = util.getAUC(target_frob, scores_frob)
+                
+                dataanalisys.run_analisys_singular_dca(optimization_df, index, zmip_natural_result_path, dca_di, contact_map_path, dca_path, window,'2TRX')
+                
+                #msa.msa_information(curated_seq, msa_conservation_path,sufix)
+                
+                
+                 
+                optimization_df.set_value(index, 'auc_di', auc_di)
+                optimization_df.set_value(index, 'auc01_di', auc01_di)
+                optimization_df.set_value(index, 'auc_frob', auc_frob)
+                optimization_df.set_value(index, 'auc01_frob', auc01_frob)
+                optimization_df.set_value(index, 'analysis', 'okey')
+                
+                optimization_df.to_csv(optimization_file_path)
+        except Exception as inst:
+            print inst
+            x = inst.args
+            print x
+            optimization_df.set_value(index, 'analysis', 'error')
+                
+#dca_2trx_evol_sync()  
+
+ 
+def dca_2trx_evol_analisys():
+    # the contact map will be created by scpe 
+    pdb_folder = "../THIO_ECOLI_4_107_2TRX_A"
+    optimization_folder = pdb_folder + "/optimization_folder/"
+    #clustered_sequences_path = optimization_folder + "clustered_sequences_path/"
+    curated_sequences_path = optimization_folder + "curated_sequences_path/"
+    dca_path = curated_sequences_path + "dca/"
+    
+    optimization_folder = pdb_folder + "/optimization_folder/"
+    optimization_file_path = optimization_folder + "optimization_data.csv"
+    optimization_df = pandas.read_csv(optimization_file_path, header=0, index_col=0)
+    contact_map_sync = '../THIO_ECOLI_4_107_2TRX_A/optimization_folder/contact_map_sync.dat'
+    
+    #pattern=["sequences-beta0.1","sequences-beta0.01","sequences-beta0.001","sequences-beta0.25"]
+    #util.sincronize_natural_evol_msas(clustered_sequences_path, curated_sequences_path, pattern, 2, -3)
+    zmip_natural_result_path = "../THIO_ECOLI_4_107_2TRX_A/natural/zmip_PF00085_THIO_ECOLI_reference.csv"
+    
+    msa_conservation_path = dca_path + "conservation/"
+    if not os.path.exists(msa_conservation_path):
+        os.makedirs(msa_conservation_path)
+    
+    for index, row_optimization in optimization_df.iterrows():
+        try:
+            if(row_optimization['auc_di']>=0.8):
+                beta = str(row_optimization['beta'])
+                nsus = str(row_optimization['nsus'])
+                runs = str(int(row_optimization['run']))
+                sufix = "sequences-beta" + beta + "-nsus" + nsus + "-runs" + runs
+                curated_seq = curated_sequences_path + sufix + ".fasta.cluster"
+                dca_di = dca_path + "dca_di" + sufix + ".csv" 
+                #dca_Frob = dca_path + "dca_Frob" + sufix + ".csv"
+                #dataanalisys.run_analisys_singular_dca(optimization_df, index, zmip_natural_result_path, dca_di, contact_map_sync, dca_path, window,'2TRX')
+                target_di, scores_di = dataanalisys.getTargetScores(dca_di, contact_map_sync, window,split_char=' ')
+                auc_di, auc01_di = util.getAUC(target_di, scores_di)
+                msa.msa_information(curated_seq, msa_conservation_path,sufix)
+                optimization_df.set_value(index, 'analysis', 'okey')
+                optimization_df.to_csv(optimization_file_path)
+        except Exception as inst:
+            print inst
+            x = inst.args
+            print x
+            optimization_df.set_value(index, 'analysis', 'error')
+#dca_2trx_evol_analisys()
+
+
+
 
 
 def plot_roc_evol_2trx_dca():
@@ -1848,4 +2077,33 @@ def plot_rocs_thio_ecoli_conformeros():
     
     output_file = execution_folder + '/prom/roc_curve_prom_comparations.png'
     plot.roc_curve_(targets, sc, labels, 'ROC curve Prom comparacion con natural y conformeros' , colors, 'Runs', output_file)
-'''    
+'''
+    
+    
+    
+def evol_2trx():
+    chain_name = "A"
+    # the contact map will be created by scpe 
+    pdb_folder = "../THIO_ECOLI_4_107_2TRX_A_TEST"
+    
+    pdb_file_complete = pdb_folder + "/THIO_ECOLI_4_107_2TRX_A_complete.pdb"
+    pdb_file_complete_filename_to_evolve = pdb_folder + "/THIO_ECOLI_4_107_2TRX_A_clean.pdb" 
+    optimization_folder = pdb_folder + "/optimization_folder/"
+    optimization_file_path = optimization_folder + "optimization.csv"
+    
+    zmip_natural_result_path = pdb_folder + "/natural/"
+    if not os.path.exists(zmip_natural_result_path):
+        os.makedirs(zmip_natural_result_path)
+    
+    cutted_pdb_path = "/cutted_pdb_path/"
+    zmip_natural_result_file = zmip_natural_result_path + "zmip_PF00085_THIO_ECOLI_reference.csv"
+    msa_file_name_fasta = pdb_folder + "/PF00085_THIO_ECOLI_reference.fasta"
+    # setea como referencia la 2trx a la familia
+    #dataanalisys.buslje09(msa_file_name_fasta, zmip_natural_result_file)
+    #msa.msa_information(msa_file_name_fasta, msa_file_name_fasta, "PF00085")
+    #util.clean_pdb(pdb_file_complete, pdb_file_complete_filename_to_evolve, chain_name)   
+    run_optimization_parameters("THIO_ECOLI/4-107", "2TRX",optimization_folder,optimization_file_path, pdb_file_complete_filename_to_evolve, cutted_pdb_path, chain_name,0,0)
+
+#evol_2trx()
+#msa.msa_information("../THIO_ECOLI_4_107_2TRX_A_TEST/optimization_folder/clustered_sequences_path/sequences-beta0.5-nsus5.0-runs20000.fasta.cluster","../THIO_ECOLI_4_107_2TRX_A_TEST/optimization_folder/clustered_sequences_path/sequences-beta0.5-nsus5.0-runs20000.fasta.cluster","Test")
+msa.dca_gauss_di("../THIO_ECOLI_4_107_2TRX_A_TEST/optimization_folder/clustered_sequences_path/sequences-beta0.5-nsus5.0-runs20000.fasta.cluster","../THIO_ECOLI_4_107_2TRX_A_TEST/optimization_folder/clustered_sequences_path/sequences-beta0.5-nsus5.0-runs20000.fasta.cluster_di.csv")           

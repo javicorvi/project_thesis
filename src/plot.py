@@ -21,7 +21,8 @@ def contacts_with_mi(x_nat_t,y_evol_t,x_nat_f,y_evol_f,output_path,filename,pdb_
     #y_evol_f = [1.1,0.32,1.0]
     #plt.scatter(x_nat_t, y_evol_t,color="b")
     #plt.scatter(x_nat_f, y_evol_f,color="r")
-    plt.axis([0, 0.6, 0, 0.6])
+    plt.axis([0, 1, 0, 1])
+    #plt.axis([0, 0.6, 0, 0.6])
     no = plt.scatter(y_evol_f, x_nat_f,color="r")
     co = plt.scatter(y_evol_t, x_nat_t,color="b")
     plt.legend((no, co),
@@ -35,6 +36,7 @@ def contacts_with_mi(x_nat_t,y_evol_t,x_nat_f,y_evol_f,output_path,filename,pdb_
     plt.xlabel('Evolution MI Values')
     plt.title(pdb_name)
     
+    '''
     a = plt.axes([.6, .6, .25, .25])
     plt.axis([0, 1, 0, 1])
     no = plt.scatter(y_evol_f, x_nat_f,color="r")
@@ -45,7 +47,7 @@ def contacts_with_mi(x_nat_t,y_evol_t,x_nat_f,y_evol_f,output_path,filename,pdb_
     plt.title('Zoom Out')
     plt.xticks([0,0.6,1])
     plt.yticks([0,0.6,1])
-    
+    '''
     
     #x=[[1.0,2.4]]
     #plt.scatter(x,color="r")
@@ -478,14 +480,14 @@ def top_comparation_sub(df, contact_threshold ,output_path):
     
     plt.gcf().clear()
 
-def auc_optimization(df,colors,output_path):
+def auc_optimization(df, field_to_plot,colors,output_path, title):
     betas=df.groupby('beta').first().reset_index()
     betas_list=betas['beta'].tolist()
     i=0
     for b in betas_list:
         df_to_plot=df[(df['beta']==b)]
-        plt.scatter(df_to_plot['nsus'], df_to_plot['auc_'],color=colors[i],label=None)
-        plt.plot(df_to_plot['nsus'], df_to_plot['auc_'],color=colors[i],label=b)
+        plt.scatter(df_to_plot['nsus'], df_to_plot[field_to_plot],color=colors[i],label=None)
+        plt.plot(df_to_plot['nsus'], df_to_plot[field_to_plot],color=colors[i],label=b)
         i=i+1
     '''for y in zip(df):
         splt.scatter(nsus, y, color=c,picker=True)  
@@ -498,7 +500,7 @@ def auc_optimization(df,colors,output_path):
     plt.axis([0, 20, 0.5, 1])
     plt.xlabel('NSUS (Sustituciones no sinonimas por sitio)')
     plt.ylabel('AUC')
-    plt.title('Optimizacion  THIO_ECOLI cadena A estructura 2TRX')
+    plt.title(title)
     #plt.show()   
     plt.savefig(output_path)
     plt.gcf().clear()
